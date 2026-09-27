@@ -47,8 +47,8 @@ export const DockerIcon: React.FC<TechIconProps> = ({ className = "w-6 h-6", siz
 );
 
 export const PostgresqlIcon: React.FC<TechIconProps> = ({ className = "w-6 h-6", size = 24 }) => (
-  <svg viewBox="0 0 24 24" width={size} height={size} className={className} fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-    <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.111 12.353c-.31.396-1.374 1.109-1.849 1.258a4.912 4.912 0 0 1-1.353.21c-.482 0-.792-.085-1.237-.306-.576-.288-.864-.813-.864-1.564 0-.712.274-1.255.824-1.625.394-.265.864-.396 1.411-.396h1.22v-.23c0-.495-.297-.743-.889-.743-.591 0-.962.248-.962.743h-2.112c0-1.485 1.056-2.475 3.074-2.475 2.019 0 3.001.99 3.001 2.475v4.186c0 .484.288.726.864.726h.222v1.65H18.7c-.576 0-.864-.289-.864-.867v-.474l-.725.43z" />
+  <svg viewBox="0 0 128 128" width={size} height={size} className={className} fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <path d="M115.731 77.44c-13.925 2.873-14.882-1.842-14.882-1.842 14.703-21.816 20.849-49.51 15.545-56.287C101.924.823 76.875 9.566 76.457 9.793l-.135.024c-2.751-.571-5.83-.911-9.291-.967-6.301-.103-11.08 1.652-14.707 4.402 0 0-44.684-18.408-42.606 23.151.442 8.842 12.672 66.899 27.26 49.363 5.332-6.412 10.483-11.834 10.483-11.834 2.559 1.699 5.622 2.567 8.833 2.255l.25-.212c-.078.796-.042 1.575.1 2.497-3.758 4.199-2.654 4.936-10.167 6.482-7.602 1.566-3.136 4.355-.22 5.084 3.534.884 11.712 2.136 17.237-5.598l-.221.882c1.473 1.18 2.507 7.672 2.334 13.557-.174 5.885-.29 9.926.871 13.082 1.16 3.156 2.316 10.256 12.192 8.14 8.252-1.768 12.528-6.351 13.124-13.995.422-5.435 1.377-4.631 1.438-9.49l.767-2.3c.884-7.367.14-9.743 5.225-8.638l1.235.108c3.742.17 8.639-.602 11.514-1.938 6.19-2.871 9.861-7.667 3.758-6.408z" />
   </svg>
 );
 
@@ -98,8 +98,9 @@ export const ViteIcon: React.FC<TechIconProps> = ({ className = "w-6 h-6", size 
 );
 
 export const PytorchIcon: React.FC<TechIconProps> = ({ className = "w-6 h-6", size = 24 }) => (
-  <svg viewBox="0 0 24 24" width={size} height={size} className={className} fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-    <path d="M12.005 0L4.952 7.053a9.865 9.865 0 0 0 0 14.022 9.866 9.866 0 0 0 14.022 0c3.984-3.9 3.986-10.205.085-14.023l-1.744 1.743c2.904 2.905 2.904 7.634 0 10.538s-7.634 2.904-10.538 0-2.904-7.634 0-10.538l4.647-4.646.582-.665zm3.568 3.899a1.327 1.327 0 0 0-1.327 1.327 1.327 1.327 0 0 0 1.327 1.328A1.327 1.327 0 0 0 16.9 5.226 1.327 1.327 0 0 0 15.573 3.9z"/>
+  <svg viewBox="0 0 128 128" width={size} height={size} className={className} fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <path d="M100.1 38.3l-9.2 9.2c15.1 15.1 15.1 39.4 0 54.3-15.1 15.1-39.4 15.1-54.3 0-15.1-15.1-15.1-39.4 0-54.3l24-24 3.4-3.4V2L27.8 38.2C7.7 58.3 7.7 90.8 27.8 111s52.6 20.1 72.4 0c20.1-20.2 20.1-52.5-.1-72.7z" />
+    <circle cx="82.1" cy="29.4" r="7.2" />
   </svg>
 );
 
@@ -131,8 +132,96 @@ export const TailwindIcon: React.FC<TechIconProps> = ({ className = "w-6 h-6", s
   </svg>
 );
 
+export const ClaudeIcon: React.FC<TechIconProps> = ({ className = "w-6 h-6", size = 24 }) => (
+  <svg viewBox="0 0 24 24" width={size} height={size} className={className} fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <path d="M4.5 10.5C3.67 10.5 3 11.17 3 12s.67 1.5 1.5 1.5h1.76l-1.24 1.24a1.5 1.5 0 1 0 2.12 2.12l1.24-1.24V17.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-1.88l1.24 1.24a1.5 1.5 0 0 0 2.12-2.12L13.76 13.5h1.74c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5h-1.74l1.24-1.24a1.5 1.5 0 0 0-2.12-2.12L11.12 8.38V6.5c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v1.88L6.88 7.14a1.5 1.5 0 0 0-2.12 2.12l1.24 1.24H4.5z"/>
+  </svg>
+);
+
+export const HuggingFaceIcon: React.FC<TechIconProps> = ({ className = "w-6 h-6", size = 24 }) => (
+  <svg viewBox="0 0 24 24" width={size} height={size} className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+    {/* Monochromatic Face outline + subtle fill */}
+    <circle cx="12" cy="12" r="8.5" fill="currentColor" fillOpacity="0.12" stroke="currentColor" strokeWidth="1.6" />
+    {/* Smiling eyes */}
+    <path d="M8.5 10.2c.4-.8 1.1-1 1.7-.6M13.8 9.6c.6-.4 1.3-.2 1.7.6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+    {/* Open happy smile */}
+    <path d="M9.2 13.5c.7 1.6 1.8 2.3 2.8 2.3s2.1-.7 2.8-2.3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+    {/* Hugging hands */}
+    <path d="M4 14.5c.8-1.5 2.1-1.6 3.2-.8l.8.8c.4.4.4 1.1-.1 1.5l-1.8 1.1c-.7.4-1.5.3-1.9-.4-.4-.6-.4-1.5-.2-2.2z" fill="currentColor" fillOpacity="0.3" stroke="currentColor" strokeWidth="1" />
+    <path d="M20 14.5c-.8-1.5-2.1-1.6-3.2-.8l-.8.8c-.4.4-.4 1.1.1 1.5l1.8 1.1c.7.4 1.5.3 1.9-.4.4-.6.4-1.5.2-2.2z" fill="currentColor" fillOpacity="0.3" stroke="currentColor" strokeWidth="1" />
+  </svg>
+);
+
+export const ScikitLearnIcon: React.FC<TechIconProps> = ({ className = "w-6 h-6", size = 24 }) => (
+  <svg viewBox="0 0 24 24" width={size} height={size} className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+    {/* Monochromatic lobes with tonal contrast */}
+    <path d="M18.4 16.5c2.9-2.9 3.4-7.2 1.1-9.5-2.3-2.3-6.6-1.8-9.5 1.1-2.9 2.9-2.1 8.5-1.1 9.5.8.8 6.6 1.8 9.5-1.1z" fill="currentColor" fillOpacity="0.25" stroke="currentColor" strokeWidth="1" />
+    <path d="M6.4 12.3c-1.7-1.7-4.2-2-5.5-.6-1.3 1.3-1.1 3.8.6 5.5 1.7 1.7 4.9 1.2 5.5.6.5-.5 1.1-3.8-.6-5.5z" fill="currentColor" fillOpacity="0.5" stroke="currentColor" strokeWidth="1" />
+    {/* Connected 3 nodes */}
+    <circle cx="5" cy="15" r="1.6" fill="currentColor" />
+    <circle cx="12" cy="11" r="1.6" fill="currentColor" />
+    <circle cx="16" cy="14" r="1.6" fill="currentColor" />
+    <path d="M5 15l7-4 4 3" stroke="currentColor" strokeWidth="1.2" />
+  </svg>
+);
+
+export const XgboostIcon: React.FC<TechIconProps> = ({ className = "w-6 h-6", size = 24 }) => (
+  <svg viewBox="0 0 24 24" width={size} height={size} className={className} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" xmlns="http://www.w3.org/2000/svg">
+    {/* Gradient Boosted Decision Tree */}
+    <path d="M12 3v5M12 8L6 13M12 8l6 5M6 13v3M18 13v3M3 19h6M15 19h6" />
+    <circle cx="12" cy="4" r="2" fill="currentColor" />
+    <circle cx="6" cy="13" r="1.8" fill="currentColor" />
+    <circle cx="18" cy="13" r="1.8" fill="currentColor" />
+  </svg>
+);
+
+export const ChromaDbIcon: React.FC<TechIconProps> = ({ className = "w-6 h-6", size = 24 }) => (
+  <svg viewBox="0 0 24 24" width={size} height={size} className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="14.5" cy="12" rx="6.8" ry="6.2" fill="currentColor" fillOpacity="0.25" stroke="currentColor" strokeWidth="1" />
+    <ellipse cx="9.5" cy="12" rx="6.8" ry="6.2" fill="currentColor" fillOpacity="0.5" stroke="currentColor" strokeWidth="1" />
+    <path d="M 14.5 12 c 0 3.4 -2.8 6.2 -6.5 6.2 V 12 Z M 9.5 12 C 9.5 8.6 12.3 5.8 14.5 5.8 V 12 Z" fill="currentColor" fillOpacity="0.85" />
+  </svg>
+);
+
+export const QdrantIcon: React.FC<TechIconProps> = ({ className = "w-6 h-6", size = 24 }) => (
+  <svg viewBox="0 0 24 24" width={size} height={size} className={className} fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <path d="m12 16.5 3.897-2.25v-4.5L12 7.5 8.103 9.75v4.5zM1.607 18 12 24l3.897-2.25v-4.5L12 19.5l-6.495-3.75v-7.5L12 4.5l6.495 3.75v15L22.393 21V6L12 0 1.607 6Z"/>
+  </svg>
+);
+
+export const TransformersIcon: React.FC<TechIconProps> = ({ className = "w-6 h-6", size = 24 }) => (
+  <svg viewBox="0 0 24 24" width={size} height={size} className={className} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" xmlns="http://www.w3.org/2000/svg">
+    <polygon points="12 2 2 7 12 12 22 7 12 2" fill="currentColor" fillOpacity="0.4" />
+    <polyline points="2 12 12 17 22 12" />
+    <polyline points="2 17 12 22 22 17" />
+  </svg>
+);
+
+export const LlmIcon: React.FC<TechIconProps> = ({ className = "w-6 h-6", size = 24 }) => (
+  <svg viewBox="0 0 24 24" width={size} height={size} className={className} fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 2.5a.75.75 0 0 1 .7.48l1.7 4.54a2.25 2.25 0 0 0 1.28 1.28l4.54 1.7a.75.75 0 0 1 0 1.4l-4.54 1.7a2.25 2.25 0 0 0-1.28 1.28l-1.7 4.54a.75.75 0 0 1-1.4 0l-1.7-4.54a2.25 2.25 0 0 0-1.28-1.28l-4.54-1.7a.75.75 0 0 1 0-1.4l4.54-1.7a2.25 2.25 0 0 0 1.28-1.28l1.7-4.54a.75.75 0 0 1 .7-.48zm7 12a.5.5 0 0 1 .47.33l.66 1.77a1.5 1.5 0 0 0 .87.87l1.77.66a.5.5 0 0 1 0 .94l-1.77.66a1.5 1.5 0 0 0-.87.87l-.66 1.77a.5.5 0 0 1-.94 0l-.66-1.77a1.5 1.5 0 0 0-.87-.87l-1.77-.66a.5.5 0 0 1 0-.94l1.77-.66a1.5 1.5 0 0 0 .87-.87l.66-1.77a.5.5 0 0 1 .47-.33z"/>
+  </svg>
+);
+
+export const DataProcessingIcon: React.FC<TechIconProps> = ({ className = "w-6 h-6", size = 24 }) => (
+  <svg viewBox="0 0 24 24" width={size} height={size} className={className} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" xmlns="http://www.w3.org/2000/svg">
+    <rect x="3" y="3" width="18" height="18" rx="2" strokeWidth="1.8" />
+    <path d="M3 9h18M9 21V9" strokeWidth="1.8" />
+    <path d="M12 17l2.5-3 2 1.5 2.5-3" strokeWidth="2" strokeLinecap="round" />
+  </svg>
+);
+
+export const DataAnalyticsIcon: React.FC<TechIconProps> = ({ className = "w-6 h-6", size = 24 }) => (
+  <svg viewBox="0 0 24 24" width={size} height={size} className={className} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" xmlns="http://www.w3.org/2000/svg">
+    <line x1="18" y1="20" x2="18" y2="10" />
+    <line x1="12" y1="20" x2="12" y2="4" />
+    <line x1="6" y1="20" x2="6" y2="14" />
+    <path d="M3 13l5-5 4 4 9-9" />
+  </svg>
+);
+
 export const genericTechIcon = (name: string, size: number = 24, className?: string) => {
-  const normalized = name.toLowerCase().replace(/[\s\.\-\:_•\/]/g, '');
+  const normalized = name.toLowerCase().replace(/[\s\.\-\:_•\/&]/g, '');
   const finalClass = className || "w-6 h-6 transition-colors fill-current";
 
   switch (normalized) {
@@ -183,6 +272,44 @@ export const genericTechIcon = (name: string, size: number = 24, className?: str
       return <CursorIcon size={size} className={finalClass} strokeWidth={2} />;
     case 'antigravity':
       return <AntigravityIcon size={size} className={finalClass} strokeWidth={2} />;
+    case 'claude':
+    case 'claudecode':
+    case 'anthropic':
+      return <ClaudeIcon size={size} className={finalClass} />;
+    case 'huggingface':
+    case 'hf':
+      return <HuggingFaceIcon size={size} className={finalClass} />;
+    case 'transformers':
+      return <TransformersIcon size={size} className={finalClass} />;
+    case 'scikitlearn':
+    case 'sklearn':
+      return <ScikitLearnIcon size={size} className={finalClass} />;
+    case 'xgboost':
+      return <XgboostIcon size={size} className={finalClass} strokeWidth={2} />;
+    case 'chromadb':
+    case 'chroma':
+      return <ChromaDbIcon size={size} className={finalClass} />;
+    case 'qdrant':
+      return <QdrantIcon size={size} className={finalClass} />;
+    case 'localcloudllms':
+    case 'llms':
+    case 'localllms':
+    case 'llm':
+      return <LlmIcon size={size} className={finalClass} />;
+    case 'dataprocessingeda':
+    case 'datapreprocessingeda':
+    case 'dataprocessing':
+    case 'datapreprocessing':
+    case 'datapipelines':
+    case 'datapipelineseda':
+    case 'eda':
+    case 'scientificcomputing':
+      return <DataProcessingIcon size={size} className={finalClass} />;
+    case 'datascienceanalytics':
+    case 'datascience':
+    case 'dataanalytics':
+    case 'dataanalysis':
+      return <DataAnalyticsIcon size={size} className={finalClass} strokeWidth={2} />;
     default:
       // Fallback: A nice generic chip/tech node icon
       return (

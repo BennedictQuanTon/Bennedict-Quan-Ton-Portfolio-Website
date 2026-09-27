@@ -58,6 +58,12 @@ export const Journey: React.FC = () => {
                           <MapPin size={18} className="text-accent shrink-0" />
                           <span>{exp.location}</span>
                         </div>
+                        {exp.mode && exp.type && (
+                          <div className="flex items-center gap-2">
+                            <Briefcase size={18} className="text-accent shrink-0" />
+                            <span>{exp.mode} · {exp.type}</span>
+                          </div>
+                        )}
                         <div className="flex items-center gap-2">
                           <Calendar size={18} className="text-accent shrink-0" />
                           <span>{exp.startDate} – {exp.endDate}</span>

@@ -51,60 +51,28 @@ export const Home: React.FC = () => {
   // Stats - Custom portfolio highlights
   const stats = [
     { 
-      value: '3+', 
+      value: '5+', 
       label: 'Competition Certifications', 
       sublabel: 'Hackathons & Challenges Certification of Achievement', 
       icon: <Trophy size={20} className="text-accent" /> 
     },
     { 
-      value: '8+', 
+      value: '10+', 
       label: 'Projects & Hackathons', 
       sublabel: 'Personal & Competition AI Systems Shipped', 
       icon: <FolderCode size={20} className="text-accent" /> 
     },
     { 
-      value: '5+', 
+      value: '7+', 
       label: 'AI Certifications', 
       sublabel: 'IBM · AWS · Stanford Online · DeepLearning.AI · Kaggle', 
       icon: <Award size={20} className="text-accent" /> 
     },
     { 
-      value: 'AI Focused', 
+      value: 'AI Engineering', 
       label: 'Agentic Workflows', 
-      sublabel: 'RAG · LLM · ML · Agents', 
+      sublabel: 'Multimodal GenAI · LLM/SLM · ML · Inferences', 
       icon: <Brain size={20} className="text-accent" /> 
-    }
-  ];
-
-  // Skills Architecture Layers
-  const layers = [
-    {
-      num: '01',
-      name: 'AGENTIC AI LAYER',
-      desc: 'Reasoning, retrieval and autonomous decision making.',
-      focus: ['Multi-Agent Systems', 'Self-Reflection Graphs', 'Tool Calling & MCP', 'RAG Context Grounding'],
-      icon: <Brain size={18} />
-    },
-    {
-      num: '02',
-      name: 'MACHINE LEARNING LAYER',
-      desc: 'Scientific computing, modeling and data analysis.',
-      focus: ['Predictive Modeling', 'Exploratory Analysis', 'Feature Engineering', 'Mathematical Reasoning'],
-      icon: <Cpu size={18} />
-    },
-    {
-      num: '03',
-      name: 'BACKEND & DATA LAYER',
-      desc: 'APIs, data models, and high-performance databases.',
-      focus: ['High-Throughput APIs', 'Vector & Relational DBs', 'Semantic Caching', 'Monorepo Architecture'],
-      icon: <Database size={18} />
-    },
-    {
-      num: '04',
-      name: 'EXPERIENCE LAYER',
-      desc: 'Deliver fast, intuitive and responsive user interfaces.',
-      focus: ['60 FPS Telemetry UI', 'Interactive Dashboards', 'Glassmorphism Design', 'Cross-Device PWAs'],
-      icon: <Layout size={18} />
     }
   ];
 
@@ -118,13 +86,13 @@ export const Home: React.FC = () => {
     },
     {
       name: 'Machine Learning',
-      percent: 80,
+      percent: 75,
       desc: 'Training predictive models & data pipelines',
       icon: <Cpu size={18} />
     },
     {
       name: 'Backend & Data',
-      percent: 70,
+      percent: 75,
       desc: 'Designing APIs & optimizing data layers',
       icon: <Database size={18} />
     },
@@ -139,29 +107,24 @@ export const Home: React.FC = () => {
   // Tech stack rows
   const techCategories = [
     {
-      label: 'Agentic AI & RAG',
-      techs: ['LangGraph', 'LangChain', 'Model Context Protocol (MCP)', 'vLLM', 'Local & Cloud LLMs'],
-      icon: <Brain size={14} />
-    },
-    {
-      label: 'Machine Learning',
-      techs: ['PyTorch', 'Scikit-learn', 'XGBoost', 'Pandas', 'NumPy', 'Matplotlib'],
-      icon: <Cpu size={14} />
+      label: 'AI & Machine Learning',
+      techs: ['LangGraph', 'LangChain', 'Transformers', 'Hugging Face', 'Local & Cloud LLMs', 'PyTorch', 'Scikit-learn', 'XGBoost', 'Data Processing & EDA'],
+      icon: <Brain size={16} />
     },
     {
       label: 'Backend & Databases',
-      techs: ['Python', 'FastAPI', 'REST APIs', 'Redis', 'ChromaDB', 'Qdrant'],
-      icon: <Database size={14} />
+      techs: ['Python', 'FastAPI', 'PostgreSQL', 'Redis', 'ChromaDB', 'Qdrant'],
+      icon: <Database size={16} />
     },
     {
       label: 'Frontend Development',
-      techs: ['TypeScript', 'React', 'Vite', 'HTML/CSS', 'Tailwind CSS', 'Chart.js'],
-      icon: <Layout size={14} />
+      techs: ['TypeScript', 'React', 'Vite', 'HTML/CSS'],
+      icon: <Layout size={16} />
     },
     {
       label: 'Tools & Infrastructure',
-      techs: ['Docker', 'Git', 'Cursor', 'Antigravity'],
-      icon: <Terminal size={14} />
+      techs: ['Docker', 'Git', 'Cursor', 'Claude'],
+      icon: <Terminal size={16} />
     }
   ];
 
@@ -255,7 +218,7 @@ export const Home: React.FC = () => {
               </div>
 
               <p className="text-base md:text-lg text-text-body leading-relaxed max-w-lg">
-                Passionate about building containerized agentic workflows, orchestrating LLM layers, and designing low-latency architectures to solve complex technical problems.
+                Passionate about designing enterprise-level agentic workflows, integrating multimodal GenAI systems, and optimizing inference for cost-effective AI solutions.
               </p>
 
               {/* CTA Buttons */}
@@ -328,22 +291,22 @@ export const Home: React.FC = () => {
 
               <div className="space-y-4 max-w-xl">
                 <p className="text-base md:text-lg text-text-body leading-relaxed">
-                  I'm a joint AI student at <span className="text-text-heading font-semibold">UTS × HCMUT</span> driven by a deep curiosity for how intelligent systems can solve real-world problems. My passion lies in building <span className="text-accent font-semibold">agentic workflows</span>, orchestrating LLM pipelines, and applying <span className="text-accent font-semibold">machine learning</span> to optimize complex decision-making.
+                  I am an <span className="text-text-heading font-semibold">AI Engineer Intern</span> and <span className="text-text-heading font-semibold">Undergraduate AI Research Assistant</span> at HCMUT (AITechLab - ML4U), deeply passionate about building scalable, production-grade intelligent systems. My technical focus lies at the intersection of Agentic AI, Speech Recognition (ASR), Real-Time Voice Agents, and LLM/SLM Inference optimization, backed by a solid foundation in Applied Machine Learning and Cloud infrastructure.
                 </p>
                 <p className="text-base md:text-lg text-text-body leading-relaxed">
-                  From training ML models to designing multi-agent architectures and shipping end-to-end AI applications — every project I take on is a step toward mastering the craft of <span className="text-text-heading font-semibold">practical AI engineering</span>.
+                  From developing core ML pipelines to orchestrating multi-agent architectures with MCP and deploying production-grade systems — every project I take on is focused on maximizing token efficiency, minimal latency, and practical AI engineering.
                 </p>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3 gap-3 mt-8">
                 {[
-                  { label: 'UTS × HCMUT', sub: 'Joint Program' },
-                  { label: 'Agentic AI', sub: 'Core Direction' },
-                  { label: 'LLMs · MCP', sub: 'Technical Focus' },
+                  { label: 'Agentic GenAI', sub: 'ENTERPRISE SYSTEMS' },
+                  { label: 'Multimodal AI', sub: 'SPEECH & REAL-TIME VOICE' },
+                  { label: 'Applied ML & SLM', sub: 'INFERENCE OPTIMIZATION' },
                 ].map((chip) => (
                   <div key={chip.label} className="group/chip border border-border-token/30 bg-bg-alt/35 rounded-2xl p-4 hover:border-accent/45 hover:bg-accent-dim/40 transition-all duration-300">
                     <span className="block text-xs md:text-sm font-semibold text-text-heading group-hover/chip:text-accent transition-colors">{chip.label}</span>
-                    <span className="block text-[10px] font-mono uppercase tracking-widest text-text-muted mt-1">{chip.sub}</span>
+                    <span className="block text-[10px] md:text-[11px] font-medium uppercase tracking-wider text-text-muted mt-1">{chip.sub}</span>
                   </div>
                 ))}
               </div>
@@ -351,16 +314,16 @@ export const Home: React.FC = () => {
           </ScrollReveal>
 
           {/* Right: Single professional portrait with luxury effects */}
-          <ScrollReveal direction="right" className="lg:col-span-6">
-            <div className="relative flex items-center justify-center">
+          <ScrollReveal direction="right" className="lg:col-span-6 flex items-center justify-center">
+            <div className="relative w-full max-w-[500px] xl:max-w-[540px]">
               {/* Ambient glow behind portrait */}
-              <div className="absolute w-[85%] h-[85%] rounded-[2rem] bg-accent/8 blur-[60px] pointer-events-none" />
+              <div className="absolute inset-0 rounded-[2rem] bg-accent/8 blur-[60px] pointer-events-none" />
               
               {/* Portrait container */}
-              <div className="relative portrait-frame portrait-glow portrait-float w-full max-w-[460px] aspect-square rounded-[1.5rem] overflow-hidden border border-border-token/25">
+              <div className="relative portrait-frame portrait-glow portrait-float w-full aspect-[4/4.8] rounded-[1.5rem] overflow-hidden border border-border-token/25">
                 <img
                   src="/assets/images/portrait/Myself_Best_Potrait.png"
-                  alt="Long Quan Ton — AI Engineer"
+                  alt="Long Quan Ton — AI Engineer Intern"
                   loading="lazy"
                   className="w-full h-full object-cover object-center"
                 />
@@ -589,63 +552,40 @@ export const Home: React.FC = () => {
 
       {/* 4. Skills & Tech Stack Section */}
       <section className="w-full max-w-[1360px] xl:max-w-[1440px] 2xl:max-w-[1600px] mx-auto px-4 md:px-8 lg:px-12 py-20 md:py-28 2xl:py-32 border-b border-border-token/20">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
-          
-          {/* Left Column: Developer Skills & Layers */}
-          <div className="lg:col-span-5 flex flex-col justify-between">
-            <ScrollReveal direction="left">
-              <div className="flex items-center gap-2.5">
-                <Terminal size={20} className="text-accent" />
-                <span className="text-sm uppercase tracking-widest font-semibold text-accent">Technical Rigor</span>
-              </div>
-              <h2 className="text-3xl md:text-5xl lg:text-6xl 2xl:text-7xl font-bold font-display text-text-heading mt-3 mb-4">
-                Developer Skills
-              </h2>
-            </ScrollReveal>
+        <ScrollReveal direction="up" className="mb-12">
+          <div className="flex items-center gap-2.5">
+            <Terminal size={20} className="text-accent" />
+            <span className="text-sm uppercase tracking-widest font-semibold text-accent">Technical Rigor</span>
+          </div>
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold font-display text-text-heading mt-3 mb-2">
+            Developer Skills
+          </h2>
+        </ScrollReveal>
 
-            {/* Architecture Layers */}
-            <div className="relative flex-grow flex flex-col justify-between gap-4 mt-2">
-              {/* Connecting vertical line */}
-              <div className="absolute left-[23px] top-6 bottom-6 w-[2px] bg-accent/30 dark:bg-accent/20 -z-10" />
-              
-              {layers.map((layer, idx) => (
-                <ScrollReveal 
-                  key={idx} 
-                  direction="left" 
-                  delay={idx * 0.08}
-                  className="relative flex items-start gap-4 group flex-grow"
-                >
-                  {/* Icon Node */}
-                  <div className="w-12 h-12 rounded-xl bg-surface border border-border-token flex items-center justify-center shrink-0 z-10 shadow-xs group-hover:border-accent/50 group-hover:shadow-accent/10 transition-all duration-300">
-                    <div className="text-accent group-hover:scale-110 transition-transform duration-300 flex items-center justify-center">
-                      {layer.icon}
-                    </div>
-                  </div>
-                  
-                  {/* Card Content */}
-                  <div className="flex-grow glass-panel p-4 sm:p-5 rounded-2xl border border-border-token/40 hover:border-accent/40 transition-all duration-300 flex flex-col sm:flex-row justify-between gap-3 h-full">
-                    <div className="space-y-1.5 sm:max-w-[55%] flex flex-col justify-center">
-                      <div className="flex items-center gap-2">
-                        <span className="text-xs font-mono font-bold text-accent tracking-wider">
-                          {layer.num}
-                        </span>
-                        <h4 className="text-sm md:text-base font-bold font-display text-text-heading group-hover:text-accent transition-colors leading-tight">
-                          {layer.name}
-                        </h4>
+        <div className="space-y-12">
+          {/* Skills Overview */}
+          <div className="space-y-4">
+            <span className="text-xs md:text-sm uppercase font-bold tracking-widest text-text-muted block">
+              Skills Overview
+            </span>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {overviewSkills.map((skill, idx) => (
+                <ScrollReveal key={skill.name} direction="up" delay={idx * 0.05}>
+                  <div className="glass-panel p-4.5 rounded-xl flex flex-col justify-between h-full hover:border-accent/40 transition-all duration-300">
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between text-accent">
+                        <div className="p-2 bg-accent-dim rounded-xl flex items-center justify-center">
+                          {skill.icon}
+                        </div>
+                        <span className="text-base md:text-lg font-mono font-extrabold text-accent">{skill.percent}%</span>
                       </div>
-                      <p className="text-xs md:text-sm text-text-muted font-normal leading-relaxed">
-                        {layer.desc}
-                      </p>
+                      <h4 className="text-sm md:text-base font-bold text-text-heading leading-tight">{skill.name}</h4>
                     </div>
-                    <div className="border-t sm:border-t-0 sm:border-l border-border-token/20 pt-2 sm:pt-0 sm:pl-4 shrink-0 flex flex-col justify-center">
-                      <ul className="grid grid-cols-2 sm:grid-cols-1 gap-x-3 gap-y-1.5">
-                        {layer.focus.map((item, i) => (
-                          <li key={i} className="text-xs md:text-sm text-text-body font-mono font-medium flex items-center gap-2">
-                            <span className="w-1.5 h-1.5 rounded-full bg-accent/70 shrink-0" />
-                            <span>{item}</span>
-                          </li>
-                        ))}
-                      </ul>
+                    <div className="w-full h-1.5 bg-border-token/20 rounded-full overflow-hidden mt-3.5">
+                      <div 
+                        className="h-full bg-accent rounded-full transition-all duration-500" 
+                        style={{ width: `${skill.percent}%` }}
+                      />
                     </div>
                   </div>
                 </ScrollReveal>
@@ -653,67 +593,32 @@ export const Home: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Column: Skills Overview & Tech Stack Rows */}
-          <div className="lg:col-span-7 flex flex-col justify-between space-y-8">
-            {/* Skills Overview */}
-            <div className="space-y-4">
-              <span className="text-xs md:text-sm uppercase font-bold tracking-widest text-text-muted block">
-                Skills Overview
-              </span>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                {overviewSkills.map((skill, idx) => (
-                  <ScrollReveal key={skill.name} direction="right" delay={idx * 0.05}>
-                    <div className="glass-panel p-4.5 rounded-xl flex flex-col justify-between h-full hover:border-accent/40 transition-all duration-300">
-                      <div className="space-y-3">
-                        <div className="flex items-center justify-between text-accent">
-                          <div className="p-2 bg-accent-dim rounded-xl flex items-center justify-center">
-                            {skill.icon}
-                          </div>
-                          <span className="text-base md:text-lg font-mono font-extrabold text-accent">{skill.percent}%</span>
-                        </div>
-                        <h4 className="text-sm md:text-base font-bold text-text-heading leading-tight">{skill.name}</h4>
-                      </div>
-                      <div className="w-full h-1.5 bg-border-token/20 rounded-full overflow-hidden mt-3.5">
-                        <div 
-                          className="h-full bg-accent rounded-full transition-all duration-500" 
-                          style={{ width: `${skill.percent}%` }}
-                        />
-                      </div>
+          {/* Technology Stack Categorized Rows */}
+          <div className="space-y-4">
+            <span className="text-xs uppercase font-bold tracking-widest text-text-muted block">
+              Technology Stack
+            </span>
+            <div className="space-y-3.5">
+              {techCategories.map((cat, idx) => (
+                <ScrollReveal key={cat.label} direction="up" delay={idx * 0.05}>
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-4 p-4 rounded-xl bg-bg-alt/40 border border-border-token/30 hover:bg-surface-2 transition-all duration-300">
+                    <div className="flex items-center gap-2.5 w-full sm:w-[220px] shrink-0 text-text-heading font-semibold text-xs md:text-sm">
+                      <span className="text-accent">{cat.icon}</span>
+                      <span>{cat.label}</span>
                     </div>
-                  </ScrollReveal>
-                ))}
-              </div>
-            </div>
-
-            {/* Technology Stack Categorized Rows */}
-            <div className="space-y-4">
-              <span className="text-xs uppercase font-bold tracking-widest text-text-muted block">
-                Technology Stack
-              </span>
-              <div className="space-y-3.5">
-                {techCategories.map((cat, idx) => (
-                  <ScrollReveal key={cat.label} direction="right" delay={idx * 0.05}>
-                    <div className="flex flex-col sm:flex-row sm:items-center gap-4 p-4 rounded-xl bg-bg-alt/40 border border-border-token/30 hover:bg-surface-2 transition-all duration-300">
-                      <div className="flex items-center gap-2.5 w-full sm:w-[180px] shrink-0 text-text-heading font-semibold text-xs md:text-sm">
-                        <span className="text-accent">{cat.icon}</span>
-                        <span>{cat.label}</span>
-                      </div>
-                      <div className="flex flex-wrap gap-2">
-                        {cat.techs.map((t) => (
-                          <span key={t} className="inline-flex items-center gap-1.5 bg-bg border border-border-token/40 px-2.5 py-1.5 rounded-lg text-text-body hover:border-accent/40 hover:text-accent transition-colors group/tech">
-                            <span className="text-accent/70 group-hover/tech:text-accent transition-colors shrink-0">{genericTechIcon(t, 14)}</span>
-                            <span className="text-[10px] md:text-xs font-mono font-medium">{t}</span>
-                          </span>
-                        ))}
-                      </div>
+                    <div className="flex flex-wrap gap-2">
+                      {cat.techs.map((t) => (
+                        <span key={t} className="inline-flex items-center gap-1.5 bg-bg border border-border-token/40 px-2.5 py-1.5 rounded-lg text-text-body hover:border-accent/40 hover:text-accent transition-colors group/tech">
+                          <span className="text-accent/70 group-hover/tech:text-accent transition-colors shrink-0">{genericTechIcon(t, 14)}</span>
+                          <span className="text-[10px] md:text-xs font-mono font-medium">{t}</span>
+                        </span>
+                      ))}
                     </div>
-                  </ScrollReveal>
-                ))}
-              </div>
+                  </div>
+                </ScrollReveal>
+              ))}
             </div>
-
           </div>
-
         </div>
       </section>
 
