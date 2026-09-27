@@ -51,27 +51,27 @@ export const Home: React.FC = () => {
   // Stats - Custom portfolio highlights
   const stats = [
     { 
-      value: '3+', 
+      value: '5+', 
       label: 'Competition Certifications', 
       sublabel: 'Hackathons & Challenges Certification of Achievement', 
       icon: <Trophy size={20} className="text-accent" /> 
     },
     { 
-      value: '8+', 
+      value: '10+', 
       label: 'Projects & Hackathons', 
       sublabel: 'Personal & Competition AI Systems Shipped', 
       icon: <FolderCode size={20} className="text-accent" /> 
     },
     { 
-      value: '5+', 
+      value: '7+', 
       label: 'AI Certifications', 
       sublabel: 'IBM · AWS · Stanford Online · DeepLearning.AI · Kaggle', 
       icon: <Award size={20} className="text-accent" /> 
     },
     { 
-      value: 'AI Focused', 
+      value: 'AI Engineering', 
       label: 'Agentic Workflows', 
-      sublabel: 'RAG · LLM · ML · Agents', 
+      sublabel: 'Multimodal GenAI · LLM/SLM · ML · Inferences', 
       icon: <Brain size={20} className="text-accent" /> 
     }
   ];
