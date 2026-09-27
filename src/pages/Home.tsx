@@ -86,13 +86,13 @@ export const Home: React.FC = () => {
     },
     {
       name: 'Machine Learning',
-      percent: 80,
+      percent: 75,
       desc: 'Training predictive models & data pipelines',
       icon: <Cpu size={18} />
     },
     {
       name: 'Backend & Data',
-      percent: 70,
+      percent: 75,
       desc: 'Designing APIs & optimizing data layers',
       icon: <Database size={18} />
     },

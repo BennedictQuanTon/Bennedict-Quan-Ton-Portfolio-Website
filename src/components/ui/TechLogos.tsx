@@ -140,30 +140,28 @@ export const ClaudeIcon: React.FC<TechIconProps> = ({ className = "w-6 h-6", siz
 
 export const HuggingFaceIcon: React.FC<TechIconProps> = ({ className = "w-6 h-6", size = 24 }) => (
   <svg viewBox="0 0 24 24" width={size} height={size} className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
-    {/* Yellow Emoji Face */}
-    <circle cx="12" cy="12" r="8.5" fill="#FFD21E" stroke="#EAB308" strokeWidth="0.8" />
-    {/* Happy smiling eyes */}
-    <path d="M8.5 10.2c.4-.8 1.1-1 1.7-.6M13.8 9.6c.6-.4 1.3-.2 1.7.6" stroke="#1F2937" strokeWidth="1.6" strokeLinecap="round" />
+    {/* Monochromatic Face outline + subtle fill */}
+    <circle cx="12" cy="12" r="8.5" fill="currentColor" fillOpacity="0.12" stroke="currentColor" strokeWidth="1.6" />
+    {/* Smiling eyes */}
+    <path d="M8.5 10.2c.4-.8 1.1-1 1.7-.6M13.8 9.6c.6-.4 1.3-.2 1.7.6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
     {/* Open happy smile */}
-    <path d="M9.2 13.2c.7 1.8 1.8 2.6 2.8 2.6s2.1-.8 2.8-2.6H9.2z" fill="#991B1B" />
-    <path d="M10.5 14.5c.5.5 1 .6 1.5.6s1-.1 1.5-.6" fill="#F87171" />
+    <path d="M9.2 13.5c.7 1.6 1.8 2.3 2.8 2.3s2.1-.7 2.8-2.3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
     {/* Hugging hands */}
-    <path d="M4 14.5c.8-1.5 2.1-1.6 3.2-.8l.8.8c.4.4.4 1.1-.1 1.5l-1.8 1.1c-.7.4-1.5.3-1.9-.4-.4-.6-.4-1.5-.2-2.2z" fill="#FFB703" stroke="#D97706" strokeWidth="0.8" />
-    <path d="M20 14.5c-.8-1.5-2.1-1.6-3.2-.8l-.8.8c-.4.4-.4 1.1.1 1.5l1.8 1.1c.7.4 1.5.3 1.9-.4.4-.6.4-1.5.2-2.2z" fill="#FFB703" stroke="#D97706" strokeWidth="0.8" />
+    <path d="M4 14.5c.8-1.5 2.1-1.6 3.2-.8l.8.8c.4.4.4 1.1-.1 1.5l-1.8 1.1c-.7.4-1.5.3-1.9-.4-.4-.6-.4-1.5-.2-2.2z" fill="currentColor" fillOpacity="0.3" stroke="currentColor" strokeWidth="1" />
+    <path d="M20 14.5c-.8-1.5-2.1-1.6-3.2-.8l-.8.8c-.4.4-.4 1.1.1 1.5l1.8 1.1c.7.4 1.5.3 1.9-.4.4-.6.4-1.5.2-2.2z" fill="currentColor" fillOpacity="0.3" stroke="currentColor" strokeWidth="1" />
   </svg>
 );
 
 export const ScikitLearnIcon: React.FC<TechIconProps> = ({ className = "w-6 h-6", size = 24 }) => (
   <svg viewBox="0 0 24 24" width={size} height={size} className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
-    {/* Orange lobe */}
-    <path d="M18.4 16.5c2.9-2.9 3.4-7.2 1.1-9.5-2.3-2.3-6.6-1.8-9.5 1.1-2.9 2.9-2.1 8.5-1.1 9.5.8.8 6.6 1.8 9.5-1.1z" fill="#F89939" />
-    {/* Blue lobe */}
-    <path d="M6.4 12.3c-1.7-1.7-4.2-2-5.5-.6-1.3 1.3-1.1 3.8.6 5.5 1.7 1.7 4.9 1.2 5.5.6.5-.5 1.1-3.8-.6-5.5z" fill="#3499CD" />
+    {/* Monochromatic lobes with tonal contrast */}
+    <path d="M18.4 16.5c2.9-2.9 3.4-7.2 1.1-9.5-2.3-2.3-6.6-1.8-9.5 1.1-2.9 2.9-2.1 8.5-1.1 9.5.8.8 6.6 1.8 9.5-1.1z" fill="currentColor" fillOpacity="0.25" stroke="currentColor" strokeWidth="1" />
+    <path d="M6.4 12.3c-1.7-1.7-4.2-2-5.5-.6-1.3 1.3-1.1 3.8.6 5.5 1.7 1.7 4.9 1.2 5.5.6.5-.5 1.1-3.8-.6-5.5z" fill="currentColor" fillOpacity="0.5" stroke="currentColor" strokeWidth="1" />
     {/* Connected 3 nodes */}
-    <circle cx="5" cy="15" r="1.3" fill="#ffffff" />
-    <circle cx="12" cy="11" r="1.3" fill="#ffffff" />
-    <circle cx="16" cy="14" r="1.3" fill="#ffffff" />
-    <path d="M5 15l7-4 4 3" stroke="#ffffff" strokeWidth="0.8" opacity="0.8" />
+    <circle cx="5" cy="15" r="1.6" fill="currentColor" />
+    <circle cx="12" cy="11" r="1.6" fill="currentColor" />
+    <circle cx="16" cy="14" r="1.6" fill="currentColor" />
+    <path d="M5 15l7-4 4 3" stroke="currentColor" strokeWidth="1.2" />
   </svg>
 );
 
@@ -179,9 +177,9 @@ export const XgboostIcon: React.FC<TechIconProps> = ({ className = "w-6 h-6", si
 
 export const ChromaDbIcon: React.FC<TechIconProps> = ({ className = "w-6 h-6", size = 24 }) => (
   <svg viewBox="0 0 24 24" width={size} height={size} className={className} fill="none" xmlns="http://www.w3.org/2000/svg">
-    <ellipse cx="14.5" cy="12" rx="6.8" ry="6.2" fill="#FFDE2D" />
-    <ellipse cx="9.5" cy="12" rx="6.8" ry="6.2" fill="#327EFF" />
-    <path d="M 14.5 12 c 0 3.4 -2.8 6.2 -6.5 6.2 V 12 Z M 9.5 12 C 9.5 8.6 12.3 5.8 14.5 5.8 V 12 Z" fill="#FF6446" />
+    <ellipse cx="14.5" cy="12" rx="6.8" ry="6.2" fill="currentColor" fillOpacity="0.25" stroke="currentColor" strokeWidth="1" />
+    <ellipse cx="9.5" cy="12" rx="6.8" ry="6.2" fill="currentColor" fillOpacity="0.5" stroke="currentColor" strokeWidth="1" />
+    <path d="M 14.5 12 c 0 3.4 -2.8 6.2 -6.5 6.2 V 12 Z M 9.5 12 C 9.5 8.6 12.3 5.8 14.5 5.8 V 12 Z" fill="currentColor" fillOpacity="0.85" />
   </svg>
 );
 
