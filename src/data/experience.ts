@@ -23,6 +23,28 @@ export const experiences: WorkExperience[] = [
     status: 'active'
   },
   {
+    id: 'hcmut-ai-research-assistant',
+    company: 'Ho Chi Minh City University of Technology (HCMUT)',
+    companyLogo: '/assets/images/companies/bku_logo.png',
+    companyPhoto: undefined,
+    location: 'Ho Chi Minh City, Vietnam',
+    role: 'AI Research Assistant',
+    type: 'Part-time',
+    mode: 'On-site',
+    startDate: 'August 2026',
+    endDate: 'Present',
+    isActive: true,
+    responsibilities: [
+      'Undergraduate Research Assistant at the Speech Recognition Team from AITechLab - ML4U (HCMUT), under the supervision of Dr. Nguyen Duc Dung.',
+      'Conducting research on Automatic Speech Recognition (ASR), investigating underlying model mechanisms, and benchmarking TTS/STT performance for low-latency, real-time conversational agents.',
+      'Exploring Small Language Models (SLMs) to optimize on-device inference, resource efficiency, and seamless speech-to-speech integration.',
+      'Preprocessing audio datasets, evaluating benchmark metrics (WER, RTF, latency), and contributing to upcoming scientific publications and technical reports.'
+    ],
+    skills: ['Automatic Speech Recognition (ASR)', 'Small Language Models (SLMs)', 'Natural Language Processing (NLP)', 'Speech Recognition', 'TTS/STT', 'Audio Preprocessing', 'Python'],
+    photos: [],
+    status: 'active'
+  },
+  {
     id: 'globaltech-annotator',
     company: 'GlobalTech SJC VietNam',
     companyLogo: '/assets/images/companies/globaltech_logo.jpg',
