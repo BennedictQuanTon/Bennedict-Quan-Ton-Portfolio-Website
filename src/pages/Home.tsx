@@ -328,22 +328,22 @@ export const Home: React.FC = () => {
 
               <div className="space-y-4 max-w-xl">
                 <p className="text-base md:text-lg text-text-body leading-relaxed">
-                  I'm a joint AI student at <span className="text-text-heading font-semibold">UTS × HCMUT</span> driven by a deep curiosity for how intelligent systems can solve real-world problems. My passion lies in building <span className="text-accent font-semibold">agentic workflows</span>, orchestrating LLM pipelines, and applying <span className="text-accent font-semibold">machine learning</span> to optimize complex decision-making.
+                  I am an <span className="text-text-heading font-semibold">AI Engineer Intern</span> and <span className="text-text-heading font-semibold">Undergraduate AI Research Assistant</span> at HCMUT (AITechLab - ML4U), deeply passionate about building scalable, production-grade intelligent systems. My technical focus lies at the intersection of Agentic AI, Speech Recognition (ASR), Real-Time Voice Agents, and LLM/SLM Inference optimization, backed by a solid foundation in Applied Machine Learning and Cloud infrastructure.
                 </p>
                 <p className="text-base md:text-lg text-text-body leading-relaxed">
-                  From training ML models to designing multi-agent architectures and shipping end-to-end AI applications — every project I take on is a step toward mastering the craft of <span className="text-text-heading font-semibold">practical AI engineering</span>.
+                  From developing core ML pipelines to orchestrating multi-agent architectures with MCP and deploying production-grade systems — every project I take on is focused on maximizing token efficiency, minimal latency, and practical AI engineering.
                 </p>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3 gap-3 mt-8">
                 {[
-                  { label: 'UTS × HCMUT', sub: 'Joint Program' },
-                  { label: 'Agentic AI', sub: 'Core Direction' },
-                  { label: 'LLMs · MCP', sub: 'Technical Focus' },
+                  { label: 'Agentic GenAI', sub: 'ENTERPRISE SYSTEMS' },
+                  { label: 'Multimodal AI', sub: 'SPEECH & REAL-TIME VOICE' },
+                  { label: 'Applied ML & SLM', sub: 'INFERENCE OPTIMIZATION' },
                 ].map((chip) => (
                   <div key={chip.label} className="group/chip border border-border-token/30 bg-bg-alt/35 rounded-2xl p-4 hover:border-accent/45 hover:bg-accent-dim/40 transition-all duration-300">
                     <span className="block text-xs md:text-sm font-semibold text-text-heading group-hover/chip:text-accent transition-colors">{chip.label}</span>
-                    <span className="block text-[10px] font-mono uppercase tracking-widest text-text-muted mt-1">{chip.sub}</span>
+                    <span className="block text-[10px] md:text-[11px] font-medium uppercase tracking-wider text-text-muted mt-1">{chip.sub}</span>
                   </div>
                 ))}
               </div>
@@ -351,16 +351,16 @@ export const Home: React.FC = () => {
           </ScrollReveal>
 
           {/* Right: Single professional portrait with luxury effects */}
-          <ScrollReveal direction="right" className="lg:col-span-6">
-            <div className="relative flex items-center justify-center">
+          <ScrollReveal direction="right" className="lg:col-span-6 flex items-center justify-center">
+            <div className="relative w-full max-w-[500px] xl:max-w-[540px]">
               {/* Ambient glow behind portrait */}
-              <div className="absolute w-[85%] h-[85%] rounded-[2rem] bg-accent/8 blur-[60px] pointer-events-none" />
+              <div className="absolute inset-0 rounded-[2rem] bg-accent/8 blur-[60px] pointer-events-none" />
               
               {/* Portrait container */}
-              <div className="relative portrait-frame portrait-glow portrait-float w-full max-w-[460px] aspect-square rounded-[1.5rem] overflow-hidden border border-border-token/25">
+              <div className="relative portrait-frame portrait-glow portrait-float w-full aspect-[4/4.8] rounded-[1.5rem] overflow-hidden border border-border-token/25">
                 <img
                   src="/assets/images/portrait/Myself_Best_Potrait.png"
-                  alt="Long Quan Ton — AI Engineer"
+                  alt="Long Quan Ton — AI Engineer Intern"
                   loading="lazy"
                   className="w-full h-full object-cover object-center"
                 />
