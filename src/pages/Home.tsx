@@ -255,7 +255,7 @@ export const Home: React.FC = () => {
               </div>
 
               <p className="text-base md:text-lg text-text-body leading-relaxed max-w-lg">
-                Passionate about building containerized agentic workflows, orchestrating LLM layers, and designing low-latency architectures to solve complex technical problems.
+                Passionate about designing enterprise-level agentic workflows, integrating multimodal GenAI systems, and optimizing inference for cost-effective AI solutions.
               </p>
 
               {/* CTA Buttons */}
