@@ -6,6 +6,7 @@ import { ScrollReveal } from '../components/ui/ScrollReveal';
 import { projects } from '../data/projects';
 import type { Project } from '../types';
 import { genericTechIcon } from '../components/ui/TechLogos';
+import { ProjectMedia } from '../components/ui/ProjectMedia';
 
 const GithubIcon = ({ size = 14 }: { size?: number }) => (
   <svg
@@ -115,7 +116,7 @@ export const Vault: React.FC = () => {
                       <div 
                         className="lg:col-span-5 relative w-full aspect-[16/10] lg:aspect-auto min-h-[240px] bg-bg-alt/50 overflow-hidden rounded-2xl border border-border-token/30 shrink-0"
                         style={{
-                          backgroundColor: project.hoverMedia && project.hoverMedia.objectFit === 'contain' ? '#ffffff' : undefined
+                          backgroundColor: project.hoverMedia.objectFit === 'contain' ? (project.hoverMedia.background ?? '#ffffff') : undefined
                         }}
                       >
                         {project.status === 'placeholder' ? (
@@ -124,15 +125,10 @@ export const Vault: React.FC = () => {
                             <span className="text-sm font-semibold text-text-heading">Visual Coming Soon</span>
                           </div>
                         ) : (
-                          <img
-                            src={project.hoverMedia.src}
+                          <ProjectMedia
+                            media={project.hoverMedia}
                             alt={project.title}
-                            loading="lazy"
-                            className="w-full h-full group-hover:scale-105 transition-transform duration-700 ease-out"
-                            style={{
-                              objectFit: project.hoverMedia.objectFit || 'cover',
-                              objectPosition: project.hoverMedia.objectPosition || 'center'
-                            }}
+                            className="absolute inset-0 w-full h-full group-hover:scale-105 transition-transform duration-700 ease-out"
                           />
                         )}
                       </div>

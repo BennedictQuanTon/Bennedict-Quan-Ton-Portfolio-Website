@@ -50,9 +50,12 @@ export const projects: Project[] = [
       '/assets/images/lantern/benchmarks.png'
     ],
     hoverMedia: {
-      type: 'image',
-      src: '/assets/images/lantern/cover.png',
-      objectFit: 'contain'
+      type: 'video',
+      src: '/assets/videos/lantern_preview.mp4',
+      webmSrc: '/assets/videos/lantern_preview.webm',
+      poster: '/assets/images/lantern/video_poster.jpg',
+      objectFit: 'contain',
+      background: '#eef5f4'
     },
     githubUrl: 'https://github.com/BennedictQuanTon/The-Lantern-AssemblyAI-Voice-Agent-Hackathon',
     status: 'active',
@@ -100,6 +103,7 @@ export const projects: Project[] = [
       'Built a 4-collection RAG Knowledge Layer ingesting 500+ domain records with ~2s retrieval to ground every NIM reasoning call, optimized on an 8x NVIDIA H200 GPU cluster.'
     ],
     images: [
+      '/assets/images/weatherise/dashboard.jpg',
       '/assets/images/weatherise/cover.png',
       '/assets/images/weatherise/sys_arch.jpg',
       '/assets/images/weatherise/ui_2.jpg',
@@ -110,7 +114,8 @@ export const projects: Project[] = [
     ],
     hoverMedia: {
       type: 'image',
-      src: '/assets/images/weatherise/cover.png'
+      src: '/assets/images/weatherise/dashboard.jpg',
+      objectPosition: 'left top'
     },
     githubUrl: 'https://github.com/BennedictQuanTon/Weatherise_Vietnam-AI-Open-Hackathon-2026',
     status: 'active',
@@ -217,6 +222,95 @@ export const projects: Project[] = [
     competitionName: 'AMD Developer Hackathon ACT II',
     organizer: 'AMD',
     organizerLogo: '/assets/images/companies/amd_logo.png'
+  },
+  {
+    id: 'auralens',
+    title: 'AuraLens',
+    category: 'Competition',
+    period: 'Aug 23, 2026 – Aug 28, 2026',
+    role: 'Solo Full-Stack AI Developer',
+    summary: 'AuraLens is a multimodal AI stylist and lifestyle engine for Gen Z. Users snap their outfit and Gemini Vision scores it from 0 to 100 across four weighted fashion pillars, suggests upgrades from Vietnamese local brands, then plans where to go in Saigon — filtering venues by live weather and opening hours so it never recommends a closed café or an outdoor rooftop in the rain. A prompt-to-template Photobooth Studio turns the night out into shareable editorial photo strips, fully bilingual in English and Vietnamese.',
+    problem: 'Gen Z faces two linked weekend questions: "Does my outfit work?" and "Where should we go that matches this vibe?". Generic AI chatbots answer the second with hallucinations — closed venues, outdated places, or open-air rooftops during tropical downpours — and nothing connects outfit feedback to real-world plans.',
+    process: [
+      {
+        date: 'Aug 23 – 24, 2026',
+        title: 'Architecture & Entity Data',
+        description: 'Designed the React 19 + Express monorepo and built the grounded entity data behind it: 20 local-brand fashion items, 15 Saigon venues with indoor/outdoor flags and opening hours, and 6 photobooth frames.',
+        image: '/assets/images/auralens/dashboard.jpg'
+      },
+      {
+        date: 'Aug 26 – 27, 2026',
+        title: 'Gemini Vision Drip Check & Grounded Vibe Map',
+        description: 'Integrated Gemini multimodal vision with a WebRTC camera to score outfits across color, silhouette, vibe and accessories via JSON structured output, and layered a deterministic weather and open-hours filter on top of Gemini Flash Lite venue recommendations.',
+        image: '/assets/images/auralens/vibe_map.jpg'
+      },
+      {
+        date: 'Aug 27 – 28, 2026',
+        title: 'Photobooth Studio, Testing & Cloud Run Deploy',
+        description: 'Shipped the prompt-to-template Photobooth (5 aspect ratios, filters, stickers, AI-generated layouts), covered the stack with 35 Vitest tests, and containerized a single-origin build for Google Cloud Run.',
+        image: '/assets/images/auralens/photobooth.jpg'
+      }
+    ],
+    techStack: ['Gemini Vision', 'Gemini Flash Lite', 'React 19', 'TypeScript', 'Express.js', 'WebRTC', 'Google Cloud Run', 'Docker', 'Vitest', 'Vite'],
+    outcomes: [
+      'Built a multimodal outfit evaluator scoring looks from 0 to 100 across 4 weighted pillars (color 35%, silhouette 30%, vibe 20%, accessories 15%) by integrating Gemini Vision with a real-time WebRTC camera pipeline.',
+      'Eliminated hallucinated venue recommendations (closed venues, outdoor rooftops in rain) at ~2.0s response latency by engineering a deterministic weather and opening-hours grounding layer over Gemini Flash Lite structured outputs.',
+      'Shipped a secure full-stack app with a prompt-to-template Photobooth engine, validated by 35/35 automated tests and deployed at $0/month by proxying every Gemini call through an Express backend and containerizing on Google Cloud Run.'
+    ],
+    images: [
+      '/assets/images/auralens/cover.jpg',
+      '/assets/images/auralens/dashboard.jpg',
+      '/assets/images/auralens/vibe_map.jpg',
+      '/assets/images/auralens/photobooth.jpg'
+    ],
+    hoverMedia: {
+      type: 'image',
+      src: '/assets/images/auralens/cover.jpg'
+    },
+    githubUrl: 'https://github.com/BennedictQuanTon/AuraLens',
+    status: 'active',
+    competitionName: 'AI Riser Vietnam 2026 · #BuildwithGoogleAI',
+    organizer: 'Google'
+  },
+  {
+    id: 'architecturelab',
+    title: 'Executable ArchitectureLab',
+    category: 'Competition',
+    period: 'Sep 2, 2026 – Sep 3, 2026',
+    role: 'AI Developer',
+    summary: 'Executable ArchitectureLab is a WebMCP-native system-design studio where a human engineer and an AI agent work on the same live architecture model. The engineer selects a request flow; the agent inspects exactly that scope through structured WebMCP tools, runs a deterministic failure simulation, and drafts a patch — which only the human can apply.',
+    problem: 'Architecture diagrams are static pictures: they cannot show which component fails first under a traffic spike or a cache outage. AI assistants make it worse when they only see screenshots — guessing scope, treating synthetic numbers as real, and risking silent changes or prompt injection from text on the page.',
+    process: [
+      {
+        date: 'Sep 2, 2026',
+        title: 'Product Spec & WebMCP Tool Surface',
+        description: 'Authored the 1,300-line product spec defining the human-in-the-loop workflow, then built on a WebMCP adapter exposing 6 read-only and proposal tools — with no apply, delete or reset tool for the agent.'
+      },
+      {
+        date: 'Sep 2 – 3, 2026',
+        title: 'Studio UI & Failure Simulation',
+        description: 'Built the Studio interface — interactive architecture canvas, inspector, simulation strip, proposal drawer and live activity log — visualising 10× flash-sale traffic and cache-outage scenarios with animated request flows and causal bottleneck chains.',
+        image: '/assets/images/architecturelab/cover.jpg'
+      }
+    ],
+    techStack: ['WebMCP', 'React', 'TypeScript', 'Vite', 'Vitest', 'Playwright', 'Vercel'],
+    outcomes: [
+      'Built the human-in-the-loop Studio where an AI agent inspects, simulates and drafts architecture patches through 6 structured WebMCP tools while only humans can apply them, authoring the 1,300-line product spec.',
+      'Visualised deterministic failure scenarios (10× flash-sale traffic, cache hit ratio 92% → 0%) on an interactive canvas with animated request flows, causal bottleneck chains and before/after patch diffs.',
+      'Shipped with the team on a safety-first stack: scope-bound tools revoked when selection changes, revision-locked proposals, a seeded prompt-injection test, 31 guardrail tests and 23 live Chrome checks.'
+    ],
+    images: ['/assets/images/architecturelab/cover.jpg'],
+    hoverMedia: {
+      type: 'image',
+      src: '/assets/images/architecturelab/cover.jpg',
+      objectFit: 'contain',
+      background: '#1c1f22'
+    },
+    githubUrl: 'https://github.com/BennedictQuanTon/ArchitectureLab---WebMCP-Challenge',
+    liveUrl: 'https://architecturelab.vercel.app',
+    status: 'active',
+    competitionName: 'OpenAI WebMCP Challenge',
+    organizer: 'OpenAI'
   },
   {
     id: 'bkai-admissions',

@@ -21,9 +21,16 @@ export interface Project {
   images: string[];
   hoverMedia: {
     type: 'image' | 'video';
+    /** Image URL, or the MP4 source for videos */
     src: string;
+    /** Optional WebM source, preferred over MP4 when supported */
+    webmSrc?: string;
+    /** Still frame shown before a video starts playing */
+    poster?: string;
     objectPosition?: string;
     objectFit?: 'cover' | 'contain';
+    /** Frame colour behind 'contain' media; defaults to white */
+    background?: string;
   };
   githubUrl?: string;
   liveUrl?: string;

@@ -3,7 +3,15 @@ import { Link } from 'react-router-dom';
 import { ArrowUpRight, Download, Brain, User, Cpu, Layers, Terminal, Sparkles, Database, Layout, Trophy, Copy, Check, Award, FolderCode, Calendar } from 'lucide-react';
 import { ScrollReveal } from '../components/ui/ScrollReveal';
 import { genericTechIcon } from '../components/ui/TechLogos';
+import { ProjectMedia } from '../components/ui/ProjectMedia';
 import { projects } from '../data/projects';
+import type { Project } from '../types';
+
+// Projects highlighted on the home page, in display order
+const FEATURED_PROJECT_IDS = ['weatherise', 'the-lantern', 'amd-token-agent'];
+const featuredProjects = FEATURED_PROJECT_IDS
+  .map((id) => projects.find((p) => p.id === id))
+  .filter((p): p is Project => Boolean(p));
 import { useTheme } from '../context/ThemeContext';
 
 const GithubIcon = ({ size = 16 }: { size?: number }) => (
@@ -363,9 +371,9 @@ export const Home: React.FC = () => {
             </ScrollReveal>
           </div>
 
-          {/* Vertical Stacked Projects List (Top 3 Projects Only: Weatherise, AMD, BKAi) */}
+          {/* Vertical Stacked Projects List (Featured: Weatherise, The Lantern, AMD) */}
           <div className="w-full flex flex-col space-y-8">
-            {projects.slice(0, 3).map((project, idx) => (
+            {featuredProjects.map((project, idx) => (
               <ScrollReveal key={project.id} direction="up" delay={idx * 0.05}>
                 <div className="group glass-panel rounded-3xl overflow-hidden p-6 md:p-8 border border-border-token/35 hover:border-accent/50 hover:shadow-2xl hover:shadow-accent/10 transition-all duration-500">
                   <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
@@ -374,7 +382,7 @@ export const Home: React.FC = () => {
                     <div 
                       className="lg:col-span-5 relative w-full aspect-[16/10] lg:aspect-auto min-h-[240px] bg-bg-alt/50 overflow-hidden rounded-2xl border border-border-token/30 shrink-0"
                       style={{
-                        backgroundColor: project.hoverMedia && project.hoverMedia.objectFit === 'contain' ? '#ffffff' : undefined
+                        backgroundColor: project.hoverMedia.objectFit === 'contain' ? (project.hoverMedia.background ?? '#ffffff') : undefined
                       }}
                     >
                       {project.status === 'placeholder' ? (
@@ -383,15 +391,10 @@ export const Home: React.FC = () => {
                           <span className="text-sm font-semibold text-text-heading">Visual Coming Soon</span>
                         </div>
                       ) : (
-                        <img
-                          src={project.hoverMedia.src}
+                        <ProjectMedia
+                          media={project.hoverMedia}
                           alt={project.title}
-                          loading="lazy"
-                          className="w-full h-full group-hover:scale-105 transition-transform duration-700 ease-out"
-                          style={{
-                            objectFit: project.hoverMedia.objectFit || 'cover',
-                            objectPosition: project.hoverMedia.objectPosition || 'center'
-                          }}
+                          className="absolute inset-0 w-full h-full group-hover:scale-105 transition-transform duration-700 ease-out"
                         />
                       )}
                     </div>
