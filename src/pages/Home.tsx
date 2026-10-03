@@ -59,7 +59,7 @@ export const Home: React.FC = () => {
   // Stats - Custom portfolio highlights
   const stats = [
     { 
-      value: '5+', 
+      value: '6+', 
       label: 'Competition Certifications', 
       sublabel: 'Hackathons & Challenges Certification of Achievement', 
       icon: <Trophy size={20} className="text-accent" /> 

@@ -2,6 +2,72 @@ import type { Project } from '../types';
 
 export const projects: Project[] = [
   {
+    id: 'weatherise',
+    title: 'Weatherise',
+    category: 'Competition',
+    period: 'June 2, 2026 – June 12, 2026',
+    role: 'Project Lead & AI Developer',
+    summary: 'Weatherise is an enterprise-focused multi-agent AI system that helps organizations analyze, predict, and act on weather-related risks in their specific domain. Each domain, such as tourism, construction, and agriculture, is handled by specialized agents that understand the context, gather the right information, evaluate weather impact, and generate practical recommendations for better decision-making.',
+    problem: 'Sectors like agriculture, construction, and tourism suffer huge financial losses due to unpredictable weather risks. Traditional systems do not translate raw meteorological data into sector-specific, actionable operational decisions.',
+    process: [
+      {
+        date: 'June 2, 2026',
+        title: 'Multi-Agent System Architecture',
+        description: 'Designed multi-agent decision system architecture across 3 domains (Tourism, Construction & Agriculture) using LangGraph, NeMo Agent Toolkit, Pydantic v2, and NeMo Guardrails.',
+        image: '/assets/images/weatherise/sys_arch.jpg'
+      },
+      {
+        date: 'June 5, 2026',
+        title: 'Live External API MCP Server',
+        description: 'Engineered a unified MCP Server gateway consolidating 7+ live external APIs into a single tool-call interface using Python, FastAPI, and Redis 7, cutting integration complexity by ~60%.',
+        image: '/assets/images/weatherise/team.jpg'
+      },
+      {
+        date: 'June 9, 2026',
+        title: 'RAG Knowledge Layer on H200 GPU Cluster',
+        description: 'Built and seeded a 4-collection RAG Knowledge Layer ingesting 500+ domain records with ~2s retrieval using nv-embedqa-e5-v5 NIM, Qdrant, and PostgreSQL 16 on an 8x NVIDIA H200 GPU cluster.',
+        image: '/assets/images/weatherise/ui_2.jpg'
+      },
+      {
+        date: 'June 12, 2026',
+        title: 'Hackathon Final Pitch',
+        description: 'Presented Weatherise at the Vietnam AI Open Hackathon (NVIDIA/Viettel/Sovico), securing a spot in the Top 10 Finalists.',
+        image: '/assets/images/weatherise/team_2.jpg'
+      }
+    ],
+    techStack: ['LangGraph', 'NeMo Toolkit', 'NVIDIA NIM', 'FastAPI', 'Python', 'Redis', 'Qdrant', 'PostgreSQL', 'NeMo Guardrails', 'MCP'],
+    outcomes: [
+      'Advanced to Top 10 Finalists in the prestigious Vietnam AI Open Hackathon (NVIDIA/Viettel/Sovico).',
+      'Engineered a unified MCP Server gateway consolidating 7+ live external APIs into a single tool-call interface, cutting integration complexity by ~60%.',
+      'Built a 4-collection RAG Knowledge Layer ingesting 500+ domain records with ~2s retrieval to ground every NIM reasoning call, optimized on an 8x NVIDIA H200 GPU cluster.'
+    ],
+    images: [
+      '/assets/images/weatherise/home.jpg',
+      '/assets/images/weatherise/cover.png',
+      '/assets/images/weatherise/sys_arch.jpg',
+      '/assets/images/weatherise/ui_2.jpg',
+      '/assets/images/weatherise/team.jpg',
+      '/assets/images/weatherise/team_2.jpg',
+      '/assets/images/weatherise/travel.jpg',
+      '/assets/images/weatherise/log.jpg'
+    ],
+    hoverMedia: {
+      type: 'image',
+      src: '/assets/images/weatherise/home.jpg',
+      objectFit: 'contain'
+    },
+    githubUrl: 'https://github.com/BennedictQuanTon/Weatherise_Vietnam-AI-Open-Hackathon-2026',
+    status: 'active',
+    competitionName: 'Vietnam AI Open Hackathon',
+    organizer: 'NVIDIA / Viettel / Sovico',
+    organizerLogo: '/assets/images/companies/weatherise_org.jpg',
+    organizerLogos: [
+      '/assets/images/companies/nvidia_logo.png',
+      '/assets/images/companies/viettel_logo.svg',
+      '/assets/images/companies/sovico_logo.png'
+    ]
+  },
+  {
     id: 'the-lantern',
     title: 'The Lantern',
     category: 'Competition',
@@ -61,72 +127,6 @@ export const projects: Project[] = [
     status: 'active',
     competitionName: 'AssemblyAI Voice Agent Hackathon',
     organizer: 'AssemblyAI'
-  },
-  {
-    id: 'weatherise',
-    title: 'Weatherise',
-    category: 'Competition',
-    period: 'June 2, 2026 – June 12, 2026',
-    role: 'Project Lead & AI Developer',
-    summary: 'Weatherise is an enterprise-focused multi-agent AI system that helps organizations analyze, predict, and act on weather-related risks in their specific domain. Each domain, such as tourism, construction, and agriculture, is handled by specialized agents that understand the context, gather the right information, evaluate weather impact, and generate practical recommendations for better decision-making.',
-    problem: 'Sectors like agriculture, construction, and tourism suffer huge financial losses due to unpredictable weather risks. Traditional systems do not translate raw meteorological data into sector-specific, actionable operational decisions.',
-    process: [
-      {
-        date: 'June 2, 2026',
-        title: 'Multi-Agent System Architecture',
-        description: 'Designed multi-agent decision system architecture across 3 domains (Tourism, Construction & Agriculture) using LangGraph, NeMo Agent Toolkit, Pydantic v2, and NeMo Guardrails.',
-        image: '/assets/images/weatherise/sys_arch.jpg'
-      },
-      {
-        date: 'June 5, 2026',
-        title: 'Live External API MCP Server',
-        description: 'Engineered a unified MCP Server gateway consolidating 7+ live external APIs into a single tool-call interface using Python, FastAPI, and Redis 7, cutting integration complexity by ~60%.',
-        image: '/assets/images/weatherise/team.jpg'
-      },
-      {
-        date: 'June 9, 2026',
-        title: 'RAG Knowledge Layer on H200 GPU Cluster',
-        description: 'Built and seeded a 4-collection RAG Knowledge Layer ingesting 500+ domain records with ~2s retrieval using nv-embedqa-e5-v5 NIM, Qdrant, and PostgreSQL 16 on an 8x NVIDIA H200 GPU cluster.',
-        image: '/assets/images/weatherise/ui_2.jpg'
-      },
-      {
-        date: 'June 12, 2026',
-        title: 'Hackathon Final Pitch',
-        description: 'Presented Weatherise at the Vietnam AI Open Hackathon (NVIDIA/Viettel/Sovico), securing a spot in the Top 10 Finalists.',
-        image: '/assets/images/weatherise/team_2.jpg'
-      }
-    ],
-    techStack: ['LangGraph', 'NeMo Toolkit', 'NVIDIA NIM', 'FastAPI', 'Python', 'Redis', 'Qdrant', 'PostgreSQL', 'NeMo Guardrails', 'MCP'],
-    outcomes: [
-      'Advanced to Top 10 Finalists in the prestigious Vietnam AI Open Hackathon (NVIDIA/Viettel/Sovico).',
-      'Engineered a unified MCP Server gateway consolidating 7+ live external APIs into a single tool-call interface, cutting integration complexity by ~60%.',
-      'Built a 4-collection RAG Knowledge Layer ingesting 500+ domain records with ~2s retrieval to ground every NIM reasoning call, optimized on an 8x NVIDIA H200 GPU cluster.'
-    ],
-    images: [
-      '/assets/images/weatherise/dashboard.jpg',
-      '/assets/images/weatherise/cover.png',
-      '/assets/images/weatherise/sys_arch.jpg',
-      '/assets/images/weatherise/ui_2.jpg',
-      '/assets/images/weatherise/team.jpg',
-      '/assets/images/weatherise/team_2.jpg',
-      '/assets/images/weatherise/travel.jpg',
-      '/assets/images/weatherise/log.jpg'
-    ],
-    hoverMedia: {
-      type: 'image',
-      src: '/assets/images/weatherise/dashboard.jpg',
-      objectPosition: 'left top'
-    },
-    githubUrl: 'https://github.com/BennedictQuanTon/Weatherise_Vietnam-AI-Open-Hackathon-2026',
-    status: 'active',
-    competitionName: 'Vietnam AI Open Hackathon',
-    organizer: 'NVIDIA / Viettel / Sovico',
-    organizerLogo: '/assets/images/companies/weatherise_org.jpg',
-    organizerLogos: [
-      '/assets/images/companies/nvidia_logo.png',
-      '/assets/images/companies/viettel_logo.svg',
-      '/assets/images/companies/sovico_logo.png'
-    ]
   },
   {
     id: 'viettel-llm-inference',
