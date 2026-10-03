@@ -108,7 +108,7 @@ export const Home: React.FC = () => {
   const techCategories = [
     {
       label: 'AI & Machine Learning',
-      techs: ['LangGraph', 'LangChain', 'Local & Cloud LLMs', 'AssemblyAI', 'PyTorch', 'Scikit-learn', 'XGBoost', 'Data Processing & EDA'],
+      techs: ['LangGraph', 'LangChain', 'MCP', 'AssemblyAI', 'PyTorch', 'Scikit-learn', 'XGBoost'],
       icon: <Brain size={16} />
     },
     {
@@ -123,7 +123,7 @@ export const Home: React.FC = () => {
     },
     {
       label: 'Tools & Infrastructure',
-      techs: ['Docker', 'Git', 'Ollama'],
+      techs: ['Docker', 'Git', 'Ollama', 'vLLM'],
       icon: <Terminal size={16} />
     }
   ];
