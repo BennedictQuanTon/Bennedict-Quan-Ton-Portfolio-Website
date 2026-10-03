@@ -108,7 +108,7 @@ export const Home: React.FC = () => {
   const techCategories = [
     {
       label: 'AI & Machine Learning',
-      techs: ['LangGraph', 'LangChain', 'Transformers', 'Hugging Face', 'Local & Cloud LLMs', 'PyTorch', 'Scikit-learn', 'XGBoost', 'Data Processing & EDA'],
+      techs: ['LangGraph', 'LangChain', 'Local & Cloud LLMs', 'AssemblyAI', 'PyTorch', 'Scikit-learn', 'XGBoost', 'Data Processing & EDA'],
       icon: <Brain size={16} />
     },
     {
@@ -123,7 +123,7 @@ export const Home: React.FC = () => {
     },
     {
       label: 'Tools & Infrastructure',
-      techs: ['Docker', 'Git', 'Cursor', 'Claude'],
+      techs: ['Docker', 'Git', 'Ollama'],
       icon: <Terminal size={16} />
     }
   ];

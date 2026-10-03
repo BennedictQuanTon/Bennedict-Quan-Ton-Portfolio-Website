@@ -2,6 +2,64 @@ import type { Project } from '../types';
 
 export const projects: Project[] = [
   {
+    id: 'the-lantern',
+    title: 'The Lantern',
+    category: 'Competition',
+    period: 'Sep 8, 2026 – Sep 30, 2026',
+    role: 'Project Lead & AI Engineer (System Architect)',
+    summary: 'The Lantern is a multilingual AI maître d\' that takes a full table\'s order by voice, remembers every word, never invents a dish, and keeps the kitchen in sync. Guests speak to a table device; AssemblyAI streams the transcript, a local Qwen3 4B model interprets each sentence into a single schema-enforced intent, deterministic code validates every change against the live menu, and a local Kokoro voice answers in the guest\'s language. Staff see placed orders, floor status, and every guest turn live on a management dashboard and kitchen display.',
+    problem: 'Real restaurant ordering is a multi-turn conversation full of references ("those two", "make it a seabass instead", "that\'s all"). Small local models are cheap and private but lose that thread: with a local LLM choosing its own tools, a six-turn order was completed correctly 0 times in 12 — dishes claimed but never added, wrong items swapped, orders cancelled when the guest asked to place them. Cloud voice bots, meanwhile, add 19–86s per-turn latency, high token/TTS costs, and send dining-table audio to the cloud.',
+    process: [
+      {
+        date: 'Sep 8 – 13, 2026',
+        title: 'V1 Voice Waiter & Real-Time Pipeline',
+        description: 'Scaffolded the FastAPI + WebSocket realtime pipeline with AssemblyAI streaming, silence endpointing, spoken acknowledgement fillers, and the first guest-facing dining UI on a tool-calling LLM waiter.',
+        image: '/assets/images/lantern/dining.png'
+      },
+      {
+        date: 'Sep 16 – 20, 2026',
+        title: 'Moving to Local AI & Measuring the Gap',
+        description: 'Moved the waiter onto local Ollama models via LangChain and built same-machine A/B benchmarks — which showed the tool-calling design completing the six-turn order 0 / 12 times.'
+      },
+      {
+        date: 'Sep 23 – 25, 2026',
+        title: 'V2 Architecture: The Model Interprets, Code Decides',
+        description: 'Re-architected the system so Qwen3 4B returns one JSON-schema-constrained intent per turn while a deterministic resolver handles references, modifiers, allergens and sold-out items, with dialogue memory persisted as immutable SQLite revisions — lifting order accuracy to 10 / 10.',
+        image: '/assets/images/lantern/management.png'
+      },
+      {
+        date: 'Sep 25 – 30, 2026',
+        title: 'Kitchen Loop, Benchmarks & Final Pitch',
+        description: 'Shipped the Management dashboard (floor map, 86\'d stock, Kitchen Display System) and per-turn Logs view, validated results across RTX 3060, RTX 5060 and MacBook, and delivered the pitch deck and demo video.',
+        image: '/assets/images/lantern/benchmarks.png'
+      }
+    ],
+    techStack: ['AssemblyAI', 'Qwen3 4B', 'Ollama', 'Kokoro TTS', 'FastAPI', 'WebSockets', 'SQLite', 'TypeScript', 'Pydantic', 'Vite', 'Web Audio API'],
+    outcomes: [
+      'Lifted six-turn order accuracy from 0 / 12 (local LLM tool-calling) to 10 / 10 by re-architecting into "the model interprets, code decides": one schema-enforced Qwen3 4B intent per turn plus a deterministic resolver and validator for references, modifiers and allergens — reproduced 5 / 5 on RTX 5060 and MacBook.',
+      'Held the prompt flat at ~1.46k of a 4,096-token window from turn 1 through turn 50 by moving dialogue memory into SQLite (WAL) revisions; orders survive a mid-session page reload (3 / 3).',
+      'Raised full voice-pipeline completion from 2 / 5 to 5 / 5 sessions with 30 / 30 correct transcripts, cutting Qwen time after final transcript (p50) from 2,111 ms to 1,341 ms and first reply audio (p50) from 1,959 ms to 1,752 ms, with ~50 ms filler clips removing dead air.',
+      'Integrated AssemblyAI Universal-3.5 Pro streaming with 54 menu keyterms, tuned turn detection and barge-in, alongside local Kokoro-82M TTS — keeping speech recognition as the only cloud cost.',
+      'Backed the system with 50 automated tests and GitHub Actions CI covering the six-turn scenario, stale references, reload recovery and kitchen-to-guest delivery.'
+    ],
+    images: [
+      '/assets/images/lantern/cover.png',
+      '/assets/images/lantern/dining.png',
+      '/assets/images/lantern/management.png',
+      '/assets/images/lantern/logs.png',
+      '/assets/images/lantern/benchmarks.png'
+    ],
+    hoverMedia: {
+      type: 'image',
+      src: '/assets/images/lantern/cover.png',
+      objectFit: 'contain'
+    },
+    githubUrl: 'https://github.com/BennedictQuanTon/The-Lantern-AssemblyAI-Voice-Agent-Hackathon',
+    status: 'active',
+    competitionName: 'AssemblyAI Voice Agent Hackathon',
+    organizer: 'AssemblyAI'
+  },
+  {
     id: 'weatherise',
     title: 'Weatherise',
     category: 'Competition',
