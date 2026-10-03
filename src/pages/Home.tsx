@@ -632,10 +632,10 @@ export const Home: React.FC = () => {
             <div className="relative max-w-5xl mx-auto text-center py-2">
               <blockquote className="space-y-4 relative z-10">
                 <p className="text-2xl md:text-4xl lg:text-[46px] font-display font-medium italic text-text-heading leading-snug tracking-tight">
-                  “Nothing in this world can take the place of persistence.”
+                  “Talent without working hard is nothing.”
                 </p>
                 <cite className="block text-xs md:text-sm font-mono tracking-widest uppercase text-accent not-italic mt-2">
-                  — Calvin Coolidge
+                  — Cristiano Ronaldo
                 </cite>
               </blockquote>
             </div>
