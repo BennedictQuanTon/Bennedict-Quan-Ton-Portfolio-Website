@@ -12,23 +12,19 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [theme, setTheme] = useState<Theme>(() => {
-    // 1. Check localStorage
+    // A theme the visitor picked earlier wins; everyone else starts in light mode
+    // (the site's black-and-white look), regardless of the OS setting.
     const savedTheme = localStorage.getItem('theme') as Theme | null;
-    if (savedTheme === 'light' || savedTheme === 'dark') {
-      return savedTheme;
-    }
-    // 2. Check system preference
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      return 'dark';
-    }
-    // 3. Fallback to light
-    return 'light';
+    return savedTheme === 'dark' ? 'dark' : 'light';
   });
 
   useEffect(() => {
     const root = document.documentElement;
     root.setAttribute('data-theme', theme);
     root.classList.toggle('dark', theme === 'dark');
+    root.style.colorScheme = theme;
+    // Keep the Safari / Chrome toolbar tint in sync with the active theme
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'dark' ? '#09100B' : '#FFFFFF');
   }, [theme]);
 
   const toggleTheme = useCallback((event?: React.MouseEvent) => {
