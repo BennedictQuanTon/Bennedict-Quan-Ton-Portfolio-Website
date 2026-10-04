@@ -3,11 +3,13 @@ import { BrowserRouter as Router } from 'react-router-dom';
 
 import { Navbar } from './components/layout/Navbar';
 import { Footer } from './components/layout/Footer';
+import { IntroLoader } from './components/layout/IntroLoader';
 import { AnimatedRoutes } from './routes';
 
 export const App: React.FC = () => {
   return (
     <Router>
+      <IntroLoader />
       <div className="relative min-h-screen flex flex-col">
         {/* Fixed navigation */}
         <Navbar />
