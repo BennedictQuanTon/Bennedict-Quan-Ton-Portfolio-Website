@@ -1,5 +1,5 @@
 import React from 'react';
-import { Calendar, MapPin, Briefcase, GraduationCap, CheckCircle, Image as ImageIcon } from 'lucide-react';
+import { Calendar, MapPin, Briefcase, GraduationCap, CheckCircle, Award, Image as ImageIcon } from 'lucide-react';
 import { ScrollReveal } from '../components/ui/ScrollReveal';
 import { experiences } from '../data/experience';
 import { milestones } from '../data/milestones';
@@ -7,9 +7,9 @@ import { milestones } from '../data/milestones';
 export const Journey: React.FC = () => {
   return (
     <div className="w-full min-h-screen bg-bg text-text-body flex flex-col items-center overflow-x-hidden">
-      <div className="w-full max-w-6xl xl:max-w-[1440px] 2xl:max-w-[1600px] mx-auto px-4 md:px-8 lg:px-12 pt-20 pb-6 md:pt-24 md:pb-8 flex flex-col items-center">
+      <div className="w-full max-w-6xl xl:max-w-[1440px] 2xl:max-w-[1600px] mx-auto px-4 md:px-8 lg:px-12 pt-6 pb-6 md:pt-24 md:pb-8 flex flex-col items-center">
       {/* Page Hero Header */}
-      <ScrollReveal className="text-center mb-16 md:mb-20">
+      <ScrollReveal className="text-center mb-12 md:mb-20">
         <h1 className="text-4xl md:text-6xl lg:text-7xl 2xl:text-8xl font-bold font-display text-text-heading">
           The Journey
         </h1>
@@ -144,6 +144,27 @@ export const Journey: React.FC = () => {
                       <Calendar size={18} className="text-accent shrink-0" />
                       <span>{edu.date}</span>
                     </div>
+
+                    {/* Academic standing: GPA and honours */}
+                    {(edu.gpa || edu.honours?.length) && (
+                      <div className="flex flex-col sm:flex-row sm:items-stretch gap-4 pt-4">
+                        {edu.gpa && (
+                          <div className="bg-bg-alt/40 border border-border-token/30 rounded-2xl px-6 py-4 hover:border-accent/30 transition-colors">
+                            <span className="block text-xs md:text-sm font-semibold text-text-muted mb-1.5">GPA</span>
+                            <span className="text-3xl md:text-4xl font-extrabold text-accent leading-none">{edu.gpa}</span>
+                          </div>
+                        )}
+                        {edu.honours?.map((honour) => (
+                          <div key={honour} className="flex items-center gap-3 bg-bg-alt/40 border border-gilt-soft rounded-2xl px-6 py-4 hover:border-gilt transition-colors">
+                            <Award size={26} className="text-accent shrink-0" />
+                            <div>
+                              <span className="block text-xs md:text-sm font-semibold text-text-muted mb-1">Academic Honour</span>
+                              <span className="text-sm md:text-base font-semibold text-text-heading leading-snug">{honour}</span>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    )}
                   </div>
 
                   {/* Right: Logos arranged nicely in a container */}

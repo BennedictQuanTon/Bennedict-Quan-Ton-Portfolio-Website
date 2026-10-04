@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowUpRight, ExternalLink, X, Calendar, User, Tag, Sparkles, Trophy } from 'lucide-react';
+import { ArrowUpRight, ExternalLink, X, Calendar, User, Tag, Sparkles, Award } from 'lucide-react';
 import { ScrollReveal } from '../components/ui/ScrollReveal';
 import { projects } from '../data/projects';
 import type { Project } from '../types';
 import { genericTechIcon } from '../components/ui/TechLogos';
 import { ProjectMedia } from '../components/ui/ProjectMedia';
+import { AchievementBadge } from '../components/ui/AchievementBadge';
+import { CertificateFrame } from '../components/ui/CertificateFrame';
+import { Lightbox, type LightboxItem } from '../components/ui/Lightbox';
 
 const GithubIcon = ({ size = 14 }: { size?: number }) => (
   <svg
@@ -23,6 +26,7 @@ const GithubIcon = ({ size = 14 }: { size?: number }) => (
 export const Vault: React.FC = () => {
   const [filter, setFilter] = useState<string>('All');
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [lightboxItem, setLightboxItem] = useState<LightboxItem | null>(null);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -82,7 +86,7 @@ export const Vault: React.FC = () => {
 
   return (
     <div className="w-full min-h-screen bg-bg text-text-body flex flex-col items-center overflow-x-hidden">
-      <div className="w-full max-w-[1340px] xl:max-w-[1440px] 2xl:max-w-[1600px] mx-auto px-4 md:px-8 lg:px-12 py-24 2xl:py-32 flex flex-col items-center">
+      <div className="w-full max-w-[1340px] xl:max-w-[1440px] 2xl:max-w-[1600px] mx-auto px-4 md:px-8 lg:px-12 pt-6 pb-16 md:py-24 2xl:py-32 flex flex-col items-center">
         {/* Page Title */}
         <ScrollReveal className="text-center mb-16 md:mb-20">
           <h1 className="text-4xl md:text-6xl lg:text-7xl 2xl:text-8xl font-bold font-display text-text-heading">
@@ -95,17 +99,22 @@ export const Vault: React.FC = () => {
 
         {/* Pill Filter Bar */}
         <ScrollReveal className="w-full flex justify-center mb-12">
-          <div className="flex flex-wrap justify-center gap-3 p-1.5 rounded-full glass-panel max-w-max">
+          <div className="grid grid-cols-3 sm:flex sm:flex-wrap justify-center gap-1 sm:gap-3 p-1.5 rounded-full glass-panel w-full max-w-md sm:w-auto sm:max-w-max">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setFilter(cat)}
-                className={`px-5 py-2.5 min-h-[44px] flex items-center justify-center rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-300 cursor-pointer ${filter === cat
+                className={`px-2 sm:px-5 py-2.5 min-h-[44px] flex items-center justify-center rounded-full text-[10px] sm:text-xs font-semibold uppercase tracking-wide sm:tracking-wider whitespace-nowrap transition-all duration-300 cursor-pointer ${filter === cat
                     ? 'bg-accent text-bg shadow-md'
                     : 'text-text-muted hover:text-text-heading hover:bg-surface-2'
                   }`}
               >
-                {cat}
+                {cat === 'Personal Project' ? (
+                  <>
+                    <span className="sm:hidden">Personal</span>
+                    <span className="hidden sm:inline">{cat}</span>
+                  </>
+                ) : cat}
               </button>
             ))}
           </div>
@@ -125,12 +134,12 @@ export const Vault: React.FC = () => {
                   className="w-full group cursor-pointer"
                   onClick={() => navigate(`/projects?id=${project.id}`)}
                 >
-                  <div className="group glass-panel rounded-3xl overflow-hidden p-6 md:p-8 border border-border-token/35 hover:border-accent/50 hover:shadow-2xl hover:shadow-accent/10 transition-all duration-500">
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+                  <div className="group glass-panel rounded-3xl overflow-hidden p-4 sm:p-6 md:p-8 border border-border-token/35 hover:border-accent/50 hover:shadow-2xl hover:shadow-accent/10 transition-all duration-500">
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 md:gap-8 items-stretch">
                       
                       {/* Left Half (Nửa trái): Preview Image Frame */}
                       <div 
-                        className="lg:col-span-5 relative w-full aspect-[16/10] lg:aspect-auto min-h-[240px] bg-bg-alt/50 overflow-hidden rounded-2xl border border-border-token/30 shrink-0"
+                        className="lg:col-span-5 relative w-full aspect-[16/10] lg:aspect-auto md:min-h-[240px] bg-bg-alt/50 overflow-hidden rounded-2xl border border-border-token/30 shrink-0"
                         style={{
                           backgroundColor: project.hoverMedia.objectFit === 'contain' ? (project.hoverMedia.background ?? '#ffffff') : undefined
                         }}
@@ -157,7 +166,7 @@ export const Vault: React.FC = () => {
                           
                           {/* 1. Competition Name (Centered, font-display) or "Personal Project" */}
                           <div className="text-center w-full">
-                            <span className="text-lg md:text-xl font-bold font-display uppercase tracking-wider text-accent inline-block">
+                            <span className="text-sm sm:text-lg md:text-xl font-bold font-display uppercase tracking-wider text-accent inline-block">
                               {project.category === 'Competition' && project.competitionName 
                                 ? project.competitionName 
                                 : 'Personal Project'}
@@ -199,7 +208,7 @@ export const Vault: React.FC = () => {
                           </div>
 
                           {/* 3. Unified Content Box: Title & Achievement, Role, Description & Tech Stack */}
-                          <div className="bg-bg-alt/40 border border-border-token/25 rounded-2xl p-5 md:p-6 space-y-4">
+                          <div className="bg-bg-alt/40 border border-border-token/25 rounded-2xl p-4 md:p-6 space-y-4">
                             {/* Project Title & Achievement Badge */}
                             <div className="flex flex-wrap items-center justify-between gap-3">
                               <h3 className="text-2xl md:text-3xl font-bold font-display text-text-heading group-hover:text-accent transition-colors duration-300">
@@ -207,18 +216,7 @@ export const Vault: React.FC = () => {
                               </h3>
 
                               {/* Achievement Badge next to Title */}
-                              {project.id === 'weatherise' && (
-                                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/15 border border-amber-500/35 text-amber-600 dark:text-amber-400 text-sm md:text-base font-bold font-display tracking-wide shadow-xs backdrop-blur-md">
-                                  <Trophy size={16} className="text-amber-500 shrink-0" />
-                                  <span>Top 10 Finalist</span>
-                                </div>
-                              )}
-                              {project.id === 'viettel-llm-inference' && (
-                                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/15 border border-emerald-500/35 text-emerald-600 dark:text-emerald-400 text-sm md:text-base font-bold font-display tracking-wide shadow-xs backdrop-blur-md">
-                                  <Trophy size={16} className="text-emerald-500 shrink-0" />
-                                  <span>Peak Rank #77 / 300+</span>
-                                </div>
-                              )}
+                              {project.achievement && <AchievementBadge achievement={project.achievement} />}
                             </div>
 
                             {/* Role: ... */}
@@ -230,18 +228,21 @@ export const Vault: React.FC = () => {
                             </div>
 
                             {/* Description / Summary */}
-                            <p className="text-sm md:text-base text-text-body/90 leading-relaxed font-body">
+                            <p className="text-sm md:text-base text-text-body/90 leading-relaxed font-body line-clamp-4 md:line-clamp-none">
                               {project.summary}
                             </p>
 
                             {/* Tech Stack inside content box (Tech Stack: label on exact same line as badges) */}
-                            <div className="flex flex-wrap items-center gap-2.5 text-sm md:text-base font-semibold pt-3.5 border-t border-border-token/15">
+                            <div className="flex flex-wrap items-center gap-2 md:gap-2.5 text-sm md:text-base font-semibold pt-3.5 border-t border-border-token/15">
                               <span className="font-bold text-text-heading shrink-0 mr-1">Tech Stack:</span>
-                              {project.techStack.slice(0, 8).map((tech) => (
-                                <span key={tech} className="text-sm font-medium bg-bg border border-border-token/30 px-3.5 py-1.5 rounded-lg text-text-heading group-hover:border-accent/40 group-hover:text-accent transition-colors duration-200">
+                              {project.techStack.slice(0, 8).map((tech, tIdx) => (
+                                <span key={tech} className={`${tIdx >= 5 ? 'hidden md:inline-flex' : 'inline-flex'} text-xs md:text-sm font-medium bg-bg border border-border-token/30 px-2.5 md:px-3.5 py-1 md:py-1.5 rounded-lg text-text-heading group-hover:border-accent/40 group-hover:text-accent transition-colors duration-200`}>
                                   {tech}
                                 </span>
                               ))}
+                              {project.techStack.length > 5 && (
+                                <span className="md:hidden text-xs font-semibold text-text-muted px-1">+{project.techStack.length - 5}</span>
+                              )}
                             </div>
                           </div>
 
@@ -290,32 +291,38 @@ export const Vault: React.FC = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-bg/80 backdrop-blur-md"
+              className="fixed inset-0 z-50 flex items-end md:items-center justify-center p-0 md:p-4 bg-bg/80 backdrop-blur-md"
               onClick={closeProjectModal}
             >
-              {/* Modal Body */}
+              {/* Modal Body: full-screen sheet on phones, centred card from md up */}
               <motion.div
-                initial={{ y: 50, scale: 0.95 }}
+                initial={{ y: 50, scale: 0.97 }}
                 animate={{ y: 0, scale: 1 }}
-                exit={{ y: 50, scale: 0.95 }}
+                exit={{ y: 50, scale: 0.97 }}
                 transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-                className="w-full max-w-4xl max-h-[90vh] overflow-y-auto overscroll-contain glass-panel rounded-3xl shadow-2xl p-6 md:p-8 flex flex-col space-y-8 select-text"
+                className="relative w-full max-w-4xl h-[100dvh] md:h-auto md:max-h-[90vh] glass-panel keep-blur rounded-none md:rounded-3xl shadow-2xl flex flex-col overflow-hidden select-text"
                 onClick={(e) => e.stopPropagation()}
                 role="dialog"
                 aria-modal="true"
               >
+                {/* Close button stays put while the content scrolls */}
+                <button
+                  onClick={closeProjectModal}
+                  className="absolute z-20 top-[max(0.75rem,env(safe-area-inset-top))] right-3 md:top-6 md:right-6 p-2 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full bg-bg/85 backdrop-blur-md hover:bg-surface-2 border border-border-token text-text-muted hover:text-text-heading transition-colors cursor-pointer shadow-sm"
+                  aria-label="Close modal"
+                >
+                  <X size={20} />
+                </button>
+
+                <div className="flex-1 overflow-y-auto overscroll-contain px-5 pt-[calc(env(safe-area-inset-top)+1.25rem)] pb-[calc(env(safe-area-inset-bottom)+2rem)] md:p-8 flex flex-col space-y-8">
                 {/* Header */}
-                <div className="flex items-start justify-between">
+                <div className="flex items-start justify-between pr-12 md:pr-14">
                   <div className="space-y-3 w-full">
-                    <div className="flex items-center gap-3">
+                    <div className="flex flex-wrap items-center gap-2 md:gap-3">
                       <span className="text-xs uppercase font-extrabold tracking-widest text-accent bg-accent-dim px-3 py-1 rounded-full">
                         {selectedProject.category}
                       </span>
-                      {selectedProject.id === 'weatherise' && (
-                        <span className="text-xs uppercase font-extrabold tracking-widest text-amber-600 dark:text-amber-400 bg-amber-500/10 border border-amber-500/25 px-3 py-1 rounded-full">
-                          Top 10 Finalist
-                        </span>
-                      )}
+                      {selectedProject.achievement && <AchievementBadge achievement={selectedProject.achievement} variant="tag" />}
                     </div>
 
                     {selectedProject.category === 'Competition' && selectedProject.competitionName && (
@@ -366,14 +373,6 @@ export const Vault: React.FC = () => {
                       )}
                     </div>
                   </div>
-
-                  <button
-                    onClick={closeProjectModal}
-                    className="p-2 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full hover:bg-surface-2 border border-border-token text-text-muted hover:text-text-heading transition-colors cursor-pointer"
-                    aria-label="Close modal"
-                  >
-                    <X size={20} />
-                  </button>
                 </div>
 
                 {/* Grid content split: 3/5 Left (problem/outcomes) + 2/5 Right (tech/links) */}
@@ -450,12 +449,60 @@ export const Vault: React.FC = () => {
                         </div>
                       </div>
                     )}
+
+                    {/* Certificate received for this project */}
+                    {selectedProject.certificate && (
+                      <div className="space-y-3 pt-4 border-t border-border-token/30">
+                        <h3 className="text-xs uppercase font-bold tracking-widest text-text-heading flex items-center gap-2">
+                          <Award size={14} className="text-accent" /> Certificate
+                        </h3>
+                        <CertificateFrame
+                          src={selectedProject.certificate.image}
+                          alt={selectedProject.certificate.title}
+                          onOpen={() => setLightboxItem({
+                            src: selectedProject.certificate!.image,
+                            title: selectedProject.certificate!.title,
+                            subtitle: selectedProject.certificate!.issuer,
+                          })}
+                        />
+                        <p className="text-xs font-medium text-text-muted leading-relaxed">
+                          {selectedProject.certificate.issuer}
+                        </p>
+                      </div>
+                    )}
                   </div>
+                </div>
+
+                {/* Project posters: landscape and portrait side by side at roughly equal height
+                    (17fr : 7fr balances a framed 16:9 poster against a framed 2:3 one) */}
+                {selectedProject.posters && selectedProject.posters.length > 0 && (
+                  <div className="space-y-3 pt-6 border-t border-border-token/30">
+                    <h3 className="text-sm uppercase font-bold tracking-widest text-text-heading">
+                      Project Posters
+                    </h3>
+                    <div className={`grid grid-cols-1 gap-5 items-start ${selectedProject.posters.length > 1 ? 'md:grid-cols-[17fr_7fr]' : ''}`}>
+                      {selectedProject.posters.map((poster, idx) => (
+                        <CertificateFrame
+                          key={poster}
+                          src={poster}
+                          alt={`${selectedProject.title} poster ${idx + 1}`}
+                          onOpen={() => setLightboxItem({
+                            src: poster,
+                            title: `${selectedProject.title} — Project Poster`,
+                            subtitle: selectedProject.competitionName,
+                          })}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                )}
                 </div>
               </motion.div>
             </motion.div>
           )}
         </AnimatePresence>
+
+        <Lightbox item={lightboxItem} onClose={() => setLightboxItem(null)} />
       </div>
     </div>
   );

@@ -7,32 +7,45 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Dependencies & build output
 node_modules
 dist
 dist-ssr
 *.local
+
+# Environment variables & secrets — never commit these
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.crt
+
+# Vercel CLI project link and local build cache
+.vercel
 
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
 .idea
 .DS_Store
+Thumbs.db
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
 
-# Reference folders
+# Local-only material: source files, private documents, archived assets
 ref/
 references/
 
-# Ignore local private CV folders specifically, but allow public CV file
+# Private CV drafts; only the published public/Long_Quan_Ton_CV.pdf is tracked
 /cv/
 /CV/
-/references/CV/
+/*.pdf
 !public/Long_Quan_Ton_CV.pdf
 
 # Optimized preview images
 /public/assets/images/previews/
-

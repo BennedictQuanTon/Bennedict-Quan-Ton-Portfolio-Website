@@ -3,7 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <!-- viewport-fit=cover lets the layout use the full iPhone screen; safe areas are padded in CSS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <!-- Safari tints its toolbar with these to match the light / dark theme -->
+    <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#09100B" media="(prefers-color-scheme: dark)" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Bennedict" />
+    <meta name="format-detection" content="telephone=no" />
     <meta name="description" content="Personal portfolio of Bennedict Quan Ton, an Artificial Intelligence undergraduate student at UTS & HCMUT, specializing in agentic workflows, multi-agent systems, and high-performance computing clusters." />
     <meta name="keywords" content="Bennedict Quan Ton, Long Quan Ton, AI Engineer, AI Developer, Portfolio, Agentic Workflows, LangGraph, UTS, HCMUT, Web Developer" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />

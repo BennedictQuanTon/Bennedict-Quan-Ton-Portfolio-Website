@@ -37,10 +37,9 @@ export const projects: Project[] = [
     ],
     techStack: ['LangGraph', 'NeMo Agent Toolkit', 'NVIDIA NIM', 'MCP', 'FastAPI', 'Redis', 'Qdrant', 'PostgreSQL', 'NeMo Guardrails', 'Next.js'],
     outcomes: [
-      'Led a 4-person team to a Top 10 finish at the Vietnam AI Open Hackathon (NVIDIA / Viettel / Sovico) with a multi-agent weather decision system for Tourism, Construction and Agriculture, matching domain experts on 91% of go / no-go calls (120 scenarios) at 4.8s median latency (1,247 runs) on 8× NVIDIA H200.',
-      'Cut forecast error by 12% MAE vs. the best single source (22% vs. raw GFS, 180 days) by fusing 7 live weather APIs through a 10-tool MCP Server with bias correction, outlier rejection and a Nemotron LLM arbiter.',
-      'Achieved 0 unsafe go-calls across 212 red-team prompts (94% blocked at input, the rest vetoed by a deterministic rule engine) and 87.2% automatic context recovery via a 4-collection RAG layer (~2,000 records) behind NeMo Guardrails.',
-      'Kept every answer explainable: a deterministic rule engine shows pass / fail evidence for each safety threshold, plans shift outdoor stops to dry hours automatically, and a live Pipeline Monitor traces every question step by step.'
+      'Led a 4-person team to a Top 10 finish with a multi-agent weather decision system for Tourism, Construction & Agriculture, matching domain experts on 91% of go/no-go calls (120 scenarios) at 4.8s median latency (1,247 runs) on 8× NVIDIA H200, using LangGraph, NeMo Agent Toolkit, and NVIDIA NIM.',
+      'Cut forecast error by 12% MAE vs. the best single source (22% vs. raw GFS, 180 days) by fusing 7 live weather APIs through a 10-tool MCP Server with bias correction, outlier rejection, and an LLM arbiter, using FastAPI and Redis 7.',
+      'Achieved 0 unsafe go-calls across 212 red-team prompts (94% blocked at input, the rest vetoed by a deterministic rule engine) and 87.2% context recovery via a 4-collection RAG layer (~2,000 records) behind NeMo Guardrails, using nv-embedqa-e5-v5, Qdrant, and PostgreSQL 16.'
     ],
     images: [
       '/assets/images/weatherise/video_poster.jpg',
@@ -63,13 +62,26 @@ export const projects: Project[] = [
     },
     githubUrl: 'https://github.com/BennedictQuanTon/Weatherise_Vietnam-AI-Open-Hackathon-2026',
     status: 'active',
-    competitionName: 'Vietnam AI Open Hackathon',
+    competitionName: 'Vietnam AI Open Hackathon 2026',
     organizer: 'NVIDIA / Viettel / Sovico',
     organizerLogo: '/assets/images/companies/weatherise_org.jpg',
     organizerLogos: [
       '/assets/images/companies/nvidia_logo.png',
       '/assets/images/companies/viettel_logo.svg',
       '/assets/images/companies/sovico_logo.png'
+    ],
+    achievement: {
+      label: 'Top 10 Finalist',
+      tone: 'gold'
+    },
+    certificate: {
+      image: '/assets/images/certificates/hackathons/vietnam_ai_open_hackathon.jpg',
+      title: 'Certificate of Attendance — Vietnam AI Open Hackathon',
+      issuer: 'Open Hackathons · OpenACC'
+    },
+    posters: [
+      '/assets/images/weatherise/poster_horizontal.jpg',
+      '/assets/images/weatherise/poster_vertical.jpg'
     ]
   },
   {
@@ -77,7 +89,7 @@ export const projects: Project[] = [
     title: 'The Lantern',
     category: 'Competition',
     period: 'Sep 8, 2026 – Sep 30, 2026',
-    role: 'Project Lead & AI Engineer (System Architect)',
+    role: 'Project Lead & AI Engineer',
     summary: 'The Lantern is a multilingual AI maître d\' that takes a full table\'s order by voice, remembers every word, never invents a dish, and keeps the kitchen in sync. Guests speak to a table device; AssemblyAI streams the transcript, a local Qwen3 4B model interprets each sentence into a single schema-enforced intent, deterministic code validates every change against the live menu, and a local Kokoro voice answers in the guest\'s language. Staff see placed orders, floor status, and every guest turn live on a management dashboard and kitchen display.',
     problem: 'Real restaurant ordering is a multi-turn conversation full of references ("those two", "make it a seabass instead", "that\'s all"). Small local models are cheap and private but lose that thread: with a local LLM choosing its own tools, a six-turn order was completed correctly 0 times in 12 — dishes claimed but never added, wrong items swapped, orders cancelled when the guest asked to place them. Cloud voice bots, meanwhile, add 19–86s per-turn latency, high token/TTS costs, and send dining-table audio to the cloud.',
     process: [
@@ -107,11 +119,9 @@ export const projects: Project[] = [
     ],
     techStack: ['AssemblyAI', 'Qwen3 4B', 'Ollama', 'Kokoro TTS', 'FastAPI', 'WebSockets', 'SQLite', 'TypeScript', 'Pydantic', 'Vite', 'Web Audio API'],
     outcomes: [
-      'Lifted six-turn order accuracy from 0 / 12 (local LLM tool-calling) to 10 / 10 by re-architecting into "the model interprets, code decides": one schema-enforced Qwen3 4B intent per turn plus a deterministic resolver and validator for references, modifiers and allergens — reproduced 5 / 5 on RTX 5060 and MacBook.',
-      'Held the prompt flat at ~1.46k of a 4,096-token window from turn 1 through turn 50 by moving dialogue memory into SQLite (WAL) revisions; orders survive a mid-session page reload (3 / 3).',
-      'Raised full voice-pipeline completion from 2 / 5 to 5 / 5 sessions with 30 / 30 correct transcripts, cutting Qwen time after final transcript (p50) from 2,111 ms to 1,341 ms and first reply audio (p50) from 1,959 ms to 1,752 ms, with ~50 ms filler clips removing dead air.',
-      'Integrated AssemblyAI Universal-3.5 Pro streaming with 54 menu keyterms, tuned turn detection and barge-in, alongside local Kokoro-82M TTS — keeping speech recognition as the only cloud cost.',
-      'Backed the system with 50 automated tests and GitHub Actions CI covering the six-turn scenario, stale references, reload recovery and kitchen-to-guest delivery.'
+      'Led a 5-person team to build a real-time, multilingual AI waiter that runs a full table\'s service (recommendations, orders, sold-out swaps, allergy checks, live kitchen sync) at <$1 per 1,000 orders, using AssemblyAI, Qwen3 4B (Ollama), Kokoro-82M, and FastAPI.',
+      'Raised six-turn order accuracy from 0/12 to 10/10 by architecting a “model interprets, code decides” pipeline with schema-constrained intents and a deterministic resolver, keeping prompts flat at ~1.46k tokens over 50 turns via SQLite dialogue state.',
+      'Cut LLM latency by 36.5% (p50 2.1s → 1.3s) and raised voice-session completion from 2/5 to 5/5, eliminating dead air with ~50 ms fillers and barge-in on AssemblyAI Universal-3.5 Pro streaming over WebSockets.'
     ],
     images: [
       '/assets/images/lantern/cover.png',
@@ -131,14 +141,20 @@ export const projects: Project[] = [
     githubUrl: 'https://github.com/BennedictQuanTon/The-Lantern-AssemblyAI-Voice-Agent-Hackathon',
     status: 'active',
     competitionName: 'AssemblyAI Voice Agent Hackathon',
-    organizer: 'AssemblyAI'
+    organizer: 'AssemblyAI',
+    organizerLogo: '/assets/images/companies/assemblyai_logo.png',
+    certificate: {
+      image: '/assets/images/certificates/hackathons/assemblyai_voice_agent_hackathon.jpg',
+      title: 'Certificate of Completion — AssemblyAI Voice Agent Hackathon',
+      issuer: 'Lablab.ai · NativelyAI'
+    }
   },
   {
     id: 'viettel-llm-inference',
     title: 'LLM Inference Optimization Challenge',
     category: 'Competition',
     period: 'July 2, 2026 – July 30, 2026',
-    role: 'LLM Serving & Infrastructure Engineer',
+    role: 'AI Engineer',
     summary: 'An enterprise-grade LLM serving optimization project engineered for the Viettel AI Race 2026 competition. Competing against 300+ teams nationwide, the project focused on maximizing inference efficiency for Liquid AI\'s hybrid LFM2.5-1.2B-Instruct model (Mamba SSM + Short1D Conv + Attention) on NVIDIA H200 GPUs. By developing a custom vLLM serving pipeline with FP8 quantization, FlashInfer C++ CUDA kernels, and PagedAttention, the project achieved Peak Rank #77 / 300+ on the Leaderboard with an official Peak ERS score of 62.01.',
     problem: 'The Viettel AI Race 2026 challenge directly simulates enterprise AI infrastructure bottlenecks: serving Large Language Models (LLMs) to achieve high throughput, low latency (TTFT & TPOT), and stable accuracy (GPQA Diamond Accuracy Gate) under strict hardware constraints (1 NVIDIA H200 GPU, 3 vCPU Cores, and 8.0 GB Host RAM) across a production workload trace.',
     process: [
@@ -160,7 +176,7 @@ export const projects: Project[] = [
     ],
     techStack: ['vLLM', 'CUDA', 'FP8 Quantization', 'FlashInfer', 'Mamba SSM', 'Docker', 'Python', 'NVIDIA H200'],
     outcomes: [
-      'Achieved Peak Rank #77 / 300+ Teams in Viettel AI Race 2026 by boosting team official ERS score to 62.01 (+24.5% improvement) with 100% accuracy retention, deploying a vLLM v0.26.0 pipeline with FP8 quantization, FlashInfer SSM alignment, and chunked prefill (mbt=768).',
+      'Achieved Peak Rank #77 in Viettel AI Race 2026 by boosting team ERS score by +24.5% (from 49.81 to 62.01) with 100% accuracy retention, deploying a vLLM v0.26.0 pipeline with FP8 quantization, FlashInfer SSM alignment, and chunked prefill (mbt=768).',
       'Cut token decode latency by 33.3% (from 6ms down to 4ms per token) across 420 requests by configuring native Hopper SM90 FP8 execution (fp8_e4m3) and PagedAttention block alignment (block-size=32) to halve GPU VRAM bandwidth usage.',
       'Reduced initial response latency to a project-record TTFT p50 = 46ms and cut failed requests by 28.6% (from 7 down to 5 / 420) by building a custom vLLM Docker image (:p8-shortconv) with fused 3-op ShortConv C++ CUDA kernels (causal_conv1d_silu_fused).'
     ],
@@ -181,7 +197,11 @@ export const projects: Project[] = [
     organizerLogo: '/assets/images/companies/viettel_logo.svg',
     organizerLogos: [
       '/assets/images/companies/viettel_logo.svg'
-    ]
+    ],
+    achievement: {
+      label: 'Peak Rank #77 / 300+',
+      tone: 'emerald'
+    }
   },
   {
     id: 'amd-token-agent',
@@ -210,9 +230,9 @@ export const projects: Project[] = [
     ],
     techStack: ['Python', 'asyncio', 'Qwen-3B', 'Fireworks API', 'llama-cpp-python', 'Metal GPU', 'AST Parsing', 'Regex'],
     outcomes: [
-      'Established a 4-layer hybrid agent router cutting API token usage by 85% and limiting latency to 505.1 ms.',
-      'Designed a math reasoning pipeline achieving 95%+ accuracy across 200+ test cases at max 768 tokens per task.',
-      'Engineered local-first QA and summarization logic achieving 89% factual and 97% summary accuracy using Qwen-3B via llama-cpp-python with Metal GPU acceleration.'
+      'Established a 4-layer hybrid agent router, cutting API token usage by 85% and limiting latency to 505.1 ms, using Python and asyncio via local Qwen-3B and remote Fireworks APIs.',
+      'Designed a math reasoning pipeline achieving 95%+ accuracy (200+ test cases) at max 768 tokens per task for expressions, using Python ast parsing and Fireworks APIs (Kimi/Minimax) with regex extraction.',
+      'Engineered local-first QA and summarization logic achieving 89% factual and 97% summary accuracy (100 test cases each), using Qwen-3B via llama-cpp-python with Metal GPU acceleration.'
     ],
     images: [
       '/assets/images/amd-token-agent/cover.png'
@@ -226,14 +246,19 @@ export const projects: Project[] = [
     status: 'active',
     competitionName: 'AMD Developer Hackathon ACT II',
     organizer: 'AMD',
-    organizerLogo: '/assets/images/companies/amd_logo.png'
+    organizerLogo: '/assets/images/companies/amd_logo.png',
+    certificate: {
+      image: '/assets/images/certificates/hackathons/amd_developer_hackathon_act2.jpg',
+      title: 'Certificate of Completion — AMD Developer Hackathon: ACT II',
+      issuer: 'Lablab.ai · NativelyAI'
+    }
   },
   {
     id: 'auralens',
     title: 'AuraLens',
     category: 'Competition',
     period: 'Aug 23, 2026 – Aug 28, 2026',
-    role: 'Solo Full-Stack AI Developer',
+    role: 'Full-Stack AI Developer',
     summary: 'AuraLens is a multimodal AI stylist and lifestyle engine for Gen Z. Users snap their outfit and Gemini Vision scores it from 0 to 100 across four weighted fashion pillars, suggests upgrades from Vietnamese local brands, then plans where to go in Saigon — filtering venues by live weather and opening hours so it never recommends a closed café or an outdoor rooftop in the rain. A prompt-to-template Photobooth Studio turns the night out into shareable editorial photo strips, fully bilingual in English and Vietnamese.',
     problem: 'Gen Z faces two linked weekend questions: "Does my outfit work?" and "Where should we go that matches this vibe?". Generic AI chatbots answer the second with hallucinations — closed venues, outdated places, or open-air rooftops during tropical downpours — and nothing connects outfit feedback to real-world plans.',
     process: [
@@ -258,9 +283,9 @@ export const projects: Project[] = [
     ],
     techStack: ['Gemini Vision', 'Gemini Flash Lite', 'React 19', 'TypeScript', 'Express.js', 'WebRTC', 'Google Cloud Run', 'Docker', 'Vitest', 'Vite'],
     outcomes: [
-      'Built a multimodal outfit evaluator scoring looks from 0 to 100 across 4 weighted pillars (color 35%, silhouette 30%, vibe 20%, accessories 15%) by integrating Gemini Vision with a real-time WebRTC camera pipeline.',
-      'Eliminated hallucinated venue recommendations (closed venues, outdoor rooftops in rain) at ~2.0s response latency by engineering a deterministic weather and opening-hours grounding layer over Gemini Flash Lite structured outputs.',
-      'Shipped a secure full-stack app with a prompt-to-template Photobooth engine, validated by 35/35 automated tests and deployed at $0/month by proxying every Gemini call through an Express backend and containerizing on Google Cloud Run.'
+      'Built a multimodal AI outfit evaluator scoring looks from 0–100 across 4 weighted pillars (color, silhouette, vibe, accessories) by integrating Gemini Vision with a real-time WebRTC camera pipeline.',
+      'Eliminated hallucinated venue recommendations (closed venues, outdoor rooftops in rain) at ~2.0s latency by engineering a deterministic weather and opening-hours grounding layer over Gemini Flash Lite structured outputs.',
+      'Shipped a secure React 19 + Express.js app with a prompt-to-template photobooth engine, validated by 35/35 automated tests and deployed at $0/month by proxying all Gemini calls server-side and containerizing on Google Cloud Run.'
     ],
     images: [
       '/assets/images/auralens/cover.jpg',
@@ -275,7 +300,16 @@ export const projects: Project[] = [
     githubUrl: 'https://github.com/BennedictQuanTon/AuraLens',
     status: 'active',
     competitionName: 'AI Riser Vietnam 2026 · #BuildwithGoogleAI',
-    organizer: 'Google'
+    organizer: 'Google',
+    achievement: {
+      label: 'Silver Tier',
+      tone: 'silver'
+    },
+    certificate: {
+      image: '/assets/images/certificates/hackathons/ai_riser_vietnam_2026.jpg',
+      title: 'Certificate of Completion — AI Riser Vietnam 2026',
+      issuer: 'Google for Developers'
+    }
   },
   {
     id: 'architecturelab',
@@ -300,9 +334,8 @@ export const projects: Project[] = [
     ],
     techStack: ['WebMCP', 'React', 'TypeScript', 'Vite', 'Vitest', 'Playwright', 'Vercel'],
     outcomes: [
-      'Built the human-in-the-loop Studio where an AI agent inspects, simulates and drafts architecture patches through 6 structured WebMCP tools while only humans can apply them, authoring the 1,300-line product spec.',
-      'Visualised deterministic failure scenarios (10× flash-sale traffic, cache hit ratio 92% → 0%) on an interactive canvas with animated request flows, causal bottleneck chains and before/after patch diffs.',
-      'Shipped with the team on a safety-first stack: scope-bound tools revoked when selection changes, revision-locked proposals, a seeded prompt-injection test, 31 guardrail tests and 23 live Chrome checks.'
+      'Built the human-in-the-loop studio where an AI agent inspects, simulates, and drafts architecture patches through 6 WebMCP tools while only humans can apply them, authoring the 1,300-line product spec, using React, TypeScript, and Vite.',
+      'Visualized deterministic failure scenarios (10× flash-sale traffic, cache hit ratio 92% → 0%) on an interactive canvas with animated request flows and causal bottleneck chains, deployed on Vercel.'
     ],
     images: ['/assets/images/architecturelab/cover.jpg'],
     hoverMedia: {
@@ -319,7 +352,7 @@ export const projects: Project[] = [
   },
   {
     id: 'bkai-admissions',
-    title: 'BKAi Admissions System',
+    title: 'BKAi — Multi-Agent Admissions Counseling System',
     category: 'Personal Project',
     period: 'Jan 2026 – Apr 2026',
     role: 'Full-Stack AI Developer',
@@ -347,13 +380,13 @@ export const projects: Project[] = [
     ],
     techStack: ['LangGraph', 'Gemini 3.1', 'ChromaDB', 'BM25', 'BGE Reranker', 'Redis', 'LiveKit', 'Deepgram', 'Edge-TTS', 'Docker', 'FastAPI'],
     outcomes: [
-      'Raised grounded accuracy to ~87% end-to-end on internal 120-item golden set via multi-hop Agentic RAG with LangGraph, Gemini 3.1 Flash-Lite, ChromaDB + BM25 + BGE reranker.',
-      'Cut repeat-query latency by ~99% from ~6.1s avg cold pipeline to ~0.04-0.05s cache hits via Redis semantic cache (cosine >= 0.92, 30d TTL) with MiniLM embeddings.',
-      'Delivered multi-turn counseling & Vietnamese voice at ~94% coreference success using LiveKit + Deepgram & edge-tts neural synthesis.',
-      'Secured data privacy by locally hosting ~115 source documents inside Docker volumes with zero third-party document egress.'
+      'Raised grounded accuracy to ~87% end-to-end on an internal 120-item mixed golden set by shipping a multi-hop Agentic RAG and counselor graph with LangGraph, Gemini 3.1 Flash-Lite, hybrid retrieval engine with ChromaDB + BM25 + BGE reranker, and Pydantic-validated agent I/O.',
+      'Cut repeat-query latency by ~99% from ~6.1s avg cold pipeline to ~0.04–0.05s cache hits, by promoting human-validated answers into a Redis semantic cache (cosine ≥ 0.92, validated TTL 30d) with MiniLM embeddings and automatic correctness labeling on cache hits.',
+      'Delivered multi-turn counseling and Vietnamese voice at ~94% coreference success on 15 dialogue scripts, by combining session-scoped student state, intent-aware query rewriting, LiveKit + Deepgram speech recognition, and edge-tts neural synthesis.',
+      'Secured data privacy by locally hosting ~115 source documents (150 semantic chunks; designed headroom to 10k+ chunks) inside Docker volumes, keeping embeddings and retrieval indexes fully on-prem with zero third-party document egress.'
     ],
     images: [
-      '/assets/images/bkai/logo.png',
+      '/assets/images/bkai/logo.jpg',
       '/assets/images/bkai/cover.jpg',
       '/assets/images/bkai/chat_ui.png',
       '/assets/images/bkai/chat_response.png',
@@ -362,7 +395,7 @@ export const projects: Project[] = [
     ],
     hoverMedia: {
       type: 'image',
-      src: '/assets/images/bkai/logo.png',
+      src: '/assets/images/bkai/logo.jpg',
       objectFit: 'contain'
     },
     githubUrl: 'https://github.com/BennedictQuanTon/BKAi-Multi-Agent-Admissions-Counseling-System',
@@ -372,7 +405,7 @@ export const projects: Project[] = [
     id: 'morphysics',
     title: 'Morphysics',
     category: 'Competition',
-    period: 'Mar 2026 – July 15, 2026',
+    period: 'Mar 2026 – Present',
     role: 'Project Lead & Frontend Developer',
     summary: 'An interactive 2D physics virtual lab built with React 19 and Matter.js, featuring a 60 FPS Glassmorphism Telemetry Dashboard and multimodal AI assistant executing simulations under 3s.',
     problem: 'High school students struggle to visualize abstract physics formulas. Traditional labs are expensive or lack real-time telemetry data to explain mechanical forces dynamically.',
@@ -392,9 +425,9 @@ export const projects: Project[] = [
     ],
     techStack: ['React 19', 'TypeScript', 'Matter.js', 'requestAnimationFrame', 'FastAPI', 'Gemini API', 'Glassmorphism UI', 'Vite'],
     outcomes: [
-      'Architected a React 19/TypeScript virtual lab integrating Matter.js to render real-time mechanics with drag-and-drop.',
-      'Engineered a 60 FPS Glassmorphism Telemetry Dashboard via requestAnimationFrame to monitor live physical properties with minimal CPU/GPU overhead.',
-      'Implemented multimodal AI UI executing API-driven simulations in <3s, leading BKI pitch and building a modular 20-experiment library.'
+      'Interactive 2D Engine: Architected a React 19/TypeScript virtual lab, integrating Matter.js to render real-time mechanics (collisions, gravity) with seamless drag-and-drop.',
+      'High-Performance UI: Engineered a 60 FPS Glassmorphism Telemetry Dashboard via requestAnimationFrame to monitor live physical properties with minimal CPU/GPU overhead.',
+      'AI Chatbot & Architecture: Implemented a multimodal AI UI executing API-driven simulations in <3s. Led the BKI pitch and built a modular 20-experiment library enforcing clean-code standards.'
     ],
     images: [
       '/assets/images/morphysics/Experience_Morphysics_BKI_UI.jpg',
@@ -413,7 +446,12 @@ export const projects: Project[] = [
     organizerLogos: [
       '/assets/images/companies/bku_logo.png',
       '/assets/images/companies/vysc_logo.jpeg'
-    ]
+    ],
+    certificate: {
+      image: '/assets/images/certificates/hackathons/vysc_2026_morphysics.jpg',
+      title: 'Certificate — Vietnam Youth Start-up Challenge 2026',
+      issuer: 'VYSC'
+    }
   },
   {
     id: 'vinuni-datathon',
@@ -437,9 +475,9 @@ export const projects: Project[] = [
     ],
     techStack: ['Python', 'Pandas', 'NumPy', 'Jupyter Notebook', 'Matplotlib', 'Seaborn', 'Analytical Modeling'],
     outcomes: [
-      'Engineered data pipelines in Jupyter Notebooks using Pandas/NumPy to clean and integrate a decade-long (2012–2022) e-commerce dataset across 15 CSV files in Master, Transaction, Analytical, and Operational layers.',
-      'Leveraged Matplotlib & Seaborn for comprehensive EDA, transforming multidimensional data into clear visualizations revealing inventory & web traffic trends.',
-      'Partnered with HCMUT team to translate technical insights into actionable operational strategies, directly solving core business challenges for a fashion retailer.'
+      'Complex Data Processing & Structuring: Engineered robust data pipelines in Jupyter Notebooks utilizing Pandas and NumPy to clean and integrate a decade-long (2012–2022) e-commerce dataset, efficiently navigating 15 CSV files distributed across Master, Transaction, Analytical, and Operational layers.',
+      'Advanced EDA & Visualization: Leveraged Matplotlib and Seaborn for comprehensive EDA, transforming multidimensional data into clear visualizations to reveal key trends in inventory, promotions, and web traffic.',
+      'Business Intelligence & Strategy: Partnered with the HCMUT team to translate technical insights into actionable operational strategies, directly solving core business challenges for a simulated fashion retailer.'
     ],
     images: ['/assets/images/datathon/Datathon_Logo.jpg'],
     hoverMedia: {
@@ -449,13 +487,13 @@ export const projects: Project[] = [
       objectPosition: 'center top'
     },
     status: 'active',
-    competitionName: 'VinUni Datathon 2026',
+    competitionName: 'VinUni Datathon The GridBreakers 2026',
     organizer: 'VinUni',
     organizerLogo: '/assets/images/companies/vinuni_logo.png'
   },
   {
     id: 'yourai',
-    title: 'YourAI',
+    title: 'YourAI — AI Assistant & Academic Management Platform',
     category: 'Personal Project',
     period: 'Feb 2026 – Present',
     role: 'Full-Stack AI Developer',
@@ -481,10 +519,10 @@ export const projects: Project[] = [
     ],
     techStack: ['React', 'FastAPI', 'Gemini 1.5 Flash', 'Supabase', 'PostgreSQL RLS', 'Redis', 'ARQ', 'Resend SMTP', 'asyncpg', 'Vite'],
     outcomes: [
-      'Architected Monorepo academic platform using FastAPI and React (Vite) achieving >90/100 Google Lighthouse score.',
-      'Integrated Gemini 1.5 Flash via Function Calling translating natural language into DB commands with <1.2s latency and 99.9% availability via Regex Fallback Parser.',
-      'Built dual-scale GPA engine (VN 10-point to AU 7-point) and async email queues via ARQ/Redis/Resend SMTP boosting concurrency by 300%.',
-      'Enforced zero-trust security via Supabase PostgreSQL Row Level Security (RLS) and secure 60s OTP flow with bcrypt hashing.'
+      'Enterprise PWA Architecture: Architected a Monorepo academic management platform using FastAPI and React (Vite). Optimized as a Progressive Web App (PWA), achieving a >90/100 Google Lighthouse score for instant load times and seamless cross-device installation.',
+      'AI Agent & NLP Processing: Integrated Gemini 1.5 Flash via Function Calling to translate natural language into automated database commands with <1.2s latency. Engineered a Regex Fallback Parser to guarantee 99.9% system availability and 100% task success during API outages.',
+      'Dual-Scale Engine & Async Queues: Built a real-time GPA engine converting Vietnamese (10-point) to Australian (7-point) scales. Implemented asynchronous queues via ARQ, Redis, and Resend SMTP for bulk email dispatching, boosting backend concurrency by 300% using asyncpg.',
+      'Zero-Trust Security & Infrastructure: Enforced strict multi-tenant data isolation using Supabase PostgreSQL Row Level Security (RLS) and JWT. Developed a secure 60s OTP flow with bcrypt hashing and anti-brute force throttling on a highly optimized, zero-cost serverless stack.'
     ],
     images: [
       '/assets/images/yourai/logo.jpg'

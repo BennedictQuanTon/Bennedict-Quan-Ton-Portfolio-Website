@@ -1,223 +1,289 @@
-import React from 'react';
-import { GraduationCap, Calendar, BookOpen, Download } from 'lucide-react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Download, ExternalLink, ChevronDown, Maximize2, GraduationCap, Award, BookOpen } from 'lucide-react';
 import { ScrollReveal } from '../components/ui/ScrollReveal';
+import { CertificateFrame } from '../components/ui/CertificateFrame';
+import { Lightbox, type LightboxItem } from '../components/ui/Lightbox';
+import {
+  honour,
+  specialization,
+  certifications,
+  courseProviders,
+  type Credential,
+} from '../data/credentials';
+
+const totalCourses = courseProviders.reduce((n, p) => n + p.courses.length, 0);
+
+/** Section title in the same style as the Journey page: icon, heading, short caption */
+const SectionHeading: React.FC<{ icon: React.ReactNode; title: string; caption: string }> = ({ icon, title, caption }) => (
+  <ScrollReveal className="mb-10 md:mb-12">
+    <div className="flex items-center gap-3">
+      <span className="text-accent">{icon}</span>
+      <h2 className="text-2xl md:text-4xl font-bold font-display text-text-heading">{title}</h2>
+    </div>
+    <p className="text-sm md:text-base text-text-muted mt-3 max-w-2xl leading-relaxed">{caption}</p>
+  </ScrollReveal>
+);
+
+/** Caption under a framed certificate: issuer, date, title and verification link */
+const Plaque: React.FC<{ credential: Credential }> = ({ credential }) => (
+  <div className="pt-5 px-1 space-y-1.5">
+    <div className="flex items-center justify-between gap-3 text-xs md:text-sm">
+      <span className="font-semibold text-text-body truncate">{credential.issuer}</span>
+      <span className="text-text-muted shrink-0">{credential.date}</span>
+    </div>
+    <h3 className="text-base md:text-lg font-bold text-text-heading leading-snug">{credential.title}</h3>
+    {credential.verifyUrl && (
+      <a
+        href={credential.verifyUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-1.5 pt-1 text-xs md:text-sm font-semibold text-accent hover:text-accent-bright transition-colors"
+      >
+        Verify credential <ExternalLink size={12} />
+      </a>
+    )}
+  </div>
+);
+
+const toLightbox = (c: Credential): LightboxItem => ({
+  src: c.image,
+  title: c.title,
+  subtitle: `${c.issuer} · ${c.date}`,
+  href: c.verifyUrl,
+});
 
 export const Education: React.FC = () => {
-  // Degree program data
-  const degreeProgram = {
-    degree: 'Bachelor of Artificial Intelligence',
-    institutions: 'University of Technology Sydney (UTS) & HCMUT',
-    period: '2025 – 2028 (Expected)',
-    gpa: '6.75 / 7.00',
-  };
+  const [lightboxItem, setLightboxItem] = useState<LightboxItem | null>(null);
+  const [showSpecCourses, setShowSpecCourses] = useState(false);
+  const [openProvider, setOpenProvider] = useState<string | null>(null);
 
-  // Certificate credentials data mapped directly from actual files in assets
-  const certifications = [
-    {
-      title: 'Generative AI with Large Language Models',
-      issuer: 'DeepLearning.AI & AWS',
-      date: 'Jun 2026',
-      image: '/assets/images/certificates/dlai_aws_genai_llm.png',
-      link: '/assets/images/certificates/dlai_aws_genai_llm.png',
-      aspectRatio: 'aspect-[4/3]',
-    },
-    {
-      title: 'AI Agents in LangGraph',
-      issuer: 'DeepLearning.AI',
-      date: 'Jun 2026',
-      image: '/assets/images/certificates/dlai_ai_agents.jpg',
-      link: '/assets/images/certificates/dlai_ai_agents.jpg',
-      aspectRatio: 'aspect-[4/3]',
-    },
-    {
-      title: 'Building Agentic RAG with LlamaIndex',
-      issuer: 'DeepLearning.AI',
-      date: 'Jun 2026',
-      image: '/assets/images/certificates/dlai_building_rag.jpg',
-      link: '/assets/images/certificates/dlai_building_rag.jpg',
-      aspectRatio: 'aspect-[4/3]',
-    },
-    {
-      title: 'Functions, Tools and Agents with LangChain',
-      issuer: 'DeepLearning.AI',
-      date: 'Jun 2026',
-      image: '/assets/images/certificates/dlai_functions_tools_agents.jpg',
-      link: '/assets/images/certificates/dlai_functions_tools_agents.jpg',
-      aspectRatio: 'aspect-[4/3]',
-    },
-    {
-      title: 'Intro to Machine Learning',
-      issuer: 'Kaggle',
-      date: 'Jun 2026',
-      image: '/assets/images/certificates/kaggle_intro_to_ml.png',
-      link: '/assets/images/certificates/kaggle_intro_to_ml.png',
-      aspectRatio: 'aspect-[4/3]',
-    },
-    {
-      title: 'Intermediate Machine Learning',
-      issuer: 'Kaggle',
-      date: 'Jun 2026',
-      image: '/assets/images/certificates/kaggle_intermediate_ml.png',
-      link: '/assets/images/certificates/kaggle_intermediate_ml.png',
-      aspectRatio: 'aspect-[4/3]',
-    },
-    {
-      title: 'Agentic AI Explained',
-      issuer: 'NVIDIA Deep Learning Institute',
-      date: 'Jun 2026',
-      image: '/assets/images/certificates/nvidia_dli_agentic_ai.jpg',
-      link: '/assets/images/certificates/nvidia_dli_agentic_ai.jpg',
-      aspectRatio: 'aspect-[3.2/1]',
-      gridSpan: 'md:col-span-2 lg:col-span-2',
-    },
-    {
-      title: 'Artificial Intelligence Fundamentals',
-      issuer: 'IBM',
-      date: 'Jun 2026',
-      image: '/assets/images/certificates/ibm_ai_fundamentals.png',
-      link: '/assets/images/certificates/ibm_ai_fundamentals.pdf',
-      aspectRatio: 'aspect-[4/3]',
-    }
+  const stats = [
+    { value: 1, label: 'Academic Honour' },
+    { value: certifications.length + 1, label: 'Certifications' },
+    { value: totalCourses, label: 'Short Courses' },
   ];
 
   return (
     <div className="w-full min-h-screen bg-bg text-text-body flex flex-col items-center overflow-x-hidden">
-      <div className="w-full max-w-6xl xl:max-w-[1440px] 2xl:max-w-[1600px] mx-auto px-4 md:px-8 lg:px-12 py-24 2xl:py-32 flex flex-col items-center min-h-screen">
-        
-        {/* Page Title */}
-        <ScrollReveal className="text-center mb-16 md:mb-20 flex flex-col items-center">
+      <div className="w-full max-w-6xl xl:max-w-[1280px] 2xl:max-w-[1440px] mx-auto px-4 md:px-8 lg:px-12 pt-6 pb-16 md:py-24 2xl:py-32 flex flex-col">
+
+        {/* Page title, matching the Projects and Journey pages */}
+        <ScrollReveal className="text-center mb-14 md:mb-20 flex flex-col items-center">
           <h1 className="text-4xl md:text-6xl lg:text-7xl 2xl:text-8xl font-bold font-display text-text-heading">
-            Education & Credentials
+            Honours &amp; Certifications
           </h1>
           <p className="text-sm md:text-base text-text-muted mt-4 max-w-lg mx-auto leading-relaxed">
-            A certified record of my academic study, technical specialization, and professional capabilities.
+            A record of academic recognition, professional certifications, and the competitions behind my work.
           </p>
+
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
+            {stats.map((s) => (
+              <span key={s.label} className="flex items-baseline gap-2">
+                <span className="text-2xl md:text-3xl font-extrabold text-text-heading">{s.value}</span>
+                <span className="text-xs md:text-sm font-medium text-text-muted">{s.label}</span>
+              </span>
+            ))}
+          </div>
+
           <div className="mt-8">
-            <a 
-              href="/Long_Quan_Ton_CV.pdf" 
+            <a
+              href="/Long_Quan_Ton_CV.pdf"
               download="Long_Quan_Ton_CV.pdf"
-              className="px-6 py-2.5 rounded-full border border-accent/30 hover:border-accent hover:bg-accent/5 text-text-heading text-sm flex items-center gap-2.5 font-semibold transition-all duration-300 cursor-pointer"
+              className="px-6 py-2.5 rounded-full border border-accent/30 hover:border-accent hover:bg-accent/5 text-text-heading text-sm flex items-center gap-2.5 font-semibold transition-all duration-300"
             >
               Download CV <Download size={16} className="text-accent" />
             </a>
           </div>
         </ScrollReveal>
 
-        {/* Main Content Grid */}
-        <div className="w-full space-y-16">
-          
-          {/* University Section */}
-          <ScrollReveal>
-            <div className="glass-panel p-8 md:p-10 rounded-3xl border border-border-token/40 hover:border-accent/30 transition-all duration-500 relative overflow-hidden group shadow-lg max-w-4xl mx-auto">
-              <div className="absolute top-0 right-0 w-60 h-60 bg-accent/5 rounded-full blur-3xl group-hover:bg-accent/10 transition-all duration-700 pointer-events-none" />
-              
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 relative z-10">
-                <div className="space-y-4">
-                  <div className="flex items-center gap-3">
-                    <GraduationCap size={28} className="text-accent" />
-                    <span className="text-[11px] font-mono uppercase tracking-widest text-accent font-bold">
-                      University Degree
-                    </span>
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <h3 className="text-2xl md:text-4xl font-bold text-text-heading font-display leading-tight">
-                      {degreeProgram.degree}
-                    </h3>
-                    <p className="text-base md:text-lg text-text-muted font-medium">
-                      {degreeProgram.institutions}
-                    </p>
-                  </div>
+        {/* Academic Honour */}
+        <section className="relative mb-24 md:mb-32">
+          <SectionHeading icon={<GraduationCap size={28} />} title="Academic Honour" caption="Recognition from the University of Technology Sydney." />
 
-                  <div className="flex flex-wrap items-center gap-6 text-sm text-text-muted pt-2">
-                    <span className="flex items-center gap-2 font-mono">
-                      <Calendar size={16} className="text-accent" /> {degreeProgram.period}
-                    </span>
-                    <span className="flex items-center gap-2 font-mono">
-                      <BookOpen size={16} className="text-accent" /> Full-time Joint Study Program
-                    </span>
-                  </div>
-                </div>
-
-                <div className="md:text-right border-t md:border-t-0 md:border-l border-border-token/20 pt-6 md:pt-0 md:pl-10 shrink-0 flex flex-col justify-center">
-                  <span className="text-xs font-mono text-text-muted uppercase tracking-wider block mb-2">Academic Standing</span>
-                  <div className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-accent font-mono leading-none">
-                    {degreeProgram.gpa}
-                  </div>
-                  <span className="text-[10px] text-text-muted uppercase tracking-wider block mt-2">Scale of 7.00 • First Semester</span>
-                </div>
-              </div>
-            </div>
-          </ScrollReveal>
-
-          {/* Certifications & Courses Section */}
-          <div className="space-y-8">
-            <ScrollReveal>
-              <div className="flex flex-col items-center text-center space-y-2">
-                <h2 className="text-3xl md:text-5xl font-bold font-display text-text-heading">
-                  Certificates & Credentials
-                </h2>
-                <p className="text-sm md:text-base text-text-muted max-w-lg leading-relaxed">
-                  Verified specialization courses, machine learning modeling credentials, and technical workshops.
-                </p>
-              </div>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+            <ScrollReveal direction="left" className="lg:col-span-7">
+              <CertificateFrame src={honour.image} alt={honour.title} onOpen={() => setLightboxItem(toLightbox(honour))} />
             </ScrollReveal>
 
-            {/* Certifications Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {certifications.map((cert, idx) => {
-                const isWide = cert.gridSpan;
-                
-                return (
-                  <ScrollReveal
-                    key={idx}
-                    direction="up"
-                    delay={idx * 0.05}
-                    className={`${isWide ? cert.gridSpan : ''}`}
+            <ScrollReveal direction="right" className="lg:col-span-5 space-y-5">
+              <p className="text-sm md:text-base font-semibold text-text-body">{honour.issuer}</p>
+              <h3 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-text-heading leading-[1.05] tracking-tight">
+                Dean&rsquo;s List <span className="italic font-normal text-accent">2026</span>
+              </h3>
+              <div className="flex items-center gap-1.5">
+                <div className="w-12 h-[2.5px] bg-accent rounded-full" />
+                <div className="w-5 h-[2.5px] bg-border-token/40 rounded-full" />
+                <div className="w-3 h-[2.5px] bg-border-token/40 rounded-full" />
+              </div>
+              <p className="text-base md:text-lg text-text-body leading-relaxed">{honour.citation}</p>
+              <button
+                type="button"
+                onClick={() => setLightboxItem(toLightbox(honour))}
+                className="inline-flex items-center gap-2 text-sm font-semibold text-accent hover:text-accent-bright transition-colors"
+              >
+                View certificate <Maximize2 size={14} />
+              </button>
+            </ScrollReveal>
+          </div>
+        </section>
+
+        {/* Professional Certifications */}
+        <section className="mb-24 md:mb-32">
+          <SectionHeading
+            icon={<Award size={28} />}
+            title="Professional Certifications"
+            caption="Verified programmes in machine learning, generative AI, and cloud."
+          />
+
+          {/* Featured: Machine Learning Specialization */}
+          <ScrollReveal className="mb-16 md:mb-20">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+              <div className="lg:col-span-7">
+                <CertificateFrame
+                  src={specialization.image}
+                  alt={specialization.title}
+                  onOpen={() => setLightboxItem(toLightbox(specialization))}
+                />
+              </div>
+              <div className="lg:col-span-5 space-y-4">
+                <span className="inline-block text-xs font-semibold text-accent bg-accent-dim border border-accent/20 px-3 py-1 rounded-full">
+                  Professional Certificate
+                </span>
+                <h3 className="text-3xl md:text-4xl font-display font-bold text-text-heading leading-tight">{specialization.title}</h3>
+                <p className="text-sm md:text-base font-medium text-text-muted">
+                  {specialization.issuer} · {specialization.date}
+                </p>
+                <div className="flex flex-wrap items-center gap-5 pt-1">
+                  <button
+                    type="button"
+                    onClick={() => setShowSpecCourses((v) => !v)}
+                    className="inline-flex items-center gap-2 text-sm font-semibold text-text-heading hover:text-accent transition-colors"
+                    aria-expanded={showSpecCourses}
                   >
-                    <a
-                      href={cert.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="glass-panel rounded-2xl border border-border-token/35 hover:border-accent/40 overflow-hidden flex flex-col h-full group hover:shadow-xl hover:shadow-accent/5 transition-all duration-500 cursor-pointer block"
-                    >
-                      
-                      {/* Image / Preview Frame */}
-                      <div className={`relative ${cert.aspectRatio} w-full overflow-hidden bg-surface-2/20 border-b border-border-token/10 flex items-center justify-center`}>
-                        <img
-                          src={cert.image}
-                          alt={cert.title}
-                          className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700 ease-out"
-                        />
-                      </div>
-
-                      {/* Content details */}
-                      <div className="p-6 flex flex-col justify-between flex-grow space-y-4">
-                        <div className="space-y-2">
-                          <div className="flex items-center justify-between gap-4">
-                            <span className="text-[10px] font-mono text-accent-deep dark:text-accent-bright bg-accent-dim px-2.5 py-1 rounded-md font-bold uppercase tracking-wider">
-                              {cert.date}
-                            </span>
-                            <span className="text-xs font-mono text-text-muted uppercase tracking-wider">
-                              {cert.issuer}
-                            </span>
-                          </div>
-                          <h4 className="text-base md:text-lg font-bold text-text-heading font-display group-hover:text-accent transition-colors leading-snug">
-                            {cert.title}
-                          </h4>
-                        </div>
-                      </div>
-
-                    </a>
-                  </ScrollReveal>
-                );
-              })}
+                    {specialization.courses.length} courses included
+                    <ChevronDown size={16} className={`transition-transform duration-300 ${showSpecCourses ? 'rotate-180' : ''}`} />
+                  </button>
+                  <a
+                    href={specialization.verifyUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:text-accent-bright transition-colors"
+                  >
+                    Verify credential <ExternalLink size={13} />
+                  </a>
+                </div>
+              </div>
             </div>
 
-          </div>
+            <AnimatePresence initial={false}>
+              {showSpecCourses && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: 'auto', opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                  className="overflow-hidden"
+                >
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-12">
+                    {specialization.courses.map((course, i) => (
+                      <div key={course.id}>
+                        <span className="block text-xs md:text-sm font-semibold text-text-muted mb-3">Course {i + 1}</span>
+                        <CertificateFrame src={course.image} alt={course.title} onOpen={() => setLightboxItem(toLightbox(course))} />
+                        <Plaque credential={course} />
+                      </div>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </ScrollReveal>
 
-        </div>
+          {/* Remaining certifications */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-14">
+            {certifications.map((cert, idx) => (
+              <ScrollReveal key={cert.id} direction="up" delay={(idx % 3) * 0.06}>
+                <CertificateFrame src={cert.image} alt={cert.title} onOpen={() => setLightboxItem(toLightbox(cert))} />
+                <Plaque credential={cert} />
+              </ScrollReveal>
+            ))}
+          </div>
+        </section>
+
+        {/* Short Courses */}
+        <section>
+          <SectionHeading
+            icon={<BookOpen size={28} />}
+            title="Short Courses"
+            caption="Focused courses on agents, RAG, and tool use, grouped by provider."
+          />
+
+          <div className="border-t border-border-token">
+            {courseProviders.map((group) => {
+              const isOpen = openProvider === group.provider;
+              return (
+                <div key={group.provider} className="border-b border-border-token">
+                  <button
+                    type="button"
+                    onClick={() => setOpenProvider(isOpen ? null : group.provider)}
+                    className="w-full flex items-center justify-between gap-6 py-6 md:py-7 text-left group/provider"
+                    aria-expanded={isOpen}
+                  >
+                    <span className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4">
+                      <span className="font-display font-bold text-xl md:text-3xl text-text-heading group-hover/provider:text-accent transition-colors">
+                        {group.provider}
+                      </span>
+                      <span className="text-xs md:text-sm font-medium text-text-muted">
+                        {group.courses.length} {group.courses.length === 1 ? 'course' : 'courses'}
+                      </span>
+                    </span>
+                    <ChevronDown
+                      size={20}
+                      className={`text-accent shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
+                    />
+                  </button>
+
+                  <AnimatePresence initial={false}>
+                    {isOpen && (
+                      <motion.ol
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                        className="overflow-hidden"
+                      >
+                        {group.courses.map((course, i) => (
+                          <li key={course.id} className="flex items-center gap-4 md:gap-6 pb-6 last:pb-8">
+                            <span className="text-lg font-bold text-accent w-6 shrink-0">{i + 1}</span>
+                            <div className="flex-1 min-w-0">
+                              <p className="text-base md:text-lg font-semibold text-text-heading leading-snug">{course.title}</p>
+                              <p className="text-xs md:text-sm text-text-muted mt-1">
+                                {course.partner ? `With ${course.partner} · ` : ''}{course.date}
+                              </p>
+                            </div>
+                            <button
+                              type="button"
+                              onClick={() => setLightboxItem(toLightbox(course))}
+                              className="w-20 md:w-28 shrink-0"
+                              aria-label={`View ${course.title} certificate`}
+                            >
+                              <span className="cert-frame is-interactive !p-1.5 block">
+                                <img src={course.image} alt="" loading="lazy" className="aspect-[4/3] object-cover object-top" />
+                              </span>
+                            </button>
+                          </li>
+                        ))}
+                      </motion.ol>
+                    )}
+                  </AnimatePresence>
+                </div>
+              );
+            })}
+          </div>
+        </section>
       </div>
+
+      <Lightbox item={lightboxItem} onClose={() => setLightboxItem(null)} />
     </div>
   );
 };
