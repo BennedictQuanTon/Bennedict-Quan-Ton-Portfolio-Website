@@ -7,8 +7,8 @@ export const projects: Project[] = [
     category: 'Competition',
     period: 'June 2, 2026 – June 12, 2026',
     role: 'Project Lead & AI Developer',
-    summary: 'Weatherise is an enterprise-focused multi-agent AI system that helps organizations analyze, predict, and act on weather-related risks in their specific domain. Each domain, such as tourism, construction, and agriculture, is handled by specialized agents that understand the context, gather the right information, evaluate weather impact, and generate practical recommendations for better decision-making.',
-    problem: 'Sectors like agriculture, construction, and tourism suffer huge financial losses due to unpredictable weather risks. Traditional systems do not translate raw meteorological data into sector-specific, actionable operational decisions.',
+    summary: 'Weatherise is a domain-aware multi-agent AI system that turns forecasts from seven weather sources into clear go / no-go decisions for tourism, construction, and agriculture in Da Nang. Ask in plain English or Vietnamese — specialized agents gather the missing context, weigh a fused multi-source forecast against real safety rules, and return a plan you can act on, with the evidence behind every call.',
+    problem: 'A forecast is not a decision. Weather apps say "gusts 62 km/h" and stop — whether a crane must halt, concrete can be poured, or urea will wash off depends on domain rules no forecast applies. Global models put a mountain and a beach in one 9–13 km grid cell, most tools trust a single weather API, and general-purpose LLMs fill the gaps with confident guesses. In Central Vietnam, 15–40% of tour bookings are cancelled or postponed when the forecast misses.',
     process: [
       {
         date: 'June 2, 2026',
@@ -35,13 +35,15 @@ export const projects: Project[] = [
         image: '/assets/images/weatherise/team_2.jpg'
       }
     ],
-    techStack: ['LangGraph', 'NeMo Toolkit', 'NVIDIA NIM', 'FastAPI', 'Python', 'Redis', 'Qdrant', 'PostgreSQL', 'NeMo Guardrails', 'MCP'],
+    techStack: ['LangGraph', 'NeMo Agent Toolkit', 'NVIDIA NIM', 'MCP', 'FastAPI', 'Redis', 'Qdrant', 'PostgreSQL', 'NeMo Guardrails', 'Next.js'],
     outcomes: [
-      'Advanced to Top 10 Finalists in the prestigious Vietnam AI Open Hackathon (NVIDIA/Viettel/Sovico).',
-      'Engineered a unified MCP Server gateway consolidating 7+ live external APIs into a single tool-call interface, cutting integration complexity by ~60%.',
-      'Built a 4-collection RAG Knowledge Layer ingesting 500+ domain records with ~2s retrieval to ground every NIM reasoning call, optimized on an 8x NVIDIA H200 GPU cluster.'
+      'Led a 4-person team to a Top 10 finish at the Vietnam AI Open Hackathon (NVIDIA / Viettel / Sovico) with a multi-agent weather decision system for Tourism, Construction and Agriculture, matching domain experts on 91% of go / no-go calls (120 scenarios) at 4.8s median latency (1,247 runs) on 8× NVIDIA H200.',
+      'Cut forecast error by 12% MAE vs. the best single source (22% vs. raw GFS, 180 days) by fusing 7 live weather APIs through a 10-tool MCP Server with bias correction, outlier rejection and a Nemotron LLM arbiter.',
+      'Achieved 0 unsafe go-calls across 212 red-team prompts (94% blocked at input, the rest vetoed by a deterministic rule engine) and 87.2% automatic context recovery via a 4-collection RAG layer (~2,000 records) behind NeMo Guardrails.',
+      'Kept every answer explainable: a deterministic rule engine shows pass / fail evidence for each safety threshold, plans shift outdoor stops to dry hours automatically, and a live Pipeline Monitor traces every question step by step.'
     ],
     images: [
+      '/assets/images/weatherise/video_poster.jpg',
       '/assets/images/weatherise/home.jpg',
       '/assets/images/weatherise/cover.png',
       '/assets/images/weatherise/sys_arch.jpg',
@@ -52,9 +54,12 @@ export const projects: Project[] = [
       '/assets/images/weatherise/log.jpg'
     ],
     hoverMedia: {
-      type: 'image',
-      src: '/assets/images/weatherise/home.jpg',
-      objectFit: 'contain'
+      type: 'video',
+      src: '/assets/videos/weatherise_trailer.mp4',
+      webmSrc: '/assets/videos/weatherise_trailer.webm',
+      poster: '/assets/images/weatherise/video_poster.jpg',
+      objectFit: 'contain',
+      background: '#f6fafd'
     },
     githubUrl: 'https://github.com/BennedictQuanTon/Weatherise_Vietnam-AI-Open-Hackathon-2026',
     status: 'active',

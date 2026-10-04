@@ -57,6 +57,22 @@ export const Vault: React.FC = () => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
+  // Lock page scroll while the modal is open so scrolling the details
+  // doesn't drag the project list behind it
+  useEffect(() => {
+    if (!selectedProject) return;
+    const { body, documentElement } = document;
+    const scrollbarWidth = window.innerWidth - documentElement.clientWidth;
+    const prevOverflow = body.style.overflow;
+    const prevPadding = body.style.paddingRight;
+    body.style.overflow = 'hidden';
+    body.style.paddingRight = `${scrollbarWidth}px`;
+    return () => {
+      body.style.overflow = prevOverflow;
+      body.style.paddingRight = prevPadding;
+    };
+  }, [selectedProject]);
+
   const categories = ['All', 'Personal Project', 'Competition'];
 
   const filteredProjects = projects.filter((project) => {
@@ -283,7 +299,7 @@ export const Vault: React.FC = () => {
                 animate={{ y: 0, scale: 1 }}
                 exit={{ y: 50, scale: 0.95 }}
                 transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-                className="w-full max-w-4xl max-h-[90vh] overflow-y-auto glass-panel rounded-3xl shadow-2xl p-6 md:p-8 flex flex-col space-y-8 select-text"
+                className="w-full max-w-4xl max-h-[90vh] overflow-y-auto overscroll-contain glass-panel rounded-3xl shadow-2xl p-6 md:p-8 flex flex-col space-y-8 select-text"
                 onClick={(e) => e.stopPropagation()}
                 role="dialog"
                 aria-modal="true"
@@ -360,9 +376,9 @@ export const Vault: React.FC = () => {
                   </button>
                 </div>
 
-                {/* Grid content split: 3/5 Left (problem/timeline) + 2/5 Right (tech/outcomes) */}
+                {/* Grid content split: 3/5 Left (problem/outcomes) + 2/5 Right (tech/links) */}
                 <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
-                  {/* Left Column (Details & Process Timeline) */}
+                  {/* Left Column (Challenge & Outcomes) */}
                   <div className="lg:col-span-3 flex flex-col space-y-6">
                     {/* Problem Statement */}
                     <div className="space-y-2">
@@ -374,46 +390,21 @@ export const Vault: React.FC = () => {
                       </p>
                     </div>
 
-                    {/* Process Timeline */}
-                    <div className="space-y-4">
-                      <h3 className="text-sm uppercase font-bold tracking-widest text-text-heading">
-                        Development Timeline & Role
-                      </h3>
-                      <div className="border-l-2 border-border-token/40 pl-4 space-y-6">
-                        {selectedProject.process.map((step, idx) => (
-                          <div key={idx} className="relative space-y-2">
-                            {/* Circle dot on border */}
-                            <div className="absolute -left-[21px] top-1.5 w-2 h-2 rounded-full bg-accent border border-bg" />
-                            <span className="text-[10px] font-mono text-accent-deep dark:text-accent-bright font-bold">{step.date}</span>
-                            <h4 className="text-sm font-bold text-text-heading">{step.title}</h4>
-                            <p className="text-xs text-text-body leading-relaxed">{step.description}</p>
-                            {step.image && (
-                              <img
-                                src={step.image}
-                                alt={step.title}
-                                className="w-full max-h-48 object-cover rounded-xl mt-2 border border-border-token/30"
-                              />
-                            )}
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Right Column (Outcomes, Tech, Links) */}
-                  <div className="lg:col-span-2 flex flex-col space-y-6">
                     {/* Key Deliverables & Outcomes */}
                     <div className="space-y-3">
                       <h3 className="text-sm uppercase font-bold tracking-widest text-text-heading">
                         Measurable Outcomes
                       </h3>
-                      <ul className="space-y-2.5 text-xs text-text-body list-disc pl-4 leading-relaxed">
+                      <ul className="space-y-2.5 text-sm text-text-body list-disc pl-4 leading-relaxed">
                         {selectedProject.outcomes.map((outcome, idx) => (
                           <li key={idx}>{outcome}</li>
                         ))}
                       </ul>
                     </div>
+                  </div>
 
+                  {/* Right Column (Tech, Links) */}
+                  <div className="lg:col-span-2 flex flex-col space-y-6">
                     {/* Complete Tech Stack with Logos */}
                     <div className="space-y-3">
                       <h3 className="text-sm uppercase font-bold tracking-widest text-text-heading">
