@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowUpRight, Download, Brain, User, Cpu, Layers, Terminal, Sparkles, Database, Layout, Trophy, Copy, Check, Award, FolderCode, Calendar, Users } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { ScrollReveal } from '../components/ui/ScrollReveal';
+import { useIntroDone, EASE_OUT_EXPO } from '../lib/intro';
 import { genericTechIcon } from '../components/ui/TechLogos';
 import { ProjectMedia } from '../components/ui/ProjectMedia';
 import { AchievementBadge } from '../components/ui/AchievementBadge';
@@ -31,6 +33,14 @@ const GithubIcon = ({ size = 16 }: { size?: number }) => (
 
 export const Home: React.FC = () => {
   const { theme } = useTheme();
+
+  // Hero entrance: plays as the intro curtain lifts (or on mount after navigation)
+  const introDone = useIntroDone();
+  const heroReveal = (step: number) => ({
+    initial: { opacity: 0, y: 28 },
+    animate: introDone ? { opacity: 1, y: 0 } : { opacity: 0, y: 28 },
+    transition: { delay: 0.15 + step * 0.09, duration: 0.95, ease: EASE_OUT_EXPO },
+  });
 
   // Contact Form State
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -148,8 +158,11 @@ export const Home: React.FC = () => {
         <div className="absolute right-[20%] top-[25%] w-[400px] h-[400px] rounded-full bg-accent/20 dark:bg-accent/10 blur-[100px] pointer-events-none z-0" />
 
         {/* Full-bleed Portrait (tablet & desktop) - shifted left by increasing container width and objectPosition */}
-        <div
+        <motion.div
           className="hidden md:block absolute inset-y-0 right-0 md:w-[65%] lg:w-[56%] xl:w-[60%] overflow-hidden pointer-events-none"
+          initial={{ opacity: 0, clipPath: 'inset(0% 0% 0% 35%)' }}
+          animate={introDone ? { opacity: 1, clipPath: 'inset(0% 0% 0% 0%)' } : undefined}
+          transition={{ duration: 1.5, ease: EASE_OUT_EXPO }}
         >
           <img
             src="/assets/images/portrait/NewImage.jpg"
@@ -164,7 +177,7 @@ export const Home: React.FC = () => {
           {theme === 'dark' && (
             <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-bg to-transparent pointer-events-none z-10" />
           )}
-        </div>
+        </motion.div>
 
         {/* Full-width left blend — solid covers photo edge, then smooth fade */}
         <div
@@ -175,7 +188,13 @@ export const Home: React.FC = () => {
         />
 
         {/* Absolutely positioned Terminal - upper right, compact square shape */}
-        <div className="hidden lg:flex absolute top-[30%] -translate-y-1/2 right-6 xl:right-12 z-20 w-[240px] xl:w-[260px]">
+        <motion.div
+          className="hidden lg:flex absolute top-[30%] right-6 xl:right-12 z-20 w-[240px] xl:w-[260px]"
+          style={{ translateY: '-50%' }}
+          initial={{ opacity: 0, x: 24 }}
+          animate={introDone ? { opacity: 1, x: 0 } : undefined}
+          transition={{ delay: 0.9, duration: 1, ease: EASE_OUT_EXPO }}
+        >
           <div className="glass-panel p-4 rounded-xl border border-border-token/30 font-mono text-[10px] bg-bg-alt/70 text-text-body space-y-2.5 shadow-xl select-none w-full backdrop-blur-md">
             <div className="flex items-center space-x-1.5 pb-1.5 border-b border-border-token/10">
               <div className="w-2 h-2 rounded-full bg-red-500/80" />
@@ -200,7 +219,7 @@ export const Home: React.FC = () => {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Center-aligned container wrapper - balanced viewport gaps */}
         <div className="w-full max-w-[1440px] xl:max-w-[1440px] 2xl:max-w-[1600px] mx-auto px-4 md:px-8 lg:px-12 xl:px-20 relative z-10 flex flex-col justify-between gap-6 lg:gap-8 2xl:gap-10">
@@ -208,44 +227,61 @@ export const Home: React.FC = () => {
           <div className="w-full max-w-2xl">
             <div className="flex flex-col space-y-5 md:space-y-6 text-left">
               {/* Mobile portrait: full-width photo that fades into the page */}
-              <div className="md:hidden relative -mx-4 aspect-[5/4] overflow-hidden">
-                <img
+              <motion.div
+                className="md:hidden relative -mx-4 aspect-[5/4] overflow-hidden"
+                initial={{ opacity: 0 }}
+                animate={introDone ? { opacity: 1 } : undefined}
+                transition={{ duration: 1, ease: EASE_OUT_EXPO }}
+              >
+                <motion.img
                   src="/assets/images/portrait/NewImage.jpg"
                   alt="Long Quan Ton"
                   className="w-full h-full object-cover"
                   style={{ objectPosition: '50% 18%' }}
                   fetchPriority="high"
+                  initial={{ scale: 1.08 }}
+                  animate={introDone ? { scale: 1 } : undefined}
+                  transition={{ duration: 1.6, ease: EASE_OUT_EXPO }}
                 />
                 <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-bg to-transparent pointer-events-none" />
-              </div>
+              </motion.div>
 
               {/* Location Pill Tag */}
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-accent-dim border border-border-token w-max">
+              <motion.div {...heroReveal(0)} className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-accent-dim border border-border-token w-max">
                 <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
                 <span className="text-text-muted">Ho Chi Minh City, Vietnam</span>
-              </div>
+              </motion.div>
 
               <div className="space-y-4">
                 <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-bold font-display text-text-heading leading-[1.05] tracking-tight">
-                  Long Quan Ton
+                  <span className="block overflow-hidden pb-[0.12em] -mb-[0.12em]">
+                    <motion.span
+                      className="block"
+                      initial={{ y: '105%' }}
+                      animate={introDone ? { y: '0%' } : undefined}
+                      transition={{ delay: 0.2, duration: 1.1, ease: EASE_OUT_EXPO }}
+                    >
+                      Long Quan Ton
+                    </motion.span>
+                  </span>
                 </h1>
-                <p className="text-xl md:text-3xl font-semibold text-accent font-display italic tracking-wider leading-snug">
+                <motion.p {...heroReveal(2)} className="text-xl md:text-3xl font-semibold text-accent font-display italic tracking-wider leading-snug">
                   Aspiring AI Engineer
-                </p>
+                </motion.p>
                 {/* Segmented status line indicator */}
-                <div className="flex items-center gap-1.5 pt-1.5">
+                <motion.div {...heroReveal(3)} className="flex items-center gap-1.5 pt-1.5">
                   <div className="w-10 h-[2.5px] bg-accent rounded-full" />
                   <div className="w-4 h-[2.5px] bg-border-token/40 rounded-full" />
                   <div className="w-2.5 h-[2.5px] bg-border-token/40 rounded-full" />
-                </div>
+                </motion.div>
               </div>
 
-              <p className="text-base md:text-lg text-text-body leading-relaxed max-w-lg">
+              <motion.p {...heroReveal(4)} className="text-base md:text-lg text-text-body leading-relaxed max-w-lg">
                 Passionate about designing enterprise-level agentic workflows, integrating multimodal GenAI systems, and optimizing inference for cost-effective AI solutions.
-              </p>
+              </motion.p>
 
               {/* CTA Buttons: two equal columns on phones, inline from sm up */}
-              <div className="grid grid-cols-2 gap-3 sm:flex sm:items-center sm:gap-4 sm:flex-wrap pt-2">
+              <motion.div {...heroReveal(5)} className="grid grid-cols-2 gap-3 sm:flex sm:items-center sm:gap-4 sm:flex-wrap pt-2">
                 <Link 
                   to="/projects" 
                   className="justify-center px-5 sm:px-7 py-3.5 rounded-full bg-accent hover:bg-accent-bright text-bg font-semibold text-sm flex items-center gap-2 shadow-lg shadow-accent/20 hover:shadow-accent/40 hover:-translate-y-0.5 transition-all duration-300"
@@ -259,12 +295,12 @@ export const Home: React.FC = () => {
                 >
                   Download CV <Download size={16} />
                 </a>
-              </div>
+              </motion.div>
             </div>
           </div>
 
           {/* Bottom Row: Full-Width Horizontal Stats Banner */}
-          <div className="w-full glass-panel p-5 md:p-6 rounded-2xl border border-border-token/40 shadow-xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:divide-x lg:divide-border-token/20 mt-2">
+          <motion.div {...heroReveal(6)} className="w-full glass-panel p-5 md:p-6 rounded-2xl border border-border-token/40 shadow-xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:divide-x lg:divide-border-token/20 mt-2">
             {stats.map((stat, i) => (
               <div key={i} className="flex items-center gap-4 px-2 lg:px-6 first:pl-2">
                 <div className="p-3 bg-accent-dim rounded-xl flex items-center justify-center shrink-0">
@@ -285,7 +321,7 @@ export const Home: React.FC = () => {
                 </div>
               </div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 

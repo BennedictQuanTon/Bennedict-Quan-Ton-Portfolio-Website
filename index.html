@@ -16,11 +16,93 @@
     <meta name="format-detection" content="telephone=no" />
     <meta name="description" content="Personal portfolio of Bennedict Quan Ton, an Artificial Intelligence undergraduate student at UTS & HCMUT, specializing in agentic workflows, multi-agent systems, and high-performance computing clusters." />
     <meta name="keywords" content="Bennedict Quan Ton, Long Quan Ton, AI Engineer, AI Developer, Portfolio, Agentic Workflows, LangGraph, UTS, HCMUT, Web Developer" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Critical, self-hosted fonts and the hero portrait start downloading immediately -->
+    <link rel="preload" href="/fonts/playfair-display-normal-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/playfair-display-italic-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/plus-jakarta-sans-normal-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/assets/images/portrait/NewImage.jpg" as="image" fetchpriority="high" />
     <title>Bennedict Quan Ton | AI Engineer Portfolio</title>
+    <!-- Before first paint: apply the saved theme (no light flash for dark-mode
+         visitors) and decide whether the full intro plays this session. -->
+    <script>
+      (function () {
+        var root = document.documentElement;
+        root.classList.add('is-booting');
+        try {
+          if (localStorage.getItem('theme') === 'dark') {
+            root.setAttribute('data-theme', 'dark');
+            root.classList.add('dark');
+          }
+          if (sessionStorage.getItem('intro-seen')) root.classList.add('intro-quick');
+        } catch (e) {}
+      })();
+    </script>
+    <!-- Opening intro, drawn in plain HTML/CSS so it is on screen before the
+         JavaScript bundle loads. IntroLoader.tsx lifts it once assets are ready. -->
+    <style>
+      html.is-booting body { overflow: hidden; }
+      #boot {
+        position: fixed; inset: 0; z-index: 100;
+        display: flex; align-items: center; justify-content: center;
+        background: var(--bg, #ffffff);
+        clip-path: inset(0 0 0 0);
+        transition: clip-path 1s cubic-bezier(0.76, 0, 0.24, 1);
+      }
+      #boot.boot-exit { clip-path: inset(0 0 100% 0); }
+      .boot-inner {
+        display: flex; flex-direction: column; align-items: center; gap: 1.5rem;
+        transition: transform 0.6s cubic-bezier(0.76, 0, 0.24, 1), opacity 0.6s ease;
+      }
+      #boot.boot-exit .boot-inner { transform: translateY(-40px); opacity: 0; }
+      .boot-brand {
+        display: flex; overflow: hidden; padding-bottom: 0.12em;
+        font: italic 700 3rem/1 'Playfair Display', Georgia, serif;
+        letter-spacing: -0.025em; color: var(--text-heading, #212529);
+      }
+      .boot-brand span {
+        display: inline-block; transform: translateY(110%);
+        animation: boot-rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+      .boot-tag {
+        margin: 0; opacity: 0;
+        font: 500 0.75rem/1 'Plus Jakarta Sans', system-ui, sans-serif;
+        letter-spacing: 0.3em; text-transform: uppercase; color: var(--text-muted, #6c757d);
+        animation: boot-fade 0.7s 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+      .boot-line { width: 10rem; height: 1px; margin-top: 0.5rem; overflow: hidden; background: var(--border, rgba(0, 0, 0, 0.08)); }
+      .boot-line span {
+        display: block; height: 100%; background: var(--text-heading, #212529);
+        transform-origin: left; transform: scaleX(0);
+        animation: boot-progress 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+      #boot.boot-exit .boot-line span { animation: none; transform: scaleX(1); transition: transform 0.25s ease; }
+      @media (min-width: 768px) {
+        .boot-brand { font-size: 4.5rem; }
+        .boot-tag { font-size: 0.875rem; }
+        .boot-line { width: 14rem; }
+      }
+      @keyframes boot-rise { to { transform: translateY(0); } }
+      @keyframes boot-fade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+      @keyframes boot-progress { to { transform: scaleX(0.85); } }
+      /* Repeat visits in a session and reduced-motion users get a quick fade */
+      html.intro-quick .boot-inner { display: none; }
+      html.intro-quick #boot { transition: opacity 0.35s ease; }
+      html.intro-quick #boot.boot-exit { opacity: 0; clip-path: inset(0 0 0 0); }
+      @media (prefers-reduced-motion: reduce) {
+        .boot-inner { display: none; }
+        #boot { transition: opacity 0.3s ease; }
+        #boot.boot-exit { opacity: 0; clip-path: inset(0 0 0 0); }
+      }
+    </style>
   </head>
   <body>
+    <div id="boot" aria-hidden="true">
+      <div class="boot-inner">
+        <div class="boot-brand"><span style="animation-delay:0.100s">B</span><span style="animation-delay:0.145s">e</span><span style="animation-delay:0.190s">n</span><span style="animation-delay:0.235s">n</span><span style="animation-delay:0.280s">e</span><span style="animation-delay:0.325s">d</span><span style="animation-delay:0.370s">i</span><span style="animation-delay:0.415s">c</span><span style="animation-delay:0.460s">t</span><span style="animation-delay:0.505s">.</span></div>
+        <p class="boot-tag">AI Engineer · Portfolio</p>
+        <div class="boot-line"><span></span></div>
+      </div>
+    </div>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
