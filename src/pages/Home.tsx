@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowUpRight, Download, Brain, User, Cpu, Layers, Terminal, Sparkles, Database, Layout, Trophy, Copy, Check, Award, FolderCode, Calendar } from 'lucide-react';
+import { ArrowUpRight, Download, Brain, User, Cpu, Layers, Terminal, Sparkles, Database, Layout, Trophy, Copy, Check, Award, FolderCode, Calendar, Users } from 'lucide-react';
 import { ScrollReveal } from '../components/ui/ScrollReveal';
 import { genericTechIcon } from '../components/ui/TechLogos';
 import { ProjectMedia } from '../components/ui/ProjectMedia';
 import { AchievementBadge } from '../components/ui/AchievementBadge';
+import { TestimonialMarquee } from '../components/ui/TestimonialMarquee';
+import { visibleTestimonials } from '../data/testimonials';
 import { projects } from '../data/projects';
 import type { Project } from '../types';
 
@@ -652,6 +654,27 @@ export const Home: React.FC = () => {
       </section>
 
 
+
+      {/* 5. Testimonials — continuously scrolling cards */}
+      {visibleTestimonials.length > 0 && (
+        <section className="relative w-full py-14 md:py-24 border-b border-border-token/20 overflow-hidden">
+          <div className="max-w-[1360px] xl:max-w-[1440px] 2xl:max-w-[1600px] mx-auto px-4 md:px-8 lg:px-12 mb-10 md:mb-14">
+            <ScrollReveal direction="up">
+              <div className="flex items-center gap-2.5">
+                <Users size={20} className="text-accent" />
+                <span className="text-sm uppercase tracking-widest font-semibold text-accent">Kind Words</span>
+              </div>
+              <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold font-display text-text-heading mt-3">
+                What collaborators say
+              </h2>
+              <p className="text-sm md:text-base text-text-muted mt-4 max-w-xl leading-relaxed">
+                Feedback from the mentors and teammates I have built with.
+              </p>
+            </ScrollReveal>
+          </div>
+          <TestimonialMarquee items={visibleTestimonials} />
+        </section>
+      )}
 
       {/* 6. Contact & Correspondence Section */}
       <section className="relative w-full max-w-[1360px] xl:max-w-[1440px] 2xl:max-w-[1600px] mx-auto px-4 md:px-8 lg:px-12 py-14 md:py-28 2xl:py-32 border-t border-border-token/20 overflow-hidden bg-bg">

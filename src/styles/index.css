@@ -302,6 +302,40 @@ body {
 }
 .cert-frame.is-interactive:active { transform: scale(0.99); }
 
+/* Continuous horizontal marquee (testimonials) */
+@keyframes marquee-scroll {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+
+.marquee {
+  overflow: hidden;
+  padding-block: 0.75rem;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent);
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll var(--marquee-duration, 48s) linear infinite;
+  will-change: transform;
+}
+
+.marquee:active .marquee-track { animation-play-state: paused; }
+@media (hover: hover) {
+  .marquee:hover .marquee-track { animation-play-state: paused; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee {
+    overflow-x: auto;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  .marquee-track { animation: none; }
+}
+
 /* ── Mobile & iOS ───────────────────────────────────────────── */
 
 /* Backdrop blur on every card makes scrolling janky on phones; keep it only
