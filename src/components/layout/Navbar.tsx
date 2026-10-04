@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sun, Moon, Menu, X } from 'lucide-react';
+import { Sun, Moon, Menu, X, Download } from 'lucide-react';
 import { useTheme } from '../../context/ThemeContext';
 
 const GithubIcon = ({ size = 20 }: { size?: number }) => (
@@ -34,6 +34,25 @@ export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => setIsOpen(!isOpen);
+  const location = useLocation();
+
+  // Close the mobile menu whenever the route changes
+  useEffect(() => {
+    setIsOpen(false); // eslint-disable-line react-hooks/set-state-in-effect
+  }, [location.pathname]);
+
+  // While the mobile menu is open: lock page scroll and let Escape close it
+  useEffect(() => {
+    if (!isOpen) return;
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setIsOpen(false);
+    window.addEventListener('keydown', onKey);
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      window.removeEventListener('keydown', onKey);
+    };
+  }, [isOpen]);
 
   const navLinks = [
     { name: 'About', path: '/' },
@@ -43,8 +62,8 @@ export const Navbar: React.FC = () => {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-40 px-2 sm:px-4 md:px-8 xl:px-12 py-4 transition-colors duration-300">
-      <div className="max-w-6xl xl:max-w-[1440px] 2xl:max-w-[1600px] mx-auto flex items-center justify-between px-4 md:px-6 py-2.5 rounded-full glass-panel transition-all">
+    <nav className="fixed top-0 left-0 right-0 z-40 px-3 sm:px-4 md:px-8 xl:px-12 pt-[max(1rem,env(safe-area-inset-top))] pb-4 transition-colors duration-300">
+      <div className="max-w-6xl xl:max-w-[1440px] 2xl:max-w-[1600px] mx-auto flex items-center justify-between px-4 md:px-6 py-2 md:py-2.5 rounded-full glass-panel keep-blur transition-all">
         {/* Brand Logo in Flowing Serif Italic Font */}
         <NavLink 
           to="/" 
@@ -135,11 +154,24 @@ export const Navbar: React.FC = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
+            key="menu-backdrop"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="md:hidden absolute top-20 left-4 right-4 p-6 rounded-3xl glass-panel flex flex-col items-center space-y-6"
+            className="md:hidden fixed inset-0 -z-10 bg-bg/70 backdrop-blur-sm"
+            onClick={() => setIsOpen(false)}
+            aria-hidden="true"
+          />
+        )}
+        {isOpen && (
+          <motion.div
+            key="menu-panel"
+            initial={{ opacity: 0, y: -12, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -12, scale: 0.98 }}
+            transition={{ duration: 0.2 }}
+            className="md:hidden absolute left-3 right-3 top-[calc(max(1rem,env(safe-area-inset-top))+4rem)] p-6 rounded-3xl glass-panel keep-blur flex flex-col items-center space-y-5 shadow-2xl"
           >
             {navLinks.map((link) => (
               <NavLink
@@ -148,7 +180,7 @@ export const Navbar: React.FC = () => {
                 end={link.path === '/'}
                 onClick={() => setIsOpen(false)}
                 className={({ isActive }) =>
-                  `text-lg font-medium tracking-wider uppercase transition-colors ${
+                  `py-1.5 text-lg font-medium tracking-wider uppercase transition-colors ${
                     isActive ? 'text-accent font-semibold' : 'text-text-muted'
                   }`
                 }
@@ -156,12 +188,19 @@ export const Navbar: React.FC = () => {
                 {link.name}
               </NavLink>
             ))}
+            <a
+              href="/Long_Quan_Ton_CV.pdf"
+              download="Long_Quan_Ton_CV.pdf"
+              className="w-full mt-1 py-3 rounded-full bg-accent text-bg text-sm font-semibold flex items-center justify-center gap-2 shadow-lg shadow-accent/20"
+            >
+              Download CV <Download size={16} />
+            </a>
             <div className="flex items-center space-x-6 pt-4 border-t border-border-token w-full justify-center">
               <a
                 href="https://github.com/BennedictQuanTon"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-text-muted hover:text-text-heading flex items-center space-x-2"
+                className="min-h-[44px] text-text-muted hover:text-text-heading flex items-center space-x-2"
               >
                 <GithubIcon size={20} />
                 <span>GitHub</span>
@@ -170,7 +209,7 @@ export const Navbar: React.FC = () => {
                 href="https://linkedin.com/in/bennedictquanton"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-text-muted hover:text-text-heading flex items-center space-x-2"
+                className="min-h-[44px] text-text-muted hover:text-text-heading flex items-center space-x-2"
               >
                 <LinkedinIcon size={20} />
                 <span>LinkedIn</span>

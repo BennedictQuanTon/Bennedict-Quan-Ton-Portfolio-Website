@@ -4,9 +4,11 @@ export const milestones: Milestone[] = [
   {
     id: 'edu-uts-hcmut',
     type: 'education',
-    date: 'Expected Graduation 2028',
+    date: '2025 – 2028 (Expected)',
     title: 'University of Technology Sydney & HCMUT',
     subtitle: 'Bachelor of Artificial Intelligence',
+    gpa: '6.75 / 7.00',
+    honours: ["Dean's List 2026 — UTS Faculty of Engineering & IT"],
     description: 'A rigorous joint program focused on core ML algorithms, autonomous agent development, database systems, and statistical modeling.',
     details: [
       'Joint program with rigorous academic standards across two internationally recognised universities',

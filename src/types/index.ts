@@ -35,20 +35,23 @@ export interface Project {
   githubUrl?: string;
   liveUrl?: string;
   status: 'active' | 'placeholder';
+  /** Result shown as a badge next to the title, e.g. "Top 10 Finalist" */
+  achievement?: {
+    label: string;
+    tone: 'gold' | 'silver' | 'emerald';
+  };
+  /** Certificate received for this project, shown in the details view */
+  certificate?: {
+    image: string;
+    title: string;
+    issuer: string;
+  };
+  /** Project posters, shown side by side in the details view (landscape first, then portrait) */
+  posters?: string[];
   competitionName?: string;
   organizer?: string;
   organizerLogo?: string;
   organizerLogos?: string[];
-}
-
-// ─── About ────────────────────────────────────────────────────────────────────
-
-export interface Passion {
-  id: string;
-  title: string;
-  description: string;
-  /** Lucide icon name */
-  icon: string;
 }
 
 // ─── Experience ───────────────────────────────────────────────────────────────
@@ -71,17 +74,6 @@ export interface WorkExperience {
   status: 'active' | 'placeholder';
 }
 
-// ─── Certifications ───────────────────────────────────────────────────────────
-
-export interface Certificate {
-  id: string;
-  title: string;
-  issuer: string;
-  date: string;
-  image?: string;
-  url?: string;
-}
-
 // ─── Milestones ───────────────────────────────────────────────────────────────
 
 export interface Milestone {
@@ -95,4 +87,8 @@ export interface Milestone {
   details: string[];
   image?: string;
   highlight?: string;
+  /** Education only: current GPA, e.g. "6.75 / 7.00" */
+  gpa?: string;
+  /** Education only: academic honours such as a Dean's List */
+  honours?: string[];
 }

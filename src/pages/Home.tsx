@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowUpRight, Download, Brain, User, Cpu, Layers, Terminal, Sparkles, Database, Layout, Trophy, Copy, Check, Award, FolderCode, Calendar } from 'lucide-react';
+import { ArrowUpRight, Download, Brain, User, Cpu, Layers, Terminal, Sparkles, Database, Layout, Trophy, Copy, Check, Award, FolderCode, Calendar, Users } from 'lucide-react';
 import { ScrollReveal } from '../components/ui/ScrollReveal';
 import { genericTechIcon } from '../components/ui/TechLogos';
 import { ProjectMedia } from '../components/ui/ProjectMedia';
+import { AchievementBadge } from '../components/ui/AchievementBadge';
+import { TestimonialMarquee } from '../components/ui/TestimonialMarquee';
+import { visibleTestimonials } from '../data/testimonials';
 import { projects } from '../data/projects';
 import type { Project } from '../types';
 
@@ -140,13 +143,13 @@ export const Home: React.FC = () => {
     <div className="w-full flex flex-col items-center bg-bg text-text-body overflow-x-hidden">
       
       {/* 1. Cinematic Hero Section */}
-      <section className="relative w-full min-h-[85vh] flex items-center justify-start overflow-hidden pt-24 md:pt-28 pb-10 lg:pb-12 border-b border-border-token/20 bg-bg">
+      <section className="relative w-full md:min-h-[85vh] flex items-center justify-start overflow-hidden pt-2 md:pt-28 pb-10 lg:pb-12 border-b border-border-token/20 bg-bg">
         {/* Subtle background glow */}
         <div className="absolute right-[20%] top-[25%] w-[400px] h-[400px] rounded-full bg-accent/20 dark:bg-accent/10 blur-[100px] pointer-events-none z-0" />
 
-        {/* Full-bleed Portrait - shifted left by increasing container width and objectPosition */}
+        {/* Full-bleed Portrait (tablet & desktop) - shifted left by increasing container width and objectPosition */}
         <div
-          className="absolute inset-y-0 right-0 w-full md:w-[65%] lg:w-[56%] xl:w-[60%] overflow-hidden pointer-events-none"
+          className="hidden md:block absolute inset-y-0 right-0 md:w-[65%] lg:w-[56%] xl:w-[60%] overflow-hidden pointer-events-none"
         >
           <img
             src="/assets/images/portrait/NewImage.jpg"
@@ -165,7 +168,7 @@ export const Home: React.FC = () => {
 
         {/* Full-width left blend — solid covers photo edge, then smooth fade */}
         <div
-          className="absolute inset-0 pointer-events-none z-[5]"
+          className="hidden md:block absolute inset-0 pointer-events-none z-[5]"
           style={{
             background: 'linear-gradient(to right, var(--color-bg) 0%, var(--color-bg) 47%, transparent 62%)'
           }}
@@ -203,7 +206,19 @@ export const Home: React.FC = () => {
         <div className="w-full max-w-[1440px] xl:max-w-[1440px] 2xl:max-w-[1600px] mx-auto px-4 md:px-8 lg:px-12 xl:px-20 relative z-10 flex flex-col justify-between gap-6 lg:gap-8 2xl:gap-10">
           {/* Top Row: Left content only - terminal is absolutely positioned */}
           <div className="w-full max-w-2xl">
-            <div className="flex flex-col space-y-6 text-left">
+            <div className="flex flex-col space-y-5 md:space-y-6 text-left">
+              {/* Mobile portrait: full-width photo that fades into the page */}
+              <div className="md:hidden relative -mx-4 aspect-[5/4] overflow-hidden">
+                <img
+                  src="/assets/images/portrait/NewImage.jpg"
+                  alt="Long Quan Ton"
+                  className="w-full h-full object-cover"
+                  style={{ objectPosition: '50% 18%' }}
+                  fetchPriority="high"
+                />
+                <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-bg to-transparent pointer-events-none" />
+              </div>
+
               {/* Location Pill Tag */}
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-accent-dim border border-border-token w-max">
                 <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
@@ -211,7 +226,7 @@ export const Home: React.FC = () => {
               </div>
 
               <div className="space-y-4">
-                <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-bold font-display text-text-heading leading-[1.05] tracking-tight">
+                <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-bold font-display text-text-heading leading-[1.05] tracking-tight">
                   Long Quan Ton
                 </h1>
                 <p className="text-xl md:text-3xl font-semibold text-accent font-display italic tracking-wider leading-snug">
@@ -229,18 +244,18 @@ export const Home: React.FC = () => {
                 Passionate about designing enterprise-level agentic workflows, integrating multimodal GenAI systems, and optimizing inference for cost-effective AI solutions.
               </p>
 
-              {/* CTA Buttons */}
-              <div className="flex items-center gap-4 flex-wrap pt-2">
+              {/* CTA Buttons: two equal columns on phones, inline from sm up */}
+              <div className="grid grid-cols-2 gap-3 sm:flex sm:items-center sm:gap-4 sm:flex-wrap pt-2">
                 <Link 
                   to="/projects" 
-                  className="px-7 py-3.5 rounded-full bg-accent hover:bg-accent-bright text-bg font-semibold text-sm flex items-center gap-2 shadow-lg shadow-accent/20 hover:shadow-accent/40 hover:-translate-y-0.5 transition-all duration-300"
+                  className="justify-center px-5 sm:px-7 py-3.5 rounded-full bg-accent hover:bg-accent-bright text-bg font-semibold text-sm flex items-center gap-2 shadow-lg shadow-accent/20 hover:shadow-accent/40 hover:-translate-y-0.5 transition-all duration-300"
                 >
                   View My Work <ArrowUpRight size={16} />
                 </Link>
                 <a 
                   href="/Long_Quan_Ton_CV.pdf" 
                   download="Long_Quan_Ton_CV.pdf"
-                  className="px-7 py-3.5 rounded-full border border-border-token text-text-heading hover:bg-surface-2 text-sm flex items-center gap-2 font-semibold transition-all duration-300"
+                  className="justify-center px-5 sm:px-7 py-3.5 rounded-full border border-border-token text-text-heading hover:bg-surface-2 text-sm flex items-center gap-2 font-semibold transition-all duration-300"
                 >
                   Download CV <Download size={16} />
                 </a>
@@ -330,7 +345,7 @@ export const Home: React.FC = () => {
               {/* Portrait container */}
               <div className="relative portrait-frame portrait-glow portrait-float w-full aspect-[4/4.8] rounded-[1.5rem] overflow-hidden border border-border-token/25">
                 <img
-                  src="/assets/images/portrait/Myself_Best_Potrait.png"
+                  src="/assets/images/portrait/Myself_Best_Potrait.jpg"
                   alt="Long Quan Ton — AI Engineer Intern"
                   loading="lazy"
                   className="w-full h-full object-cover object-center"
@@ -356,7 +371,7 @@ export const Home: React.FC = () => {
       </section>
 
       {/* 3. Projects & Competitions Section (Vertical Stacked Blocks) */}
-      <section className="w-full max-w-[1360px] xl:max-w-[1440px] 2xl:max-w-[1600px] mx-auto px-4 md:px-8 lg:px-12 py-20 border-b border-border-token/20">
+      <section className="w-full max-w-[1360px] xl:max-w-[1440px] 2xl:max-w-[1600px] mx-auto px-4 md:px-8 lg:px-12 py-14 md:py-20 border-b border-border-token/20">
         <div className="flex flex-col space-y-10">
           
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
@@ -375,12 +390,12 @@ export const Home: React.FC = () => {
           <div className="w-full flex flex-col space-y-8">
             {featuredProjects.map((project, idx) => (
               <ScrollReveal key={project.id} direction="up" delay={idx * 0.05}>
-                <div className="group glass-panel rounded-3xl overflow-hidden p-6 md:p-8 border border-border-token/35 hover:border-accent/50 hover:shadow-2xl hover:shadow-accent/10 transition-all duration-500">
-                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+                <div className="group glass-panel rounded-3xl overflow-hidden p-4 sm:p-6 md:p-8 border border-border-token/35 hover:border-accent/50 hover:shadow-2xl hover:shadow-accent/10 transition-all duration-500">
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 md:gap-8 items-stretch">
                     
                     {/* Left Half (Nửa trái): Preview Image Frame */}
                     <div 
-                      className="lg:col-span-5 relative w-full aspect-[16/10] lg:aspect-auto min-h-[240px] bg-bg-alt/50 overflow-hidden rounded-2xl border border-border-token/30 shrink-0"
+                      className="lg:col-span-5 relative w-full aspect-[16/10] lg:aspect-auto md:min-h-[240px] bg-bg-alt/50 overflow-hidden rounded-2xl border border-border-token/30 shrink-0"
                       style={{
                         backgroundColor: project.hoverMedia.objectFit === 'contain' ? (project.hoverMedia.background ?? '#ffffff') : undefined
                       }}
@@ -407,7 +422,7 @@ export const Home: React.FC = () => {
                         
                         {/* 1. Competition Name (Centered, font-display, larger size) or "Personal Project" */}
                         <div className="text-center w-full">
-                          <span className="text-lg md:text-xl font-bold font-display uppercase tracking-wider text-accent inline-block">
+                          <span className="text-sm sm:text-lg md:text-xl font-bold font-display uppercase tracking-wider text-accent inline-block">
                             {project.category === 'Competition' && project.competitionName 
                               ? project.competitionName 
                               : 'Personal Project'}
@@ -449,7 +464,7 @@ export const Home: React.FC = () => {
                         </div>
 
                         {/* 3. Unified Content Box: Title & Achievement, Role, Description & Tech Stack */}
-                        <div className="bg-bg-alt/40 border border-border-token/25 rounded-2xl p-5 md:p-6 space-y-4">
+                        <div className="bg-bg-alt/40 border border-border-token/25 rounded-2xl p-4 md:p-6 space-y-4">
                           {/* Project Title & Achievement Badge */}
                           <div className="flex flex-wrap items-center justify-between gap-3">
                             <h3 className="text-2xl md:text-3xl font-bold font-display text-text-heading group-hover:text-accent transition-colors duration-300">
@@ -457,18 +472,7 @@ export const Home: React.FC = () => {
                             </h3>
 
                             {/* Achievement Badge next to Title */}
-                            {project.id === 'weatherise' && (
-                              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/15 border border-amber-500/35 text-amber-600 dark:text-amber-400 text-sm md:text-base font-bold font-display tracking-wide shadow-xs backdrop-blur-md">
-                                <Trophy size={16} className="text-amber-500 shrink-0" />
-                                <span>Top 10 Finalist</span>
-                              </div>
-                            )}
-                            {project.id === 'viettel-llm-inference' && (
-                              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/15 border border-emerald-500/35 text-emerald-600 dark:text-emerald-400 text-sm md:text-base font-bold font-display tracking-wide shadow-xs backdrop-blur-md">
-                                <Trophy size={16} className="text-emerald-500 shrink-0" />
-                                <span>Peak Rank #77 / 300+</span>
-                              </div>
-                            )}
+                            {project.achievement && <AchievementBadge achievement={project.achievement} />}
                           </div>
 
                           {/* Role: ... */}
@@ -480,18 +484,21 @@ export const Home: React.FC = () => {
                           </div>
 
                           {/* Description / Summary */}
-                          <p className="text-sm md:text-base text-text-body/90 leading-relaxed font-body">
+                          <p className="text-sm md:text-base text-text-body/90 leading-relaxed font-body line-clamp-4 md:line-clamp-none">
                             {project.summary}
                           </p>
 
                           {/* Tech Stack inside content box (Tech Stack: label on exact same line as badges) */}
-                          <div className="flex flex-wrap items-center gap-2.5 text-sm md:text-base font-semibold pt-3.5 border-t border-border-token/15">
+                          <div className="flex flex-wrap items-center gap-2 md:gap-2.5 text-sm md:text-base font-semibold pt-3.5 border-t border-border-token/15">
                             <span className="font-bold text-text-heading shrink-0 mr-1">Tech Stack:</span>
-                            {project.techStack.slice(0, 8).map((tech) => (
-                              <span key={tech} className="text-sm font-medium bg-bg border border-border-token/30 px-3.5 py-1.5 rounded-lg text-text-heading group-hover:border-accent/40 group-hover:text-accent transition-colors duration-200">
+                            {project.techStack.slice(0, 8).map((tech, tIdx) => (
+                              <span key={tech} className={`${tIdx >= 5 ? 'hidden md:inline-flex' : 'inline-flex'} text-xs md:text-sm font-medium bg-bg border border-border-token/30 px-2.5 md:px-3.5 py-1 md:py-1.5 rounded-lg text-text-heading group-hover:border-accent/40 group-hover:text-accent transition-colors duration-200`}>
                                 {tech}
                               </span>
                             ))}
+                            {project.techStack.length > 5 && (
+                              <span className="md:hidden text-xs font-semibold text-text-muted px-1">+{project.techStack.length - 5}</span>
+                            )}
                           </div>
                         </div>
 
@@ -554,7 +561,7 @@ export const Home: React.FC = () => {
       </section>
 
       {/* 4. Skills & Tech Stack Section */}
-      <section className="w-full max-w-[1360px] xl:max-w-[1440px] 2xl:max-w-[1600px] mx-auto px-4 md:px-8 lg:px-12 py-20 md:py-28 2xl:py-32 border-b border-border-token/20">
+      <section className="w-full max-w-[1360px] xl:max-w-[1440px] 2xl:max-w-[1600px] mx-auto px-4 md:px-8 lg:px-12 py-14 md:py-28 2xl:py-32 border-b border-border-token/20">
         <ScrollReveal direction="up" className="mb-12">
           <div className="flex items-center gap-2.5">
             <Terminal size={20} className="text-accent" />
@@ -648,8 +655,29 @@ export const Home: React.FC = () => {
 
 
 
+      {/* 5. Testimonials — continuously scrolling cards */}
+      {visibleTestimonials.length > 0 && (
+        <section className="relative w-full py-14 md:py-24 border-b border-border-token/20 overflow-hidden">
+          <div className="max-w-[1360px] xl:max-w-[1440px] 2xl:max-w-[1600px] mx-auto px-4 md:px-8 lg:px-12 mb-10 md:mb-14">
+            <ScrollReveal direction="up">
+              <div className="flex items-center gap-2.5">
+                <Users size={20} className="text-accent" />
+                <span className="text-sm uppercase tracking-widest font-semibold text-accent">Kind Words</span>
+              </div>
+              <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold font-display text-text-heading mt-3">
+                What collaborators say
+              </h2>
+              <p className="text-sm md:text-base text-text-muted mt-4 max-w-xl leading-relaxed">
+                Feedback from the mentors and teammates I have built with.
+              </p>
+            </ScrollReveal>
+          </div>
+          <TestimonialMarquee items={visibleTestimonials} />
+        </section>
+      )}
+
       {/* 6. Contact & Correspondence Section */}
-      <section className="relative w-full max-w-[1360px] xl:max-w-[1440px] 2xl:max-w-[1600px] mx-auto px-4 md:px-8 lg:px-12 py-20 md:py-28 2xl:py-32 border-t border-border-token/20 overflow-hidden bg-bg">
+      <section className="relative w-full max-w-[1360px] xl:max-w-[1440px] 2xl:max-w-[1600px] mx-auto px-4 md:px-8 lg:px-12 py-14 md:py-28 2xl:py-32 border-t border-border-token/20 overflow-hidden bg-bg">
         <div className="absolute left-[5%] top-1/4 w-[380px] h-[380px] rounded-full bg-accent/5 blur-[120px] pointer-events-none" />
         <div className="absolute right-[5%] bottom-1/4 w-[420px] h-[420px] rounded-full bg-accent/10 blur-[130px] pointer-events-none" />
 
