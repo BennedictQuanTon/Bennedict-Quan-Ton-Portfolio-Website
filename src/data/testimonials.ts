@@ -18,10 +18,9 @@ export interface Testimonial {
 const DIR = '/assets/images/testimonials';
 
 /*
- * Unapproved drafts are written as `import.meta.env.DEV ? '…' : ''`. Vite
- * replaces import.meta.env.DEV with false in production, so the draft text is
- * removed from the public JavaScript entirely. Once someone approves their
- * quote, replace the expression with the plain string and set approved: true.
+ * To add an unapproved draft, write its quote as `import.meta.env.DEV ? '…' : ''`
+ * with approved: false — Vite strips the text from production builds, so it is
+ * only visible locally until the wording is confirmed.
  */
 
 export const testimonials: Testimonial[] = [
@@ -31,11 +30,9 @@ export const testimonials: Testimonial[] = [
     avatar: `${DIR}/yash-gupta.jpg`,
     relation: 'Mentor · Team Weatherise',
     detail: 'Senior Solution Architect · NVIDIA India',
-    // DRAFT — replace with Mr. Gupta's own words or get his approval before publishing
-    quote: import.meta.env.DEV
-      ? 'Under real hackathon pressure, Quan combined system-level thinking with calm execution. He turned an ambitious multi-agent idea into a working product on our H200 cluster and kept the whole team aligned the entire way.'
-      : '',
-    approved: false,
+    quote:
+      'Quan and Team Weatherise were a determined, hard-working team. They were eager to learn, genuinely listened to mentor feedback and acted on it, and pushed hard to bring their project to completion.',
+    approved: true,
   },
   {
     id: 'khanh-tuong-huynh',
@@ -43,11 +40,9 @@ export const testimonials: Testimonial[] = [
     avatar: `${DIR}/khanh-tuong-huynh.jpg`,
     relation: 'Teammate · 5 projects together',
     detail: 'K25 Student · UTS × HCMUT',
-    // DRAFT — replace with Tuong's own words or get his approval before publishing
-    quote: import.meta.env.DEV
-      ? 'Across five projects, he has been the one holding our architecture together. Quan breaks big problems into clear pieces, makes calls quickly, and makes sure we actually ship.'
-      : '',
-    approved: false,
+    quote:
+      'Across five projects, he has been the one holding our architecture together. Quan breaks big problems into clear pieces, makes calls quickly, and makes sure we actually ship.',
+    approved: true,
   },
   {
     id: 'yoshio-nomura',
@@ -55,11 +50,9 @@ export const testimonials: Testimonial[] = [
     avatar: `${DIR}/yoshio-nomura.jpg`,
     relation: 'Teammate · 5 projects together',
     detail: 'K25 Student · UTS × HCMUT',
-    // DRAFT — replace with Yoshio's own words or get his approval before publishing
-    quote: import.meta.env.DEV
-      ? 'Five projects in, Quan is still the teammate I want on a deadline. He sets a clear direction, stays open to every idea on the table, and keeps polishing until the demo is right.'
-      : '',
-    approved: false,
+    quote:
+      'Five projects in, Quan is still the teammate I want on a deadline. He sets a clear direction, stays open to every idea on the table, and keeps polishing until the demo is right.',
+    approved: true,
   },
 ];
 
