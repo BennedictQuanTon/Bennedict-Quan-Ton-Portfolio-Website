@@ -2,6 +2,9 @@
 
 @import "tailwindcss";
 
+/* `dark:` utilities follow the site's theme toggle (.dark on <html>), not the OS setting */
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
   /* Default: Light Mode - Pearl Gray (Monochrome/Slate accents) */
   --bg:             #FFFFFF;

@@ -6,10 +6,20 @@ interface CertificateFrameProps {
   /** Opens the certificate in the lightbox; omit for a static frame */
   onOpen?: () => void;
   className?: string;
+  /** Fixed aspect box (e.g. "aspect-[4/3]") so frames in a row line up; the image is contained inside */
+  aspect?: string;
 }
 
 /** A certificate mounted like a gallery print: matte, double rule and gilt corners. */
-export const CertificateFrame: React.FC<CertificateFrameProps> = ({ src, alt, onOpen, className = '' }) => {
+export const CertificateFrame: React.FC<CertificateFrameProps> = ({ src, alt, onOpen, className = '', aspect }) => {
+  const image = aspect ? (
+    <span className={`block ${aspect}`}>
+      <img src={src} alt={alt} loading="lazy" className="!w-full !h-full object-contain" />
+    </span>
+  ) : (
+    <img src={src} alt={alt} loading="lazy" />
+  );
+
   const corners = (
     <>
       <span className="cert-corner tl" />
@@ -27,7 +37,7 @@ export const CertificateFrame: React.FC<CertificateFrameProps> = ({ src, alt, on
         className={`cert-frame is-interactive block w-full text-left ${className}`}
         aria-label={`View ${alt}`}
       >
-        <img src={src} alt={alt} loading="lazy" />
+        {image}
         {corners}
       </button>
     );
@@ -35,7 +45,7 @@ export const CertificateFrame: React.FC<CertificateFrameProps> = ({ src, alt, on
 
   return (
     <div className={`cert-frame block ${className}`}>
-      <img src={src} alt={alt} loading="lazy" />
+      {image}
       {corners}
     </div>
   );

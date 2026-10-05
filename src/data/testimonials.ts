@@ -44,6 +44,15 @@ export const testimonials: Testimonial[] = [
       'Five projects in, Quan is still the teammate I want on a deadline. He sets a clear direction, stays open to every idea on the table, and keeps polishing until the demo is right.',
     approved: true,
   },
+  {
+    id: 'thanh-loi-tran',
+    name: 'Thanh Loi Tran',
+    avatar: `${DIR}/thanh-loi-tran.jpg`,
+    relation: 'Teammate · Morphysics',
+    detail: 'Bachelor of AI · UTS × HCMUT',
+    quote: 'A great teammate with responsibility, good leadership and willing to learn new things.',
+    approved: true,
+  },
 ];
 
 /** Testimonials that may be displayed in the current build */
