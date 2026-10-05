@@ -8,6 +8,8 @@ import { genericTechIcon } from '../components/ui/TechLogos';
 import { ProjectMedia } from '../components/ui/ProjectMedia';
 import { AchievementBadge } from '../components/ui/AchievementBadge';
 import { TestimonialMarquee } from '../components/ui/TestimonialMarquee';
+import { JourneyPreview } from '../components/sections/JourneyPreview';
+import { CredentialsPreview } from '../components/sections/CredentialsPreview';
 import { visibleTestimonials } from '../data/testimonials';
 import { projects } from '../data/projects';
 import type { Project } from '../types';
@@ -595,6 +597,10 @@ export const Home: React.FC = () => {
 
         </div>
       </section>
+
+      {/* 3.5 Journey & Credentials summaries — many visitors only see this page */}
+      <JourneyPreview />
+      <CredentialsPreview />
 
       {/* 4. Skills & Tech Stack Section */}
       <section className="w-full max-w-[1360px] xl:max-w-[1440px] 2xl:max-w-[1600px] mx-auto px-4 md:px-8 lg:px-12 py-14 md:py-28 2xl:py-32 border-b border-border-token/20">
