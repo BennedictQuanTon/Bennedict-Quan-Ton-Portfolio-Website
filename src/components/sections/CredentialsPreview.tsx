@@ -5,8 +5,9 @@ import { ScrollReveal } from '../ui/ScrollReveal';
 import { CertificateFrame } from '../ui/CertificateFrame';
 import { honour, specialization, certifications, courseProviders } from '../../data/credentials';
 
-// The strongest four, in the order a recruiter would look for them
-const featured = [specialization, ...certifications.slice(0, 3)];
+// The four a recruiter would look for first
+const FEATURED_IDS = ['genai-llm', 'aws-cloud-practitioner', 'ibm-ai-fundamentals'];
+const featured = [specialization, ...FEATURED_IDS.map((id) => certifications.find((c) => c.id === id)).filter((c) => c !== undefined)];
 const totalCertifications = certifications.length + 1;
 const totalCourses = courseProviders.reduce((n, p) => n + p.courses.length, 0);
 
@@ -34,36 +35,42 @@ export const CredentialsPreview: React.FC = () => (
       </Link>
     </div>
 
-    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
-      {/* Dean's List */}
-      <ScrollReveal direction="up" className="lg:col-span-5">
-        <Link to="/credentials" className="group block">
+    {/* Dean's List */}
+    <ScrollReveal direction="up">
+      <Link to="/credentials" className="group grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
+        <div className="lg:col-span-7">
           <CertificateFrame src={honour.image} alt={honour.title} />
-          <div className="pt-5 px-1 space-y-1">
-            <p className="text-xs md:text-sm font-semibold text-text-body">{honour.issuer}</p>
-            <h3 className="text-2xl md:text-3xl font-bold font-display text-text-heading group-hover:text-accent transition-colors">
-              Dean&rsquo;s List <span className="italic font-normal text-accent">2026</span>
-            </h3>
+        </div>
+        <div className="lg:col-span-5 space-y-4">
+          <p className="text-sm md:text-base font-semibold text-text-body">{honour.issuer}</p>
+          <h3 className="text-4xl md:text-5xl font-bold font-display text-text-heading leading-[1.05] tracking-tight group-hover:text-accent transition-colors">
+            Dean&rsquo;s List <span className="italic font-normal text-accent">2026</span>
+          </h3>
+          <div className="flex items-center gap-1.5">
+            <div className="w-12 h-[2.5px] bg-accent rounded-full" />
+            <div className="w-5 h-[2.5px] bg-border-token/40 rounded-full" />
+            <div className="w-3 h-[2.5px] bg-border-token/40 rounded-full" />
           </div>
-        </Link>
-      </ScrollReveal>
+          <p className="text-sm md:text-base text-text-body leading-relaxed">For outstanding academic achievement in Engineering and Information Technology.</p>
+        </div>
+      </Link>
+    </ScrollReveal>
 
-      {/* Featured certifications */}
-      <div className="lg:col-span-7 grid grid-cols-2 gap-x-4 gap-y-8 md:gap-x-6">
-        {featured.map((cert, idx) => (
-          <ScrollReveal key={cert.id} direction="up" delay={idx * 0.06}>
-            <Link to="/credentials" className="group block">
-              <CertificateFrame src={cert.image} alt={cert.title} />
-              <div className="pt-4 px-1 space-y-1">
-                <p className="text-[11px] md:text-xs font-semibold text-text-muted truncate">{cert.issuer}</p>
-                <h3 className="text-sm md:text-base font-bold text-text-heading leading-snug group-hover:text-accent transition-colors line-clamp-2">
-                  {cert.title}
-                </h3>
-              </div>
-            </Link>
-          </ScrollReveal>
-        ))}
-      </div>
+    {/* Four featured certifications, identical frames in one even row */}
+    <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-8 md:gap-x-6 mt-14 md:mt-16">
+      {featured.map((cert, idx) => (
+        <ScrollReveal key={cert.id} direction="up" delay={idx * 0.06} className="h-full">
+          <Link to="/credentials" className="group flex flex-col h-full">
+            <CertificateFrame src={cert.image} alt={cert.title} aspect="aspect-[4/3]" />
+            <div className="pt-4 px-1 space-y-1">
+              <p className="text-[11px] md:text-xs font-semibold text-text-muted truncate">{cert.issuer}</p>
+              <h3 className="text-sm md:text-base font-bold text-text-heading leading-snug group-hover:text-accent transition-colors line-clamp-2 min-h-[2.5em]">
+                {cert.title}
+              </h3>
+            </div>
+          </Link>
+        </ScrollReveal>
+      ))}
     </div>
 
     <Link

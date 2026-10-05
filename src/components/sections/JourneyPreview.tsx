@@ -33,12 +33,12 @@ export const JourneyPreview: React.FC = () => (
 
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 md:gap-6">
       {/* Roles */}
-      <div className="lg:col-span-7 flex flex-col gap-4">
+      <div className="lg:col-span-7 grid grid-rows-3 gap-4">
         {experiences.map((exp, idx) => (
           <ScrollReveal key={exp.id} direction="up" delay={idx * 0.06}>
             <Link
               to="/journey"
-              className="group glass-panel rounded-2xl p-4 md:p-5 border border-border-token/35 hover:border-accent/40 flex items-start gap-4 transition-colors duration-300"
+              className="group glass-panel rounded-2xl p-4 md:p-5 border border-border-token/35 hover:border-accent/40 flex items-center gap-4 md:gap-5 transition-colors duration-300 h-full"
             >
               {exp.companyLogo && (
                 <div className="w-14 h-14 md:w-16 md:h-16 shrink-0 rounded-xl bg-white border border-border-token/30 p-2 flex items-center justify-center">
@@ -46,22 +46,14 @@ export const JourneyPreview: React.FC = () => (
                 </div>
               )}
               <div className="min-w-0 flex-1 space-y-1">
-                <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-                  <h3 className="text-base md:text-lg font-bold text-text-heading leading-snug group-hover:text-accent transition-colors">
-                    {exp.role}
-                  </h3>
-                  {exp.isActive && (
-                    <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-accent bg-accent-dim border border-accent/20 px-2.5 py-0.5 rounded-full">
-                      <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" /> Current
-                    </span>
-                  )}
-                </div>
+                <h3 className="text-base md:text-lg font-bold text-text-heading leading-snug group-hover:text-accent transition-colors">
+                  {exp.role}
+                </h3>
                 <p className="text-sm font-semibold text-text-body">{exp.company}</p>
                 <p className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs md:text-sm text-text-muted">
                   <span className="inline-flex items-center gap-1.5"><Calendar size={13} className="text-accent" />{exp.startDate} – {exp.endDate}</span>
                   <span className="inline-flex items-center gap-1.5"><Briefcase size={13} className="text-accent" />{exp.mode} · {exp.type}</span>
                 </p>
-                <p className="text-sm text-text-body/90 leading-relaxed line-clamp-2 pt-1">{exp.responsibilities[0]}</p>
               </div>
             </Link>
           </ScrollReveal>
@@ -73,7 +65,7 @@ export const JourneyPreview: React.FC = () => (
         <ScrollReveal direction="up" delay={0.12} className="lg:col-span-5">
           <Link
             to="/journey"
-            className="group glass-panel rounded-2xl p-6 md:p-8 border border-border-token/35 hover:border-accent/40 h-full flex flex-col justify-between gap-6 transition-colors duration-300"
+            className="group glass-panel rounded-2xl p-6 md:p-8 border border-border-token/35 hover:border-accent/40 h-full flex flex-col justify-between gap-8 transition-colors duration-300"
           >
             <div className="space-y-3">
               <span className="text-xs font-semibold text-text-muted">Education</span>
@@ -84,29 +76,36 @@ export const JourneyPreview: React.FC = () => (
               <p className="inline-flex items-center gap-1.5 text-sm text-text-body">
                 <Calendar size={14} className="text-accent" /> {education.date}
               </p>
-              <p className="text-sm md:text-base text-text-body/90 leading-relaxed pt-2">{education.description}</p>
             </div>
 
-            <div className="space-y-4">
-              {education.gpa && (
-                <div>
-                  <span className="block text-xs font-semibold text-text-muted mb-1">GPA</span>
-                  <span className="text-3xl md:text-4xl font-extrabold text-accent leading-none">{education.gpa}</span>
+            {/* GPA as the centrepiece, set between hairlines */}
+            {education.gpa && (() => {
+              const [score, scale] = education.gpa.split('/').map((part) => part.trim());
+              return (
+                <div className="flex items-center gap-4 md:gap-6">
+                  <span className="h-px flex-1 bg-border-token" />
+                  <div className="text-center">
+                    <span className="block text-xs font-semibold text-text-muted mb-2">Cumulative GPA</span>
+                    <span className="text-5xl md:text-6xl font-extrabold text-text-heading leading-none tracking-tight">{score}</span>
+                    {scale && <span className="text-xl md:text-2xl font-bold text-text-muted ml-1.5">/ {scale}</span>}
+                  </div>
+                  <span className="h-px flex-1 bg-border-token" />
                 </div>
-              )}
+              );
+            })()}
+
+            <div className="flex flex-col items-center gap-6">
               {education.honours?.map((honour) => (
-                <div key={honour} className="flex items-center gap-3 rounded-xl border border-gilt-soft px-4 py-3">
-                  <Award size={22} className="text-accent shrink-0" />
-                  <span className="text-sm font-semibold text-text-heading leading-snug">{honour}</span>
+                <div key={honour} className="inline-flex items-center gap-2.5 rounded-full border border-gilt-soft px-4 py-2">
+                  <Award size={18} className="text-accent shrink-0" />
+                  <span className="text-xs md:text-sm font-semibold text-text-heading leading-snug">{honour}</span>
                 </div>
               ))}
-              <div className="flex items-center gap-3 pt-1">
-                <div className="h-12 px-4 rounded-lg bg-white border border-border-token/30 flex items-center">
-                  <img src="/assets/images/companies/uts_logo.png" alt="UTS" loading="lazy" className="h-7 w-auto object-contain" />
-                </div>
-                <div className="h-12 px-4 rounded-lg bg-white border border-border-token/30 flex items-center">
-                  <img src="/assets/images/companies/bku_logo.png" alt="HCMUT" loading="lazy" className="h-8 w-auto object-contain" />
-                </div>
+              {/* Universities, shown as they are — no tiles */}
+              <div className="flex items-center justify-center gap-5 md:gap-6">
+                <img src="/assets/images/companies/uts_logo.png" alt="University of Technology Sydney" loading="lazy" className="h-8 md:h-9 w-auto object-contain dark:invert" />
+                <span className="h-9 w-px bg-border-token" />
+                <img src="/assets/images/companies/bku_logo.png" alt="Ho Chi Minh City University of Technology" loading="lazy" className="h-10 md:h-11 w-auto object-contain" />
               </div>
             </div>
           </Link>
