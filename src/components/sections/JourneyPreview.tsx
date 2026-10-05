@@ -38,10 +38,10 @@ export const JourneyPreview: React.FC = () => (
           <ScrollReveal key={exp.id} direction="up" delay={idx * 0.06}>
             <Link
               to="/journey"
-              className="group glass-panel rounded-2xl p-4 md:p-5 border border-border-token/35 hover:border-accent/40 flex items-center gap-4 md:gap-5 transition-colors duration-300 h-full"
+              className="group glass-panel rounded-2xl p-4 md:p-5 border border-border-token/35 hover:border-accent/40 flex items-center gap-4 md:gap-6 transition-colors duration-300 h-full"
             >
               {exp.companyLogo && (
-                <div className="w-14 h-14 md:w-16 md:h-16 shrink-0 rounded-xl bg-white border border-border-token/30 p-2 flex items-center justify-center">
+                <div className="w-24 h-16 md:w-40 md:h-20 shrink-0 rounded-xl bg-white border border-border-token/30 px-3 py-2 md:px-5 md:py-3 flex items-center justify-center">
                   <img src={exp.companyLogo} alt={`${exp.company} logo`} loading="lazy" className="max-w-full max-h-full object-contain" />
                 </div>
               )}
@@ -102,10 +102,10 @@ export const JourneyPreview: React.FC = () => (
                 </div>
               ))}
               {/* Universities, shown as they are — no tiles */}
-              <div className="flex items-center justify-center gap-5 md:gap-6">
-                <img src="/assets/images/companies/uts_logo.png" alt="University of Technology Sydney" loading="lazy" className="h-8 md:h-9 w-auto object-contain dark:invert" />
-                <span className="h-9 w-px bg-border-token" />
-                <img src="/assets/images/companies/bku_logo.png" alt="Ho Chi Minh City University of Technology" loading="lazy" className="h-10 md:h-11 w-auto object-contain" />
+              <div className="flex items-center justify-center gap-6 md:gap-8">
+                <img src="/assets/images/companies/uts_logo.png" alt="University of Technology Sydney" loading="lazy" className="h-11 md:h-14 w-auto object-contain dark:invert" />
+                <span className="h-12 w-px bg-border-token" />
+                <img src="/assets/images/companies/bku_logo.png" alt="Ho Chi Minh City University of Technology" loading="lazy" className="h-12 md:h-14 w-auto object-contain" />
               </div>
             </div>
           </Link>

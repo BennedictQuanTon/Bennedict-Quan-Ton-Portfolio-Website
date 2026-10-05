@@ -5,8 +5,8 @@ import { ScrollReveal } from '../ui/ScrollReveal';
 import { CertificateFrame } from '../ui/CertificateFrame';
 import { honour, specialization, certifications, courseProviders } from '../../data/credentials';
 
-// The four a recruiter would look for first
-const FEATURED_IDS = ['genai-llm', 'aws-cloud-practitioner', 'ibm-ai-fundamentals'];
+// The three a recruiter would look for first
+const FEATURED_IDS = ['genai-llm', 'aws-cloud-practitioner'];
 const featured = [specialization, ...FEATURED_IDS.map((id) => certifications.find((c) => c.id === id)).filter((c) => c !== undefined)];
 const totalCertifications = certifications.length + 1;
 const totalCourses = courseProviders.reduce((n, p) => n + p.courses.length, 0);
@@ -38,10 +38,10 @@ export const CredentialsPreview: React.FC = () => (
     {/* Dean's List */}
     <ScrollReveal direction="up">
       <Link to="/credentials" className="group grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
-        <div className="lg:col-span-7">
+        <div className="lg:col-span-6 lg:col-start-1 max-w-[640px]">
           <CertificateFrame src={honour.image} alt={honour.title} />
         </div>
-        <div className="lg:col-span-5 space-y-4">
+        <div className="lg:col-span-6 space-y-4">
           <p className="text-sm md:text-base font-semibold text-text-body">{honour.issuer}</p>
           <h3 className="text-4xl md:text-5xl font-bold font-display text-text-heading leading-[1.05] tracking-tight group-hover:text-accent transition-colors">
             Dean&rsquo;s List <span className="italic font-normal text-accent">2026</span>
@@ -56,10 +56,10 @@ export const CredentialsPreview: React.FC = () => (
       </Link>
     </ScrollReveal>
 
-    {/* Four featured certifications, identical frames in one even row */}
-    <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-8 md:gap-x-6 mt-14 md:mt-16">
+    {/* Featured certifications: identical frames, centred as a row (two up on phones, last one centred) */}
+    <div className="flex flex-wrap justify-center gap-x-4 gap-y-8 md:gap-x-6 mt-14 md:mt-16 max-w-5xl mx-auto">
       {featured.map((cert, idx) => (
-        <ScrollReveal key={cert.id} direction="up" delay={idx * 0.06} className="h-full">
+        <ScrollReveal key={cert.id} direction="up" delay={idx * 0.06} className="w-[calc(50%-0.5rem)] md:w-[calc(33.333%-1rem)]">
           <Link to="/credentials" className="group flex flex-col h-full">
             <CertificateFrame src={cert.image} alt={cert.title} aspect="aspect-[4/3]" />
             <div className="pt-4 px-1 space-y-1">
