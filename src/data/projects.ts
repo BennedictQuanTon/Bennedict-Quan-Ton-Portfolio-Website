@@ -132,11 +132,11 @@ export const projects: Project[] = [
     ],
     hoverMedia: {
       type: 'video',
-      src: '/assets/videos/lantern_preview.mp4',
-      webmSrc: '/assets/videos/lantern_preview.webm',
-      poster: '/assets/images/lantern/video_poster.jpg',
+      src: '/assets/videos/lantern_teaser.mp4',
+      webmSrc: '/assets/videos/lantern_teaser.webm',
+      poster: '/assets/images/lantern/teaser_poster.jpg',
       objectFit: 'contain',
-      background: '#eef5f4'
+      background: '#f6f9f8'
     },
     githubUrl: 'https://github.com/BennedictQuanTon/The-Lantern-AssemblyAI-Voice-Agent-Hackathon',
     status: 'active',
