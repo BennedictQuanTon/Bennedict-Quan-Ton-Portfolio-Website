@@ -704,7 +704,7 @@ export const Home: React.FC = () => {
                 What collaborators say
               </h2>
               <p className="text-sm md:text-base text-text-muted mt-4 max-w-xl leading-relaxed">
-                Feedback from the mentors and teammates I have built with.
+                Feedback from the teammates I have built with.
               </p>
             </ScrollReveal>
           </div>

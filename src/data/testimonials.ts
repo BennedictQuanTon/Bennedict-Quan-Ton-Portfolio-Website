@@ -2,7 +2,7 @@ export interface Testimonial {
   id: string;
   name: string;
   avatar: string;
-  /** Relationship to me, e.g. "Mentor · Team Weatherise" */
+  /** Relationship to me, e.g. "Teammate · 5 projects together" */
   relation: string;
   /** Second line under the name: job title & company, or cohort */
   detail: string;
@@ -25,21 +25,11 @@ const DIR = '/assets/images/testimonials';
 
 export const testimonials: Testimonial[] = [
   {
-    id: 'yash-gupta',
-    name: 'Mr. Yash Gupta',
-    avatar: `${DIR}/yash-gupta.jpg`,
-    relation: 'Mentor · Team Weatherise',
-    detail: 'Senior Solution Architect · NVIDIA India',
-    quote:
-      'Quan and Team Weatherise were a determined, hard-working team. They were eager to learn, genuinely listened to mentor feedback and acted on it, and pushed hard to bring their project to completion.',
-    approved: true,
-  },
-  {
     id: 'khanh-tuong-huynh',
     name: 'Khanh Tuong Huynh',
     avatar: `${DIR}/khanh-tuong-huynh.jpg`,
     relation: 'Teammate · 5 projects together',
-    detail: 'K25 Student · UTS × HCMUT',
+    detail: 'Bachelor of IT · UTS × HCMUT',
     quote:
       'Across five projects, he has been the one holding our architecture together. Quan breaks big problems into clear pieces, makes calls quickly, and makes sure we actually ship.',
     approved: true,
@@ -49,7 +39,7 @@ export const testimonials: Testimonial[] = [
     name: 'Yoshio Nomura',
     avatar: `${DIR}/yoshio-nomura.jpg`,
     relation: 'Teammate · 5 projects together',
-    detail: 'K25 Student · UTS × HCMUT',
+    detail: 'Bachelor of AI · UTS × HCMUT',
     quote:
       'Five projects in, Quan is still the teammate I want on a deadline. He sets a clear direction, stays open to every idea on the table, and keeps polishing until the demo is right.',
     approved: true,
