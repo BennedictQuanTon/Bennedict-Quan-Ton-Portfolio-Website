@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
 
 import { Navbar } from './components/layout/Navbar';
 import { Footer } from './components/layout/Footer';
@@ -20,6 +21,9 @@ export const App: React.FC = () => {
         </main>
 
         <Footer />
+
+        {/* Vercel Web Analytics: anonymous page views, including in-app route changes */}
+        <Analytics />
       </div>
     </Router>
   );
