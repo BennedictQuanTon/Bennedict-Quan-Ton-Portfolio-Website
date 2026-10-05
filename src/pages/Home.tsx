@@ -268,7 +268,7 @@ export const Home: React.FC = () => {
                   </span>
                 </h1>
                 <motion.p {...heroReveal(2)} className="text-xl md:text-3xl font-semibold text-accent font-display italic tracking-wider leading-snug">
-                  Aspiring AI Engineer
+                  Artificial Intelligence Engineer
                 </motion.p>
                 {/* Segmented status line indicator */}
                 <motion.div {...heroReveal(3)} className="flex items-center gap-1.5 pt-1.5">
