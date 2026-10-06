@@ -16,8 +16,16 @@ export interface Project {
   summary: string;
   problem: string;
   process: TimelineStep[];
+  /** Full stack, listed in the details view */
   techStack: string[];
+  /** Shorter core stack for the project card; falls back to techStack */
+  cardStack?: string[];
   outcomes: string[];
+  /** Product screenshots shown in the details view, opened in the lightbox */
+  screens?: {
+    src: string;
+    caption: string;
+  }[];
   images: string[];
   hoverMedia: {
     type: 'image' | 'video';
