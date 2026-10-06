@@ -29,7 +29,7 @@ export interface Project {
     poster?: string;
     objectPosition?: string;
     objectFit?: 'cover' | 'contain';
-    /** Frame colour behind 'contain' media; defaults to white */
+    /** Frame colour (or CSS gradient) behind 'contain' media; defaults to white */
     background?: string;
   };
   githubUrl?: string;
@@ -48,6 +48,8 @@ export interface Project {
   };
   /** Project posters, shown side by side in the details view (landscape first, then portrait) */
   posters?: string[];
+  /** Personal projects: the project's own logo, shown where competitions show the organizer's */
+  projectLogo?: string;
   competitionName?: string;
   organizer?: string;
   organizerLogo?: string;

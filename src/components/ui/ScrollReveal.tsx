@@ -61,10 +61,12 @@ export const ScrollReveal: React.FC<ScrollRevealProps> = ({
         y: 0,
         filter: blurEnd,
       }}
-      viewport={{ once: true, margin: '-50px' }}
+      // Phones start the reveal just before the block scrolls in, so a quick swipe
+      // never lands on content that is still invisible.
+      viewport={{ once: true, margin: isSmallScreen ? '0px 0px 160px 0px' : '-50px' }}
       transition={{
         duration: isSmallScreen ? Math.min(duration, 0.4) : duration,
-        delay: delay,
+        delay: isSmallScreen ? Math.min(delay, 0.1) : delay,
         ease: [0.25, 0.1, 0.25, 1.0], // smooth cubic-bezier
       }}
       className={className}

@@ -170,10 +170,10 @@ export const Journey: React.FC = () => {
                   {/* Right: Logos arranged nicely in a container */}
                   <div className="flex items-center gap-4 bg-bg-alt/40 border border-border-token/30 p-5 md:p-6 rounded-2xl shrink-0 self-stretch lg:self-center justify-center lg:flex-col lg:gap-3 min-w-[240px] hover:border-accent/30 transition-colors">
                     <div className="h-24 px-6 rounded-xl border border-border-token/20 bg-white flex items-center justify-center shadow-sm w-48 hover:scale-105 transition-transform">
-                      <img src="/assets/images/companies/uts_logo.png" alt="UTS Logo" className="h-14 w-auto object-contain" />
+                      <img src="/assets/images/companies/uts_logo.webp" alt="UTS Logo" className="h-14 w-auto object-contain" />
                     </div>
                     <div className="h-24 px-6 rounded-xl border border-border-token/20 bg-white flex items-center justify-center shadow-sm w-48 hover:scale-105 transition-transform">
-                      <img src="/assets/images/companies/bku_logo.png" alt="BKU Logo" className="h-14 w-auto object-contain" />
+                      <img src="/assets/images/companies/bku_logo.webp" alt="BKU Logo" className="h-14 w-auto object-contain" />
                     </div>
                   </div>
                 </div>

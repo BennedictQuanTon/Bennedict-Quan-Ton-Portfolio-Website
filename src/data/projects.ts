@@ -14,25 +14,25 @@ export const projects: Project[] = [
         date: 'June 2, 2026',
         title: 'Multi-Agent System Architecture',
         description: 'Designed multi-agent decision system architecture across 3 domains (Tourism, Construction & Agriculture) using LangGraph, NeMo Agent Toolkit, Pydantic v2, and NeMo Guardrails.',
-        image: '/assets/images/weatherise/sys_arch.jpg'
+        image: '/assets/images/weatherise/sys_arch.webp'
       },
       {
         date: 'June 5, 2026',
         title: 'Live External API MCP Server',
         description: 'Engineered a unified MCP Server gateway consolidating 7+ live external APIs into a single tool-call interface using Python, FastAPI, and Redis 7, cutting integration complexity by ~60%.',
-        image: '/assets/images/weatherise/team.jpg'
+        image: '/assets/images/weatherise/team.webp'
       },
       {
         date: 'June 9, 2026',
         title: 'RAG Knowledge Layer on H200 GPU Cluster',
         description: 'Built and seeded a 4-collection RAG Knowledge Layer ingesting 500+ domain records with ~2s retrieval using nv-embedqa-e5-v5 NIM, Qdrant, and PostgreSQL 16 on an 8x NVIDIA H200 GPU cluster.',
-        image: '/assets/images/weatherise/ui_2.jpg'
+        image: '/assets/images/weatherise/ui_2.webp'
       },
       {
         date: 'June 12, 2026',
         title: 'Hackathon Final Pitch',
         description: 'Presented Weatherise at the Vietnam AI Open Hackathon (NVIDIA/Viettel/Sovico), securing a spot in the Top 10 Finalists.',
-        image: '/assets/images/weatherise/team_2.jpg'
+        image: '/assets/images/weatherise/team_2.webp'
       }
     ],
     techStack: ['LangGraph', 'NeMo Agent Toolkit', 'NVIDIA NIM', 'MCP', 'FastAPI', 'Redis', 'Qdrant', 'PostgreSQL', 'NeMo Guardrails', 'Next.js'],
@@ -42,21 +42,21 @@ export const projects: Project[] = [
       'Achieved 0 unsafe go-calls across 212 red-team prompts (94% blocked at input, the rest vetoed by a deterministic rule engine) and 87.2% context recovery via a 4-collection RAG layer (~2,000 records) behind NeMo Guardrails, using nv-embedqa-e5-v5, Qdrant, and PostgreSQL 16.'
     ],
     images: [
-      '/assets/images/weatherise/video_poster.jpg',
-      '/assets/images/weatherise/home.jpg',
-      '/assets/images/weatherise/cover.png',
-      '/assets/images/weatherise/sys_arch.jpg',
-      '/assets/images/weatherise/ui_2.jpg',
-      '/assets/images/weatherise/team.jpg',
-      '/assets/images/weatherise/team_2.jpg',
-      '/assets/images/weatherise/travel.jpg',
-      '/assets/images/weatherise/log.jpg'
+      '/assets/images/weatherise/video_poster.webp',
+      '/assets/images/weatherise/home.webp',
+      '/assets/images/weatherise/cover.webp',
+      '/assets/images/weatherise/sys_arch.webp',
+      '/assets/images/weatherise/ui_2.webp',
+      '/assets/images/weatherise/team.webp',
+      '/assets/images/weatherise/team_2.webp',
+      '/assets/images/weatherise/travel.webp',
+      '/assets/images/weatherise/log.webp'
     ],
     hoverMedia: {
       type: 'video',
       src: '/assets/videos/weatherise_trailer.mp4',
       webmSrc: '/assets/videos/weatherise_trailer.webm',
-      poster: '/assets/images/weatherise/video_poster.jpg',
+      poster: '/assets/images/weatherise/video_poster.webp',
       objectFit: 'contain',
       background: '#f6fafd'
     },
@@ -64,24 +64,24 @@ export const projects: Project[] = [
     status: 'active',
     competitionName: 'Vietnam AI Open Hackathon 2026',
     organizer: 'NVIDIA / Viettel / Sovico',
-    organizerLogo: '/assets/images/companies/weatherise_org.jpg',
+    organizerLogo: '/assets/images/companies/weatherise_org.webp',
     organizerLogos: [
-      '/assets/images/companies/nvidia_logo.png',
+      '/assets/images/companies/nvidia_logo.webp',
       '/assets/images/companies/viettel_logo.svg',
-      '/assets/images/companies/sovico_logo.png'
+      '/assets/images/companies/sovico_logo.webp'
     ],
     achievement: {
       label: 'Top 10 Finalist',
       tone: 'gold'
     },
     certificate: {
-      image: '/assets/images/certificates/hackathons/vietnam_ai_open_hackathon.jpg',
+      image: '/assets/images/certificates/hackathons/vietnam_ai_open_hackathon.webp',
       title: 'Certificate of Attendance — Vietnam AI Open Hackathon',
       issuer: 'Open Hackathons · OpenACC'
     },
     posters: [
-      '/assets/images/weatherise/poster_horizontal.jpg',
-      '/assets/images/weatherise/poster_vertical.jpg'
+      '/assets/images/weatherise/poster_horizontal.webp',
+      '/assets/images/weatherise/poster_vertical.webp'
     ]
   },
   {
@@ -97,7 +97,7 @@ export const projects: Project[] = [
         date: 'Sep 8 – 13, 2026',
         title: 'V1 Voice Waiter & Real-Time Pipeline',
         description: 'Scaffolded the FastAPI + WebSocket realtime pipeline with AssemblyAI streaming, silence endpointing, spoken acknowledgement fillers, and the first guest-facing dining UI on a tool-calling LLM waiter.',
-        image: '/assets/images/lantern/dining.png'
+        image: '/assets/images/lantern/dining.webp'
       },
       {
         date: 'Sep 16 – 20, 2026',
@@ -108,13 +108,13 @@ export const projects: Project[] = [
         date: 'Sep 23 – 25, 2026',
         title: 'V2 Architecture: The Model Interprets, Code Decides',
         description: 'Re-architected the system so Qwen3 4B returns one JSON-schema-constrained intent per turn while a deterministic resolver handles references, modifiers, allergens and sold-out items, with dialogue memory persisted as immutable SQLite revisions — lifting order accuracy to 10 / 10.',
-        image: '/assets/images/lantern/management.png'
+        image: '/assets/images/lantern/management.webp'
       },
       {
         date: 'Sep 25 – 30, 2026',
         title: 'Kitchen Loop, Benchmarks & Final Pitch',
         description: 'Shipped the Management dashboard (floor map, 86\'d stock, Kitchen Display System) and per-turn Logs view, validated results across RTX 3060, RTX 5060 and MacBook, and delivered the pitch deck and demo video.',
-        image: '/assets/images/lantern/benchmarks.png'
+        image: '/assets/images/lantern/benchmarks.webp'
       }
     ],
     techStack: ['AssemblyAI', 'Qwen3 4B', 'Ollama', 'Kokoro TTS', 'FastAPI', 'WebSockets', 'SQLite', 'TypeScript', 'Pydantic', 'Vite', 'Web Audio API'],
@@ -124,17 +124,17 @@ export const projects: Project[] = [
       'Cut LLM latency by 36.5% (p50 2.1s → 1.3s) and raised voice-session completion from 2/5 to 5/5, eliminating dead air with ~50 ms fillers and barge-in on AssemblyAI Universal-3.5 Pro streaming over WebSockets.'
     ],
     images: [
-      '/assets/images/lantern/cover.png',
-      '/assets/images/lantern/dining.png',
-      '/assets/images/lantern/management.png',
-      '/assets/images/lantern/logs.png',
-      '/assets/images/lantern/benchmarks.png'
+      '/assets/images/lantern/cover.webp',
+      '/assets/images/lantern/dining.webp',
+      '/assets/images/lantern/management.webp',
+      '/assets/images/lantern/logs.webp',
+      '/assets/images/lantern/benchmarks.webp'
     ],
     hoverMedia: {
       type: 'video',
       src: '/assets/videos/lantern_teaser.mp4',
       webmSrc: '/assets/videos/lantern_teaser.webm',
-      poster: '/assets/images/lantern/teaser_poster.jpg',
+      poster: '/assets/images/lantern/teaser_poster.webp',
       objectFit: 'contain',
       background: '#f6f9f8'
     },
@@ -142,9 +142,9 @@ export const projects: Project[] = [
     status: 'active',
     competitionName: 'AssemblyAI Voice Agent Hackathon',
     organizer: 'AssemblyAI',
-    organizerLogo: '/assets/images/companies/assemblyai_logo.png',
+    organizerLogo: '/assets/images/companies/assemblyai_logo.webp',
     certificate: {
-      image: '/assets/images/certificates/hackathons/assemblyai_voice_agent_hackathon.jpg',
+      image: '/assets/images/certificates/hackathons/assemblyai_voice_agent_hackathon.webp',
       title: 'Certificate of Completion — AssemblyAI Voice Agent Hackathon',
       issuer: 'Lablab.ai · NativelyAI'
     }
@@ -181,13 +181,13 @@ export const projects: Project[] = [
       'Reduced initial response latency to a project-record TTFT p50 = 46ms and cut failed requests by 28.6% (from 7 down to 5 / 420) by building a custom vLLM Docker image (:p8-shortconv) with fused 3-op ShortConv C++ CUDA kernels (causal_conv1d_silu_fused).'
     ],
     images: [
-      '/assets/images/viettel-inference-opt/cover.jpg',
-      '/assets/images/viettel-inference-opt/card.png',
+      '/assets/images/viettel-inference-opt/cover.webp',
+      '/assets/images/viettel-inference-opt/card.webp',
       '/assets/images/viettel-inference-opt/cover.svg'
     ],
     hoverMedia: {
       type: 'image',
-      src: '/assets/images/viettel-inference-opt/cover.jpg',
+      src: '/assets/images/viettel-inference-opt/cover.webp',
       objectFit: 'contain'
     },
     githubUrl: 'https://github.com/BennedictQuanTon/Develarper_Viettel_AI_Race_2026',
@@ -235,20 +235,20 @@ export const projects: Project[] = [
       'Engineered local-first QA and summarization logic achieving 89% factual and 97% summary accuracy (100 test cases each), using Qwen-3B via llama-cpp-python with Metal GPU acceleration.'
     ],
     images: [
-      '/assets/images/amd-token-agent/cover.png'
+      '/assets/images/amd-token-agent/cover.webp'
     ],
     hoverMedia: {
       type: 'image',
-      src: '/assets/images/amd-token-agent/cover.png',
+      src: '/assets/images/amd-token-agent/cover.webp',
       objectFit: 'contain'
     },
     githubUrl: 'https://github.com/BennedictQuanTon/Develarper_AMD-Developer-Hackathon-ACT-II',
     status: 'active',
     competitionName: 'AMD Developer Hackathon ACT II',
     organizer: 'AMD',
-    organizerLogo: '/assets/images/companies/amd_logo.png',
+    organizerLogo: '/assets/images/companies/amd_logo.webp',
     certificate: {
-      image: '/assets/images/certificates/hackathons/amd_developer_hackathon_act2.jpg',
+      image: '/assets/images/certificates/hackathons/amd_developer_hackathon_act2.webp',
       title: 'Certificate of Completion — AMD Developer Hackathon: ACT II',
       issuer: 'Lablab.ai · NativelyAI'
     }
@@ -266,19 +266,19 @@ export const projects: Project[] = [
         date: 'Aug 23 – 24, 2026',
         title: 'Architecture & Entity Data',
         description: 'Designed the React 19 + Express monorepo and built the grounded entity data behind it: 20 local-brand fashion items, 15 Saigon venues with indoor/outdoor flags and opening hours, and 6 photobooth frames.',
-        image: '/assets/images/auralens/dashboard.jpg'
+        image: '/assets/images/auralens/dashboard.webp'
       },
       {
         date: 'Aug 26 – 27, 2026',
         title: 'Gemini Vision Drip Check & Grounded Vibe Map',
         description: 'Integrated Gemini multimodal vision with a WebRTC camera to score outfits across color, silhouette, vibe and accessories via JSON structured output, and layered a deterministic weather and open-hours filter on top of Gemini Flash Lite venue recommendations.',
-        image: '/assets/images/auralens/vibe_map.jpg'
+        image: '/assets/images/auralens/vibe_map.webp'
       },
       {
         date: 'Aug 27 – 28, 2026',
         title: 'Photobooth Studio, Testing & Cloud Run Deploy',
         description: 'Shipped the prompt-to-template Photobooth (5 aspect ratios, filters, stickers, AI-generated layouts), covered the stack with 35 Vitest tests, and containerized a single-origin build for Google Cloud Run.',
-        image: '/assets/images/auralens/photobooth.jpg'
+        image: '/assets/images/auralens/photobooth.webp'
       }
     ],
     techStack: ['Gemini Vision', 'Gemini Flash Lite', 'React 19', 'TypeScript', 'Express.js', 'WebRTC', 'Google Cloud Run', 'Docker', 'Vitest', 'Vite'],
@@ -288,14 +288,14 @@ export const projects: Project[] = [
       'Shipped a secure React 19 + Express.js app with a prompt-to-template photobooth engine, validated by 35/35 automated tests and deployed at $0/month by proxying all Gemini calls server-side and containerizing on Google Cloud Run.'
     ],
     images: [
-      '/assets/images/auralens/cover.jpg',
-      '/assets/images/auralens/dashboard.jpg',
-      '/assets/images/auralens/vibe_map.jpg',
-      '/assets/images/auralens/photobooth.jpg'
+      '/assets/images/auralens/cover.webp',
+      '/assets/images/auralens/dashboard.webp',
+      '/assets/images/auralens/vibe_map.webp',
+      '/assets/images/auralens/photobooth.webp'
     ],
     hoverMedia: {
       type: 'image',
-      src: '/assets/images/auralens/cover.jpg'
+      src: '/assets/images/auralens/cover.webp'
     },
     githubUrl: 'https://github.com/BennedictQuanTon/AuraLens',
     status: 'active',
@@ -306,7 +306,7 @@ export const projects: Project[] = [
       tone: 'silver'
     },
     certificate: {
-      image: '/assets/images/certificates/hackathons/ai_riser_vietnam_2026.jpg',
+      image: '/assets/images/certificates/hackathons/ai_riser_vietnam_2026.webp',
       title: 'Certificate of Completion — AI Riser Vietnam 2026',
       issuer: 'Google for Developers'
     }
@@ -329,7 +329,7 @@ export const projects: Project[] = [
         date: 'Sep 2 – 3, 2026',
         title: 'Studio UI & Failure Simulation',
         description: 'Built the Studio interface — interactive architecture canvas, inspector, simulation strip, proposal drawer and live activity log — visualising 10× flash-sale traffic and cache-outage scenarios with animated request flows and causal bottleneck chains.',
-        image: '/assets/images/architecturelab/cover.jpg'
+        image: '/assets/images/architecturelab/cover.webp'
       }
     ],
     techStack: ['WebMCP', 'React', 'TypeScript', 'Vite', 'Vitest', 'Playwright', 'Vercel'],
@@ -337,10 +337,10 @@ export const projects: Project[] = [
       'Built the human-in-the-loop studio where an AI agent inspects, simulates, and drafts architecture patches through 6 WebMCP tools while only humans can apply them, authoring the 1,300-line product spec, using React, TypeScript, and Vite.',
       'Visualized deterministic failure scenarios (10× flash-sale traffic, cache hit ratio 92% → 0%) on an interactive canvas with animated request flows and causal bottleneck chains, deployed on Vercel.'
     ],
-    images: ['/assets/images/architecturelab/cover.jpg'],
+    images: ['/assets/images/architecturelab/cover.webp'],
     hoverMedia: {
       type: 'image',
-      src: '/assets/images/architecturelab/cover.jpg',
+      src: '/assets/images/architecturelab/cover.webp',
       objectFit: 'contain',
       background: '#1c1f22'
     },
@@ -352,52 +352,53 @@ export const projects: Project[] = [
   },
   {
     id: 'bkai-admissions',
-    title: 'BKAi — Multi-Agent Admissions Counseling System',
+    title: 'BKAi — Multi-Agent Admissions Counselor',
     category: 'Personal Project',
-    period: 'Jan 2026 – Apr 2026',
+    period: 'Jan 2026 – Oct 2026',
     role: 'Full-Stack AI Developer',
-    summary: 'BKAi is an admissions counseling AI for Ho Chi Minh City University of Technology (HCMUT / ĐHQG-HCM). It layers a counselor policy (clarify → retrieve → advise) on top of an Agentic RAG backbone so answers stay grounded in official CSV/Markdown knowledge—not free-form LLM guesses—while supporting multi-turn chat, voice, and an owner evaluation loop.',
-    problem: 'University admission offices are flooded with repetitive queries. Standard AI chatbots suffer from hallucinations on complex guidelines and lack low-latency semantic caching and natural Vietnamese voice interfaces.',
+    summary: 'BKAi is a Vietnamese admissions counselor for Ho Chi Minh City University of Technology (HCMUT), by chat and by voice. A LangGraph supervisor sends each question to Data, Policy and Counsel agents that query typed SQL tables crawled from official hcmut.edu.vn pages and a Qdrant hybrid index; the answer cites its sources, and a deterministic verifier checks every number against the evidence before the student sees it.',
+    problem: 'Students choosing a university face 74 admission codes, 9 programs and cut-offs that change every year and by admission method. The earlier version answered from hand-copied files with no 2026 data, mixed up years (asked about 2025, answered with 2024 scores), could serve another major\'s cached answer, and took 27 s to answer a new question.',
     process: [
       {
-        date: 'Jan 2026',
-        title: 'Multi-Hop Agentic RAG Workflows',
-        description: 'Raised grounded accuracy to ~87% end-to-end on an internal 120-item golden set by shipping multi-hop Agentic RAG with LangGraph, Gemini 3.1 Flash-Lite, hybrid retrieval (ChromaDB + BM25 + BGE reranker), and Pydantic validation.',
-        image: '/assets/images/bkai/chat_ui.png'
+        date: 'May 2026',
+        title: 'Local Agentic RAG',
+        description: 'Started as a local LangGraph RAG over Markdown and CSV files with Ollama models, ChromaDB, BM25 and a Redis cache.',
+        image: '/assets/images/bkai/v5_landing.webp'
       },
       {
-        date: 'Feb 2026',
-        title: 'Redis Semantic Cache Optimization',
-        description: 'Cut repeat-query latency by ~99% from ~6.1s cold pipeline to ~0.04-0.05s cache hits using Redis semantic cache (cosine >= 0.92, 30d TTL) with MiniLM embeddings.',
-        image: '/assets/images/bkai/dashboard_monitoring.png'
+        date: 'Jul 2026',
+        title: 'Gemini, Voice and a Counselor Graph',
+        description: 'Moved to Gemini and a React app, added voice, a golden test set, a counselor graph and an owner review loop for the answer cache.',
+        image: '/assets/images/bkai/v5_answer_trace.webp'
       },
       {
-        date: 'March 2026',
-        title: 'Vietnamese Voice & Docker Privacy',
-        description: 'Delivered multi-turn counseling and Vietnamese voice at ~94% coreference success using LiveKit + Deepgram speech recognition and edge-tts synthesis, keeping ~115 documents (~150 semantic chunks) inside Docker volumes on-prem.',
-        image: '/assets/images/bkai/chat_response.png'
+        date: 'Oct 2026',
+        title: 'Facts-First Multi-Agent Rebuild',
+        description: 'Rebuilt the knowledge base from 16 official pages into 11 fact tables, replaced the pipeline with parallel specialist agents and a number verifier, and measured every claim with committed benchmark reports.',
+        image: '/assets/images/bkai/v5_architecture.webp'
       }
     ],
-    techStack: ['LangGraph', 'Gemini 3.1', 'ChromaDB', 'BM25', 'BGE Reranker', 'Redis', 'LiveKit', 'Deepgram', 'Edge-TTS', 'Docker', 'FastAPI'],
+    techStack: ['LangGraph', 'Gemini 3.5 Flash-Lite', 'Qdrant', 'SQLite', 'MCP', 'AssemblyAI', 'Kokoro TTS', 'FastAPI', 'Redis', 'React 19'],
     outcomes: [
-      'Raised grounded accuracy to ~87% end-to-end on an internal 120-item mixed golden set by shipping a multi-hop Agentic RAG and counselor graph with LangGraph, Gemini 3.1 Flash-Lite, hybrid retrieval engine with ChromaDB + BM25 + BGE reranker, and Pydantic-validated agent I/O.',
-      'Cut repeat-query latency by ~99% from ~6.1s avg cold pipeline to ~0.04–0.05s cache hits, by promoting human-validated answers into a Redis semantic cache (cosine ≥ 0.92, validated TTL 30d) with MiniLM embeddings and automatic correctness labeling on cache hits.',
-      'Delivered multi-turn counseling and Vietnamese voice at ~94% coreference success on 15 dialogue scripts, by combining session-scoped student state, intent-aware query rewriting, LiveKit + Deepgram speech recognition, and edge-tts neural synthesis.',
-      'Secured data privacy by locally hosting ~115 source documents (150 semantic chunks; designed headroom to 10k+ chunks) inside Docker volumes, keeping embeddings and retrieval indexes fully on-prem with zero third-party document egress.'
+      'Answered 8 / 8 real admission cases and 200 / 200 cut-off and quota questions exactly (Wilson 95% ≥ 0.98) by crawling 16 official hcmut.edu.vn pages into 11 typed SQL fact tables and checking every number in an answer against its evidence with a deterministic verifier.',
+      'Made new answers 15× faster (p50 27.3 s → 1.79 s, first token 1.11 s) by running Data, Policy and Counsel agents in parallel under a LangGraph supervisor, with a resolver fast path that skips the LLM, for 1.01 Gemini calls per answer on average.',
+      'Raised retrieval Hit@1 from 0.475 to 0.828 (Hit@5 0.955 on 198 queries) by benchmarking 4 embedding models and 3 rerankers, then shipping Vietnamese_Embedding_v2 with BM25 sparse vectors fused in Qdrant and a tuned bge-reranker-base.',
+      'Shipped full-duplex Vietnamese voice with barge-in (AssemblyAI CER 1.26%, 2.55 s to first audio), an MCP server exposing the same 11 read-only tools, and OWASP LLM 2026 controls that handled 60 / 60 guardrail probes correctly.'
     ],
     images: [
-      '/assets/images/bkai/logo.jpg',
-      '/assets/images/bkai/cover.jpg',
-      '/assets/images/bkai/chat_ui.png',
-      '/assets/images/bkai/chat_response.png',
-      '/assets/images/bkai/dashboard_monitoring.png',
-      '/assets/images/bkai/voice_ui.png'
+      '/assets/images/bkai/v5_landing.webp',
+      '/assets/images/bkai/v5_answer_trace.webp',
+      '/assets/images/bkai/v5_architecture.webp'
     ],
     hoverMedia: {
-      type: 'image',
-      src: '/assets/images/bkai/logo.jpg',
-      objectFit: 'contain'
+      type: 'video',
+      src: '/assets/videos/bkai_teaser.mp4',
+      webmSrc: '/assets/videos/bkai_teaser.webm',
+      poster: '/assets/images/bkai/teaser_poster.webp',
+      objectFit: 'contain',
+      background: 'linear-gradient(#f9f8fb 50%, #fdf9f8 50%)'
     },
+    projectLogo: '/assets/images/bkai/bkai_lockup.webp',
     githubUrl: 'https://github.com/BennedictQuanTon/BKAi-Multi-Agent-Admissions-Counseling-System',
     status: 'active'
   },
@@ -414,13 +415,13 @@ export const projects: Project[] = [
         date: 'March 2026',
         title: 'Interactive 2D Physics Engine',
         description: 'Architected React 19/TypeScript virtual lab integrating Matter.js to render real-time 2D physics mechanics (collisions, gravity) with drag-and-drop experiment configuration.',
-        image: '/assets/images/morphysics/Experience_Morphysics_BKI_UI.jpg'
+        image: '/assets/images/morphysics/Experience_Morphysics_BKI_UI.webp'
       },
       {
         date: 'April 2026',
         title: 'Telemetry Dashboard & Multimodal AI',
         description: 'Engineered a 60 FPS Glassmorphism Telemetry Dashboard via requestAnimationFrame to monitor live physical properties with minimal CPU/GPU overhead. Implemented multimodal AI UI executing API simulations in <3s.',
-        image: '/assets/images/morphysics/Experience_Morphysics_BKI_Team.jpg'
+        image: '/assets/images/morphysics/Experience_Morphysics_BKI_Team.webp'
       }
     ],
     techStack: ['React 19', 'TypeScript', 'Matter.js', 'requestAnimationFrame', 'FastAPI', 'Gemini API', 'Glassmorphism UI', 'Vite'],
@@ -430,25 +431,25 @@ export const projects: Project[] = [
       'AI Chatbot & Architecture: Implemented a multimodal AI UI executing API-driven simulations in <3s. Led the BKI pitch and built a modular 20-experiment library enforcing clean-code standards.'
     ],
     images: [
-      '/assets/images/morphysics/Experience_Morphysics_BKI_UI.jpg',
-      '/assets/images/morphysics/Experience_Morphysics_BKI_Team.jpg'
+      '/assets/images/morphysics/Experience_Morphysics_BKI_UI.webp',
+      '/assets/images/morphysics/Experience_Morphysics_BKI_Team.webp'
     ],
     hoverMedia: {
       type: 'image',
-      src: '/assets/images/morphysics/Experience_Morphysics_BKI_UI.jpg',
+      src: '/assets/images/morphysics/Experience_Morphysics_BKI_UI.webp',
       objectFit: 'contain'
     },
     githubUrl: 'https://github.com/BennedictQuanTon/Morphysics',
     status: 'active',
     competitionName: 'Bach Khoa Innovation 2026 & VYSC 2026',
     organizer: 'HCMUT / VYSC',
-    organizerLogo: '/assets/images/companies/bku_logo.png',
+    organizerLogo: '/assets/images/companies/bku_logo.webp',
     organizerLogos: [
-      '/assets/images/companies/bku_logo.png',
-      '/assets/images/companies/vysc_logo.jpeg'
+      '/assets/images/companies/bku_logo.webp',
+      '/assets/images/companies/vysc_logo.webp'
     ],
     certificate: {
-      image: '/assets/images/certificates/hackathons/vysc_2026_morphysics.jpg',
+      image: '/assets/images/certificates/hackathons/vysc_2026_morphysics.webp',
       title: 'Certificate — Vietnam Youth Start-up Challenge 2026',
       issuer: 'VYSC'
     }
@@ -479,17 +480,17 @@ export const projects: Project[] = [
       'Advanced EDA & Visualization: Leveraged Matplotlib and Seaborn for comprehensive EDA, transforming multidimensional data into clear visualizations to reveal key trends in inventory, promotions, and web traffic.',
       'Business Intelligence & Strategy: Partnered with the HCMUT team to translate technical insights into actionable operational strategies, directly solving core business challenges for a simulated fashion retailer.'
     ],
-    images: ['/assets/images/datathon/Datathon_Logo.jpg'],
+    images: ['/assets/images/datathon/Datathon_Logo.webp'],
     hoverMedia: {
       type: 'image',
-      src: '/assets/images/datathon/Datathon_Logo.jpg',
+      src: '/assets/images/datathon/Datathon_Logo.webp',
       objectFit: 'contain',
       objectPosition: 'center top'
     },
     status: 'active',
     competitionName: 'VinUni Datathon The GridBreakers 2026',
     organizer: 'VinUni',
-    organizerLogo: '/assets/images/companies/vinuni_logo.png'
+    organizerLogo: '/assets/images/companies/vinuni_logo.webp'
   },
   {
     id: 'yourai',
@@ -504,7 +505,7 @@ export const projects: Project[] = [
         date: 'Feb 2026',
         title: 'Enterprise PWA Architecture',
         description: 'Architected a Monorepo academic management platform using FastAPI and React (Vite) as a PWA, achieving >90/100 Google Lighthouse score for instant load times.',
-        image: '/assets/images/yourai/logo.jpg'
+        image: '/assets/images/yourai/logo.webp'
       },
       {
         date: 'March 2026',
@@ -525,11 +526,11 @@ export const projects: Project[] = [
       'Zero-Trust Security & Infrastructure: Enforced strict multi-tenant data isolation using Supabase PostgreSQL Row Level Security (RLS) and JWT. Developed a secure 60s OTP flow with bcrypt hashing and anti-brute force throttling on a highly optimized, zero-cost serverless stack.'
     ],
     images: [
-      '/assets/images/yourai/logo.jpg'
+      '/assets/images/yourai/logo.webp'
     ],
     hoverMedia: {
       type: 'image',
-      src: '/assets/images/yourai/logo.jpg',
+      src: '/assets/images/yourai/logo.webp',
       objectFit: 'contain'
     },
     githubUrl: 'https://github.com/BennedictQuanTon/YourAI',

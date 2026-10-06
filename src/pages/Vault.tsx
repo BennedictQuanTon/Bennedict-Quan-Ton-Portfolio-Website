@@ -7,6 +7,7 @@ import { projects } from '../data/projects';
 import type { Project } from '../types';
 import { genericTechIcon } from '../components/ui/TechLogos';
 import { ProjectMedia } from '../components/ui/ProjectMedia';
+import { PersonalProjectLabel } from '../components/ui/PersonalProjectLabel';
 import { AchievementBadge } from '../components/ui/AchievementBadge';
 import { CertificateFrame } from '../components/ui/CertificateFrame';
 import { Lightbox, type LightboxItem } from '../components/ui/Lightbox';
@@ -141,7 +142,7 @@ export const Vault: React.FC = () => {
                       <div 
                         className="lg:col-span-5 relative w-full aspect-[16/10] lg:aspect-auto md:min-h-[240px] bg-bg-alt/50 overflow-hidden rounded-2xl border border-border-token/30 shrink-0"
                         style={{
-                          backgroundColor: project.hoverMedia.objectFit === 'contain' ? (project.hoverMedia.background ?? '#ffffff') : undefined
+                          background: project.hoverMedia.objectFit === 'contain' ? (project.hoverMedia.background ?? '#ffffff') : undefined
                         }}
                       >
                         {project.status === 'placeholder' ? (
@@ -166,11 +167,13 @@ export const Vault: React.FC = () => {
                           
                           {/* 1. Competition Name (Centered, font-display) or "Personal Project" */}
                           <div className="text-center w-full">
-                            <span className="text-sm sm:text-lg md:text-xl font-bold font-display uppercase tracking-wider text-accent inline-block">
-                              {project.category === 'Competition' && project.competitionName 
-                                ? project.competitionName 
-                                : 'Personal Project'}
-                            </span>
+                            {project.category === 'Competition' && project.competitionName ? (
+                              <span className="text-sm sm:text-lg md:text-xl font-bold font-display uppercase tracking-wider text-accent inline-block">
+                                {project.competitionName}
+                              </span>
+                            ) : (
+                              <PersonalProjectLabel />
+                            )}
                           </div>
 
                           {/* 2. Sub-top Row: Left (Organizer BTC Logos) & Right (Time / Period) */}
@@ -193,6 +196,10 @@ export const Vault: React.FC = () => {
                                     {project.organizer}
                                   </span>
                                 )
+                              ) : project.projectLogo ? (
+                                <div className="h-11 md:h-12 px-4 rounded-xl bg-white p-1.5 flex items-center justify-center border border-border-token/20 shadow-xs hover:scale-105 transition-transform">
+                                  <img src={project.projectLogo} alt={`${project.title} logo`} className="h-full w-auto object-contain" />
+                                </div>
                               ) : (
                                 <span className="text-xs font-semibold text-text-muted bg-surface-2 px-3 py-1.5 rounded-lg">
                                   Independent Build

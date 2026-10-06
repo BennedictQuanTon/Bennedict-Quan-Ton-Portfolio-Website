@@ -38,6 +38,21 @@ export const ProjectMedia: React.FC<ProjectMediaProps> = ({ media, alt, classNam
   }, [media.type]);
 
   if (media.type === 'video') {
+    // A letterboxed video is sized to its own 16:9 box and centred, so its top and
+    // bottom edges can fade into the frame colour instead of showing a hard seam.
+    const fade = 'linear-gradient(to bottom, transparent, #000 10%, #000 90%, transparent)';
+    const letterboxed =
+      media.objectFit === 'contain'
+        ? {
+            top: '50%',
+            bottom: 'auto',
+            height: 'auto',
+            aspectRatio: '16 / 9',
+            translate: '0 -50%',
+            maskImage: fade,
+            WebkitMaskImage: fade,
+          }
+        : {};
     return (
       <video
         ref={videoRef}
@@ -48,7 +63,7 @@ export const ProjectMedia: React.FC<ProjectMediaProps> = ({ media, alt, classNam
         preload="none"
         aria-label={alt}
         className={className}
-        style={style}
+        style={{ ...style, ...letterboxed }}
       >
         {media.webmSrc && <source src={media.webmSrc} type="video/webm" />}
         <source src={media.src} type="video/mp4" />

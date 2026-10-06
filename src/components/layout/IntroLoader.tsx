@@ -1,12 +1,11 @@
 import { useEffect } from 'react';
-import { markIntroDone } from '../../lib/intro';
+import { HERO_PORTRAIT, markIntroDone } from '../../lib/intro';
 
-const HERO_IMAGE = '/assets/images/portrait/NewImage.jpg';
 const SESSION_KEY = 'intro-seen';
 /** Shortest time the full intro stays up, measured from navigation start */
 const FULL_INTRO_MIN_MS = 1500;
 /** Longest we hold the page for slow assets before revealing anyway */
-const ASSET_TIMEOUT_MS = 3200;
+const ASSET_TIMEOUT_MS = 2000;
 /** Matches the #boot clip-path transition in index.html */
 const EXIT_MS = 1000;
 
@@ -15,7 +14,9 @@ const waitForAssets = () => {
   const fonts = document.fonts ? document.fonts.ready.then(() => undefined) : Promise.resolve();
   const image = new Promise<void>((resolve) => {
     const img = new Image();
-    img.src = HERO_IMAGE;
+    img.sizes = HERO_PORTRAIT.sizes;
+    img.srcset = HERO_PORTRAIT.srcSet;
+    img.src = HERO_PORTRAIT.src;
     img.decode().then(() => resolve(), () => resolve());
   });
   const timeout = new Promise<void>((resolve) => setTimeout(resolve, ASSET_TIMEOUT_MS));
