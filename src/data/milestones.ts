@@ -39,7 +39,7 @@ export const milestones: Milestone[] = [
       'Spearheaded the development of a containerized multi-agent AI risk prediction engine',
       'Engineered unified MCP Server gateway and 4-collection RAG Knowledge Layer on an NVIDIA 8x H200 GPU cluster'
     ],
-    image: '/assets/images/weatherise/team_2.jpg',
+    image: '/assets/images/weatherise/team_2.webp',
     highlight: 'Top 10 Finalist'
   },
   {
@@ -53,7 +53,7 @@ export const milestones: Milestone[] = [
       'Merged and cleaned 15 CSV files distributed across Transactional and master layers',
       'Developed inventory optimization models and presented business strategy guidelines'
     ],
-    image: '/assets/images/datathon/Datathon_Logo.jpg',
+    image: '/assets/images/datathon/Datathon_Logo.webp',
     highlight: 'Data Analyst'
   },
   {
@@ -67,7 +67,7 @@ export const milestones: Milestone[] = [
       'Created a 60 FPS glassmorphism telemetry dashboard with requestAnimationFrame',
       'Built a modular 20-experiment library enforcing strict clean-code standards'
     ],
-    image: '/assets/images/morphysics/Experience_Morphysics_BKI_Team.jpg',
+    image: '/assets/images/morphysics/Experience_Morphysics_BKI_Team.webp',
     highlight: 'Bach Khoa Innovation 2026'
   }
 ];

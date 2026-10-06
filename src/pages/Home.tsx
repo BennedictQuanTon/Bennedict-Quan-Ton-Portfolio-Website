@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom';
 import { ArrowUpRight, Download, Brain, User, Cpu, Layers, Terminal, Sparkles, Database, Layout, Trophy, Copy, Check, Award, FolderCode, Calendar, Users } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { ScrollReveal } from '../components/ui/ScrollReveal';
-import { useIntroDone, EASE_OUT_EXPO } from '../lib/intro';
+import { useIntroDone, EASE_OUT_EXPO, HERO_PORTRAIT } from '../lib/intro';
 import { genericTechIcon } from '../components/ui/TechLogos';
 import { ProjectMedia } from '../components/ui/ProjectMedia';
+import { PersonalProjectLabel } from '../components/ui/PersonalProjectLabel';
 import { AchievementBadge } from '../components/ui/AchievementBadge';
 import { TestimonialMarquee } from '../components/ui/TestimonialMarquee';
 import { JourneyPreview } from '../components/sections/JourneyPreview';
@@ -15,7 +16,7 @@ import { projects } from '../data/projects';
 import type { Project } from '../types';
 
 // Projects highlighted on the home page, in display order
-const FEATURED_PROJECT_IDS = ['weatherise', 'the-lantern', 'amd-token-agent'];
+const FEATURED_PROJECT_IDS = ['weatherise', 'the-lantern', 'bkai-admissions'];
 const featuredProjects = FEATURED_PROJECT_IDS
   .map((id) => projects.find((p) => p.id === id))
   .filter((p): p is Project => Boolean(p));
@@ -167,7 +168,9 @@ export const Home: React.FC = () => {
           transition={{ duration: 1.5, ease: EASE_OUT_EXPO }}
         >
           <img
-            src="/assets/images/portrait/NewImage.jpg"
+            src={HERO_PORTRAIT.src}
+            srcSet={HERO_PORTRAIT.srcSet}
+            sizes={HERO_PORTRAIT.sizes}
             alt="Long Quan Ton"
             className="w-full h-full object-cover"
             style={{ objectPosition: '76% 15%', transform: 'scale(0.82)', transformOrigin: 'center top' }}
@@ -236,7 +239,9 @@ export const Home: React.FC = () => {
                 transition={{ duration: 1, ease: EASE_OUT_EXPO }}
               >
                 <motion.img
-                  src="/assets/images/portrait/NewImage.jpg"
+                  src={HERO_PORTRAIT.src}
+                  srcSet={HERO_PORTRAIT.srcSet}
+                  sizes={HERO_PORTRAIT.sizes}
                   alt="Long Quan Ton"
                   className="w-full h-full object-cover"
                   style={{ objectPosition: '50% 18%' }}
@@ -383,7 +388,7 @@ export const Home: React.FC = () => {
               {/* Portrait container */}
               <div className="relative portrait-frame portrait-glow portrait-float w-full aspect-[4/4.8] rounded-[1.5rem] overflow-hidden border border-border-token/25">
                 <img
-                  src="/assets/images/portrait/Myself_Best_Potrait.jpg"
+                  src="/assets/images/portrait/Myself_Best_Potrait.webp"
                   alt="Long Quan Ton — AI Engineer Intern"
                   loading="lazy"
                   className="w-full h-full object-cover object-center"
@@ -424,7 +429,7 @@ export const Home: React.FC = () => {
             </ScrollReveal>
           </div>
 
-          {/* Vertical Stacked Projects List (Featured: Weatherise, The Lantern, AMD) */}
+          {/* Vertical Stacked Projects List (Featured: Weatherise, The Lantern, BKAi) */}
           <div className="w-full flex flex-col space-y-8">
             {featuredProjects.map((project, idx) => (
               <ScrollReveal key={project.id} direction="up" delay={idx * 0.05}>
@@ -435,7 +440,7 @@ export const Home: React.FC = () => {
                     <div 
                       className="lg:col-span-5 relative w-full aspect-[16/10] lg:aspect-auto md:min-h-[240px] bg-bg-alt/50 overflow-hidden rounded-2xl border border-border-token/30 shrink-0"
                       style={{
-                        backgroundColor: project.hoverMedia.objectFit === 'contain' ? (project.hoverMedia.background ?? '#ffffff') : undefined
+                        background: project.hoverMedia.objectFit === 'contain' ? (project.hoverMedia.background ?? '#ffffff') : undefined
                       }}
                     >
                       {project.status === 'placeholder' ? (
@@ -460,11 +465,13 @@ export const Home: React.FC = () => {
                         
                         {/* 1. Competition Name (Centered, font-display, larger size) or "Personal Project" */}
                         <div className="text-center w-full">
-                          <span className="text-sm sm:text-lg md:text-xl font-bold font-display uppercase tracking-wider text-accent inline-block">
-                            {project.category === 'Competition' && project.competitionName 
-                              ? project.competitionName 
-                              : 'Personal Project'}
-                          </span>
+                          {project.category === 'Competition' && project.competitionName ? (
+                            <span className="text-sm sm:text-lg md:text-xl font-bold font-display uppercase tracking-wider text-accent inline-block">
+                              {project.competitionName}
+                            </span>
+                          ) : (
+                            <PersonalProjectLabel />
+                          )}
                         </div>
 
                         {/* 2. Sub-top Row: Left (Organizer Logos) & Right (Time / Period) */}
@@ -487,6 +494,10 @@ export const Home: React.FC = () => {
                                   {project.organizer}
                                 </span>
                               )
+                            ) : project.projectLogo ? (
+                              <div className="h-11 md:h-12 px-4 rounded-xl bg-white p-1.5 flex items-center justify-center border border-border-token/20 shadow-xs hover:scale-105 transition-transform">
+                                <img src={project.projectLogo} alt={`${project.title} logo`} className="h-full w-auto object-contain" />
+                              </div>
                             ) : (
                               <span className="text-xs font-semibold text-text-muted bg-surface-2 px-3 py-1.5 rounded-lg">
                                 Independent Build
@@ -529,13 +540,13 @@ export const Home: React.FC = () => {
                           {/* Tech Stack inside content box (Tech Stack: label on exact same line as badges) */}
                           <div className="flex flex-wrap items-center gap-2 md:gap-2.5 text-sm md:text-base font-semibold pt-3.5 border-t border-border-token/15">
                             <span className="font-bold text-text-heading shrink-0 mr-1">Tech Stack:</span>
-                            {project.techStack.slice(0, 8).map((tech, tIdx) => (
+                            {(project.cardStack ?? project.techStack).slice(0, 8).map((tech, tIdx) => (
                               <span key={tech} className={`${tIdx >= 5 ? 'hidden md:inline-flex' : 'inline-flex'} text-xs md:text-sm font-medium bg-bg border border-border-token/30 px-2.5 md:px-3.5 py-1 md:py-1.5 rounded-lg text-text-heading group-hover:border-accent/40 group-hover:text-accent transition-colors duration-200`}>
                                 {tech}
                               </span>
                             ))}
-                            {project.techStack.length > 5 && (
-                              <span className="md:hidden text-xs font-semibold text-text-muted px-1">+{project.techStack.length - 5}</span>
+                            {(project.cardStack ?? project.techStack).length > 5 && (
+                              <span className="md:hidden text-xs font-semibold text-text-muted px-1">+{(project.cardStack ?? project.techStack).length - 5}</span>
                             )}
                           </div>
                         </div>

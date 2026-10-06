@@ -103,9 +103,9 @@ export const JourneyPreview: React.FC = () => (
               ))}
               {/* Universities, shown as they are — no tiles */}
               <div className="flex items-center justify-center gap-6 md:gap-8">
-                <img src="/assets/images/companies/uts_logo.png" alt="University of Technology Sydney" loading="lazy" className="h-11 md:h-14 w-auto object-contain dark:invert" />
+                <img src="/assets/images/companies/uts_logo.webp" alt="University of Technology Sydney" loading="lazy" className="h-11 md:h-14 w-auto object-contain dark:invert" />
                 <span className="h-12 w-px bg-border-token" />
-                <img src="/assets/images/companies/bku_logo.png" alt="Ho Chi Minh City University of Technology" loading="lazy" className="h-12 md:h-14 w-auto object-contain" />
+                <img src="/assets/images/companies/bku_logo.webp" alt="Ho Chi Minh City University of Technology" loading="lazy" className="h-12 md:h-14 w-auto object-contain" />
               </div>
             </div>
           </Link>

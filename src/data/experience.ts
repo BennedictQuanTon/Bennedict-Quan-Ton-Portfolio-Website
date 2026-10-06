@@ -25,7 +25,7 @@ export const experiences: WorkExperience[] = [
   {
     id: 'hcmut-ai-research-assistant',
     company: 'Ho Chi Minh City University of Technology (HCMUT)',
-    companyLogo: '/assets/images/companies/bku_logo.png',
+    companyLogo: '/assets/images/companies/bku_logo.webp',
     companyPhoto: undefined,
     location: 'Ho Chi Minh City, Vietnam',
     role: 'AI Research Assistant',
@@ -47,7 +47,7 @@ export const experiences: WorkExperience[] = [
   {
     id: 'globaltech-annotator',
     company: 'GlobalTech SJC VietNam',
-    companyLogo: '/assets/images/companies/globaltech_logo.jpg',
+    companyLogo: '/assets/images/companies/globaltech_logo.webp',
     companyPhoto: undefined, // placeholder
     location: 'Ho Chi Minh City, Vietnam',
     role: 'Data Annotator and Quality Control',

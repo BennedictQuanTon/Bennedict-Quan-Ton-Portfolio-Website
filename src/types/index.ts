@@ -16,8 +16,16 @@ export interface Project {
   summary: string;
   problem: string;
   process: TimelineStep[];
+  /** Full stack, listed in the details view */
   techStack: string[];
+  /** Shorter core stack for the project card; falls back to techStack */
+  cardStack?: string[];
   outcomes: string[];
+  /** Product screenshots shown in the details view, opened in the lightbox */
+  screens?: {
+    src: string;
+    caption: string;
+  }[];
   images: string[];
   hoverMedia: {
     type: 'image' | 'video';
@@ -29,7 +37,7 @@ export interface Project {
     poster?: string;
     objectPosition?: string;
     objectFit?: 'cover' | 'contain';
-    /** Frame colour behind 'contain' media; defaults to white */
+    /** Frame colour (or CSS gradient) behind 'contain' media; defaults to white */
     background?: string;
   };
   githubUrl?: string;
@@ -48,6 +56,8 @@ export interface Project {
   };
   /** Project posters, shown side by side in the details view (landscape first, then portrait) */
   posters?: string[];
+  /** Personal projects: the project's own logo, shown where competitions show the organizer's */
+  projectLogo?: string;
   competitionName?: string;
   organizer?: string;
   organizerLogo?: string;

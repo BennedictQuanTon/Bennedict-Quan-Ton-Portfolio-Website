@@ -7,6 +7,7 @@ import { projects } from '../data/projects';
 import type { Project } from '../types';
 import { genericTechIcon } from '../components/ui/TechLogos';
 import { ProjectMedia } from '../components/ui/ProjectMedia';
+import { PersonalProjectLabel } from '../components/ui/PersonalProjectLabel';
 import { AchievementBadge } from '../components/ui/AchievementBadge';
 import { CertificateFrame } from '../components/ui/CertificateFrame';
 import { Lightbox, type LightboxItem } from '../components/ui/Lightbox';
@@ -141,7 +142,7 @@ export const Vault: React.FC = () => {
                       <div 
                         className="lg:col-span-5 relative w-full aspect-[16/10] lg:aspect-auto md:min-h-[240px] bg-bg-alt/50 overflow-hidden rounded-2xl border border-border-token/30 shrink-0"
                         style={{
-                          backgroundColor: project.hoverMedia.objectFit === 'contain' ? (project.hoverMedia.background ?? '#ffffff') : undefined
+                          background: project.hoverMedia.objectFit === 'contain' ? (project.hoverMedia.background ?? '#ffffff') : undefined
                         }}
                       >
                         {project.status === 'placeholder' ? (
@@ -166,11 +167,13 @@ export const Vault: React.FC = () => {
                           
                           {/* 1. Competition Name (Centered, font-display) or "Personal Project" */}
                           <div className="text-center w-full">
-                            <span className="text-sm sm:text-lg md:text-xl font-bold font-display uppercase tracking-wider text-accent inline-block">
-                              {project.category === 'Competition' && project.competitionName 
-                                ? project.competitionName 
-                                : 'Personal Project'}
-                            </span>
+                            {project.category === 'Competition' && project.competitionName ? (
+                              <span className="text-sm sm:text-lg md:text-xl font-bold font-display uppercase tracking-wider text-accent inline-block">
+                                {project.competitionName}
+                              </span>
+                            ) : (
+                              <PersonalProjectLabel />
+                            )}
                           </div>
 
                           {/* 2. Sub-top Row: Left (Organizer BTC Logos) & Right (Time / Period) */}
@@ -193,6 +196,10 @@ export const Vault: React.FC = () => {
                                     {project.organizer}
                                   </span>
                                 )
+                              ) : project.projectLogo ? (
+                                <div className="h-11 md:h-12 px-4 rounded-xl bg-white p-1.5 flex items-center justify-center border border-border-token/20 shadow-xs hover:scale-105 transition-transform">
+                                  <img src={project.projectLogo} alt={`${project.title} logo`} className="h-full w-auto object-contain" />
+                                </div>
                               ) : (
                                 <span className="text-xs font-semibold text-text-muted bg-surface-2 px-3 py-1.5 rounded-lg">
                                   Independent Build
@@ -235,13 +242,13 @@ export const Vault: React.FC = () => {
                             {/* Tech Stack inside content box (Tech Stack: label on exact same line as badges) */}
                             <div className="flex flex-wrap items-center gap-2 md:gap-2.5 text-sm md:text-base font-semibold pt-3.5 border-t border-border-token/15">
                               <span className="font-bold text-text-heading shrink-0 mr-1">Tech Stack:</span>
-                              {project.techStack.slice(0, 8).map((tech, tIdx) => (
+                              {(project.cardStack ?? project.techStack).slice(0, 8).map((tech, tIdx) => (
                                 <span key={tech} className={`${tIdx >= 5 ? 'hidden md:inline-flex' : 'inline-flex'} text-xs md:text-sm font-medium bg-bg border border-border-token/30 px-2.5 md:px-3.5 py-1 md:py-1.5 rounded-lg text-text-heading group-hover:border-accent/40 group-hover:text-accent transition-colors duration-200`}>
                                   {tech}
                                 </span>
                               ))}
-                              {project.techStack.length > 5 && (
-                                <span className="md:hidden text-xs font-semibold text-text-muted px-1">+{project.techStack.length - 5}</span>
+                              {(project.cardStack ?? project.techStack).length > 5 && (
+                                <span className="md:hidden text-xs font-semibold text-text-muted px-1">+{(project.cardStack ?? project.techStack).length - 5}</span>
                               )}
                             </div>
                           </div>
@@ -472,6 +479,40 @@ export const Vault: React.FC = () => {
                     )}
                   </div>
                 </div>
+
+                {/* Product screens: the first full width, the rest side by side in matching
+                    16:10 tiles (tall screens show their top; the lightbox shows them whole) */}
+                {selectedProject.screens && selectedProject.screens.length > 0 && (
+                  <div className="space-y-3 pt-6 border-t border-border-token/30">
+                    <h3 className="text-sm uppercase font-bold tracking-widest text-text-heading">
+                      Product Screens
+                    </h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
+                      {selectedProject.screens.map((screen, idx) => (
+                        <button
+                          key={screen.src}
+                          type="button"
+                          onClick={() => setLightboxItem({
+                            src: screen.src,
+                            title: `${selectedProject.title} — ${screen.caption}`,
+                          })}
+                          className={`group/screen text-left space-y-2 cursor-zoom-in ${idx === 0 ? 'md:col-span-2' : ''}`}
+                          aria-label={`View ${screen.caption}`}
+                        >
+                          <div className={`overflow-hidden rounded-xl border border-border-token/40 bg-bg-alt/40 ${idx === 0 ? '' : 'aspect-[16/10]'}`}>
+                            <img
+                              src={screen.src}
+                              alt={screen.caption}
+                              loading="lazy"
+                              className={`block w-full transition-transform duration-500 group-hover/screen:scale-[1.02] ${idx === 0 ? 'h-auto' : 'h-full object-cover object-top'}`}
+                            />
+                          </div>
+                          <span className="block text-xs font-medium text-text-muted">{screen.caption}</span>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
 
                 {/* Project posters: landscape and portrait side by side at roughly equal height
                     (17fr : 7fr balances a framed 16:9 poster against a framed 2:3 one) */}
