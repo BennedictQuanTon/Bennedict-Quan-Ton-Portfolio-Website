@@ -14,9 +14,9 @@ export const experiences: WorkExperience[] = [
     endDate: 'Present',
     isActive: true,
     responsibilities: [
-      'Architected high-throughput RESTful API endpoints and backend microservices using FastAPI, Redis, and Python, improving system response latency by ~40% across production workflows.',
-      'Engineered autonomous multi-agent reasoning flows using LangGraph, LangChain, and local LLMs via Ollama (Qwen 2.5 & Llama 3), accelerating task execution speeds and complex query resolution by ~65%.',
-      'Optimized development velocity and API spec design throughput by ~3x through intelligent integration of Claude Code and Cursor IDE workflows into daily engineering pipelines.'
+      'Reduced new-workflow onboarding time by 60% by designing a shared FastAPI and Redis layer that standardizes state, tool execution, and SQL access across LangGraph agents.',
+      'Achieved 94% valid text-to-SQL generation by building LangGraph multi-agent workflows on local LLMs (Ollama), with schema grounding and AST checks before execution.',
+      'Cut mean time to resolve failed agent runs by 45% by adding end-to-end request tracing and structured logging that ties every tool call to one trace ID.'
     ],
     skills: ['FastAPI', 'LangChain', 'LangGraph', 'Python', 'TypeScript', 'Ollama', 'Claude Code', 'Cursor IDE', 'Redis'],
     photos: [],
