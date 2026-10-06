@@ -383,7 +383,7 @@ export const projects: Project[] = [
       'Redis', 'AssemblyAI', 'Kokoro TTS', 'Whisper', 'LiveKit', 'Playwright', 'FastAPI', 'Pydantic', 'WebSockets',
       'React 19', 'TypeScript', 'Vite', 'Tailwind CSS', 'Framer Motion', 'Docker', 'Caddy'
     ],
-    cardStack: ['LangGraph', 'MCP', 'Gemini 3.5 Flash-Lite', 'Qdrant', 'AssemblyAI', 'LiveKit'],
+    cardStack: ['LangGraph', 'Gemini 3.5 Flash-Lite', 'Qdrant', 'SQLite', 'MCP', 'AssemblyAI', 'Kokoro TTS', 'FastAPI', 'Redis', 'React 19'],
     outcomes: [
       'Architected a LangGraph multi-agent Agentic RAG counselor (Supervisor → Data/Policy/Counsel agents → Synthesizer → deterministic Verifier), achieving 200/200 exact-match answers on numeric admission questions (Wilson 95% CI ≥ 0.98) and 8/8 real counseling cases, by routing every score and quota to typed SQL tools over an 11-table fact DB and rejecting any number absent from the evidence.',
       'Slashed cold-answer latency 15× (p50 27.3 s → 1.79 s; time-to-first-token 17.7 s → 1.11 s) at just 1.01 LLM calls per answer, by adding a zero-LLM fast path to the supervisor, WebSocket token streaming and quota-aware Gemini failover; sustained a steady-state p50 of 1.7 s across 792 logged requests.',
