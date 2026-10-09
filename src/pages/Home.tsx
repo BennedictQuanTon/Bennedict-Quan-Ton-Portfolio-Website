@@ -88,7 +88,7 @@ export const Home: React.FC = () => {
       icon: <FolderCode size={20} className="text-accent" /> 
     },
     { 
-      value: '7+', 
+      value: '8+', 
       label: 'AI Certifications', 
       sublabel: 'IBM · AWS · Stanford Online · DeepLearning.AI · Kaggle', 
       icon: <Award size={20} className="text-accent" /> 

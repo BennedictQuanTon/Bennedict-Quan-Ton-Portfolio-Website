@@ -105,6 +105,13 @@ export const certifications: Credential[] = [
     date: 'Jun 2026',
     image: `${DIR}/professional/kaggle_intro_ml.jpg`,
   },
+  {
+    id: 'fpt-talent-assessment',
+    title: 'FPT Talent Assessment',
+    issuer: 'FPT Software',
+    date: 'Oct 2026',
+    image: `${DIR}/professional/fpt_talent_assessment.jpg`,
+  },
 ];
 
 export const courseProviders: CourseProvider[] = [
