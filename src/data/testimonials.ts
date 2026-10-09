@@ -53,6 +53,39 @@ export const testimonials: Testimonial[] = [
     quote: 'A great teammate with responsibility, good leadership and willing to learn new things.',
     approved: true,
   },
+  {
+    id: 'the-hieu-nguyen',
+    name: 'The Hieu Nguyen',
+    avatar: `${DIR}/the-hieu-nguyen.jpg`,
+    relation: 'Research Advisor · AAC-Bench first author',
+    detail: 'AI TechLab · AI Engineer, Zalo AI',
+    quote: import.meta.env.DEV
+      ? 'Quan is enthusiastic and proactive, with strong engineering skills. He is always open to feedback and genuinely eager to learn.'
+      : '',
+    approved: false,
+  },
+  {
+    id: 'thai-minh-truong',
+    name: 'Thai Minh Truong',
+    avatar: `${DIR}/thai-minh-truong.jpg`,
+    relation: 'Supervisor · Course & innovation project',
+    detail: 'PhD · Lecturer, HCMUT',
+    quote: import.meta.env.DEV
+      ? 'Quan shows strong commitment, enthusiasm and a high sense of responsibility. He collaborates well, communicates fluently in English, and delivers high-quality results on time.'
+      : '',
+    approved: false,
+  },
+  {
+    id: 'tran-nguyen',
+    name: 'Tran Nguyen',
+    avatar: `${DIR}/tran-nguyen.jpg`,
+    relation: 'Student support · UTS',
+    detail: 'Administrative Officer · UTS',
+    quote: import.meta.env.DEV
+      ? 'Quan is proactive in seeking solutions and never hesitates to ask questions. His curiosity, persistence and drive to keep improving give him strong potential for growth.'
+      : '',
+    approved: false,
+  },
 ];
 
 /** Testimonials that may be displayed in the current build */
