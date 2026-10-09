@@ -41,10 +41,9 @@ export const testimonials: Testimonial[] = [
     avatar: `${DIR}/the-hieu-pham.jpg`,
     relation: 'Research Advisor · AITechLab',
     detail: 'AI Engineer at Zalo',
-    quote: import.meta.env.DEV
-      ? 'Quan is enthusiastic, proactive and a strong engineer. He takes feedback on board quickly and is genuinely eager to learn.'
-      : '',
-    approved: false,
+    quote:
+      'Quan is enthusiastic, proactive and a strong engineer. He takes feedback on board quickly and is genuinely eager to learn.',
+    approved: true,
   },
   {
     id: 'yoshio-nomura',
@@ -62,10 +61,9 @@ export const testimonials: Testimonial[] = [
     avatar: `${DIR}/thai-minh-truong.jpg`,
     relation: 'Supervisor · Course & innovation project',
     detail: 'PhD · Lecturer, HCMUT',
-    quote: import.meta.env.DEV
-      ? 'An ambitious student with strong commitment and a high sense of responsibility. He collaborates well, communicates fluently in English, and consistently delivers high-quality work on time.'
-      : '',
-    approved: false,
+    quote:
+      'An ambitious student with strong commitment and a high sense of responsibility. He collaborates well, communicates fluently in English, and consistently delivers high-quality work on time.',
+    approved: true,
   },
   {
     id: 'thanh-loi-tran',
@@ -81,10 +79,9 @@ export const testimonials: Testimonial[] = [
     name: 'Tran Nguyen',
     relation: 'Student support · UTS',
     detail: 'Administrative Officer · UTS',
-    quote: import.meta.env.DEV
-      ? 'Proactive in seeking solutions and never hesitant to ask questions. His curiosity, persistence and drive to keep improving, as a student and as a young professional, give him strong potential.'
-      : '',
-    approved: false,
+    quote:
+      'Proactive in seeking solutions and never hesitant to ask questions. His curiosity, persistence and drive to keep improving, as a student and as a young professional, give him strong potential.',
+    approved: true,
   },
 ];
 
