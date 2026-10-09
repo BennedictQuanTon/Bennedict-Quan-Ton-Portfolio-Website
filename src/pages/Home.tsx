@@ -87,7 +87,7 @@ export const Home: React.FC = () => {
       icon: <FolderCode size={20} className="text-accent" /> 
     },
     { 
-      value: '7+', 
+      value: '8+', 
       label: 'AI Certifications', 
       sublabel: 'IBM · AWS · Stanford Online · DeepLearning.AI · Kaggle', 
       icon: <Award size={20} className="text-accent" /> 
@@ -721,7 +721,7 @@ export const Home: React.FC = () => {
                 What collaborators say
               </h2>
               <p className="text-sm md:text-base text-text-muted mt-4 max-w-xl leading-relaxed">
-                Feedback from the teammates I have built with.
+                Feedback from the teammates, advisors and lecturers I have worked with.
               </p>
             </ScrollReveal>
           </div>

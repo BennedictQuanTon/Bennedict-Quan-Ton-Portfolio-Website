@@ -203,7 +203,7 @@ export const Education: React.FC = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-14">
             {certifications.map((cert, idx) => (
               <ScrollReveal key={cert.id} direction="up" delay={(idx % 3) * 0.06}>
-                <CertificateFrame src={cert.image} alt={cert.title} onOpen={() => setLightboxItem(toLightbox(cert))} />
+                <CertificateFrame src={cert.image} alt={cert.title} aspect="aspect-[4/3]" onOpen={() => setLightboxItem(toLightbox(cert))} />
                 <Plaque credential={cert} />
               </ScrollReveal>
             ))}

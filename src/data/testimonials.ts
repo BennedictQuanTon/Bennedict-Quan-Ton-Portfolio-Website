@@ -1,7 +1,8 @@
 export interface Testimonial {
   id: string;
   name: string;
-  avatar: string;
+  /** Omit when the person prefers not to share a photo; their initials are shown instead */
+  avatar?: string;
   /** Relationship to me, e.g. "Teammate · 5 projects together" */
   relation: string;
   /** Second line under the name: job title & company, or cohort */
@@ -35,6 +36,17 @@ export const testimonials: Testimonial[] = [
     approved: true,
   },
   {
+    id: 'the-hieu-pham',
+    name: 'The Hieu Pham',
+    avatar: `${DIR}/the-hieu-pham.jpg`,
+    relation: 'Research Advisor · AITechLab',
+    detail: 'AI Engineer at Zalo',
+    quote: import.meta.env.DEV
+      ? 'Quan is enthusiastic, proactive and a strong engineer. He takes feedback on board quickly and is genuinely eager to learn.'
+      : '',
+    approved: false,
+  },
+  {
     id: 'yoshio-nomura',
     name: 'Yoshio Nomura',
     avatar: `${DIR}/yoshio-nomura.jpg`,
@@ -45,6 +57,17 @@ export const testimonials: Testimonial[] = [
     approved: true,
   },
   {
+    id: 'thai-minh-truong',
+    name: 'Thai Minh Truong',
+    avatar: `${DIR}/thai-minh-truong.jpg`,
+    relation: 'Supervisor · Course & innovation project',
+    detail: 'PhD · Lecturer, HCMUT',
+    quote: import.meta.env.DEV
+      ? 'An ambitious student with strong commitment and a high sense of responsibility. He collaborates well, communicates fluently in English, and consistently delivers high-quality work on time.'
+      : '',
+    approved: false,
+  },
+  {
     id: 'thanh-loi-tran',
     name: 'Thanh Loi Tran',
     avatar: `${DIR}/thanh-loi-tran.jpg`,
@@ -52,6 +75,16 @@ export const testimonials: Testimonial[] = [
     detail: 'Bachelor of AI · UTS × HCMUT',
     quote: 'A great teammate with responsibility, good leadership and willing to learn new things.',
     approved: true,
+  },
+  {
+    id: 'tran-nguyen',
+    name: 'Tran Nguyen',
+    relation: 'Student support · UTS',
+    detail: 'Administrative Officer · UTS',
+    quote: import.meta.env.DEV
+      ? 'Proactive in seeking solutions and never hesitant to ask questions. His curiosity, persistence and drive to keep improving, as a student and as a young professional, give him strong potential.'
+      : '',
+    approved: false,
   },
 ];
 

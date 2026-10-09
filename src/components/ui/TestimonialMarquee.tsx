@@ -9,12 +9,21 @@ const TestimonialCard: React.FC<{ t: Testimonial; className?: string }> = ({ t, 
       <blockquote className="text-sm md:text-base text-text-body leading-relaxed">“{t.quote}”</blockquote>
     </div>
     <figcaption className="flex items-center gap-3.5 pt-5 border-t border-border-token/20">
-      <img
-        src={t.avatar}
-        alt={t.name}
-        loading="lazy"
-        className="w-12 h-12 rounded-full object-cover object-top shrink-0 ring-1 ring-border-token"
-      />
+      {t.avatar ? (
+        <img
+          src={t.avatar}
+          alt={t.name}
+          loading="lazy"
+          className="w-12 h-12 rounded-full object-cover object-top shrink-0 ring-1 ring-border-token"
+        />
+      ) : (
+        <span
+          aria-hidden="true"
+          className="w-12 h-12 rounded-full shrink-0 ring-1 ring-accent/20 bg-accent-dim text-accent font-display font-bold text-base flex items-center justify-center"
+        >
+          {t.name.split(' ').map((part) => part[0]).join('').slice(0, 2)}
+        </span>
+      )}
       <div className="min-w-0">
         <p className="text-sm md:text-base font-bold text-text-heading leading-tight">{t.name}</p>
         <p className="text-xs font-semibold text-accent mt-1 leading-snug">{t.relation}</p>
