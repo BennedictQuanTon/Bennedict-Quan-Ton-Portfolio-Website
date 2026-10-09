@@ -1,7 +1,8 @@
 export interface Testimonial {
   id: string;
   name: string;
-  avatar: string;
+  /** Omit when the person prefers not to share a photo; their initials are shown instead */
+  avatar?: string;
   /** Relationship to me, e.g. "Teammate · 5 projects together" */
   relation: string;
   /** Second line under the name: job title & company, or cohort */
@@ -35,6 +36,17 @@ export const testimonials: Testimonial[] = [
     approved: true,
   },
   {
+    id: 'the-hieu-pham',
+    name: 'The Hieu Pham',
+    avatar: `${DIR}/the-hieu-pham.jpg`,
+    relation: 'Research Advisor · AITechLab',
+    detail: 'AI Engineer at Zalo',
+    quote: import.meta.env.DEV
+      ? 'Quan is enthusiastic, proactive and a strong engineer. He takes feedback on board quickly and is genuinely eager to learn.'
+      : '',
+    approved: false,
+  },
+  {
     id: 'yoshio-nomura',
     name: 'Yoshio Nomura',
     avatar: `${DIR}/yoshio-nomura.jpg`,
@@ -43,6 +55,17 @@ export const testimonials: Testimonial[] = [
     quote:
       'Five projects in, Quan is still the teammate I want on a deadline. He sets a clear direction, stays open to every idea on the table, and keeps polishing until the demo is right.',
     approved: true,
+  },
+  {
+    id: 'thai-minh-truong',
+    name: 'Thai Minh Truong',
+    avatar: `${DIR}/thai-minh-truong.jpg`,
+    relation: 'Supervisor · Course & innovation project',
+    detail: 'PhD · Lecturer, HCMUT',
+    quote: import.meta.env.DEV
+      ? 'An ambitious student with strong commitment and a high sense of responsibility. He collaborates well, communicates fluently in English, and consistently delivers high-quality work on time.'
+      : '',
+    approved: false,
   },
   {
     id: 'thanh-loi-tran',
@@ -54,35 +77,12 @@ export const testimonials: Testimonial[] = [
     approved: true,
   },
   {
-    id: 'the-hieu-nguyen',
-    name: 'The Hieu Nguyen',
-    avatar: `${DIR}/the-hieu-nguyen.jpg`,
-    relation: 'Research Advisor · AAC-Bench first author',
-    detail: 'AI TechLab · AI Engineer, Zalo AI',
-    quote: import.meta.env.DEV
-      ? 'Quan is enthusiastic and proactive, with strong engineering skills. He is always open to feedback and genuinely eager to learn.'
-      : '',
-    approved: false,
-  },
-  {
-    id: 'thai-minh-truong',
-    name: 'Thai Minh Truong',
-    avatar: `${DIR}/thai-minh-truong.jpg`,
-    relation: 'Supervisor · Course & innovation project',
-    detail: 'PhD · Lecturer, HCMUT',
-    quote: import.meta.env.DEV
-      ? 'Quan shows strong commitment, enthusiasm and a high sense of responsibility. He collaborates well, communicates fluently in English, and delivers high-quality results on time.'
-      : '',
-    approved: false,
-  },
-  {
     id: 'tran-nguyen',
     name: 'Tran Nguyen',
-    avatar: `${DIR}/tran-nguyen.jpg`,
     relation: 'Student support · UTS',
     detail: 'Administrative Officer · UTS',
     quote: import.meta.env.DEV
-      ? 'Quan is proactive in seeking solutions and never hesitates to ask questions. His curiosity, persistence and drive to keep improving give him strong potential for growth.'
+      ? 'Proactive in seeking solutions and never hesitant to ask questions. His curiosity, persistence and drive to keep improving, as a student and as a young professional, give him strong potential.'
       : '',
     approved: false,
   },
