@@ -110,8 +110,8 @@ export const Journey: React.FC = () => {
                 </div>
 
                 {exp.certificate && (
-                  <div className="mt-8 pt-8 border-t border-border-token/15">
-                    <div className="max-w-3xl">
+                  <div className="mt-8 pt-8 border-t border-border-token/15 grid grid-cols-1 md:grid-cols-12 gap-8">
+                    <div className="md:col-start-6 md:col-span-7 max-w-xl">
                       <CertificateFrame
                         src={exp.certificate.image}
                         alt={exp.certificate.title}
