@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Calendar, MapPin, Briefcase, GraduationCap, CheckCircle, Award, Image as ImageIcon } from 'lucide-react';
 import { ScrollReveal } from '../components/ui/ScrollReveal';
+import { CertificateFrame } from '../components/ui/CertificateFrame';
+import { Lightbox, type LightboxItem } from '../components/ui/Lightbox';
 import { experiences } from '../data/experience';
 import { milestones } from '../data/milestones';
 
 export const Journey: React.FC = () => {
+  const [lightboxItem, setLightboxItem] = useState<LightboxItem | null>(null);
+
   return (
     <div className="w-full min-h-screen bg-bg text-text-body flex flex-col items-center overflow-x-hidden">
       <div className="w-full max-w-6xl xl:max-w-[1440px] 2xl:max-w-[1600px] mx-auto px-4 md:px-8 lg:px-12 pt-6 pb-6 md:pt-24 md:pb-8 flex flex-col items-center">
@@ -105,6 +109,24 @@ export const Journey: React.FC = () => {
                   </div>
                 </div>
 
+                {exp.certificate && (
+                  <div className="mt-8 pt-8 border-t border-border-token/15">
+                    <div className="max-w-3xl">
+                      <CertificateFrame
+                        src={exp.certificate.image}
+                        alt={exp.certificate.title}
+                        aspect="aspect-[1600/1131]"
+                        onOpen={() => setLightboxItem({
+                          src: exp.certificate!.image,
+                          title: exp.certificate!.title,
+                          subtitle: exp.certificate!.issuer,
+                        })}
+                      />
+                      <p className="pt-4 text-sm md:text-base font-semibold text-text-heading">{exp.certificate.title}</p>
+                      <p className="text-sm text-text-muted mt-1">{exp.certificate.issuer}</p>
+                    </div>
+                  </div>
+                )}
 
               </div>
             </ScrollReveal>
@@ -183,6 +205,7 @@ export const Journey: React.FC = () => {
         </div>
       </section>
       </div>
+      <Lightbox item={lightboxItem} onClose={() => setLightboxItem(null)} />
     </div>
   );
 };

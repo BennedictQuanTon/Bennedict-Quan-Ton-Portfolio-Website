@@ -7,12 +7,12 @@ export const experiences: WorkExperience[] = [
     companyLogo: '/assets/images/companies/flyrank_logo.svg',
     companyPhoto: undefined,
     location: 'Ho Chi Minh City, Vietnam',
-    role: 'Backend AI Engineering Intern',
+    role: 'AI Engineering Intern',
     type: 'Internship',
     mode: 'Remote',
-    startDate: 'August 2026',
-    endDate: 'Present',
-    isActive: true,
+    startDate: 'July 2026',
+    endDate: 'October 2026',
+    isActive: false,
     responsibilities: [
       'Reduced new-workflow onboarding time by 60% by designing a shared FastAPI and Redis layer that standardizes state, tool execution, and SQL access across LangGraph agents.',
       'Achieved 94% valid text-to-SQL generation by building LangGraph multi-agent workflows on local LLMs (Ollama), with schema grounding and AST checks before execution.',
@@ -20,6 +20,11 @@ export const experiences: WorkExperience[] = [
     ],
     skills: ['FastAPI', 'LangChain', 'LangGraph', 'Python', 'TypeScript', 'Ollama', 'Claude Code', 'Cursor IDE', 'Redis'],
     photos: [],
+    certificate: {
+      image: '/assets/images/certificates/professional/flyrank_backend_ai_engineering.jpg',
+      title: 'Certificate of Completion — Backend AI Engineering',
+      issuer: 'FlyRank Corp. · Jul–Oct 2026',
+    },
     status: 'active'
   },
   {

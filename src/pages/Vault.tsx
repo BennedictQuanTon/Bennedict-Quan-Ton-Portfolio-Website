@@ -268,6 +268,19 @@ export const Vault: React.FC = () => {
                             <ArrowUpRight size={16} className="group-hover:translate-x-1 group-hover:-translate-y-0.5 transition-transform duration-300" />
                           </button>
 
+                          {project.liveUrl && (
+                            <a
+                              href={project.liveUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              onClick={(e) => e.stopPropagation()}
+                              className="py-3.5 px-5 rounded-xl bg-surface-2 border border-border-token/30 hover:border-accent hover:bg-accent hover:text-bg text-text-heading font-semibold text-sm flex items-center justify-center gap-2 shrink-0 shadow-sm transition-all duration-300"
+                            >
+                              <span>View Demo</span>
+                              <ArrowUpRight size={16} />
+                            </a>
+                          )}
+
                           {project.githubUrl && (
                             <a
                               href={project.githubUrl}

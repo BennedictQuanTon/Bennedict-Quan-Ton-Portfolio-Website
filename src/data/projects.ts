@@ -61,6 +61,7 @@ export const projects: Project[] = [
       background: '#f6fafd'
     },
     githubUrl: 'https://github.com/BennedictQuanTon/Weatherise_Vietnam-AI-Open-Hackathon-2026',
+    liveUrl: 'https://weatherise-vietnam-ai-open-hackatho.vercel.app',
     status: 'active',
     competitionName: 'Vietnam AI Open Hackathon 2026',
     organizer: 'NVIDIA / Viettel / Sovico',
@@ -139,6 +140,7 @@ export const projects: Project[] = [
       background: '#f6f9f8'
     },
     githubUrl: 'https://github.com/BennedictQuanTon/The-Lantern-AssemblyAI-Voice-Agent-Hackathon',
+    liveUrl: 'https://the-lantern-voice-agent.vercel.app',
     status: 'active',
     competitionName: 'AssemblyAI Voice Agent Hackathon',
     organizer: 'AssemblyAI',
