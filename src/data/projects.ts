@@ -61,6 +61,7 @@ export const projects: Project[] = [
       background: '#f6fafd'
     },
     githubUrl: 'https://github.com/BennedictQuanTon/Weatherise_Vietnam-AI-Open-Hackathon-2026',
+    liveUrl: 'https://weatherise-vietnam-ai-open-hackatho.vercel.app',
     status: 'active',
     competitionName: 'Vietnam AI Open Hackathon 2026',
     organizer: 'NVIDIA / Viettel / Sovico',
@@ -139,6 +140,7 @@ export const projects: Project[] = [
       background: '#f6f9f8'
     },
     githubUrl: 'https://github.com/BennedictQuanTon/The-Lantern-AssemblyAI-Voice-Agent-Hackathon',
+    liveUrl: 'https://the-lantern-voice-agent.vercel.app',
     status: 'active',
     competitionName: 'AssemblyAI Voice Agent Hackathon',
     organizer: 'AssemblyAI',
@@ -148,6 +150,69 @@ export const projects: Project[] = [
       title: 'Certificate of Completion — AssemblyAI Voice Agent Hackathon',
       issuer: 'Lablab.ai · NativelyAI'
     }
+  },
+  {
+    id: 'bkai-admissions',
+    title: 'BKAi — Multi-Agent Admissions Counseling System',
+    category: 'Personal Project',
+    period: 'Jan 2026 – Apr 2026',
+    role: 'Full-Stack AI Developer',
+    summary: 'BKAi is a Vietnamese admissions counselor for Ho Chi Minh City University of Technology (HCMUT), by chat and by voice. A LangGraph supervisor routes each question to Data, Policy and Counsel agents that query an 11-table fact database crawled from official hcmut.edu.vn pages and a Qdrant hybrid index; a synthesizer cites the sources, and a deterministic verifier rejects any number that is not in the evidence.',
+    problem: 'Students choosing a university face 74 admission codes, 9 programs and cut-offs that change every year and by admission method. A plain RAG chatbot answers from text chunks, so it mixes up years and programs, invents numbers, and is too slow to feel like a conversation, especially by voice.',
+    process: [
+      {
+        date: 'Jan 2026',
+        title: 'Multi-Agent Counselor on a Fact Database',
+        description: 'Built the Supervisor → Data / Policy / Counsel → Synthesizer → Verifier graph in LangGraph, with scores and quotas served by typed SQL tools over an 11-table fact database.',
+        image: '/assets/images/bkai/v5_answer_trace.webp'
+      },
+      {
+        date: 'Feb 2026',
+        title: 'Hybrid Retrieval and Fast Path',
+        description: 'Fused Vietnamese dense embeddings with BM25 sparse vectors in Qdrant, added reranking and parent–child chunking, and gave the supervisor a zero-LLM fast path with token streaming.',
+        image: '/assets/images/bkai/v5_landing.webp'
+      },
+      {
+        date: 'Apr 2026',
+        title: 'Voice, Observability and Hardening',
+        description: 'Shipped the AssemblyAI + Kokoro voice agent with barge-in, a live observability console and the OWASP LLM Top 10 controls.',
+        image: '/assets/images/bkai/v5_monitor.webp'
+      }
+    ],
+    techStack: [
+      'LangGraph', 'MCP', 'Gemini 3.5 Flash-Lite', 'Qdrant', 'SQLite', 'Vietnamese_Embedding_v2', 'bge-reranker-base', 'BM25',
+      'Redis', 'AssemblyAI', 'Kokoro TTS', 'Whisper', 'LiveKit', 'Playwright', 'FastAPI', 'Pydantic', 'WebSockets',
+      'React 19', 'TypeScript', 'Vite', 'Tailwind CSS', 'Framer Motion', 'Docker', 'Caddy'
+    ],
+    cardStack: ['LangGraph', 'Gemini 3.5 Flash-Lite', 'Qdrant', 'SQLite', 'MCP', 'AssemblyAI', 'Kokoro TTS', 'FastAPI', 'Redis', 'React 19'],
+    outcomes: [
+      'Architected a LangGraph multi-agent Agentic RAG counselor (Supervisor → Data/Policy/Counsel agents → Synthesizer → deterministic Verifier), achieving 200/200 exact-match answers on numeric admission questions (Wilson 95% CI ≥ 0.98) and 8/8 real counseling cases, by routing every score and quota to typed SQL tools over an 11-table fact DB and rejecting any number absent from the evidence.',
+      'Slashed cold-answer latency 15× (p50 27.3 s → 1.79 s; time-to-first-token 17.7 s → 1.11 s) at just 1.01 LLM calls per answer, by adding a zero-LLM fast path to the supervisor, WebSocket token streaming and quota-aware Gemini failover; sustained a steady-state p50 of 1.7 s across 792 logged requests.',
+      'Engineered a hybrid retrieval engine that lifted Hit@1 from 0.475 to 0.828 and reached Hit@5 0.955 on 198 labeled queries, by fusing Vietnamese dense embeddings with BM25 sparse vectors through server-side RRF in Qdrant, cross-encoder reranking and hierarchical parent–child chunking with contextual headers (107 docs → 340 chunks).',
+      'Shipped a real-time Vietnamese voice agent with 1.26% character error rate and a final transcript 579 ms after speech ends, by streaming AssemblyAI STT into per-clause local Kokoro TTS (first audio byte 591 ms vs 3.8 s with edge-tts, 6.5× faster) with barge-in and a LiveKit WebRTC worker.',
+      'Hardened the system against the OWASP LLM Top 10 (2026), passing 60/60 guardrail probes with 0 cross-session leaks at 20 concurrent users, by building an entity-guarded answer cache (~60 ms hits), PII redaction, an in-process MCP server exposing 11 tools, and a crawl → validate pipeline over 16 official pages (67/67 cross-checks).'
+    ],
+    screens: [
+      { src: '/assets/images/bkai/v5_landing.webp', caption: 'Landing page' },
+      { src: '/assets/images/bkai/v5_answer_trace.webp', caption: 'Chat: cited answer with the agent trace' },
+      { src: '/assets/images/bkai/v5_monitor.webp', caption: 'Observability: live latency, health and model usage' }
+    ],
+    images: [
+      '/assets/images/bkai/v5_landing.webp',
+      '/assets/images/bkai/v5_answer_trace.webp',
+      '/assets/images/bkai/v5_monitor.webp'
+    ],
+    hoverMedia: {
+      type: 'video',
+      src: '/assets/videos/bkai_teaser.mp4',
+      webmSrc: '/assets/videos/bkai_teaser.webm',
+      poster: '/assets/images/bkai/teaser_poster.webp',
+      objectFit: 'contain',
+      background: 'linear-gradient(#f9f8fb 50%, #fdf9f8 50%)'
+    },
+    projectLogo: '/assets/images/bkai/bkai_lockup.webp',
+    githubUrl: 'https://github.com/BennedictQuanTon/BKAi-Multi-Agent-Admissions-Counseling-System',
+    status: 'active'
   },
   {
     id: 'viettel-llm-inference',
@@ -349,69 +414,6 @@ export const projects: Project[] = [
     status: 'active',
     competitionName: 'OpenAI WebMCP Challenge',
     organizer: 'OpenAI'
-  },
-  {
-    id: 'bkai-admissions',
-    title: 'BKAi — Multi-Agent Admissions Counseling System',
-    category: 'Personal Project',
-    period: 'Jan 2026 – Apr 2026',
-    role: 'Full-Stack AI Developer',
-    summary: 'BKAi is a Vietnamese admissions counselor for Ho Chi Minh City University of Technology (HCMUT), by chat and by voice. A LangGraph supervisor routes each question to Data, Policy and Counsel agents that query an 11-table fact database crawled from official hcmut.edu.vn pages and a Qdrant hybrid index; a synthesizer cites the sources, and a deterministic verifier rejects any number that is not in the evidence.',
-    problem: 'Students choosing a university face 74 admission codes, 9 programs and cut-offs that change every year and by admission method. A plain RAG chatbot answers from text chunks, so it mixes up years and programs, invents numbers, and is too slow to feel like a conversation, especially by voice.',
-    process: [
-      {
-        date: 'Jan 2026',
-        title: 'Multi-Agent Counselor on a Fact Database',
-        description: 'Built the Supervisor → Data / Policy / Counsel → Synthesizer → Verifier graph in LangGraph, with scores and quotas served by typed SQL tools over an 11-table fact database.',
-        image: '/assets/images/bkai/v5_answer_trace.webp'
-      },
-      {
-        date: 'Feb 2026',
-        title: 'Hybrid Retrieval and Fast Path',
-        description: 'Fused Vietnamese dense embeddings with BM25 sparse vectors in Qdrant, added reranking and parent–child chunking, and gave the supervisor a zero-LLM fast path with token streaming.',
-        image: '/assets/images/bkai/v5_landing.webp'
-      },
-      {
-        date: 'Apr 2026',
-        title: 'Voice, Observability and Hardening',
-        description: 'Shipped the AssemblyAI + Kokoro voice agent with barge-in, a live observability console and the OWASP LLM Top 10 controls.',
-        image: '/assets/images/bkai/v5_monitor.webp'
-      }
-    ],
-    techStack: [
-      'LangGraph', 'MCP', 'Gemini 3.5 Flash-Lite', 'Qdrant', 'SQLite', 'Vietnamese_Embedding_v2', 'bge-reranker-base', 'BM25',
-      'Redis', 'AssemblyAI', 'Kokoro TTS', 'Whisper', 'LiveKit', 'Playwright', 'FastAPI', 'Pydantic', 'WebSockets',
-      'React 19', 'TypeScript', 'Vite', 'Tailwind CSS', 'Framer Motion', 'Docker', 'Caddy'
-    ],
-    cardStack: ['LangGraph', 'Gemini 3.5 Flash-Lite', 'Qdrant', 'SQLite', 'MCP', 'AssemblyAI', 'Kokoro TTS', 'FastAPI', 'Redis', 'React 19'],
-    outcomes: [
-      'Architected a LangGraph multi-agent Agentic RAG counselor (Supervisor → Data/Policy/Counsel agents → Synthesizer → deterministic Verifier), achieving 200/200 exact-match answers on numeric admission questions (Wilson 95% CI ≥ 0.98) and 8/8 real counseling cases, by routing every score and quota to typed SQL tools over an 11-table fact DB and rejecting any number absent from the evidence.',
-      'Slashed cold-answer latency 15× (p50 27.3 s → 1.79 s; time-to-first-token 17.7 s → 1.11 s) at just 1.01 LLM calls per answer, by adding a zero-LLM fast path to the supervisor, WebSocket token streaming and quota-aware Gemini failover; sustained a steady-state p50 of 1.7 s across 792 logged requests.',
-      'Engineered a hybrid retrieval engine that lifted Hit@1 from 0.475 to 0.828 and reached Hit@5 0.955 on 198 labeled queries, by fusing Vietnamese dense embeddings with BM25 sparse vectors through server-side RRF in Qdrant, cross-encoder reranking and hierarchical parent–child chunking with contextual headers (107 docs → 340 chunks).',
-      'Shipped a real-time Vietnamese voice agent with 1.26% character error rate and a final transcript 579 ms after speech ends, by streaming AssemblyAI STT into per-clause local Kokoro TTS (first audio byte 591 ms vs 3.8 s with edge-tts, 6.5× faster) with barge-in and a LiveKit WebRTC worker.',
-      'Hardened the system against the OWASP LLM Top 10 (2026), passing 60/60 guardrail probes with 0 cross-session leaks at 20 concurrent users, by building an entity-guarded answer cache (~60 ms hits), PII redaction, an in-process MCP server exposing 11 tools, and a crawl → validate pipeline over 16 official pages (67/67 cross-checks).'
-    ],
-    screens: [
-      { src: '/assets/images/bkai/v5_landing.webp', caption: 'Landing page' },
-      { src: '/assets/images/bkai/v5_answer_trace.webp', caption: 'Chat: cited answer with the agent trace' },
-      { src: '/assets/images/bkai/v5_monitor.webp', caption: 'Observability: live latency, health and model usage' }
-    ],
-    images: [
-      '/assets/images/bkai/v5_landing.webp',
-      '/assets/images/bkai/v5_answer_trace.webp',
-      '/assets/images/bkai/v5_monitor.webp'
-    ],
-    hoverMedia: {
-      type: 'video',
-      src: '/assets/videos/bkai_teaser.mp4',
-      webmSrc: '/assets/videos/bkai_teaser.webm',
-      poster: '/assets/images/bkai/teaser_poster.webp',
-      objectFit: 'contain',
-      background: 'linear-gradient(#f9f8fb 50%, #fdf9f8 50%)'
-    },
-    projectLogo: '/assets/images/bkai/bkai_lockup.webp',
-    githubUrl: 'https://github.com/BennedictQuanTon/BKAi-Multi-Agent-Admissions-Counseling-System',
-    status: 'active'
   },
   {
     id: 'morphysics',

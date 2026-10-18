@@ -82,6 +82,12 @@ export interface WorkExperience {
   skills: string[];
   photos?: string[];
   status: 'active' | 'placeholder';
+  /** Completion certificate shown under the role on the Journey page */
+  certificate?: {
+    image: string;
+    title: string;
+    issuer: string;
+  };
 }
 
 // ─── Milestones ───────────────────────────────────────────────────────────────
