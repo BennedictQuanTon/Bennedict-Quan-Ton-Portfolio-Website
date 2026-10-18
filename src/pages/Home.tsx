@@ -11,6 +11,7 @@ import { AchievementBadge } from '../components/ui/AchievementBadge';
 import { TestimonialMarquee } from '../components/ui/TestimonialMarquee';
 import { JourneyPreview } from '../components/sections/JourneyPreview';
 import { CredentialsPreview } from '../components/sections/CredentialsPreview';
+import { PublicationSection } from '../components/sections/PublicationSection';
 import { visibleTestimonials } from '../data/testimonials';
 import { projects } from '../data/projects';
 import type { Project } from '../types';
@@ -608,6 +609,8 @@ export const Home: React.FC = () => {
 
         </div>
       </section>
+
+      <PublicationSection />
 
       {/* 3.5 Journey & Credentials summaries — many visitors only see this page */}
       <JourneyPreview />

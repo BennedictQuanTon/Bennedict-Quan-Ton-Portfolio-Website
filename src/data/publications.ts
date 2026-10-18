@@ -43,7 +43,7 @@ export const publications: Publication[] = [
       { name: 'Duc Dung Nguyen' },
     ],
     venue: 'AAMAS 2027',
-    venueFull: 'CORE A/A* conference · 26th International Conference on Autonomous Agents and Multiagent Systems',
+    venueFull: 'CORE A* conference · 26th International Conference on Autonomous Agents and Multiagent Systems',
     status: 'Under Review',
     role: 'Co-author',
     place: 'Hanoi, Vietnam',
@@ -51,7 +51,7 @@ export const publications: Publication[] = [
     callUrl: 'https://warwick.ac.uk/fac/sci/dcs/aamas2027/calls/call-for-main-track/',
     timeline: [
       { label: 'Abstract', date: '1 Oct 2026', state: 'done' },
-      { label: 'Full paper', date: '8 Oct 2026', state: 'current' },
+      { label: 'Full paper', date: '8 Oct 2026', state: 'done' },
       { label: 'Rebuttal', date: '20–24 Nov 2026', state: 'upcoming' },
       { label: 'Notification', date: '21 Dec 2026', state: 'upcoming' },
       { label: 'Conference', date: '3–7 May 2027', state: 'upcoming' },
