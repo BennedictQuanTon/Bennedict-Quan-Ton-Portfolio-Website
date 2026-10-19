@@ -18,7 +18,7 @@ export const experiences: WorkExperience[] = [
       'Achieved 94% valid text-to-SQL generation by building LangGraph multi-agent workflows on local LLMs (Ollama), with schema grounding and AST checks before execution.',
       'Cut mean time to resolve failed agent runs by 45% by adding end-to-end request tracing and structured logging that ties every tool call to one trace ID.'
     ],
-    skills: ['FastAPI', 'LangChain', 'LangGraph', 'Python', 'TypeScript', 'Ollama', 'Claude Code', 'Cursor IDE', 'Redis'],
+    skills: ['FastAPI', 'LangChain', 'LangGraph', 'Python', 'TypeScript', 'Ollama', 'vLLM', 'Redis'],
     photos: [],
     certificate: {
       image: '/assets/images/certificates/professional/flyrank_backend_ai_engineering.jpg',
