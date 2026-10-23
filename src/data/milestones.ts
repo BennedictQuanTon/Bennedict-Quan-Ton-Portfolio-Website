@@ -16,6 +16,19 @@ export const milestones: Milestone[] = [
     ]
   },
   {
+    id: 'comp-rmit-hackathon',
+    type: 'competition',
+    date: 'October 2026',
+    title: 'RMIT GenAI & Cybersecurity Hackathon 2026',
+    subtitle: 'AI Engineer · AI Protector & Unfound',
+    description: 'Placed 6th at RMIT Saigon South and 18th region-wide with Team GenData, at 0.982 private macro F1 on multilingual LLM prompt-attack detection.',
+    details: [
+      'Fine-tuned 60+ models across 9 transformer backbones, including a 35-model mmBERT-base ensemble and a 4-bit QLoRA Granite-3.3-2B',
+      'Developed Unfound, a TideCloak safe-address app for family-violence survivors with in-browser encryption and 2-of-3 quorum approval'
+    ],
+    highlight: '6th RMIT SGS'
+  },
+  {
     id: 'comp-amd-agent',
     type: 'competition',
     date: 'July 2026',

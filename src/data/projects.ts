@@ -86,6 +86,73 @@ export const projects: Project[] = [
     ]
   },
   {
+    id: 'rmit-hackathon-2026',
+    title: 'AI Protector & Unfound',
+    category: 'Competition',
+    period: 'Oct 22, 2026 – Oct 23, 2026',
+    role: 'AI Engineer',
+    summary: 'Team GenData built two security products for low-resource languages and high-risk users. Challenge 1 is a multilingual "AI Protector" that classifies prompts sent to an LLM as benign, jailbreak or prompt injection in Portuguese, French, Italian and English. Challenge 2 is Unfound, a safe-address layer for family-violence survivors: services can still reach a survivor after she moves, but no single employee or admin can find her.',
+    problem: 'Prompt attacks are written in many languages, and Portuguese role-play jailbreaks read almost exactly like harmless requests, so the label depends on intent rather than wording. Separately, a survivor\'s new address is stored in plain text by every school, clinic and court she deals with, and the main threat is insiders and admins, whom ordinary permissions cannot stop.',
+    process: [
+      {
+        date: 'Oct 21, 2026',
+        title: 'Cross-Validated Fine-Tuning Pipeline',
+        description: 'Set up 5-fold grouped cross-validation on 14,000 prompts in four languages and benchmarked eight encoders; mmBERT-base won clearly.',
+        image: '/assets/images/rmit-hackathon/landing.webp'
+      },
+      {
+        date: 'Oct 22, 2026',
+        title: 'Ensemble and Granite QLoRA',
+        description: 'Trained a 35-model mmBERT-base ensemble and a 4-bit QLoRA Granite-3.3-2B, routing the LLM to the Portuguese rows where most errors were.',
+        image: '/assets/images/rmit-hackathon/admin_blocked.webp'
+      },
+      {
+        date: 'Oct 22, 2026',
+        title: 'Unfound on TideCloak',
+        description: 'Built the Unfound prototype: in-browser encryption per address part, quorum-approved access grants and a self-playing end-to-end story with a film.',
+        image: '/assets/images/rmit-hackathon/police_one_view.webp'
+      }
+    ],
+    techStack: [
+      'PyTorch', 'Hugging Face Transformers', 'PEFT / LoRA', 'bitsandbytes', 'scikit-learn', 'mmBERT', 'Granite 3.3 2B', 'Kaggle',
+      'React', 'TypeScript', 'Vite', 'TideCloak', 'Docker', 'Vercel'
+    ],
+    cardStack: ['PyTorch', 'Hugging Face Transformers', 'QLoRA', 'mmBERT', 'Granite 3.3 2B', 'React', 'TypeScript', 'TideCloak'],
+    outcomes: [
+      'Built the final-submission models that placed Team GenData 6th at RMIT Saigon South and 18th region-wide in Challenge 1 (multilingual LLM prompt-attack detection), reaching 0.982 private macro F1. The pipeline covers 5-fold grouped CV on 14k prompts in four languages, class-weighted loss, fp16, and head+tail truncation to 512 tokens.',
+      'Fine-tuned 60+ models across 9 transformer backbones on a 2× T4 budget, raising out-of-fold macro F1 from 0.966 to 0.976. The models included a 35-model mmBERT-base ensemble and a 4-bit QLoRA Granite-3.3-2B. Error analysis showed 79% of errors were Portuguese role-play jailbreaks; routing the LLM to those rows cut the Portuguese error rate by 34% (5.3% → 3.5%).',
+      'Developed Unfound as the sole engineer for Challenge 2 (Tide UNLOCKED), a React/TypeScript safe-address app for family-violence survivors that stores 0 plaintext addresses across 15 Tide operations in its end-to-end demo. Addresses are encrypted in the browser with TideCloak, every access grant needs 2-of-3 quorum approval, and the app ships with one-command Docker setup and a Vercel deploy.'
+    ],
+    screens: [
+      { src: '/assets/images/rmit-hackathon/landing.webp', caption: 'Unfound landing page' },
+      { src: '/assets/images/rmit-hackathon/admin_blocked.webp', caption: 'An admin\'s self-grant blocked: 412 QUORUM_NOT_MET' },
+      { src: '/assets/images/rmit-hackathon/police_one_view.webp', caption: 'Welfare check: one view after 2 of 3 approvals' }
+    ],
+    images: [
+      '/assets/images/rmit-hackathon/landing.webp',
+      '/assets/images/rmit-hackathon/admin_blocked.webp',
+      '/assets/images/rmit-hackathon/police_one_view.webp'
+    ],
+    hoverMedia: {
+      type: 'video',
+      src: '/assets/videos/unfound_film.mp4',
+      webmSrc: '/assets/videos/unfound_film.webm',
+      poster: '/assets/images/rmit-hackathon/film_poster.webp',
+      objectFit: 'contain',
+      background: '#0b0b10'
+    },
+    githubUrl: 'https://github.com/BennedictQuanTon/Unfound-Challenge-2-RMIT-Hackathon-2026',
+    liveUrl: 'https://unfound-rmit-hackathon.vercel.app',
+    status: 'active',
+    achievement: {
+      label: '6th RMIT SGS · 18th Region-wide',
+      tone: 'silver'
+    },
+    competitionName: 'RMIT GenAI & Cybersecurity Hackathon 2026',
+    organizer: 'RMIT University',
+    organizerLogo: '/assets/images/companies/rmit_logo.svg'
+  },
+  {
     id: 'the-lantern',
     title: 'The Lantern',
     category: 'Competition',
