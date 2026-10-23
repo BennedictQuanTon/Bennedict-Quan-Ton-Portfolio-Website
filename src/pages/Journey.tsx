@@ -5,6 +5,7 @@ import { CertificateFrame } from '../components/ui/CertificateFrame';
 import { Lightbox, type LightboxItem } from '../components/ui/Lightbox';
 import { experiences } from '../data/experience';
 import { milestones } from '../data/milestones';
+import { InvitationsSection } from '../components/sections/InvitationsSection';
 
 export const Journey: React.FC = () => {
   const [lightboxItem, setLightboxItem] = useState<LightboxItem | null>(null);
@@ -204,6 +205,9 @@ export const Journey: React.FC = () => {
           ))}
         </div>
       </section>
+
+      {/* 🎟️ TRACK 3: BY INVITATION */}
+      <InvitationsSection onOpen={setLightboxItem} />
       </div>
       <Lightbox item={lightboxItem} onClose={() => setLightboxItem(null)} />
     </div>

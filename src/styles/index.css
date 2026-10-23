@@ -356,3 +356,36 @@ body {
   html.theme-transition *::before,
   html.theme-transition *::after { transition: none; }
 }
+
+/* ---- Organiser logo marquee: two rows drifting in opposite directions ---------------- */
+.logo-marquee {
+  /* -50% = two of the four copies; slow enough to read every mark */
+  animation: logo-marquee 46s linear infinite;
+  will-change: transform;
+}
+.logo-marquee-row {
+  --logo-scale: 0.8;
+}
+@media (min-width: 768px) {
+  .logo-marquee-row {
+    --logo-scale: 1;
+  }
+}
+.logo-marquee-reverse {
+  animation-direction: reverse;
+}
+@keyframes logo-marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+/* Edge fade as a mask, so the marks themselves dissolve and it works on any background */
+.logo-marquee-fade {
+  mask-image: linear-gradient(to right, transparent, #000 88px, #000 calc(100% - 88px), transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 88px, #000 calc(100% - 88px), transparent);
+}
+@media (prefers-reduced-motion: reduce) {
+  .logo-marquee {
+    animation: none;
+  }
+}

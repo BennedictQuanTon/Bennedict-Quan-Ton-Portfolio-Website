@@ -7,6 +7,7 @@ import { projects } from '../data/projects';
 import type { Project } from '../types';
 import { genericTechIcon } from '../components/ui/TechLogos';
 import { ProjectMedia } from '../components/ui/ProjectMedia';
+import { logoHeightClass } from '../lib/logos';
 import { PersonalProjectLabel } from '../components/ui/PersonalProjectLabel';
 import { AchievementBadge } from '../components/ui/AchievementBadge';
 import { CertificateFrame } from '../components/ui/CertificateFrame';
@@ -184,12 +185,12 @@ export const Vault: React.FC = () => {
                                 project.organizerLogos ? (
                                   project.organizerLogos.map((logo, lIdx) => (
                                     <div key={lIdx} className="h-11 md:h-12 px-3 rounded-xl bg-white p-1.5 flex items-center justify-center border border-border-token/20 shadow-xs hover:scale-105 transition-transform">
-                                      <img src={logo} alt="BTC Logo" className="h-full w-auto object-contain" />
+                                      <img src={logo} alt="BTC Logo" className={`${logoHeightClass(logo)} w-auto object-contain`} />
                                     </div>
                                   ))
                                 ) : project.organizerLogo ? (
                                   <div className="h-11 md:h-12 px-4 rounded-xl bg-white p-1.5 flex items-center justify-center border border-border-token/20 shadow-xs hover:scale-105 transition-transform">
-                                    <img src={project.organizerLogo} alt={project.organizer} className="h-full w-auto object-contain" />
+                                    <img src={project.organizerLogo} alt={project.organizer} className={`${logoHeightClass(project.organizerLogo)} w-auto object-contain`} />
                                   </div>
                                 ) : (
                                   <span className="text-xs font-semibold text-text-muted bg-surface-2 px-3 py-1.5 rounded-lg">
@@ -474,7 +475,7 @@ export const Vault: React.FC = () => {
                     {selectedProject.certificate && (
                       <div className="space-y-3 pt-4 border-t border-border-token/30">
                         <h3 className="text-xs uppercase font-bold tracking-widest text-text-heading flex items-center gap-2">
-                          <Award size={14} className="text-accent" /> Certificate
+                          <Award size={14} className="text-accent" /> {selectedProject.certificate.heading ?? 'Certificate'}
                         </h3>
                         <CertificateFrame
                           src={selectedProject.certificate.image}

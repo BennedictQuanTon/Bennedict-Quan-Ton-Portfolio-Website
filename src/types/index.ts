@@ -50,6 +50,8 @@ export interface Project {
   };
   /** Certificate received for this project, shown in the details view */
   certificate?: {
+    /** Section heading in the details view; defaults to "Certificate" */
+    heading?: string;
     image: string;
     title: string;
     issuer: string;
@@ -88,6 +90,31 @@ export interface WorkExperience {
     title: string;
     issuer: string;
   };
+}
+
+// ─── Invitations ──────────────────────────────────────────────────────────────
+
+/** A private event I was invited to, shown on the Journey page */
+export interface Invitation {
+  id: string;
+  event: string;
+  host: string;
+  /** Organiser logos, shown in place of the host name */
+  hostLogos?: { src: string; alt: string }[];
+  /** Day of the month, shown large ("08") */
+  day: string;
+  /** Month and year ("October 2026") */
+  month: string;
+  /** Weekday and time ("Thursday · 08:00 – 12:30") */
+  when: string;
+  venue: string;
+  invitedAs: string;
+  summary: string;
+  highlights?: string[];
+  /** Photos from the event; the first is the large one */
+  photos: { src: string; alt: string; /** CSS object-position for the cropped tile */ position?: string }[];
+  /** Proof of the invitation, opened only on request */
+  proof: { src: string; caption: string }[];
 }
 
 // ─── Milestones ───────────────────────────────────────────────────────────────
