@@ -426,19 +426,22 @@ export const projects: Project[] = [
       'Shipped a secure React 19 + Express.js app with a prompt-to-template photobooth engine, validated by 35/35 automated tests and deployed at $0/month by proxying all Gemini calls server-side and containerizing on Google Cloud Run.'
     ],
     images: [
-      '/assets/images/auralens/cover.webp',
+      '/assets/images/auralens/app_home.webp',
       '/assets/images/auralens/dashboard.webp',
       '/assets/images/auralens/vibe_map.webp',
       '/assets/images/auralens/photobooth.webp'
     ],
     hoverMedia: {
       type: 'image',
-      src: '/assets/images/auralens/cover.webp'
+      src: '/assets/images/auralens/app_home.webp',
+      objectFit: 'contain',
+      background: '#f9f9fa'
     },
     githubUrl: 'https://github.com/BennedictQuanTon/AuraLens',
     status: 'active',
     competitionName: 'AI Riser Vietnam 2026 · #BuildwithGoogleAI',
     organizer: 'Google',
+    organizerLogo: '/assets/images/companies/google_logo.svg',
     achievement: {
       label: 'Silver Tier',
       tone: 'silver'
