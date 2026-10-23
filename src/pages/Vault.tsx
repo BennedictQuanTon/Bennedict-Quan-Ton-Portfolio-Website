@@ -474,7 +474,7 @@ export const Vault: React.FC = () => {
                     {selectedProject.certificate && (
                       <div className="space-y-3 pt-4 border-t border-border-token/30">
                         <h3 className="text-xs uppercase font-bold tracking-widest text-text-heading flex items-center gap-2">
-                          <Award size={14} className="text-accent" /> Certificate
+                          <Award size={14} className="text-accent" /> {selectedProject.certificate.heading ?? 'Certificate'}
                         </h3>
                         <CertificateFrame
                           src={selectedProject.certificate.image}

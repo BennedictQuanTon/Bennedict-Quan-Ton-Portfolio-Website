@@ -254,10 +254,10 @@ export const Home: React.FC = () => {
                 <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-bg to-transparent pointer-events-none" />
               </motion.div>
 
-              {/* Location Pill Tag */}
-              <motion.div {...heroReveal(0)} className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-accent-dim border border-border-token w-max">
-                <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-                <span className="text-text-muted">Ho Chi Minh City, Vietnam</span>
+              {/* Location: a hairline and spaced small caps, no container */}
+              <motion.div {...heroReveal(0)} className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.28em] text-text-muted">
+                <span aria-hidden className="h-px w-10 bg-current opacity-50" />
+                <span>Ho Chi Minh City, Vietnam</span>
               </motion.div>
 
               <div className="space-y-4">

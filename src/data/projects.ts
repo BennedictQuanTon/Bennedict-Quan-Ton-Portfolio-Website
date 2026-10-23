@@ -73,7 +73,7 @@ export const projects: Project[] = [
     ],
     achievement: {
       label: 'Top 10 Finalist',
-      tone: 'gold'
+      tone: 'silver'
     },
     certificate: {
       image: '/assets/images/certificates/hackathons/vietnam_ai_open_hackathon.webp',
@@ -147,6 +147,12 @@ export const projects: Project[] = [
     achievement: {
       label: '6th RMIT SGS · 18th Region-wide',
       tone: 'silver'
+    },
+    certificate: {
+      heading: 'Leaderboard',
+      image: '/assets/images/rmit-hackathon/leaderboard.webp',
+      title: 'RMIT Hackathon 2026 — Private Leaderboard (final standings)',
+      issuer: 'Kaggle private leaderboard, RMIT Saigon South teams: RMIT_SGS_GenData_C1 at #18 with 0.98241 macro F1.'
     },
     competitionName: 'RMIT GenAI & Cybersecurity Hackathon 2026',
     organizer: 'RMIT University',
@@ -332,7 +338,7 @@ export const projects: Project[] = [
     ],
     achievement: {
       label: 'Peak Rank #77 / 300+',
-      tone: 'emerald'
+      tone: 'silver'
     }
   },
   {

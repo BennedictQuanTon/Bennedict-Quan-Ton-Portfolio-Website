@@ -50,6 +50,8 @@ export interface Project {
   };
   /** Certificate received for this project, shown in the details view */
   certificate?: {
+    /** Section heading in the details view; defaults to "Certificate" */
+    heading?: string;
     image: string;
     title: string;
     issuer: string;
