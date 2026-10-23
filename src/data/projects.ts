@@ -225,6 +225,68 @@ export const projects: Project[] = [
     }
   },
   {
+    id: 'ignis',
+    title: 'IGNIS',
+    category: 'Competition',
+    period: 'Oct 12, 2026 – Oct 18, 2026',
+    role: 'AI Engineer',
+    summary: 'IGNIS is a maintenance-evidence desk for factories. A reviewer uploads a historical work-order export, confirms the column mapping and reviews model-suggested component, fault and action spans; code then computes the facts and priority alerts, retrieves only the manual passages that apply, drafts a cited explanation, and issues a PDF only after an expert signs off. Models propose, code computes, people approve.',
+    problem: 'Maintenance teams spend much of their time firefighting, and the work-order history they rely on is written in free text that is often incomplete or inconsistent. A chat assistant over that history mixes model guesses with numbers, so nobody can tell which part of an answer is a fact, which is a source and which is the model talking.',
+    process: [
+      {
+        date: 'Oct 12, 2026',
+        title: 'Evidence Workflow and Hosted Extraction',
+        description: 'Set up the workflow API, the MaintIE-based extraction prompts on the event AMD API, and the review gate that keeps every row out of the facts until a person approves it.',
+        image: '/assets/images/ignis/workflow.webp'
+      },
+      {
+        date: 'Oct 16, 2026',
+        title: 'Reviewer Workspace and Landing Page',
+        description: 'Built the guided demo, the manual workspace and the landing page in React 19 and TypeScript, wired to the real workflow API.',
+        image: '/assets/images/ignis/review_workspace.webp'
+      },
+      {
+        date: 'Oct 18, 2026',
+        title: 'Demo Film and Replay Deployment',
+        description: 'Recorded the AMD-hosted calls for exact replay, deployed a key-free demo, and produced the 2:14 demo film for submission.',
+        image: '/assets/images/ignis/landing.webp'
+      }
+    ],
+    techStack: [
+      'AMD Token Factory', 'DeepSeek-V4-Flash', 'MinerU', 'Python', 'SQLite', 'ReportLab', 'React 19', 'TypeScript',
+      'Vite', 'Tailwind CSS', 'Motion', 'Playwright', 'Vercel', 'Render'
+    ],
+    cardStack: ['AMD Token Factory', 'DeepSeek-V4-Flash', 'React 19', 'TypeScript', 'Python', 'SQLite', 'ReportLab', 'Vercel'],
+    outcomes: [
+      'Built the IGNIS reviewer workspace in React 19 and TypeScript (8.5k+ lines added), wiring a 7-stage guided demo (Source → Mapping → Record review → Facts → Evidence → Expert sign-off → Report) and a 6-stage manual workspace to the workflow API, so a reviewer turns a raw work-order export into a signed, cited PDF in one browser session.',
+      'Designed the landing page that pitched IGNIS to the judges, covering the 4 judging criteria, 3 cited industry figures, a 7-step AI / CODE / HUMAN flow and the measured AMD results (105 / 108 valid extractions, 0.76 top-level label F1, 201 automated tests), all rendered from one typed content file.',
+      'Produced the 2:14 demo film and a key-free deployment (Vercel frontend, Render replay backend) that replays the recorded AMD API calls exactly, so judges can run the full workflow with 0 API keys in the browser and 0 live quota spent.'
+    ],
+    screens: [
+      { src: '/assets/images/ignis/landing.webp', caption: 'IGNIS landing page' },
+      { src: '/assets/images/ignis/review_workspace.webp', caption: 'Review workspace: source file, rows and evidence inspector' },
+      { src: '/assets/images/ignis/workflow.webp', caption: 'Six building blocks: models propose, code computes, people approve' }
+    ],
+    images: [
+      '/assets/images/ignis/landing.webp',
+      '/assets/images/ignis/review_workspace.webp',
+      '/assets/images/ignis/workflow.webp'
+    ],
+    hoverMedia: {
+      type: 'video',
+      src: '/assets/videos/ignis_film.mp4',
+      webmSrc: '/assets/videos/ignis_film.webm',
+      poster: '/assets/images/ignis/film_poster.webp',
+      objectFit: 'contain',
+      background: '#0b0b0c'
+    },
+    githubUrl: 'https://github.com/BennedictQuanTon/IGNIS---AMD-Developer-Hackathon-ACT-II',
+    status: 'active',
+    competitionName: 'AMD Developer Hackathon: ACT III',
+    organizer: 'AMD',
+    organizerLogo: '/assets/images/companies/amd_logo.webp'
+  },
+  {
     id: 'bkai-admissions',
     title: 'BKAi — Multi-Agent Admissions Counseling System',
     category: 'Personal Project',
@@ -426,16 +488,16 @@ export const projects: Project[] = [
       'Shipped a secure React 19 + Express.js app with a prompt-to-template photobooth engine, validated by 35/35 automated tests and deployed at $0/month by proxying all Gemini calls server-side and containerizing on Google Cloud Run.'
     ],
     images: [
-      '/assets/images/auralens/app_home.webp',
+      '/assets/images/auralens/welcome.webp',
       '/assets/images/auralens/dashboard.webp',
       '/assets/images/auralens/vibe_map.webp',
       '/assets/images/auralens/photobooth.webp'
     ],
     hoverMedia: {
       type: 'image',
-      src: '/assets/images/auralens/app_home.webp',
+      src: '/assets/images/auralens/welcome.webp',
       objectFit: 'contain',
-      background: '#f9f9fa'
+      background: 'linear-gradient(#2b0b32 50%, #52184e 50%)'
     },
     githubUrl: 'https://github.com/BennedictQuanTon/AuraLens',
     status: 'active',
@@ -489,47 +551,67 @@ export const projects: Project[] = [
     liveUrl: 'https://architecturelab.vercel.app',
     status: 'active',
     competitionName: 'OpenAI WebMCP Challenge',
-    organizer: 'OpenAI'
+    organizer: 'OpenAI',
+    organizerLogo: '/assets/images/companies/openai_logo.svg'
   },
   {
     id: 'morphysics',
     title: 'Morphysics',
     category: 'Competition',
-    period: 'Mar 2026 – Present',
+    period: 'Mar 2026 – Jul 2026',
     role: 'Project Lead & Frontend Developer',
-    summary: 'An interactive 2D physics virtual lab built with React 19 and Matter.js, featuring a 60 FPS Glassmorphism Telemetry Dashboard and multimodal AI assistant executing simulations under 3s.',
-    problem: 'High school students struggle to visualize abstract physics formulas. Traditional labs are expensive or lack real-time telemetry data to explain mechanical forces dynamically.',
+    summary: 'Morphysics turns static textbook physics into interactive 2D simulations. Students experiment with forces, motion, electromagnetism and energy in a browser lab built on a custom Matter.js engine, and an AI physics assistant turns a question or an uploaded document into a ready-to-run scenario. The platform follows Vietnamese high-school and AP/IB physics topics and ships with a store of worksheets, simulation setups and exercise packs.',
+    problem: 'High-school students meet physics as formulas and static diagrams, so forces and motion stay abstract. Real labs are expensive and limited, and most simulation tools are generic, English-only and disconnected from what students study in class.',
     process: [
       {
         date: 'March 2026',
-        title: 'Interactive 2D Physics Engine',
-        description: 'Architected React 19/TypeScript virtual lab integrating Matter.js to render real-time 2D physics mechanics (collisions, gravity) with drag-and-drop experiment configuration.',
-        image: '/assets/images/morphysics/Experience_Morphysics_BKI_UI.webp'
+        title: 'Bach Khoa Innovation Prototype',
+        description: 'Turned the idea of AI-generated physics scenarios into a working virtual-lab prototype and pitched it at Bach Khoa Innovation 2026, reaching the second round.',
+        image: '/assets/images/morphysics/lab.webp'
       },
       {
-        date: 'April 2026',
-        title: 'Telemetry Dashboard & Multimodal AI',
-        description: 'Engineered a 60 FPS Glassmorphism Telemetry Dashboard via requestAnimationFrame to monitor live physical properties with minimal CPU/GPU overhead. Implemented multimodal AI UI executing API simulations in <3s.',
-        image: '/assets/images/morphysics/Experience_Morphysics_BKI_Team.webp'
+        date: 'June 2026',
+        title: 'Interactive Lab and 60 FPS Engine',
+        description: 'Rebuilt the lab with a ref-driven Matter.js loop, live vector overlays and one-click preset experiments next to the AI assistant.',
+        image: '/assets/images/morphysics/landing.webp'
+      },
+      {
+        date: 'July 2026',
+        title: 'Full Product Surface',
+        description: 'Shipped the landing page, assets store, authentication and pricing in a glassmorphic light and dark design system, and took the product to VYSC 2026.',
+        image: '/assets/images/morphysics/assets_store.webp'
       }
     ],
-    techStack: ['React 19', 'TypeScript', 'Matter.js', 'requestAnimationFrame', 'FastAPI', 'Gemini API', 'Glassmorphism UI', 'Vite'],
+    techStack: ['React 18', 'TypeScript', 'Matter.js', 'HTML5 Canvas', 'Vite', 'Tailwind CSS', 'Framer Motion', 'Swiper.js', 'Lottie', 'View Transitions API'],
     outcomes: [
-      'Interactive 2D Engine: Architected a React 19/TypeScript virtual lab, integrating Matter.js to render real-time mechanics (collisions, gravity) with seamless drag-and-drop.',
-      'High-Performance UI: Engineered a 60 FPS Glassmorphism Telemetry Dashboard via requestAnimationFrame to monitor live physical properties with minimal CPU/GPU overhead.',
-      'AI Chatbot & Architecture: Implemented a multimodal AI UI executing API-driven simulations in <3s. Led the BKI pitch and built a modular 20-experiment library enforcing clean-code standards.'
+      'Built a browser physics lab on a custom Matter.js 2D engine that holds 60 FPS on low-spec student laptops, by running rigid-body updates in useRef-driven requestAnimationFrame loops that bypass React re-renders.',
+      'Shipped a split-screen Interactive Lab where an AI physics assistant turns a question or an uploaded PDF into a simulation, next to 5 one-click experiments (Free Fall, Double Pendulum, Newton\'s Cradle, Soft-Body Mesh, Inclined Plane) with live velocity and force vectors.',
+      'Led the team into the second round of Bach Khoa Innovation 2026 and on to VYSC 2026, delivering the landing page, interactive lab, assets store, authentication and pricing in one glassmorphic light/dark design system with cursor-origin View Transitions theme switching.'
+    ],
+    screens: [
+      { src: '/assets/images/morphysics/landing.webp', caption: 'Morphysics landing page' },
+      { src: '/assets/images/morphysics/assets_store.webp', caption: 'Educational assets store' },
+      { src: '/assets/images/morphysics/lab.webp', caption: 'Interactive Lab: AI assistant and Matter.js canvas' }
     ],
     images: [
-      '/assets/images/morphysics/Experience_Morphysics_BKI_UI.webp',
-      '/assets/images/morphysics/Experience_Morphysics_BKI_Team.webp'
+      '/assets/images/morphysics/landing.webp',
+      '/assets/images/morphysics/assets_store.webp',
+      '/assets/images/morphysics/lab.webp'
     ],
     hoverMedia: {
-      type: 'image',
-      src: '/assets/images/morphysics/Experience_Morphysics_BKI_UI.webp',
-      objectFit: 'contain'
+      type: 'video',
+      src: '/assets/videos/morphysics_ad.mp4',
+      webmSrc: '/assets/videos/morphysics_ad.webm',
+      poster: '/assets/images/morphysics/ad_poster.webp',
+      objectFit: 'contain',
+      background: '#2d2e3a'
     },
-    githubUrl: 'https://github.com/BennedictQuanTon/Morphysics',
+    githubUrl: 'https://github.com/BennedictQuanTon/Morphysics---Frontend',
     status: 'active',
+    achievement: {
+      label: 'Second Round Qualifier',
+      tone: 'silver'
+    },
     competitionName: 'Bach Khoa Innovation 2026 & VYSC 2026',
     organizer: 'HCMUT / VYSC',
     organizerLogo: '/assets/images/companies/bku_logo.webp',
@@ -545,84 +627,52 @@ export const projects: Project[] = [
   },
   {
     id: 'vinuni-datathon',
-    title: 'Team Datdy',
+    title: 'Fashion E-commerce Analytics',
     category: 'Competition',
     period: 'Apr 18, 2026 – May 11, 2026',
     role: 'Data Analyst',
-    summary: 'A multidimensional e-commerce analytical project structuring a decade-long (2012–2022) transactional database across 15 CSV files with advanced EDA and business strategy.',
-    problem: 'A massive simulated fashion retailer dataset was fragmented across 15 CSV files and multiple database layers (Master, Transaction, Analytical, Operational), making it hard to extract actionable patterns in promotions and inventory.',
+    summary: 'Team Datdy\'s Round 1 entry to DATATHON 2026 – The Gridbreakers, the first data science competition run by VinTelligence, VinUniversity\'s Data Science & AI Club. The team analysed a decade (2012–2022) of data from a simulated Vietnamese fashion e-commerce company, across 14 relational tables of customers, orders, promotions, shipments, returns and web traffic, answering 10 data-reasoning questions and writing an EDA report with business recommendations.',
+    problem: 'The company was shrinking and needed to know why. Its data was spread over 14 tables in master, transaction, analytical and operational layers, with nullable fields and business rules to respect, so every insight first needed careful joins, cleaning and validation.',
     process: [
       {
         date: 'April 2026',
-        title: 'Complex Data Processing & Structuring',
-        description: 'Engineered robust data pipelines in Jupyter Notebooks utilizing Pandas and NumPy to clean and integrate a decade-long (2012–2022) e-commerce dataset across 15 CSV files.'
+        title: 'Cleaning and Validation Pipeline',
+        description: 'Loaded and cleaned all 14 CSV tables against the schema in the brief, checking keys, constraints and missing values before any analysis.',
+        image: '/assets/images/datathon/erd.webp'
       },
       {
         date: 'May 2026',
-        title: 'Advanced EDA & Business Strategy',
-        description: 'Leveraged Matplotlib and Seaborn for EDA, transforming multidimensional data into clear visualizations to reveal key trends in inventory, promotions, and web traffic.'
+        title: 'EDA and Strategic Report',
+        description: 'Built five strategic charts and analysed each at four levels, from what happened to what the business should do next.',
+        image: '/assets/images/datathon/waterfall.webp'
       }
     ],
-    techStack: ['Python', 'Pandas', 'NumPy', 'Jupyter Notebook', 'Matplotlib', 'Seaborn', 'Analytical Modeling'],
+    techStack: ['Python', 'Pandas', 'NumPy', 'Matplotlib', 'Seaborn', 'Plotly', 'Jupyter Notebook'],
     outcomes: [
-      'Complex Data Processing & Structuring: Engineered robust data pipelines in Jupyter Notebooks utilizing Pandas and NumPy to clean and integrate a decade-long (2012–2022) e-commerce dataset, efficiently navigating 15 CSV files distributed across Master, Transaction, Analytical, and Operational layers.',
-      'Advanced EDA & Visualization: Leveraged Matplotlib and Seaborn for comprehensive EDA, transforming multidimensional data into clear visualizations to reveal key trends in inventory, promotions, and web traffic.',
-      'Business Intelligence & Strategy: Partnered with the HCMUT team to translate technical insights into actionable operational strategies, directly solving core business challenges for a simulated fashion retailer.'
+      'Cleaned and validated 14 relational CSV tables spanning 2012–2022 in a Pandas pipeline, enforcing the schema and business rules from the brief (cogs < price, ship_date ≤ delivery_date, foreign-key integrity), which gave the team one trusted base for all 10 multiple-choice answers and the report.',
+      'Diagnosed a 50% revenue decline, from 2.1 billion VND in 2016 to 1.04 billion VND in 2021 (orders down from 82,247 to 34,525), through waterfall, seasonality and Pareto analyses, and showed that Q2 sales run 2.6× the low season.',
+      'Turned 5 strategic charts into Descriptive → Diagnostic → Predictive → Prescriptive recommendations on promotion timing, size-driven returns and regional supply, where the East region carried 46.5% of revenue.'
     ],
-    images: ['/assets/images/datathon/Datathon_Logo.webp'],
-    hoverMedia: {
-      type: 'image',
-      src: '/assets/images/datathon/Datathon_Logo.webp',
-      objectFit: 'contain',
-      objectPosition: 'center top'
-    },
-    status: 'active',
-    competitionName: 'VinUni Datathon The GridBreakers 2026',
-    organizer: 'VinUni',
-    organizerLogo: '/assets/images/companies/vinuni_logo.webp'
-  },
-  {
-    id: 'yourai',
-    title: 'YourAI — AI Assistant & Academic Management Platform',
-    category: 'Personal Project',
-    period: 'Feb 2026 – Present',
-    role: 'Full-Stack AI Developer',
-    summary: 'A Monorepo PWA academic management platform with natural language DB commands (Gemini 1.5 Flash), real-time dual-scale GPA engine, and Supabase RLS security.',
-    problem: 'Academic portals are often fragmented, offering no unified dashboard for GPA tracking across different international standards, and lack interactive AI capabilities to let students query academic data in plain text.',
-    process: [
-      {
-        date: 'Feb 2026',
-        title: 'Enterprise PWA Architecture',
-        description: 'Architected a Monorepo academic management platform using FastAPI and React (Vite) as a PWA, achieving >90/100 Google Lighthouse score for instant load times.',
-        image: '/assets/images/yourai/logo.webp'
-      },
-      {
-        date: 'March 2026',
-        title: 'AI Agent & NLP Function Calling',
-        description: 'Integrated Gemini 1.5 Flash via Function Calling to translate natural language into SQL database commands with <1.2s latency, backed by Regex Fallback Parser for 99.9% system availability.'
-      },
-      {
-        date: 'April 2026',
-        title: 'Dual-Scale GPA Engine & Async Queues',
-        description: 'Built a real-time GPA engine converting Vietnamese (10-point) to Australian (7-point) scales. Implemented async queues via ARQ, Redis, and Resend SMTP boosting backend concurrency by 300%.'
-      }
-    ],
-    techStack: ['React', 'FastAPI', 'Gemini 1.5 Flash', 'Supabase', 'PostgreSQL RLS', 'Redis', 'ARQ', 'Resend SMTP', 'asyncpg', 'Vite'],
-    outcomes: [
-      'Enterprise PWA Architecture: Architected a Monorepo academic management platform using FastAPI and React (Vite). Optimized as a Progressive Web App (PWA), achieving a >90/100 Google Lighthouse score for instant load times and seamless cross-device installation.',
-      'AI Agent & NLP Processing: Integrated Gemini 1.5 Flash via Function Calling to translate natural language into automated database commands with <1.2s latency. Engineered a Regex Fallback Parser to guarantee 99.9% system availability and 100% task success during API outages.',
-      'Dual-Scale Engine & Async Queues: Built a real-time GPA engine converting Vietnamese (10-point) to Australian (7-point) scales. Implemented asynchronous queues via ARQ, Redis, and Resend SMTP for bulk email dispatching, boosting backend concurrency by 300% using asyncpg.',
-      'Zero-Trust Security & Infrastructure: Enforced strict multi-tenant data isolation using Supabase PostgreSQL Row Level Security (RLS) and JWT. Developed a secure 60s OTP flow with bcrypt hashing and anti-brute force throttling on a highly optimized, zero-cost serverless stack.'
+    screens: [
+      { src: '/assets/images/datathon/waterfall.webp', caption: 'Revenue waterfall by category, 2012–2022' },
+      { src: '/assets/images/datathon/retention.webp', caption: 'Acquisition vs retention by traffic source' },
+      { src: '/assets/images/datathon/erd.webp', caption: 'Entity-relationship diagram of the 14 tables' }
     ],
     images: [
-      '/assets/images/yourai/logo.webp'
+      '/assets/images/datathon/waterfall.webp',
+      '/assets/images/datathon/retention.webp',
+      '/assets/images/datathon/erd.webp'
     ],
     hoverMedia: {
       type: 'image',
-      src: '/assets/images/yourai/logo.webp',
-      objectFit: 'contain'
+      src: '/assets/images/datathon/waterfall.webp',
+      objectFit: 'contain',
+      background: '#ffffff'
     },
-    githubUrl: 'https://github.com/BennedictQuanTon/YourAI',
-    status: 'active'
+    githubUrl: 'https://github.com/Hiihyhyhuhu/VinUni-Datathon2026',
+    status: 'active',
+    competitionName: 'DATATHON 2026 · The Gridbreakers',
+    organizer: 'VinTelligence · VinUniversity',
+    organizerLogo: '/assets/images/companies/vinuni_logo.webp'
   }
 ];

@@ -29,6 +29,19 @@ export const milestones: Milestone[] = [
     highlight: '6th RMIT SGS'
   },
   {
+    id: 'comp-amd-act3',
+    type: 'competition',
+    date: 'October 2026',
+    title: 'AMD Developer Hackathon: ACT III',
+    subtitle: 'AI Engineer · IGNIS',
+    description: 'Built IGNIS, a maintenance-evidence desk where models propose, code computes and people approve, on the event AMD API.',
+    details: [
+      'Built the reviewer workspace and landing page in React 19 and TypeScript, wired to the real workflow API',
+      'Produced the 2:14 demo film and a key-free replay deployment of the recorded AMD calls'
+    ],
+    highlight: 'AMD ACT III'
+  },
+  {
     id: 'comp-amd-agent',
     type: 'competition',
     date: 'July 2026',
@@ -59,14 +72,14 @@ export const milestones: Milestone[] = [
     id: 'comp-datathon',
     type: 'competition',
     date: 'April – May 2026',
-    title: 'VinUni Datathon 2026',
+    title: 'DATATHON 2026 · The Gridbreakers',
     subtitle: 'Data Analyst · Team Datdy',
-    description: 'Engineered pandas pipeline and executed comprehensive Exploratory Data Analysis (EDA) on a 10-year transactional database.',
+    description: 'Analysed a decade (2012–2022) of data from a simulated fashion e-commerce company in VinTelligence\'s first data science competition at VinUniversity.',
     details: [
-      'Merged and cleaned 15 CSV files distributed across Transactional and master layers',
-      'Developed inventory optimization models and presented business strategy guidelines'
+      'Cleaned and validated 14 relational CSV tables against the schema and business rules in the brief',
+      'Diagnosed a 50% revenue decline (2016–2021) and turned 5 strategic charts into business recommendations'
     ],
-    image: '/assets/images/datathon/Datathon_Logo.webp',
+    image: '/assets/images/datathon/waterfall.webp',
     highlight: 'Data Analyst'
   },
   {
@@ -75,12 +88,12 @@ export const milestones: Milestone[] = [
     date: 'March 2026',
     title: 'Bach Khoa Innovation 2026',
     subtitle: 'Project Lead & Frontend Developer · Morphysics',
-    description: 'Architected a modular 2D physics virtual laboratory prototype utilizing Matter.js and React.',
+    description: 'Reached the second round with Morphysics, a browser physics lab that turns textbook problems into interactive Matter.js simulations.',
     details: [
-      'Created a 60 FPS glassmorphism telemetry dashboard with requestAnimationFrame',
-      'Built a modular 20-experiment library enforcing strict clean-code standards'
+      'Built a 60 FPS Matter.js engine loop that bypasses React re-renders on low-spec student laptops',
+      'Shipped an AI physics assistant next to 5 one-click preset experiments with live force vectors'
     ],
     image: '/assets/images/morphysics/Experience_Morphysics_BKI_Team.webp',
-    highlight: 'Bach Khoa Innovation 2026'
+    highlight: 'Second Round Qualifier'
   }
 ];
