@@ -21,7 +21,7 @@ export const invitations: Invitation[] = [
     photos: [
       { src: '/assets/images/events/ace-2026/team_selfie.webp', alt: 'With my teammate at the ACE 2026 Vietnam backdrop' },
       { src: '/assets/images/events/ace-2026/on_stage.webp', alt: 'Pitching our financial agent on stage' },
-      { src: '/assets/images/events/ace-2026/ai_top_atom.webp', alt: 'The GIGABYTE AI TOP ATOM at the venue' }
+      { src: '/assets/images/events/ace-2026/ai_top_atom.webp', alt: 'The GIGABYTE AI TOP ATOM at the venue', position: '50% 88%' }
     ],
     proof: [
       { src: '/assets/images/events/ace-2026/invitation_card.webp', caption: 'Invitation card' },
@@ -45,7 +45,7 @@ export const invitations: Invitation[] = [
       "The joint finale of Shinhan's Global X-Change and Innoboost startup programs, themed AX Technicolor. More than 20 startups from Korea and Vietnam pitched, showcased and met founders, investors and corporate innovation leaders.",
     highlights: ['20+ startups across pitching, showcase and business matching', 'Korea–Vietnam startup ecosystem'],
     photos: [
-      { src: '/assets/images/events/shinhan-demo-day/selfie.webp', alt: "At Shinhan Future's Lab Demo Day 2026" },
+      { src: '/assets/images/events/shinhan-demo-day/selfie.webp', alt: "At Shinhan Future's Lab Demo Day 2026", position: '0% 50%' },
       { src: '/assets/images/events/shinhan-demo-day/guest_badge.webp', alt: 'My guest badge' }
     ],
     proof: [

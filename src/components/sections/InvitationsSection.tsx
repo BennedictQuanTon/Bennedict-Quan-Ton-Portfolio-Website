@@ -23,6 +23,7 @@ const PhotoButton: React.FC<{ photo: Photo; onOpen: (p: Photo) => void; classNam
       alt={photo.alt}
       loading="lazy"
       className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+      style={photo.position ? { objectPosition: photo.position } : undefined}
     />
   </button>
 );

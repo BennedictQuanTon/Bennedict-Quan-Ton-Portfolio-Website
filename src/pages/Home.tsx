@@ -6,6 +6,7 @@ import { ScrollReveal } from '../components/ui/ScrollReveal';
 import { useIntroDone, EASE_OUT_EXPO, HERO_PORTRAIT } from '../lib/intro';
 import { genericTechIcon } from '../components/ui/TechLogos';
 import { ProjectMedia } from '../components/ui/ProjectMedia';
+import { LogoMarquee } from '../components/ui/LogoMarquee';
 import { PersonalProjectLabel } from '../components/ui/PersonalProjectLabel';
 import { AchievementBadge } from '../components/ui/AchievementBadge';
 import { TestimonialMarquee } from '../components/ui/TestimonialMarquee';
@@ -333,60 +334,52 @@ export const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* 2. About Me Section */}
-      <section className="relative w-full max-w-[1360px] xl:max-w-[1440px] 2xl:max-w-[1600px] mx-auto px-4 md:px-8 lg:px-12 py-12 md:py-16 lg:py-20 border-b border-border-token/20 overflow-hidden">
-        <div className="absolute left-[8%] top-1/3 w-[360px] h-[360px] rounded-full bg-accent/10 blur-[120px] pointer-events-none" />
-        <div className="absolute right-[15%] bottom-1/4 w-[280px] h-[280px] rounded-full bg-accent/5 blur-[100px] pointer-events-none" />
+      {/* 2. About Me: story and focus on the left, portrait on the right, then the
+          organisers and hosts I have worked with as a two-row logo marquee */}
+      <section className="relative w-full max-w-[1360px] xl:max-w-[1440px] 2xl:max-w-[1600px] mx-auto px-4 md:px-8 lg:px-12 pt-12 md:pt-16 lg:pt-20 pb-12 md:pb-16 border-b border-border-token/20 overflow-hidden">
+        <div className="absolute left-[8%] top-1/4 w-[360px] h-[360px] rounded-full bg-accent/10 blur-[120px] pointer-events-none" />
         <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
 
-          {/* Left: Summary text & identity */}
+          {/* Left: story */}
           <ScrollReveal direction="left" className="lg:col-span-6">
-            <div className="relative">
-              <div className="flex items-center gap-2.5 mb-4">
-                <User size={17} className="text-accent" />
-                <span className="text-xs uppercase tracking-[0.25em] font-semibold text-accent font-mono">About Me</span>
-              </div>
-              <h2 className="text-4xl md:text-6xl lg:text-7xl 2xl:text-8xl font-bold font-display text-text-heading leading-[0.95] tracking-tight">
-                My Story <br />
-                <span className="italic font-normal text-accent">&amp; Path</span>
-              </h2>
-              <div className="flex items-center gap-1.5 mt-5 mb-7">
-                <div className="w-12 h-[2.5px] bg-accent rounded-full" />
-                <div className="w-5 h-[2.5px] bg-border-token/40 rounded-full" />
-                <div className="w-3 h-[2.5px] bg-border-token/40 rounded-full" />
-              </div>
-
-              <div className="space-y-4 max-w-xl">
-                <p className="text-base md:text-lg text-text-body leading-relaxed">
-                  I am an <span className="text-text-heading font-semibold">AI Engineer Intern</span> and <span className="text-text-heading font-semibold">Undergraduate AI Research Assistant</span> at HCMUT (AITechLab - ML4U), deeply passionate about building scalable, production-grade intelligent systems. My technical focus lies at the intersection of Agentic AI, Speech Recognition (ASR), Real-Time Voice Agents, and LLM/SLM Inference optimization, backed by a solid foundation in Applied Machine Learning and Cloud infrastructure.
-                </p>
-                <p className="text-base md:text-lg text-text-body leading-relaxed">
-                  From developing core ML pipelines to orchestrating multi-agent architectures with MCP and deploying production-grade systems — every project I take on is focused on maximizing token efficiency, minimal latency, and practical AI engineering.
-                </p>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3 gap-3 mt-8">
-                {[
-                  { label: 'Agentic GenAI', sub: 'ENTERPRISE SYSTEMS' },
-                  { label: 'Multimodal AI', sub: 'SPEECH & REAL-TIME VOICE' },
-                  { label: 'Applied ML & SLM', sub: 'INFERENCE OPTIMIZATION' },
-                ].map((chip) => (
-                  <div key={chip.label} className="group/chip border border-border-token/30 bg-bg-alt/35 rounded-2xl p-4 hover:border-accent/45 hover:bg-accent-dim/40 transition-all duration-300">
-                    <span className="block text-xs md:text-sm font-semibold text-text-heading group-hover/chip:text-accent transition-colors">{chip.label}</span>
-                    <span className="block text-[10px] md:text-[11px] font-medium uppercase tracking-wider text-text-muted mt-1">{chip.sub}</span>
-                  </div>
-                ))}
-              </div>
+            <div className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.28em] text-text-muted">
+              <span aria-hidden className="h-px w-10 bg-current opacity-50" />
+              About me
             </div>
+            <h2 className="mt-5 text-4xl md:text-6xl lg:text-7xl 2xl:text-8xl font-bold font-display text-text-heading leading-[0.95] tracking-tight">
+              My Story <br />
+              <span className="italic font-normal text-accent">&amp; Path</span>
+            </h2>
+
+            <div className="mt-8 space-y-4 max-w-xl">
+              <p className="text-base md:text-lg text-text-body leading-relaxed">
+                I am an <span className="text-text-heading font-semibold">AI Engineer Intern</span> and <span className="text-text-heading font-semibold">Undergraduate AI Research Assistant</span> at HCMUT (AITechLab - ML4U), deeply passionate about building scalable, production-grade intelligent systems. My technical focus lies at the intersection of Agentic AI, Speech Recognition (ASR), Real-Time Voice Agents, and LLM/SLM Inference optimization, backed by a solid foundation in Applied Machine Learning and Cloud infrastructure.
+              </p>
+              <p className="text-base md:text-lg text-text-body leading-relaxed">
+                From developing core ML pipelines to orchestrating multi-agent architectures with MCP and deploying production-grade systems — every project I take on is focused on maximizing token efficiency, minimal latency, and practical AI engineering.
+              </p>
+            </div>
+
+            {/* Focus areas: numbered, separated by hairlines rather than boxed */}
+            <dl className="mt-9 grid grid-cols-1 sm:grid-cols-3 gap-y-5 sm:gap-x-8 max-w-xl">
+              {[
+                { label: 'Agentic GenAI', sub: 'Enterprise systems' },
+                { label: 'Multimodal AI', sub: 'Speech & real-time voice' },
+                { label: 'Applied ML & SLM', sub: 'Inference optimization' },
+              ].map((area, i) => (
+                <div key={area.label} className="border-t border-border-token pt-4">
+                  <span className="block text-[11px] font-semibold tabular-nums text-accent">0{i + 1}</span>
+                  <dt className="mt-2 text-sm md:text-base font-semibold text-text-heading">{area.label}</dt>
+                  <dd className="mt-1 text-[11px] font-medium uppercase tracking-[0.14em] text-text-muted">{area.sub}</dd>
+                </div>
+              ))}
+            </dl>
           </ScrollReveal>
 
-          {/* Right: Single professional portrait with luxury effects */}
+          {/* Right: portrait */}
           <ScrollReveal direction="right" className="lg:col-span-6 flex items-center justify-center">
-            <div className="relative w-full max-w-[500px] xl:max-w-[540px]">
-              {/* Ambient glow behind portrait */}
+            <div className="relative w-full max-w-[460px] xl:max-w-[500px]">
               <div className="absolute inset-0 rounded-[2rem] bg-accent/8 blur-[60px] pointer-events-none" />
-              
-              {/* Portrait container */}
               <div className="relative portrait-frame portrait-glow portrait-float w-full aspect-[4/4.8] rounded-[1.5rem] overflow-hidden border border-border-token/25">
                 <img
                   src="/assets/images/portrait/Myself_Best_Potrait.webp"
@@ -394,24 +387,27 @@ export const Home: React.FC = () => {
                   loading="lazy"
                   className="w-full h-full object-cover object-center"
                 />
-                {/* Cinematic vignette overlay */}
                 <div className="absolute inset-0 pointer-events-none" style={{
                   background: 'radial-gradient(ellipse at center, transparent 55%, var(--bg) 100%)',
                   opacity: 0.45,
                 }} />
-                {/* Inner ring highlight */}
                 <div className="absolute inset-0 ring-1 ring-inset ring-white/8 pointer-events-none rounded-[1.5rem]" />
-                {/* Bottom accent crop mark */}
-                <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-accent/50 to-transparent" />
               </div>
-
-              {/* Decorative crop marks */}
-              <div className="absolute -top-3 -left-3 w-8 h-8 border-l-2 border-t-2 border-accent/25 rounded-tl-sm pointer-events-none hidden lg:block" />
-              <div className="absolute -bottom-3 -right-3 w-8 h-8 border-r-2 border-b-2 border-accent/25 rounded-br-sm pointer-events-none hidden lg:block" />
             </div>
           </ScrollReveal>
-
         </div>
+
+        {/* Organisers and hosts */}
+        <ScrollReveal className="relative mt-16 md:mt-20">
+          <div className="flex items-center justify-center gap-4 mb-8 md:mb-10">
+            <span aria-hidden className="h-px w-6 md:w-16 bg-border-token" />
+            <span className="text-[10px] md:text-[11px] font-semibold uppercase tracking-[0.18em] md:tracking-[0.28em] text-text-muted text-center whitespace-nowrap">
+              Competed, built and invited by
+            </span>
+            <span aria-hidden className="h-px w-6 md:w-16 bg-border-token" />
+          </div>
+          <LogoMarquee label="Organisers and hosts of the competitions and events I took part in" />
+        </ScrollReveal>
       </section>
 
       {/* 3. Projects & Competitions Section (Vertical Stacked Blocks) */}

@@ -112,7 +112,7 @@ export interface Invitation {
   summary: string;
   highlights?: string[];
   /** Photos from the event; the first is the large one */
-  photos: { src: string; alt: string }[];
+  photos: { src: string; alt: string; /** CSS object-position for the cropped tile */ position?: string }[];
   /** Proof of the invitation, opened only on request */
   proof: { src: string; caption: string }[];
 }
