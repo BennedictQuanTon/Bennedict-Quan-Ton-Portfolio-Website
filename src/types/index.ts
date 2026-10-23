@@ -92,6 +92,29 @@ export interface WorkExperience {
   };
 }
 
+// ─── Invitations ──────────────────────────────────────────────────────────────
+
+/** A private event I was invited to, shown on the Journey page */
+export interface Invitation {
+  id: string;
+  event: string;
+  host: string;
+  /** Day of the month, shown large ("08") */
+  day: string;
+  /** Month and year ("October 2026") */
+  month: string;
+  /** Weekday and time ("Thursday · 08:00 – 12:30") */
+  when: string;
+  venue: string;
+  invitedAs: string;
+  summary: string;
+  highlights?: string[];
+  /** Photos from the event; the first is the large one */
+  photos: { src: string; alt: string }[];
+  /** Proof of the invitation, opened only on request */
+  proof: { src: string; caption: string }[];
+}
+
 // ─── Milestones ───────────────────────────────────────────────────────────────
 
 export interface Milestone {

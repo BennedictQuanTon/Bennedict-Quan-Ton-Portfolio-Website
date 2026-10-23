@@ -281,6 +281,7 @@ export const projects: Project[] = [
       background: '#0b0b0c'
     },
     githubUrl: 'https://github.com/BennedictQuanTon/IGNIS---AMD-Developer-Hackathon-ACT-II',
+    liveUrl: 'https://ignis-amd-developer-hackathon-act-i.vercel.app',
     status: 'active',
     competitionName: 'AMD Developer Hackathon: ACT III',
     organizer: 'AMD',
@@ -659,15 +660,16 @@ export const projects: Project[] = [
       { src: '/assets/images/datathon/erd.webp', caption: 'Entity-relationship diagram of the 14 tables' }
     ],
     images: [
+      '/assets/images/datathon/cover.webp',
       '/assets/images/datathon/waterfall.webp',
       '/assets/images/datathon/retention.webp',
       '/assets/images/datathon/erd.webp'
     ],
     hoverMedia: {
       type: 'image',
-      src: '/assets/images/datathon/waterfall.webp',
+      src: '/assets/images/datathon/cover.webp',
       objectFit: 'contain',
-      background: '#ffffff'
+      background: '#f6f8f5'
     },
     githubUrl: 'https://github.com/Hiihyhyhuhu/VinUni-Datathon2026',
     status: 'active',
