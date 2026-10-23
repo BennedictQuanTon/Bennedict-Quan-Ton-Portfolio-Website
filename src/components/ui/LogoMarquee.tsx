@@ -11,7 +11,7 @@ const rows: [Organizer[], Organizer[]] = [
  * Two rows of organiser logos drifting in opposite directions, with masked edges.
  * Each mark has its own tuned height so all of them read at the same weight, in one grey tone (inverted
  * in dark mode). Each row is rendered four times and looped at -50%, so even a short list
- * never shows a gap; hovering a row pauses it. Copies after the first are aria-hidden.
+ * never shows a gap, and it keeps moving under the cursor. Copies after the first are aria-hidden.
  */
 export const LogoMarquee: React.FC<{ label: string }> = ({ label }) => (
   <div aria-label={label} className="flex flex-col gap-7 md:gap-9">

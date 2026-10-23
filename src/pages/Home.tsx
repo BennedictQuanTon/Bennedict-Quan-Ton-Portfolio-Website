@@ -338,7 +338,7 @@ export const Home: React.FC = () => {
       {/* 2. About Me: story and focus on the left, portrait on the right, then the
           organisers and hosts I have worked with as a two-row logo marquee */}
       <section className="relative w-full max-w-[1360px] xl:max-w-[1440px] 2xl:max-w-[1600px] mx-auto px-4 md:px-8 lg:px-12 pt-12 md:pt-16 lg:pt-20 pb-12 md:pb-16 border-b border-border-token/20 overflow-hidden">
-        <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+        <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-stretch">
 
           {/* Left: story */}
           <ScrollReveal direction="left" className="lg:col-span-6">
@@ -376,20 +376,18 @@ export const Home: React.FC = () => {
             </dl>
           </ScrollReveal>
 
-          {/* Right: portrait, framed like a print: a matte border and hairline, no glow, no float */}
-          <ScrollReveal direction="right" className="lg:col-span-6 flex items-center justify-center">
-            <figure className="w-full max-w-[440px] xl:max-w-[480px]">
-              <div className="rounded-[1.75rem] border border-border-token bg-bg p-2.5 md:p-3">
-                <div className="aspect-[4/4.8] overflow-hidden rounded-[1.25rem]">
-                  <img
-                    src="/assets/images/portrait/Myself_Best_Potrait.webp"
-                    alt="Long Quan Ton at the Vietnam AI Open Hackathon"
-                    loading="lazy"
-                    className="w-full h-full object-cover object-center"
-                  />
-                </div>
-              </div>
-            </figure>
+          {/* Right: portrait in its original frame (no glow, no float). On wide screens it
+              takes exactly the height of the text column beside it. */}
+          <ScrollReveal direction="right" className="lg:col-span-6 flex justify-center lg:justify-end lg:pr-10 xl:pr-16">
+            <div className="relative portrait-frame w-full max-w-[460px] xl:max-w-[500px] aspect-[4/4.8] lg:aspect-auto lg:h-full rounded-[1.5rem] overflow-hidden border border-border-token/25">
+              <img
+                src="/assets/images/portrait/Myself_Best_Potrait.webp"
+                alt="Long Quan Ton at the Vietnam AI Open Hackathon"
+                loading="lazy"
+                className="absolute inset-0 w-full h-full object-cover object-center"
+              />
+              <div className="absolute inset-0 ring-1 ring-inset ring-white/8 pointer-events-none rounded-[1.5rem]" />
+            </div>
           </ScrollReveal>
         </div>
 
