@@ -6,6 +6,7 @@ import { ScrollReveal } from '../components/ui/ScrollReveal';
 import { useIntroDone, EASE_OUT_EXPO, HERO_PORTRAIT } from '../lib/intro';
 import { genericTechIcon } from '../components/ui/TechLogos';
 import { ProjectMedia } from '../components/ui/ProjectMedia';
+import { logoHeightClass } from '../lib/logos';
 import { LogoMarquee } from '../components/ui/LogoMarquee';
 import { PersonalProjectLabel } from '../components/ui/PersonalProjectLabel';
 import { AchievementBadge } from '../components/ui/AchievementBadge';
@@ -337,14 +338,13 @@ export const Home: React.FC = () => {
       {/* 2. About Me: story and focus on the left, portrait on the right, then the
           organisers and hosts I have worked with as a two-row logo marquee */}
       <section className="relative w-full max-w-[1360px] xl:max-w-[1440px] 2xl:max-w-[1600px] mx-auto px-4 md:px-8 lg:px-12 pt-12 md:pt-16 lg:pt-20 pb-12 md:pb-16 border-b border-border-token/20 overflow-hidden">
-        <div className="absolute left-[8%] top-1/4 w-[360px] h-[360px] rounded-full bg-accent/10 blur-[120px] pointer-events-none" />
         <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
 
           {/* Left: story */}
           <ScrollReveal direction="left" className="lg:col-span-6">
-            <div className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.28em] text-text-muted">
-              <span aria-hidden className="h-px w-10 bg-current opacity-50" />
-              About me
+            <div className="flex items-center gap-2.5">
+              <User size={20} className="text-accent" />
+              <span className="text-sm uppercase tracking-widest font-semibold text-accent">About Me</span>
             </div>
             <h2 className="mt-5 text-4xl md:text-6xl lg:text-7xl 2xl:text-8xl font-bold font-display text-text-heading leading-[0.95] tracking-tight">
               My Story <br />
@@ -376,24 +376,20 @@ export const Home: React.FC = () => {
             </dl>
           </ScrollReveal>
 
-          {/* Right: portrait */}
+          {/* Right: portrait, framed like a print: a matte border and hairline, no glow, no float */}
           <ScrollReveal direction="right" className="lg:col-span-6 flex items-center justify-center">
-            <div className="relative w-full max-w-[460px] xl:max-w-[500px]">
-              <div className="absolute inset-0 rounded-[2rem] bg-accent/8 blur-[60px] pointer-events-none" />
-              <div className="relative portrait-frame portrait-glow portrait-float w-full aspect-[4/4.8] rounded-[1.5rem] overflow-hidden border border-border-token/25">
-                <img
-                  src="/assets/images/portrait/Myself_Best_Potrait.webp"
-                  alt="Long Quan Ton — AI Engineer Intern"
-                  loading="lazy"
-                  className="w-full h-full object-cover object-center"
-                />
-                <div className="absolute inset-0 pointer-events-none" style={{
-                  background: 'radial-gradient(ellipse at center, transparent 55%, var(--bg) 100%)',
-                  opacity: 0.45,
-                }} />
-                <div className="absolute inset-0 ring-1 ring-inset ring-white/8 pointer-events-none rounded-[1.5rem]" />
+            <figure className="w-full max-w-[440px] xl:max-w-[480px]">
+              <div className="rounded-[1.75rem] border border-border-token bg-bg p-2.5 md:p-3">
+                <div className="aspect-[4/4.8] overflow-hidden rounded-[1.25rem]">
+                  <img
+                    src="/assets/images/portrait/Myself_Best_Potrait.webp"
+                    alt="Long Quan Ton at the Vietnam AI Open Hackathon"
+                    loading="lazy"
+                    className="w-full h-full object-cover object-center"
+                  />
+                </div>
               </div>
-            </div>
+            </figure>
           </ScrollReveal>
         </div>
 
@@ -479,12 +475,12 @@ export const Home: React.FC = () => {
                               project.organizerLogos ? (
                                 project.organizerLogos.map((logo, lIdx) => (
                                   <div key={lIdx} className="h-11 md:h-12 px-3 rounded-xl bg-white p-1.5 flex items-center justify-center border border-border-token/20 shadow-xs hover:scale-105 transition-transform">
-                                    <img src={logo} alt="BTC Logo" className="h-full w-auto object-contain" />
+                                    <img src={logo} alt="BTC Logo" className={`${logoHeightClass(logo)} w-auto object-contain`} />
                                   </div>
                                 ))
                               ) : project.organizerLogo ? (
                                 <div className="h-11 md:h-12 px-4 rounded-xl bg-white p-1.5 flex items-center justify-center border border-border-token/20 shadow-xs hover:scale-105 transition-transform">
-                                  <img src={project.organizerLogo} alt={project.organizer} className="h-full w-auto object-contain" />
+                                  <img src={project.organizerLogo} alt={project.organizer} className={`${logoHeightClass(project.organizerLogo)} w-auto object-contain`} />
                                 </div>
                               ) : (
                                 <span className="text-xs font-semibold text-text-muted bg-surface-2 px-3 py-1.5 rounded-lg">
