@@ -99,6 +99,8 @@ export interface Invitation {
   id: string;
   event: string;
   host: string;
+  /** Organiser logos, shown in place of the host name */
+  hostLogos?: { src: string; alt: string }[];
   /** Day of the month, shown large ("08") */
   day: string;
   /** Month and year ("October 2026") */

@@ -6,6 +6,10 @@ export const invitations: Invitation[] = [
     id: 'ace-2026-vietnam',
     event: 'ACE 2026 Vietnam — Agentic Computing at the Edge',
     host: 'GIGABYTE × NVIDIA',
+    hostLogos: [
+      { src: '/assets/images/companies/gigabyte_logo.svg', alt: 'GIGABYTE' },
+      { src: '/assets/images/companies/nvidia_logo.svg', alt: 'NVIDIA' }
+    ],
     day: '08',
     month: 'October 2026',
     when: 'Thursday · 08:00 – 12:30',
@@ -28,6 +32,10 @@ export const invitations: Invitation[] = [
     id: 'shinhan-demo-day-2026',
     event: "Shinhan Future's Lab Demo Day 2026",
     host: "Shinhan Future's Lab Vietnam · GenAI Fund",
+    hostLogos: [
+      { src: '/assets/images/companies/shinhan_logo.svg', alt: 'Shinhan Financial Group' },
+      { src: '/assets/images/companies/genaifund_logo.webp', alt: 'GenAI Fund' }
+    ],
     day: '17',
     month: 'September 2026',
     when: 'Thursday · 16:00 – 18:00',
