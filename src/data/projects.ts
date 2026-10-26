@@ -142,7 +142,7 @@ export const projects: Project[] = [
       background: '#0b0b10'
     },
     githubUrl: 'https://github.com/BennedictQuanTon/Unfound-Challenge-2-RMIT-Hackathon-2026',
-    liveUrl: 'https://unfound-rmit-hackathon.vercel.app',
+    liveUrl: 'https://unfound-be-reached-not-found.vercel.app',
     status: 'active',
     achievement: {
       label: '6th RMIT SGS · 18th Region-wide',

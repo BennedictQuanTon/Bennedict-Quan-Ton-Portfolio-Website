@@ -49,3 +49,6 @@ references/
 
 # Optimized preview images
 /public/assets/images/previews/
+
+# Application documents (personal data, never published)
+/info/
