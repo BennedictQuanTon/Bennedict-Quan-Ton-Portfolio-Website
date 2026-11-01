@@ -2,6 +2,77 @@ import type { Project } from '../types';
 
 export const projects: Project[] = [
   {
+    id: 'alodi',
+    title: 'Alodi',
+    category: 'Competition',
+    period: 'Oct 31, 2026',
+    role: 'AI Engineer & Solution Architect',
+    summary: 'Alodi is an agentic recovery system for last-mile delivery in Vietnam. When a drop fails, one shipper tap starts chat and a disclosed, consent-based voice call; each conversation becomes structured context for the next shipper. The model proposes, backend rules decide what is applied, and anything uncertain goes to a person.',
+    problem: 'A failed delivery is a negotiation that happens off the system: a missed call, and everything that could fix the next attempt is lost. Buyers cannot choose a delivery time, so it gets agreed by phone if someone picks up, and the next shipper receives only an error code.',
+    process: [
+      {
+        date: 'Oct 31, 2026',
+        title: 'System Design and Business Rules',
+        description: 'Designed the end-to-end recovery flow, the AI pipeline and the backend rules that gate every model proposal.',
+        image: '/assets/images/alodi/landing.webp'
+      },
+      {
+        date: 'Oct 31, 2026',
+        title: 'Finals and Third Place',
+        description: 'Presented the working demo at the Shopee Vietnam office and placed Third Overall with Team Develarper.',
+        image: '/assets/images/alodi/demo.webp'
+      }
+    ],
+    techStack: [
+      'GPT-Live-1', 'GPT-6.1 Terra', 'GPT Transcribe', 'Structured Outputs', 'WebRTC', 'FastAPI', 'Python', 'SQLAlchemy',
+      'SQLite', 'Next.js 16', 'React 19', 'Tailwind CSS', 'Motion'
+    ],
+    cardStack: ['GPT-Live-1', 'GPT-6.1 Terra', 'GPT Transcribe', 'Structured Outputs', 'WebRTC', 'FastAPI', 'Next.js 16', 'SQLite'],
+    outcomes: [
+      'Architected the end-to-end system design and business logic of Alodi, a real-time multimodal AI agent that reached Top 3 Overall at the Sea × OpenAI Regional Codex Hackathon, by specifying a pipeline of GPT-Live-1 voice over WebRTC, GPT Transcribe and GPT-6.1 Terra for the engineering team to build.',
+      'Designed a schema-constrained extraction layer that converts call and memo transcripts into structured delivery context with per-field confidence scores, by defining Structured Outputs schemas and auto-applying only fields scoring ≥ 0.85, with the rest routed to human review.',
+      'Designed deterministic agent guardrails that enforce call windows, retry caps, recording consent and opt-out outside the prompt, by gating each model proposal through a backend policy layer, at a modelled OpenAI cost of about ₫7.2M a month per area.'
+    ],
+    screens: [
+      { src: '/assets/images/alodi/landing.webp', caption: 'Alodi landing page' },
+      { src: '/assets/images/alodi/demo.webp', caption: 'Demo: shipper app, buyer call and operations in sync' }
+    ],
+    images: [
+      '/assets/images/alodi/third_place.webp',
+      '/assets/images/alodi/landing.webp',
+      '/assets/images/alodi/demo.webp'
+    ],
+    hoverMedia: {
+      type: 'video',
+      src: '/assets/videos/alodi_film.mp4',
+      webmSrc: '/assets/videos/alodi_film.webm',
+      poster: '/assets/images/alodi/film_poster.webp',
+      objectFit: 'contain',
+      background: '#151c31'
+    },
+    githubUrl: 'https://github.com/BennedictQuanTon/Alodi-Regional-Codex-Hackathon-2026',
+    liveUrl: 'https://alodi-ai-system.vercel.app',
+    status: 'active',
+    achievement: {
+      label: 'Top 3 Overall',
+      tone: 'silver'
+    },
+    certificate: {
+      heading: 'Award',
+      image: '/assets/images/alodi/third_place.webp',
+      title: 'Third Place — Sea × OpenAI Regional Codex Hackathon, Vietnam',
+      issuer: 'Team Develarper, Third Place: USD 5,000 in OpenAI API credits.'
+    },
+    competitionName: 'Sea × OpenAI Regional Codex Hackathon',
+    organizer: 'Sea × OpenAI',
+    organizerLogo: '/assets/images/companies/sea_logo.webp',
+    organizerLogos: [
+      '/assets/images/companies/sea_logo.webp',
+      '/assets/images/companies/openai_logo.svg',
+      '/assets/images/companies/shopee_logo.svg'
+    ]
+  },
+  {
     id: 'weatherise',
     title: 'Weatherise',
     category: 'Competition',
