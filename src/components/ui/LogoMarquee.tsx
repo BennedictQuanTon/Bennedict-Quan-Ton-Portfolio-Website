@@ -22,16 +22,19 @@ export const LogoMarquee: React.FC<{ label: string }> = ({ label }) => (
             <ul
               key={copy}
               aria-hidden={copy > 0 || undefined}
-              className="flex items-center gap-12 md:gap-16 pr-12 md:pr-16"
+              className="flex shrink-0 items-center gap-12 md:gap-16 pr-12 md:pr-16"
             >
               {row.map((org) => (
-                <li key={org.name} className="flex h-12 items-center justify-center">
+                <li key={org.name} className="flex h-12 shrink-0 items-center justify-center">
                   <img
                     src={org.logo}
                     alt={copy === 0 ? org.name : ''}
-                    loading="lazy"
-                    style={{ height: `calc(${org.height}px * var(--logo-scale))` }}
-                    className="w-auto max-w-[170px] md:max-w-[210px] object-contain grayscale opacity-55 hover:opacity-100 dark:invert transition-opacity duration-300"
+                    decoding="async"
+                    style={{
+                      height: `calc(${org.height}px * var(--logo-scale))`,
+                      width: `calc(${(org.height * org.ratio).toFixed(1)}px * var(--logo-scale))`,
+                    }}
+                    className="max-w-none object-contain grayscale opacity-55 hover:opacity-100 dark:invert transition-opacity duration-300"
                   />
                 </li>
               ))}

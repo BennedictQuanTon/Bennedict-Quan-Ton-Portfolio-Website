@@ -19,7 +19,7 @@ import { projects } from '../data/projects';
 import type { Project } from '../types';
 
 // Projects highlighted on the home page, in display order
-const FEATURED_PROJECT_IDS = ['weatherise', 'the-lantern', 'bkai-admissions'];
+const FEATURED_PROJECT_IDS = ['alodi', 'weatherise', 'rmit-hackathon-2026'];
 const featuredProjects = FEATURED_PROJECT_IDS
   .map((id) => projects.find((p) => p.id === id))
   .filter((p): p is Project => Boolean(p));
@@ -420,7 +420,7 @@ export const Home: React.FC = () => {
             </ScrollReveal>
           </div>
 
-          {/* Vertical Stacked Projects List (Featured: Weatherise, The Lantern, BKAi) */}
+          {/* Vertical Stacked Projects List (Featured: Alodi, Weatherise, Unfound) */}
           <div className="w-full flex flex-col space-y-8">
             {featuredProjects.map((project, idx) => (
               <ScrollReveal key={project.id} direction="up" delay={idx * 0.05}>

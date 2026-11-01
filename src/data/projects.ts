@@ -6,7 +6,7 @@ export const projects: Project[] = [
     title: 'Alodi',
     category: 'Competition',
     period: 'Oct 31, 2026',
-    role: 'AI Engineer & Solution Architect',
+    role: 'Product Manager & AI Engineer',
     summary: 'Alodi is an agentic recovery system for last-mile delivery in Vietnam. When a drop fails, one shipper tap starts chat and a disclosed, consent-based voice call; each conversation becomes structured context for the next shipper. The model proposes, backend rules decide what is applied, and anything uncertain goes to a person.',
     problem: 'A failed delivery is a negotiation that happens off the system: a missed call, and everything that could fix the next attempt is lost. Buyers cannot choose a delivery time, so it gets agreed by phone if someone picks up, and the next shipper receives only an error code.',
     process: [
