@@ -494,7 +494,7 @@ export const Vault: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Product screens: the first full width, the rest side by side in matching
+                {/* Product screens: with an odd count the first is full width, the rest side by side in matching
                     16:10 tiles (tall screens show their top; the lightbox shows them whole) */}
                 {selectedProject.screens && selectedProject.screens.length > 0 && (
                   <div className="space-y-3 pt-6 border-t border-border-token/30">
@@ -502,7 +502,10 @@ export const Vault: React.FC = () => {
                       Product Screens
                     </h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
-                      {selectedProject.screens.map((screen, idx) => (
+                      {selectedProject.screens.map((screen, idx, all) => {
+                        // An odd count leads with one wide screen; an even count sits in matching tiles
+                        const wide = idx === 0 && all.length % 2 === 1;
+                        return (
                         <button
                           key={screen.src}
                           type="button"
@@ -510,20 +513,21 @@ export const Vault: React.FC = () => {
                             src: screen.src,
                             title: `${selectedProject.title} — ${screen.caption}`,
                           })}
-                          className={`group/screen text-left space-y-2 cursor-zoom-in ${idx === 0 ? 'md:col-span-2' : ''}`}
+                          className={`group/screen text-left space-y-2 cursor-zoom-in ${wide ? 'md:col-span-2' : ''}`}
                           aria-label={`View ${screen.caption}`}
                         >
-                          <div className={`overflow-hidden rounded-xl border border-border-token/40 bg-bg-alt/40 ${idx === 0 ? '' : 'aspect-[16/10]'}`}>
+                          <div className={`overflow-hidden rounded-xl border border-border-token/40 bg-bg-alt/40 ${wide ? '' : 'aspect-[16/10]'}`}>
                             <img
                               src={screen.src}
                               alt={screen.caption}
                               loading="lazy"
-                              className={`block w-full transition-transform duration-500 group-hover/screen:scale-[1.02] ${idx === 0 ? 'h-auto' : 'h-full object-cover object-top'}`}
+                              className={`block w-full transition-transform duration-500 group-hover/screen:scale-[1.02] ${wide ? 'h-auto' : 'h-full object-cover object-top'}`}
                             />
                           </div>
                           <span className="block text-xs font-medium text-text-muted">{screen.caption}</span>
                         </button>
-                      ))}
+                      );
+                      })}
                     </div>
                   </div>
                 )}

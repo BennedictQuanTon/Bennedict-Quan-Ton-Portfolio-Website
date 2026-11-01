@@ -16,6 +16,19 @@ export const milestones: Milestone[] = [
     ]
   },
   {
+    id: 'comp-alodi',
+    type: 'competition',
+    date: 'October 2026',
+    title: 'Sea × OpenAI Regional Codex Hackathon',
+    subtitle: 'Product Manager & AI Engineer · Alodi',
+    description: 'Placed Top 3 Overall with Team Develarper, with an agentic recovery system for last-mile delivery in Vietnam.',
+    details: [
+      'Architected the system design and business logic around GPT-Live-1 voice, GPT Transcribe and GPT-6.1 Terra',
+      'Designed the Structured Outputs extraction layer and deterministic backend guardrails'
+    ],
+    highlight: 'Top 3 Overall'
+  },
+  {
     id: 'comp-rmit-hackathon',
     type: 'competition',
     date: 'October 2026',
