@@ -397,7 +397,7 @@ export const Home: React.FC = () => {
           <div className="relative z-20 flex items-center justify-center gap-2 md:gap-4 mb-8 md:mb-10">
             <span aria-hidden className="h-px w-6 md:w-16 bg-border-token" />
             <span className="text-[10px] md:text-[11px] font-semibold uppercase tracking-[0.18em] md:tracking-[0.28em] text-text-muted text-center whitespace-nowrap">
-              Events I've taken part in
+              Competitions &amp; Invitations
             </span>
             <LogoNotice />
             <span aria-hidden className="h-px w-6 md:w-16 bg-border-token" />

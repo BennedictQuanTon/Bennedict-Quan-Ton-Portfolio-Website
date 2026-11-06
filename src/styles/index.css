@@ -325,11 +325,6 @@ body {
   will-change: transform;
 }
 
-.marquee:active .marquee-track { animation-play-state: paused; }
-@media (hover: hover) {
-  .marquee:hover .marquee-track { animation-play-state: paused; }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .marquee {
     overflow-x: auto;

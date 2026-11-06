@@ -37,7 +37,7 @@ const TestimonialCard: React.FC<{ t: Testimonial; className?: string }> = ({ t, 
  * Testimonial cards: a static row for one or two, a continuously scrolling row
  * from three up. The card list is repeated
  * until one group is wider than any screen, then rendered twice and shifted by
- * -50% so the loop is seamless. Pauses on hover or press.
+ * -50% so the loop is seamless. It keeps moving under the cursor.
  */
 export const TestimonialMarquee: React.FC<{ items: Testimonial[] }> = ({ items }) => {
   if (items.length === 0) return null;
