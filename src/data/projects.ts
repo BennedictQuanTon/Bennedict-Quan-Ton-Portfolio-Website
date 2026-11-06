@@ -296,6 +296,72 @@ export const projects: Project[] = [
     }
   },
   {
+    id: 'roomset',
+    title: 'Roomset',
+    category: 'Competition',
+    period: 'Oct 26, 2026 – Nov 4, 2026',
+    role: 'AI & 3D Engineer',
+    summary: 'Roomset puts the exact piece of furniture you are considering into your space, in 3D and AR, at its real dimensions and from a phone browser. You confirm the size from a listing, move the piece by hand and read the clear space it leaves. Models interpret and suggest; size and fit come only from geometry.',
+    problem: 'A listing tells you a sofa is 210 cm wide, but not whether you can still walk past the radiator. 60% of shoppers say they have bought furniture online that turned out to be the wrong size, and the reported return rate for furniture bought online is 19–23%. Other tools sell their own catalog or generate a new picture of the room, with no geometry you can move.',
+    process: [
+      {
+        date: 'Nov 2, 2026',
+        title: '3D Studio and Sample Apartment',
+        description: 'Built the Three.js studio around a three-room sample apartment, with real 360° photographs projected onto the rooms and every piece held to its catalog size.',
+        image: '/assets/images/roomset/apartment.webp'
+      },
+      {
+        date: 'Nov 3, 2026',
+        title: 'AR and Voice Assistant',
+        description: 'Converted the catalog to USDZ, placed a piece on a real floor from an iPhone 15 Pro, and ran the voice assistant live in Vietnamese and English.',
+        image: '/assets/images/roomset/room.webp'
+      },
+      {
+        date: 'Nov 4, 2026',
+        title: 'Final Checks and Demo Film',
+        description: 'Checked the build for deployment, added the demo film to the landing page, and fixed empty AI architect replies by requesting minimal reasoning from Muse Spark.',
+        image: '/assets/images/roomset/hero.webp'
+      }
+    ],
+    techStack: [
+      'Three.js', 'React', 'TypeScript', 'Vite', 'FastAPI', 'Python', 'trimesh', 'OpenUSD', 'Muse Spark', 'Muse Image',
+      'AssemblyAI', 'Baseten', 'SQLAlchemy', 'Docker', 'Vercel'
+    ],
+    cardStack: ['Three.js', 'React', 'TypeScript', 'OpenUSD', 'Muse Spark', 'AssemblyAI', 'FastAPI', 'Vercel'],
+    outcomes: [
+      'Built the Roomset 3D studio, where a shopper can tour a three-room sample apartment and drag, turn, add or remove 19 catalog pieces at their real size with no model call per drag, by writing a Three.js engine that projects real 360° photographs onto the rooms, keeps each drag on the measured floor and computes floor share, nearest wall and clear space in the browser.',
+      'Put furniture on a real floor at true size from a phone browser, with all 19 catalog models converted to USDZ within 3% of their catalog size and 3 furnished rooms (8, 7 and 8 pieces) built as single scenes, by writing a trimesh and OpenUSD converter that fails the run when a size drifts. One model was placed through AR Quick Look on an iPhone 15 Pro.',
+      'Cut the full answer time of the Vietnamese and English voice assistant from 23–34 s to 12–13.6 s on a phone browser (measured with a recorded question), by splitting the flow into AssemblyAI transcription and a Muse Spark answer on a 768 px camera photo with minimal reasoning, and by keeping only suggestions that name a catalog piece so the model never states a size.'
+    ],
+    screens: [
+      { src: '/assets/images/roomset/hero.webp', caption: 'Roomset landing page' },
+      { src: '/assets/images/roomset/apartment.webp', caption: 'The whole sample apartment in 3D' },
+      { src: '/assets/images/roomset/room.webp', caption: 'Inside the living room' },
+      { src: '/assets/images/roomset/plan.webp', caption: 'The top-down plan' },
+      { src: '/assets/images/roomset/planner.webp', caption: 'A true-size sofa at its confirmed size, with a clearance check' },
+      { src: '/assets/images/roomset/phone.webp', caption: 'Phone screens: start page, room, selected piece and first planner step' }
+    ],
+    images: [
+      '/assets/images/roomset/hero.webp',
+      '/assets/images/roomset/apartment.webp',
+      '/assets/images/roomset/planner.webp'
+    ],
+    hoverMedia: {
+      type: 'video',
+      src: '/assets/videos/roomset_film.mp4',
+      webmSrc: '/assets/videos/roomset_film.webm',
+      poster: '/assets/images/roomset/film_poster.webp',
+      objectFit: 'contain',
+      background: '#1f3a2d'
+    },
+    githubUrl: 'https://github.com/BennedictQuanTon/RoomSet-Meta-Global-AI-Developer-Hackathon',
+    liveUrl: 'https://roomset3d.vercel.app',
+    status: 'active',
+    competitionName: 'Meta Global AI Developer Hackathon',
+    organizer: 'Meta',
+    organizerLogo: '/assets/images/companies/meta_logo.svg'
+  },
+  {
     id: 'ignis',
     title: 'IGNIS',
     category: 'Competition',
@@ -356,7 +422,12 @@ export const projects: Project[] = [
     status: 'active',
     competitionName: 'AMD Developer Hackathon: ACT III',
     organizer: 'AMD',
-    organizerLogo: '/assets/images/companies/amd_logo.webp'
+    organizerLogo: '/assets/images/companies/amd_logo.webp',
+    certificate: {
+      image: '/assets/images/certificates/hackathons/amd_developer_hackathon_act3.webp',
+      title: 'Certificate of Completion — AMD Developer Hackathon: ACT III',
+      issuer: 'Lablab.ai · NativelyAI'
+    }
   },
   {
     id: 'bkai-admissions',
