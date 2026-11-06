@@ -8,6 +8,7 @@ import { genericTechIcon } from '../components/ui/TechLogos';
 import { ProjectMedia } from '../components/ui/ProjectMedia';
 import { logoHeightClass } from '../lib/logos';
 import { LogoMarquee } from '../components/ui/LogoMarquee';
+import { LogoNotice } from '../components/ui/LogoNotice';
 import { PersonalProjectLabel } from '../components/ui/PersonalProjectLabel';
 import { AchievementBadge } from '../components/ui/AchievementBadge';
 import { TestimonialMarquee } from '../components/ui/TestimonialMarquee';
@@ -393,11 +394,12 @@ export const Home: React.FC = () => {
 
         {/* Organisers and hosts */}
         <ScrollReveal className="relative mt-16 md:mt-20">
-          <div className="flex items-center justify-center gap-4 mb-8 md:mb-10">
+          <div className="relative z-20 flex items-center justify-center gap-2 md:gap-4 mb-8 md:mb-10">
             <span aria-hidden className="h-px w-6 md:w-16 bg-border-token" />
             <span className="text-[10px] md:text-[11px] font-semibold uppercase tracking-[0.18em] md:tracking-[0.28em] text-text-muted text-center whitespace-nowrap">
-              Competed, built and invited by
+              Competitions &amp; Invitations
             </span>
+            <LogoNotice />
             <span aria-hidden className="h-px w-6 md:w-16 bg-border-token" />
           </div>
           <LogoMarquee label="Organisers and hosts of the competitions and events I took part in" />

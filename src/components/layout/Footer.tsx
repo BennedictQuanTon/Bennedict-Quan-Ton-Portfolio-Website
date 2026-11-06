@@ -85,6 +85,9 @@ export const Footer: React.FC = () => {
           <span className="text-[10px] text-text-muted tracking-widest uppercase">
             &copy; {currentYear} Bennedict Quan Ton. All rights reserved.
           </span>
+          <span className="max-w-xs text-center md:text-right text-[10px] leading-relaxed text-text-muted">
+            Third-party names and logos belong to their owners and are used for identification only. No sponsorship or endorsement is implied.
+          </span>
         </div>
       </div>
     </footer>

@@ -17,6 +17,7 @@ export const organizers: Organizer[] = [
   { name: 'AMD', logo: '/assets/images/companies/amd_logo.webp', height: 20, ratio: 4.196 },
   { name: 'Google', logo: '/assets/images/companies/google_logo.svg', height: 32, ratio: 2.957 },
   { name: 'OpenAI', logo: '/assets/images/companies/openai_logo.svg', height: 30, ratio: 4.034 },
+  { name: 'Meta', logo: '/assets/images/companies/meta_logo.svg', height: 21, ratio: 4.963 },
   { name: 'Sea', logo: '/assets/images/companies/sea_logo.webp', height: 32, ratio: 2.505 },
   { name: 'Shopee', logo: '/assets/images/companies/shopee_logo.svg', height: 34, ratio: 1.000 },
   { name: 'GIGABYTE', logo: '/assets/images/companies/gigabyte_logo.svg', height: 34, ratio: 4.635 },

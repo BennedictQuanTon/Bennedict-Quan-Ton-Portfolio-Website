@@ -16,6 +16,19 @@ export const milestones: Milestone[] = [
     ]
   },
   {
+    id: 'comp-roomset',
+    type: 'competition',
+    date: 'October – November 2026',
+    title: 'Meta Global AI Developer Hackathon',
+    subtitle: 'AI & 3D Engineer · Roomset',
+    description: 'Built Roomset in a team of two: furniture placed in your space in 3D and AR at its real size, from a phone browser.',
+    details: [
+      'Wrote the Three.js studio and converted all 19 catalog models to USDZ within 3% of their catalog size',
+      'Cut the Vietnamese and English voice assistant from 23–34 s to 12–13.6 s for a full answer'
+    ],
+    highlight: 'Meta Hackathon'
+  },
+  {
     id: 'comp-alodi',
     type: 'competition',
     date: 'October 2026',

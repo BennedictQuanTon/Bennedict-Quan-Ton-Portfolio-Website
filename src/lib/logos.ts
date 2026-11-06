@@ -5,6 +5,7 @@
  */
 const LOGO_HEIGHT: Record<string, string> = {
   amd_logo: 'h-[52%]',
+  meta_logo: 'h-[56%]',
 };
 
 export const logoHeightClass = (src: string): string => {
