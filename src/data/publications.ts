@@ -27,12 +27,39 @@ export interface Publication {
 }
 
 /**
- * Main-track dates are the AAMAS 2027 calendar (Anywhere on Earth).
+ * AAC-BENCH dates are the AAMAS 2027 main-track calendar (Anywhere on Earth).
  * https://warwick.ac.uk/fac/sci/dcs/aamas2027/calls/call-for-main-track/
  * Abstract 1 Oct 2026, full paper 8 Oct 2026, rebuttal 20–24 Nov 2026,
  * notification 21 Dec 2026, conference 3–7 May 2027 in Hanoi.
  */
 export const publications: Publication[] = [
+  {
+    // ACIIDS 2027 calendar: https://aciids.pwr.edu.pl/2027/dates.html (deadline extended to 14 Nov 2026, AoE).
+    // Notification, camera-ready and registration are only announced as January 2027.
+    id: 'driftdx',
+    title: 'DriftDx: Diagnosing How Small Language Models Break When the Tool Catalog Changes',
+    authors: [
+      { name: 'Long Quan Ton', self: true },
+      { name: 'Khanh Tuong Huynh' },
+      { name: 'Thanh Loi Tran' },
+      { name: 'Duc Dung Nguyen' },
+      { name: 'Vi Ngoc-Nha Tran' },
+    ],
+    venue: 'ACIIDS 2027',
+    venueFull: 'CORE B conference · 19th Asian Conference on Intelligent Information and Database Systems · Springer LNAI',
+    status: 'Under Review',
+    role: 'First author',
+    place: 'Bali, Indonesia',
+    when: '5–7 Apr 2027',
+    callUrl: 'https://aciids.pwr.edu.pl/2027/',
+    timeline: [
+      { label: 'Submitted', date: '14 Nov 2026', state: 'done' },
+      { label: 'Peer review', date: 'Nov 2026 – Jan 2027', state: 'current' },
+      { label: 'Notification', date: 'Jan 2027', state: 'upcoming' },
+      { label: 'Camera-ready', date: 'Jan 2027', state: 'upcoming' },
+      { label: 'Conference', date: '5–7 Apr 2027', state: 'upcoming' },
+    ],
+  },
   {
     id: 'aac-bench',
     title: 'AAC-BENCH: Benchmarking Audio as Context for Proactive Voice Agents',

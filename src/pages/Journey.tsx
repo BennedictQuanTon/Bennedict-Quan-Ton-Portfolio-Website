@@ -175,6 +175,7 @@ export const Journey: React.FC = () => {
                           <div className="bg-bg-alt/40 border border-border-token/30 rounded-2xl px-6 py-4 hover:border-accent/30 transition-colors">
                             <span className="block text-xs md:text-sm font-semibold text-text-muted mb-1.5">GPA</span>
                             <span className="text-3xl md:text-4xl font-extrabold text-accent leading-none">{edu.gpa}</span>
+                            {edu.gpaNote && <span className="block text-xs text-text-muted mt-2">{edu.gpaNote}</span>}
                           </div>
                         )}
                         {edu.honours?.map((honour) => (

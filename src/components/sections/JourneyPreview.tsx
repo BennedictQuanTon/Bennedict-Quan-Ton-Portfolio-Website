@@ -88,6 +88,7 @@ export const JourneyPreview: React.FC = () => (
                     <span className="block text-xs font-semibold text-text-muted mb-2">Cumulative GPA</span>
                     <span className="text-5xl md:text-6xl font-extrabold text-text-heading leading-none tracking-tight">{score}</span>
                     {scale && <span className="text-xl md:text-2xl font-bold text-text-muted ml-1.5">/ {scale}</span>}
+                    {education.gpaNote && <span className="block text-xs text-text-muted mt-2">{education.gpaNote}</span>}
                   </div>
                   <span className="h-px flex-1 bg-border-token" />
                 </div>
