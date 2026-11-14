@@ -130,8 +130,10 @@ export interface Milestone {
   details: string[];
   image?: string;
   highlight?: string;
-  /** Education only: current GPA, e.g. "6.75 / 7.00" */
+  /** Education only: current GPA, e.g. "3.86 / 4.00" */
   gpa?: string;
+  /** Education only: small note under the GPA, e.g. the original scale it was converted from */
+  gpaNote?: string;
   /** Education only: academic honours such as a Dean's List */
   honours?: string[];
 }

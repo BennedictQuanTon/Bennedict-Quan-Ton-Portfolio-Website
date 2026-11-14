@@ -27,7 +27,7 @@ export const PublicationSection: React.FC = () => (
         <div className="w-3 h-[2.5px] bg-border-token/40 rounded-full" />
       </div>
       <p className="text-sm md:text-base text-text-muted mt-4 max-w-2xl text-pretty hyphens-none leading-relaxed">
-        Research on speech recognition and real-time voice agents for autonomous multiagent systems, where audio is used as context.
+        Research on reliable AI agents: how small language models break when their tools change, and how voice agents use audio as context.
       </p>
     </ScrollReveal>
 

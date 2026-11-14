@@ -79,13 +79,13 @@ export const Home: React.FC = () => {
   // Stats - Custom portfolio highlights
   const stats = [
     { 
-      value: '6+', 
+      value: '7+', 
       label: 'Competition Certifications', 
       sublabel: 'Hackathons & Challenges Certification of Achievement', 
       icon: <Trophy size={20} className="text-accent" /> 
     },
     { 
-      value: '10+', 
+      value: '12+', 
       label: 'Projects & Hackathons', 
       sublabel: 'Personal & Competition AI Systems Shipped', 
       icon: <FolderCode size={20} className="text-accent" /> 
@@ -98,8 +98,8 @@ export const Home: React.FC = () => {
     },
     { 
       value: 'AI Engineering', 
-      label: 'Agentic Workflows', 
-      sublabel: 'Multimodal GenAI · LLM/SLM · ML · Inferences', 
+      label: 'Agentic & Speech AI', 
+      sublabel: 'Voice Agents · ASR · Multimodal GenAI · LLM/SLM', 
       icon: <Brain size={20} className="text-accent" /> 
     }
   ];
@@ -313,13 +313,13 @@ export const Home: React.FC = () => {
           {/* Bottom Row: Full-Width Horizontal Stats Banner */}
           <motion.div {...heroReveal(6)} className="w-full glass-panel p-5 md:p-6 rounded-2xl border border-border-token/40 shadow-xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:divide-x lg:divide-border-token/20 mt-2">
             {stats.map((stat, i) => (
-              <div key={i} className="flex items-center gap-4 px-2 lg:px-6 first:pl-2">
+              <div key={i} className="flex items-start gap-4 px-2 lg:px-6 first:pl-2">
                 <div className="p-3 bg-accent-dim rounded-xl flex items-center justify-center shrink-0">
                   {stat.icon}
                 </div>
                 <div className="flex flex-col space-y-0.5">
                   <div className="flex items-baseline gap-1.5">
-                    <span className="text-2xl md:text-3xl font-extrabold text-text-heading font-display tracking-tight leading-none">
+                    <span className={`${/\d/.test(stat.value) ? 'text-2xl md:text-3xl' : 'text-xl md:text-2xl'} font-extrabold text-text-heading font-display tracking-tight leading-none whitespace-nowrap`}>
                       {stat.value}
                     </span>
                   </div>

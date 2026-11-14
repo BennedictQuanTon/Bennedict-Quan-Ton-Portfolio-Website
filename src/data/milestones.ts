@@ -7,7 +7,9 @@ export const milestones: Milestone[] = [
     date: '2025 – 2028 (Expected)',
     title: 'University of Technology Sydney & HCMUT',
     subtitle: 'Bachelor of Artificial Intelligence',
-    gpa: '6.75 / 7.00',
+    // 6.75 / 7 on the UTS scale, converted proportionally: 6.75 × 4 ÷ 7 = 3.857
+    gpa: '3.86 / 4.00',
+    gpaNote: 'Equivalent of 6.75 / 7.00 (UTS 7-point scale)',
     honours: ["Dean's List 2026 — UTS Faculty of Engineering & IT"],
     description: 'A rigorous joint program focused on core ML algorithms, autonomous agent development, database systems, and statistical modeling.',
     details: [
