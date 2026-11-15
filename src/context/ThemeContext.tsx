@@ -24,7 +24,7 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     root.classList.toggle('dark', theme === 'dark');
     root.style.colorScheme = theme;
     // Keep the Safari / Chrome toolbar tint in sync with the active theme
-    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'dark' ? '#09100B' : '#FFFFFF');
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'dark' ? '#0A1517' : '#FFFFFF');
   }, [theme]);
 
   const toggleTheme = useCallback((event?: React.MouseEvent) => {

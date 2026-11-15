@@ -82,7 +82,7 @@ export const Navbar: React.FC = () => {
               className={({ isActive }) =>
                 `text-[10px] font-bold uppercase tracking-widest px-4 py-1.5 rounded-full transition-all duration-300 ${
                   isActive
-                    ? 'text-bg bg-accent shadow-sm shadow-accent/25'
+                    ? 'text-bg bg-pop shadow-sm shadow-pop/25'
                     : 'text-text-muted hover:text-text-heading hover:bg-surface-2/60'
                 }`
               }
@@ -191,7 +191,7 @@ export const Navbar: React.FC = () => {
             <a
               href="/Long_Quan_Ton_CV.pdf"
               download="Long_Quan_Ton_CV.pdf"
-              className="w-full mt-1 py-3 rounded-full bg-accent text-bg text-sm font-semibold flex items-center justify-center gap-2 shadow-lg shadow-accent/20"
+              className="w-full mt-1 py-3 rounded-full bg-pop text-bg text-sm font-semibold flex items-center justify-center gap-2 shadow-lg shadow-pop/20"
             >
               Download CV <Download size={16} />
             </a>

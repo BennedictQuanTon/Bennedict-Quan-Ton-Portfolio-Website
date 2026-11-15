@@ -107,7 +107,7 @@ export const Vault: React.FC = () => {
                 key={cat}
                 onClick={() => setFilter(cat)}
                 className={`px-2 sm:px-5 py-2.5 min-h-[44px] flex items-center justify-center rounded-full text-[10px] sm:text-xs font-semibold uppercase tracking-wide sm:tracking-wider whitespace-nowrap transition-all duration-300 cursor-pointer ${filter === cat
-                    ? 'bg-accent text-bg shadow-md'
+                    ? 'bg-pop text-bg shadow-md'
                     : 'text-text-muted hover:text-text-heading hover:bg-surface-2'
                   }`}
               >
@@ -462,7 +462,7 @@ export const Vault: React.FC = () => {
                               href={selectedProject.liveUrl}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="flex items-center justify-center gap-2 text-xs font-semibold px-4 py-2.5 min-h-[44px] bg-accent hover:bg-accent-bright text-bg rounded-xl transition-colors cursor-pointer"
+                              className="flex items-center justify-center gap-2 text-xs font-semibold px-4 py-2.5 min-h-[44px] bg-pop hover:bg-pop-bright text-bg rounded-xl transition-colors cursor-pointer"
                             >
                               <ExternalLink size={14} /> Live System
                             </a>

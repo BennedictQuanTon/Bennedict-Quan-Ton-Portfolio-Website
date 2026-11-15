@@ -120,7 +120,7 @@ export const InvitationsSection: React.FC<InvitationsSectionProps> = ({ onOpen }
                   <ul className="mt-4 space-y-2">
                     {inv.highlights.map((h) => (
                       <li key={h} className="flex items-center gap-3 text-sm font-semibold text-text-heading">
-                        <span aria-hidden className="h-px w-5 bg-accent shrink-0" />
+                        <span aria-hidden className="h-px w-5 bg-pop shrink-0" />
                         {h}
                       </li>
                     ))}

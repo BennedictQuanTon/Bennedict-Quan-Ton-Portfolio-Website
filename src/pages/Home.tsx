@@ -224,7 +224,7 @@ export const Home: React.FC = () => {
               <div className="text-text-heading pl-3">&gt; Multi-agent architectures &amp; ML for Optimization</div>
               <div className="flex items-center text-accent pt-0.5 animate-pulse">
                 <span className="text-text-muted pr-2">$</span>
-                <span className="w-1.5 h-2.5 bg-accent inline-block" />
+                <span className="w-1.5 h-2.5 bg-pop inline-block" />
               </div>
             </div>
           </div>
@@ -281,7 +281,7 @@ export const Home: React.FC = () => {
                 </motion.p>
                 {/* Segmented status line indicator */}
                 <motion.div {...heroReveal(3)} className="flex items-center gap-1.5 pt-1.5">
-                  <div className="w-10 h-[2.5px] bg-accent rounded-full" />
+                  <div className="w-10 h-[2.5px] bg-pop rounded-full" />
                   <div className="w-4 h-[2.5px] bg-border-token/40 rounded-full" />
                   <div className="w-2.5 h-[2.5px] bg-border-token/40 rounded-full" />
                 </motion.div>
@@ -295,7 +295,7 @@ export const Home: React.FC = () => {
               <motion.div {...heroReveal(5)} className="grid grid-cols-2 gap-3 sm:flex sm:items-center sm:gap-4 sm:flex-wrap pt-2">
                 <Link 
                   to="/projects" 
-                  className="justify-center px-5 sm:px-7 py-3.5 rounded-full bg-accent hover:bg-accent-bright text-bg font-semibold text-sm flex items-center gap-2 shadow-lg shadow-accent/20 hover:shadow-accent/40 hover:-translate-y-0.5 transition-all duration-300"
+                  className="justify-center px-5 sm:px-7 py-3.5 rounded-full bg-pop hover:bg-pop-bright text-bg font-semibold text-sm flex items-center gap-2 shadow-lg shadow-pop/20 hover:shadow-accent/40 hover:-translate-y-0.5 transition-all duration-300"
                 >
                   View My Work <ArrowUpRight size={16} />
                 </Link>
@@ -603,7 +603,7 @@ export const Home: React.FC = () => {
 
               <Link
                 to="/projects"
-                className="px-8 py-4 rounded-full bg-accent hover:bg-accent-bright text-bg font-semibold text-sm flex items-center gap-2.5 shadow-lg shadow-accent/20 hover:shadow-accent/40 hover:-translate-y-0.5 transition-all duration-300 shrink-0 self-end md:self-center"
+                className="px-8 py-4 rounded-full bg-pop hover:bg-pop-bright text-bg font-semibold text-sm flex items-center gap-2.5 shadow-lg shadow-pop/20 hover:shadow-accent/40 hover:-translate-y-0.5 transition-all duration-300 shrink-0 self-end md:self-center"
               >
                 <span>View All Projects</span>
                 <ArrowUpRight size={18} />
@@ -653,7 +653,7 @@ export const Home: React.FC = () => {
                     </div>
                     <div className="w-full h-1.5 bg-border-token/20 rounded-full overflow-hidden mt-3.5">
                       <div 
-                        className="h-full bg-accent rounded-full transition-all duration-500" 
+                        className="h-full bg-pop rounded-full transition-all duration-500" 
                         style={{ width: `${skill.percent}%` }}
                       />
                     </div>
@@ -830,7 +830,7 @@ export const Home: React.FC = () => {
                   <div className="flex flex-wrap items-center gap-4 pt-4 border-t border-border-token/10 mt-6">
                     <button
                       type="submit"
-                      className="px-6 py-3.5 rounded-full bg-accent hover:bg-accent-bright text-bg font-semibold text-sm flex items-center gap-2 shadow-lg shadow-accent/15 hover:shadow-accent/30 hover:-translate-y-0.5 transition-all duration-300"
+                      className="px-6 py-3.5 rounded-full bg-pop hover:bg-pop-bright text-bg font-semibold text-sm flex items-center gap-2 shadow-lg shadow-pop/15 hover:shadow-accent/30 hover:-translate-y-0.5 transition-all duration-300"
                     >
                       Send Message <ArrowUpRight size={14} />
                     </button>
