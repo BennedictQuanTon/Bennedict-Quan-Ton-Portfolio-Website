@@ -26,9 +26,9 @@ export const useIntroDone = () => useSyncExternalStore(subscribe, () => introDon
  * preload in index.html use the same srcset and sizes, so the browser fetches one file.
  */
 export const HERO_PORTRAIT = {
-  src: '/assets/images/portrait/Portrait4-1080.webp',
+  src: '/assets/images/portrait/Portrait5-1080.webp',
   srcSet:
-    '/assets/images/portrait/Portrait4-640.webp 640w, /assets/images/portrait/Portrait4-1080.webp 1080w, /assets/images/portrait/Portrait4-1448.webp 1448w',
+    '/assets/images/portrait/Portrait5-640.webp 640w, /assets/images/portrait/Portrait5-1080.webp 1080w, /assets/images/portrait/Portrait5-1448.webp 1448w',
   sizes: '(min-width: 768px) 65vw, 100vw',
 } as const;
 
