@@ -5,8 +5,8 @@ import { publications } from '../../data/publications';
 import type { PublicationStep } from '../../data/publications';
 
 const stepDot: Record<PublicationStep['state'], string> = {
-  done: 'bg-accent',
-  current: 'bg-accent animate-pulse',
+  done: 'bg-pop',
+  current: 'bg-pop animate-pulse',
   upcoming: 'bg-surface-2 border border-border-token',
 };
 
@@ -22,7 +22,7 @@ export const PublicationSection: React.FC = () => (
         Publications
       </h2>
       <div className="flex items-center gap-1.5 mt-5">
-        <div className="w-12 h-[2.5px] bg-accent rounded-full" />
+        <div className="w-12 h-[2.5px] bg-pop rounded-full" />
         <div className="w-5 h-[2.5px] bg-border-token/40 rounded-full" />
         <div className="w-3 h-[2.5px] bg-border-token/40 rounded-full" />
       </div>
